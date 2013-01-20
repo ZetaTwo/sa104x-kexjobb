@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Arithmetic", "Arithmetic\Arithmetic.vcxproj", "{0B22BDBB-A708-4A76-8CEF-CBF31D55603D}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Crypto", "Crypto\Crypto.vcxproj", "{ACFDD9B7-6164-4597-AEBF-E699A692D7E2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0B22BDBB-A708-4A76-8CEF-CBF31D55603D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{0B22BDBB-A708-4A76-8CEF-CBF31D55603D}.Debug|Win32.Build.0 = Debug|Win32
+		{0B22BDBB-A708-4A76-8CEF-CBF31D55603D}.Release|Win32.ActiveCfg = Release|Win32
+		{0B22BDBB-A708-4A76-8CEF-CBF31D55603D}.Release|Win32.Build.0 = Release|Win32
+		{ACFDD9B7-6164-4597-AEBF-E699A692D7E2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{ACFDD9B7-6164-4597-AEBF-E699A692D7E2}.Debug|Win32.Build.0 = Debug|Win32
+		{ACFDD9B7-6164-4597-AEBF-E699A692D7E2}.Release|Win32.ActiveCfg = Release|Win32
+		{ACFDD9B7-6164-4597-AEBF-E699A692D7E2}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
