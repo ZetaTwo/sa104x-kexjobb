@@ -7,6 +7,7 @@ class BaseNode
 public:
 	enum NodeType { NODE = 0, LEAF = 1 };
 
+	BaseNode(void);
 	BaseNode(BaseNode::NodeType type, int32_t length);
 	~BaseNode(void);
 

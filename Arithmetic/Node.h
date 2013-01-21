@@ -2,16 +2,18 @@
 
 #include "basenode.h"
 
+#include <vector>
 
 class Node :
 	public BaseNode
 {
 public:
-	Node(int32_t length);
+	explicit Node(int32_t length);
 	~Node(void);
 
-	BaseNode *&operator[](int32_t index) const;
+	BaseNode* const &operator[](int32_t index) const;
+	BaseNode* &operator[](int32_t index);
 private:
-	BaseNode **children;
+	std::vector<BaseNode *> children;
 };
 

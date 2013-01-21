@@ -2,22 +2,28 @@
 
 #include <stdexcept>
 
-Leaf::Leaf(int32_t length) : BaseNode(NodeType::LEAF, length)
+Leaf::Leaf(int32_t length) : BaseNode(NodeType::LEAF, length), data(length, 0)
 {
-	data = new char[getLength()];
 }
 
 
 Leaf::~Leaf(void)
 {
-	delete[] data;
 }
 
-char *Leaf::getData(void) const {
+const std::vector<char> Leaf::getData(void) const {
 	return data;
 }
 
-char &Leaf::operator[](int32_t index) const {
+char &Leaf::operator[](int32_t index) {
+	if(index >= getLength() || index < 0) {
+		throw std::out_of_range("Index is out of range");
+	}
+
+	return data[index];
+}
+
+const char &Leaf::operator[](int32_t index) const {
 	if(index >= getLength() || index < 0) {
 		throw std::out_of_range("Index is out of range");
 	}

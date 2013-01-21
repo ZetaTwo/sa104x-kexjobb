@@ -1,15 +1,19 @@
 #pragma once
 #include "basenode.h"
+
+#include <vector>
+
 class Leaf :
 	public BaseNode
 {
 public:
-	Leaf(int32_t length);
+	explicit Leaf(int32_t length);
 	~Leaf(void);
 
-	char &operator[](int32_t index) const;
-	char *getData(void) const;
+	char &operator[](int32_t index);
+	const char &operator[](int32_t index) const;
+	const std::vector<char> getData(void) const;
 private:
-	char *data;
+	std::vector<char> data;
 };
 
