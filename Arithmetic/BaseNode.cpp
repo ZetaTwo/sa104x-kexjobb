@@ -1,6 +1,6 @@
 #include "BaseNode.h"
 
-BaseNode::BaseNode(void): type(NodeType::LEAF), length(0)
+BaseNode::BaseNode(void): type(BaseNode::LEAF), length(0)
 {
 }
 

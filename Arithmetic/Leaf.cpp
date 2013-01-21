@@ -2,7 +2,7 @@
 
 #include <stdexcept>
 
-Leaf::Leaf(int32_t length) : BaseNode(NodeType::LEAF, length), data(length, 0)
+Leaf::Leaf(int32_t length) : BaseNode(BaseNode::LEAF, length), data(length, 0)
 {
 }
 

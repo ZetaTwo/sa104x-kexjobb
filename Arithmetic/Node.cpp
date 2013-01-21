@@ -1,7 +1,8 @@
 #include "Node.h"
 
+#include <stdexcept>
 
-Node::Node(int32_t length) : BaseNode(NodeType::NODE, length), children(length, 0)
+Node::Node(int32_t length) : BaseNode(BaseNode::NODE, length), children(length, NULL)
 {
 }
 
