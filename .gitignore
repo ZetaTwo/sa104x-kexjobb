@@ -33,3 +33,6 @@ Thumbs.db
 obj/
 [Rr]elease*/
 _ReSharper*/
+
+#ignore emacs temporary files
+*~
