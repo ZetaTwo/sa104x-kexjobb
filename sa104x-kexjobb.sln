@@ -5,6 +5,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Arithmetic", "Arithmetic\Ar
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Crypto", "Crypto\Crypto.vcxproj", "{ACFDD9B7-6164-4597-AEBF-E699A692D7E2}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tests", "Tests\Tests.vcxproj", "{3A695F5E-20C2-4BF5-8175-513D9A9E49E3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -19,6 +21,10 @@ Global
 		{ACFDD9B7-6164-4597-AEBF-E699A692D7E2}.Debug|Win32.Build.0 = Debug|Win32
 		{ACFDD9B7-6164-4597-AEBF-E699A692D7E2}.Release|Win32.ActiveCfg = Release|Win32
 		{ACFDD9B7-6164-4597-AEBF-E699A692D7E2}.Release|Win32.Build.0 = Release|Win32
+		{3A695F5E-20C2-4BF5-8175-513D9A9E49E3}.Debug|Win32.ActiveCfg = Debug|Win32
+		{3A695F5E-20C2-4BF5-8175-513D9A9E49E3}.Debug|Win32.Build.0 = Debug|Win32
+		{3A695F5E-20C2-4BF5-8175-513D9A9E49E3}.Release|Win32.ActiveCfg = Release|Win32
+		{3A695F5E-20C2-4BF5-8175-513D9A9E49E3}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
