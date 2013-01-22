@@ -7,12 +7,14 @@ class Leaf :
 	public BaseNode
 {
 public:
-	explicit Leaf(int32_t length);
+	explicit Leaf(void);
 	~Leaf(void);
 
 	char &operator[](int32_t index);
 	const char &operator[](int32_t index) const;
 	const std::vector<char> getData(void) const;
+
+	virtual int32_t getLength(void) const;
 private:
 	std::vector<char> data;
 };

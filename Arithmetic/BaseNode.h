@@ -8,14 +8,13 @@ public:
 	enum NodeType { NODE = 0, LEAF = 1 };
 
 	BaseNode(void);
-	BaseNode(BaseNode::NodeType type, int32_t length);
+	BaseNode(BaseNode::NodeType type);
 	~BaseNode(void);
 
 	char getType(void) const;
-	int32_t getLength(void) const;
+	virtual int32_t getLength(void) const = 0;
 
 private:
 	const char type;
-	const int32_t length;
 };
 

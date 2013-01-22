@@ -4,20 +4,10 @@
 #include "Node.h"
 #include "Leaf.h"
 
-TEST(ByteTreeTests, BaseNodeContructor) {
-	const int length = 4;
-	BaseNode::NodeType type = BaseNode::LEAF;
-
-	BaseNode n(type, length);
-
-	EXPECT_EQ(type, n.getType());
-	EXPECT_EQ(length, n.getLength());
-}
-
 TEST(ByteTreeTests, NodeContructor) {
 	const int length = 4;
 
-	Node n(length);
+	Node n;
 
 	EXPECT_EQ(BaseNode::NODE, n.getType());
 	EXPECT_EQ(length, n.getLength());
@@ -26,7 +16,7 @@ TEST(ByteTreeTests, NodeContructor) {
 TEST(ByteTreeTests, LeafContructor) {
 	const int length = 4;
 
-	Leaf n(length);
+	Leaf n;
 
 	EXPECT_EQ(BaseNode::LEAF, n.getType());
 	EXPECT_EQ(length, n.getLength());
@@ -35,7 +25,7 @@ TEST(ByteTreeTests, LeafContructor) {
 TEST(ByteTreeTests, LeafData) {
 	const int length = 2;
 
-	Leaf l(length);
+	Leaf l;
 	l[0] = 1;
 	l[1] = 2;
 
@@ -49,8 +39,8 @@ TEST(ByteTreeTests, LeafData) {
 TEST(ByteTreeTests, NodeData) {
 	const int length = 2;
 
-	Node node(length);
-	Leaf *leaf = new Leaf(length);
+	Node node;
+	Leaf *leaf = new Leaf();
 	
 	(*leaf)[0] = 1;
 	(*leaf)[1] = 2;

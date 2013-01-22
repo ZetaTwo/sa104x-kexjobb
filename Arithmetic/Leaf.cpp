@@ -2,7 +2,7 @@
 
 #include <stdexcept>
 
-Leaf::Leaf(int32_t length) : BaseNode(BaseNode::LEAF, length), data(length, 0)
+Leaf::Leaf(void) : BaseNode(BaseNode::LEAF)
 {
 }
 
@@ -30,3 +30,7 @@ const char &Leaf::operator[](int32_t index) const {
 
 	return data[index];
 }
+
+int32_t Leaf::getLength(void) const {
+	return data.size();
+};

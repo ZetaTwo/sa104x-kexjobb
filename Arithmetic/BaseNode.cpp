@@ -1,10 +1,10 @@
 #include "BaseNode.h"
 
-BaseNode::BaseNode(void): type(BaseNode::LEAF), length(0)
+BaseNode::BaseNode(void): type(BaseNode::LEAF)
 {
 }
 
-BaseNode::BaseNode(BaseNode::NodeType type, int32_t length) : type(type), length(length)
+BaseNode::BaseNode(BaseNode::NodeType type) : type(type)
 {
 }
 
@@ -14,8 +14,4 @@ BaseNode::~BaseNode(void)
 
 char BaseNode::getType(void) const {
 	return type;
-};
-
-int32_t BaseNode::getLength(void) const {
-	return length;
 };

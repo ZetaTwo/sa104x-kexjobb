@@ -2,7 +2,7 @@
 
 #include <stdexcept>
 
-Node::Node(int32_t length) : BaseNode(BaseNode::NODE, length), children(length, NULL)
+Node::Node() : BaseNode(BaseNode::NODE)
 {
 }
 
@@ -25,3 +25,7 @@ BaseNode* &Node::operator[](int32_t index) {
 
 	return children[index];
 }
+
+int32_t Node::getLength(void) const {
+	return children.size();
+};
