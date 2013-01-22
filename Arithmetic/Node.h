@@ -14,6 +14,8 @@ public:
 	BaseNode* const &operator[](int32_t index) const;
 	BaseNode* &operator[](int32_t index);
 
+	std::vector<BaseNode *> &getChildren(void);
+
 	virtual int32_t getLength(void) const;
 private:
 	std::vector<BaseNode *> children;

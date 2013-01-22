@@ -12,7 +12,7 @@ public:
 
 	char &operator[](int32_t index);
 	const char &operator[](int32_t index) const;
-	const std::vector<char> getData(void) const;
+	std::vector<char> &getData(void);
 
 	virtual int32_t getLength(void) const;
 private:

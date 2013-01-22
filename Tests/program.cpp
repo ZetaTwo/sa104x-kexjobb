@@ -1,7 +1,5 @@
 #include <string>
 
-#include <algorithm>
-
 #include <gtest\gtest.h>
 
 int Factorial(int n) {
@@ -74,12 +72,6 @@ struct cmp {
 } cmp;
 
 int main(int argc, char **argv) {
-
-
-	int test[] = { 1, 2, 3, 4, 5, 6 };
-	std::lower_bound(test, test+6, 3, cmp);
-
-
   ::testing::InitGoogleTest(&argc, argv);
   return RUN_ALL_TESTS();
 }

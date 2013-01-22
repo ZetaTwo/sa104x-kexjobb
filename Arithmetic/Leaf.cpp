@@ -11,7 +11,7 @@ Leaf::~Leaf(void)
 {
 }
 
-const std::vector<char> Leaf::getData(void) const {
+std::vector<char> &Leaf::getData(void) {
 	return data;
 }
 

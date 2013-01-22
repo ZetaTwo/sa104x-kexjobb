@@ -26,6 +26,10 @@ BaseNode* &Node::operator[](int32_t index) {
 	return children[index];
 }
 
+std::vector<BaseNode *> &Node::getChildren(void) {
+	return children;
+}
+
 int32_t Node::getLength(void) const {
 	return children.size();
 };
