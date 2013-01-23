@@ -4,6 +4,24 @@
 #include "Node.h"
 #include "Leaf.h"
 
+TEST(ArithmeticTests, SingleByteAddition)
+{
+    Leaf k(1);
+    Leaf l(1);
+    Leaf m;
+
+    for(char i = 0x00; i < 0xFF; i++)
+    {
+        for(char j = 0x00; j < 0xFF; j++)
+	{
+            m = k + l;
+	    vector<char> data = m.getData();
+	    EXPECT_EQ(i + j, data[data.size()-1]);
+	}
+    }
+}
+
+
 TEST(ArithmeticTests, PositiveAddition) 
 {
     Leaf k(3);

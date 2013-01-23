@@ -1,6 +1,6 @@
 #include <string>
 
-#include <gtest\gtest.h>
+#include <gtest/gtest.h>
 
 int Factorial(int n) {
 	if(n == 0) {

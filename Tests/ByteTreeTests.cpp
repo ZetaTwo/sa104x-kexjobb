@@ -1,8 +1,10 @@
-#include <gtest\gtest.h>
+#include <gtest/gtest.h>
 
 #include "BaseNode.h"
 #include "Node.h"
 #include "Leaf.h"
+
+#include <stdexcept>
 
 TEST(ByteTreeTests, NodeContructor) {
 	Node n;
@@ -53,4 +55,9 @@ TEST(ByteTreeTests, NodeData) {
 
 	EXPECT_EQ(1, leaf2[0]);
 	EXPECT_EQ(2, leaf2[1]);
+}
+
+int main(int argc, char **argv) {
+        ::testing::InitGoogleTest(&argc, argv);
+        return RUN_ALL_TESTS();
 }
