@@ -76,13 +76,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="BaseLeaf.h" />
     <ClInclude Include="BaseNode.h" />
-    <ClInclude Include="Leaf.h" />
+    <ClInclude Include="IntLeaf.h" />
+    <ClInclude Include="DataLeaf.h" />
     <ClInclude Include="Node.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BaseLeaf.cpp" />
     <ClCompile Include="BaseNode.cpp" />
-    <ClCompile Include="Leaf.cpp" />
+    <ClCompile Include="IntLeaf.cpp" />
+    <ClCompile Include="DataLeaf.cpp" />
     <ClCompile Include="Node.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

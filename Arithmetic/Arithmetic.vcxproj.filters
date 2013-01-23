@@ -16,26 +16,41 @@
     <Filter Include="Source Files\ByteTree">
       <UniqueIdentifier>{31d64975-605c-443f-9f30-0a715ceaf38b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\ByteTree">
+      <UniqueIdentifier>{6f3d1dcf-fb04-4705-8812-a5c490284949}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BaseLeaf.h">
+      <Filter>Header Files\ByteTree</Filter>
+    </ClInclude>
     <ClInclude Include="BaseNode.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\ByteTree</Filter>
+    </ClInclude>
+    <ClInclude Include="IntLeaf.h">
+      <Filter>Header Files\ByteTree</Filter>
     </ClInclude>
     <ClInclude Include="Node.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\ByteTree</Filter>
     </ClInclude>
-    <ClInclude Include="Leaf.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="DataLeaf.h">
+      <Filter>Header Files\ByteTree</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseNode.cpp">
       <Filter>Source Files\ByteTree</Filter>
     </ClCompile>
-    <ClCompile Include="Leaf.cpp">
+    <ClCompile Include="Node.cpp">
       <Filter>Source Files\ByteTree</Filter>
     </ClCompile>
-    <ClCompile Include="Node.cpp">
+    <ClCompile Include="BaseLeaf.cpp">
+      <Filter>Source Files\ByteTree</Filter>
+    </ClCompile>
+    <ClCompile Include="IntLeaf.cpp">
+      <Filter>Source Files\ByteTree</Filter>
+    </ClCompile>
+    <ClCompile Include="DataLeaf.cpp">
       <Filter>Source Files\ByteTree</Filter>
     </ClCompile>
   </ItemGroup>
