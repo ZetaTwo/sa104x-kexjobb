@@ -8,6 +8,7 @@ class Leaf :
 {
 public:
 	explicit Leaf(void);
+	Leaf(int32_t size);
 	~Leaf(void);
 
 	char &operator[](int32_t index);
