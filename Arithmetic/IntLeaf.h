@@ -14,12 +14,13 @@ public:
 	explicit IntLeaf(std::vector<char> bytevec);
 	~IntLeaf(void);
 
-	IntLeaf &add(const IntLeaf &leaf);
-
 	IntLeaf &operator=(const IntLeaf &leaf);
 
 	IntLeaf &addTo(const IntLeaf &leaf);
 	IntLeaf add(const IntLeaf &leaf) const;
+
+	IntLeaf &addToMod(const IntLeaf &leaf, const IntLeaf &mod);
+	IntLeaf addMod(const IntLeaf &leaf, const IntLeaf &mod) const;
 
 	IntLeaf &operator+=(const IntLeaf &leaf);
 	IntLeaf operator+(const IntLeaf &leaf) const;
@@ -27,11 +28,16 @@ public:
 	IntLeaf &multTo(const IntLeaf &leaf);
 	IntLeaf mult(const IntLeaf &leaf) const;
 
+	IntLeaf &multToMod(const IntLeaf &leaf, const IntLeaf &mod);
+	IntLeaf multMod(const IntLeaf &leaf, const IntLeaf &mod) const;
+
 	IntLeaf &operator*=(const IntLeaf &leaf);
 	IntLeaf operator*(const IntLeaf &leaf) const;
 	
 	bool operator==(const IntLeaf &leaf) const;
+	bool operator!=(const IntLeaf &leaf) const;
 
+	mpz_class getBigInt(void) const;
 	virtual std::vector<char> toVector(void) const;
 	virtual int32_t getLength(void) const;
 
