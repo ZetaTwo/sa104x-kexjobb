@@ -58,7 +58,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <Lib>
-      <AdditionalDependencies>libgmp.a;libgmpxx.a;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>libgmp.la;libgmpxx.la;%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

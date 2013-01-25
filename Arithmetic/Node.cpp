@@ -160,21 +160,21 @@ IntLeaf Node::prodMod(const IntLeaf &mod) const {
 	return prod;
 };
 
-IntLeaf Node::exp(unsigned long exponent) const {
-	IntLeaf exp;
-	for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
+Node Node::exp(unsigned long exponent) const {
+	Node exp;
+	/*for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
 	{
 		exp.expTo(*static_cast<IntLeaf *>(*itr));
-	}
+	}*/
 
 	return exp;
 };
-IntLeaf Node::expMod(unsigned long exponent, const IntLeaf &mod) const {
-	IntLeaf exp;
-	for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
+Node Node::expMod(unsigned long exponent, const IntLeaf &mod) const {
+	Node exp;
+	/*for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
 	{
 		exp.expToMod(*static_cast<IntLeaf *>(*itr), mod);
-	}
+	}*/
 
 	return exp;
 };
