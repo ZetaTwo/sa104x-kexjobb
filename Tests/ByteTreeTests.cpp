@@ -2,7 +2,6 @@
 
 #include "BaseNode.h"
 #include "Node.h"
-#include "Leaf.h"
 
 #include <stdexcept>
 
@@ -13,7 +12,7 @@ TEST(ByteTreeTests, NodeContructor) {
 	EXPECT_EQ(0, n.getLength());
 }
 
-TEST(ByteTreeTests, LeafContructor) {
+/*TEST(ByteTreeTests, LeafContructor) {
 	Leaf n;
 
 	EXPECT_EQ(BaseNode::LEAF, n.getType());
@@ -55,9 +54,4 @@ TEST(ByteTreeTests, NodeData) {
 
 	EXPECT_EQ(1, leaf2[0]);
 	EXPECT_EQ(2, leaf2[1]);
-}
-
-int main(int argc, char **argv) {
-        ::testing::InitGoogleTest(&argc, argv);
-        return RUN_ALL_TESTS();
-}
+}*/

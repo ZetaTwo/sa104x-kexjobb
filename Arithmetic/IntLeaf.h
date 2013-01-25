@@ -10,6 +10,10 @@ class IntLeaf :
 	public BaseLeaf
 {
 public:
+	const int ARRAYORDER = 1; /* -1 for least significant byte first, 1 for most significant byte first */
+	const int ENDIAN = 0;
+	const int NAILS = 0;
+
 	IntLeaf(void);
 	explicit IntLeaf(std::vector<char> bytevec);
 	~IntLeaf(void);

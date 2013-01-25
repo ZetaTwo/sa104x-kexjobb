@@ -1,9 +1,5 @@
 #include "IntLeaf.h"
 
-#define ARRAYORDER 1 /* -1 for least significant byte first, 1 for most significant byte first */
-#define ENDIAN 0
-#define NAILS 0
-
 IntLeaf::IntLeaf(void)
 {
 }
@@ -139,7 +135,7 @@ bool IntLeaf::operator==(const IntLeaf &leaf) const
 
 bool IntLeaf::operator!=(const IntLeaf &leaf) const
 {
-    return !((*this) == leaf);
+    return !(*this == leaf);
 }
 
 
