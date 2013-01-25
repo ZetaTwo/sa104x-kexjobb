@@ -5,11 +5,11 @@
 
 #define ARRAYORDER -1 /* -1 for least significant first, 1 for most significant first */
 
-DataLeaf::DataLeaf(void) : BaseLeaf(BaseNode::LEAF)
+DataLeaf::DataLeaf(void) : BaseLeaf(BaseNode::DATA_LEAF)
 {
 }
 
-DataLeaf::DataLeaf(int32_t size) : BaseLeaf(BaseNode::LEAF)
+DataLeaf::DataLeaf(int32_t size) : BaseLeaf(BaseNode::DATA_LEAF)
 {
     data.resize(size);
 }

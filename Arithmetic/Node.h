@@ -9,11 +9,11 @@ class Node :
 	public BaseNode
 {
 public:
-	explicit Node(void);
+	Node(void);
+	Node(const Node &node);
 	~Node(void);
 
-	Node *const &operator[](int32_t index) const;
-	Node *&operator[](int32_t index);
+	virtual std::vector<char> toVector(void) const;
 
 	Node &operator=(const Node &node);
 
@@ -38,14 +38,14 @@ public:
 	bool operator==(const Node &leaf) const;
 	bool operator!=(const Node &leaf) const;
 
-	IntLeaf sum(const IntLeaf &leaf) const;
-	IntLeaf sumMod(const IntLeaf &leaf, const IntLeaf &mod) const;
+	IntLeaf sum(void) const;
+	IntLeaf sumMod(const IntLeaf &mod) const;
 
-	IntLeaf prod(const IntLeaf &leaf) const;
-	IntLeaf prodMod(const IntLeaf &leaf, const IntLeaf &mod) const;
+	IntLeaf prod(void) const;
+	IntLeaf prodMod(const IntLeaf &mod) const;
 
-	IntLeaf exp(const IntLeaf &leaf) const;
-	IntLeaf expMod(const IntLeaf &leaf, const IntLeaf &mod) const;
+	IntLeaf exp(unsigned long exponent) const;
+	IntLeaf expMod(unsigned long exponent, const IntLeaf &mod) const;
 
 	Node expMult(const Node &leaf) const;
 	Node expMultMod(const Node &leaf, const IntLeaf &mod) const;

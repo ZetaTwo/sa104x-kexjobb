@@ -1,10 +1,10 @@
 #include "IntLeaf.h"
 
-IntLeaf::IntLeaf(void)
+IntLeaf::IntLeaf(void) : BaseLeaf(BaseNode::INT_LEAF)
 {
 }
 
-IntLeaf::IntLeaf(std::vector<char> bytevec)
+IntLeaf::IntLeaf(std::vector<char> bytevec) : BaseLeaf(BaseNode::INT_LEAF)
 {
     bool negative = false;
 

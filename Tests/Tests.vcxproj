@@ -81,7 +81,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ByteTreeTests.cpp" />
-    <ClCompile Include="program.cpp" />
+    <ClCompile Include="TestRunner.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Arithmetic\Arithmetic.vcxproj">

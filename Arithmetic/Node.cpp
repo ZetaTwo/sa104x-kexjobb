@@ -1,4 +1,5 @@
 #include "Node.h"
+#include "DataLeaf.h"
 
 #include <stdexcept>
 
@@ -6,29 +7,41 @@ Node::Node() : BaseNode(BaseNode::NODE)
 {
 }
 
+Node::Node(const Node &node) : BaseNode(BaseNode::NODE)
+{
+	for (std::vector<BaseNode *>::const_iterator itr = node.children.begin(); itr < node.children.end(); itr++)
+	{
+		NodeType type = (*itr)->getType();
+		BaseNode *element;
+		switch(type) {
+		case NodeType::INT_LEAF:
+			element = new IntLeaf(*static_cast<IntLeaf *>(*itr));
+			break;
+		case NodeType::NODE:
+			element = new Node(*static_cast<Node *>(*itr));
+			break;
+		case NodeType::DATA_LEAF:
+			element = new DataLeaf(*static_cast<DataLeaf *>(*itr));
+			break;
+		default:
+			break;
+		}
+
+		children.push_back(element);
+	}
+}
+
 Node::~Node(void)
 {
-}
-
-Node* const &Node::operator[](int32_t index) const {
-	if(index >= getLength() || index < 0) {
-		throw std::out_of_range("Index is out of range");
+	for (std::vector<BaseNode *>::iterator itr = children.begin(); itr < children.end(); itr++)
+	{
+		delete *itr;
 	}
-
-	return static_cast<Node *>(children[index]);
 }
 
-Node* &Node::operator[](int32_t index) {
-	if(index >= getLength() || index < 0) {
-		throw std::out_of_range("Index is out of range");
-	}
-
-	return static_cast<Node *>(children[index]);
-}
-
-std::vector<BaseNode *> &Node::getChildren(void) {
-	return children;
-}
+std::vector<char> Node::toVector(void) const {
+	return std::vector<char>();
+};
 
 int32_t Node::getLength(void) const {
 	return children.size();
@@ -52,7 +65,7 @@ Node &Node::addTo(const IntLeaf &leaf) {
 };
 
 Node Node::add(const IntLeaf &leaf) const {
-
+	return *this;
 };
 
 Node &Node::addToMod(const IntLeaf &leaf, const IntLeaf &mod) {
@@ -64,14 +77,14 @@ Node &Node::addToMod(const IntLeaf &leaf, const IntLeaf &mod) {
 	return *this;
 };
 Node Node::addMod(const IntLeaf &leaf, const IntLeaf &mod) const {
-
+	return *this;
 };
 
 Node &Node::operator+=(const IntLeaf &leaf) {
 	return addTo(leaf);
 };
 
-Node Node::operator+(const IntLeaf &leaf) const;
+//Node Node::operator+(const IntLeaf &leaf) const;
 
 Node &Node::multTo(const IntLeaf &leaf) {
 	for (std::vector<BaseNode *>::iterator itr = children.begin(); itr < children.end(); itr++)
@@ -81,7 +94,8 @@ Node &Node::multTo(const IntLeaf &leaf) {
 
 	return *this;	
 };
-Node Node::mult(const IntLeaf &leaf) const;
+
+//Node Node::mult(const IntLeaf &leaf) const;
 
 Node &Node::multToMod(const IntLeaf &leaf, const IntLeaf &mod) {
 	for (std::vector<BaseNode *>::iterator itr = children.begin(); itr < children.end(); itr++)
@@ -91,12 +105,14 @@ Node &Node::multToMod(const IntLeaf &leaf, const IntLeaf &mod) {
 
 	return *this;	
 };
-Node Node::multMod(const IntLeaf &leaf, const IntLeaf &mod) const;
+
+//Node Node::multMod(const IntLeaf &leaf, const IntLeaf &mod) const;
 
 Node &Node::operator*=(const IntLeaf &leaf) {
 	return multTo(leaf);	
 };
-Node Node::operator*(const IntLeaf &leaf) const;
+
+//Node Node::operator*(const IntLeaf &leaf) const;
 	
 bool Node::operator==(const Node &leaf) const {
 	return (this->children == leaf.children);
@@ -106,7 +122,7 @@ bool Node::operator!=(const Node &leaf) const {
 	return !(*this == leaf);	
 };
 
-IntLeaf Node::sum(const IntLeaf &leaf) const {
+IntLeaf Node::sum(void) const {
 	IntLeaf sum;
 	for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
 	{
@@ -115,7 +131,7 @@ IntLeaf Node::sum(const IntLeaf &leaf) const {
 
 	return sum;
 };
-IntLeaf Node::sumMod(const IntLeaf &leaf, const IntLeaf &mod) const {
+IntLeaf Node::sumMod(const IntLeaf &mod) const {
 	IntLeaf sum;
 	for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
 	{
@@ -125,7 +141,7 @@ IntLeaf Node::sumMod(const IntLeaf &leaf, const IntLeaf &mod) const {
 	return sum;
 };
 
-IntLeaf Node::prod(const IntLeaf &leaf) const {
+IntLeaf Node::prod(void) const {
 	IntLeaf prod;
 	for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
 	{
@@ -134,7 +150,7 @@ IntLeaf Node::prod(const IntLeaf &leaf) const {
 
 	return prod;
 };
-IntLeaf Node::prodMod(const IntLeaf &leaf, const IntLeaf &mod) const {
+IntLeaf Node::prodMod(const IntLeaf &mod) const {
 	IntLeaf prod;
 	for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
 	{
@@ -144,7 +160,7 @@ IntLeaf Node::prodMod(const IntLeaf &leaf, const IntLeaf &mod) const {
 	return prod;
 };
 
-IntLeaf Node::exp(const IntLeaf &leaf) const {
+IntLeaf Node::exp(unsigned long exponent) const {
 	IntLeaf exp;
 	for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
 	{
@@ -153,7 +169,7 @@ IntLeaf Node::exp(const IntLeaf &leaf) const {
 
 	return exp;
 };
-IntLeaf Node::expMod(const IntLeaf &leaf, const IntLeaf &mod) const {
+IntLeaf Node::expMod(unsigned long exponent, const IntLeaf &mod) const {
 	IntLeaf exp;
 	for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
 	{

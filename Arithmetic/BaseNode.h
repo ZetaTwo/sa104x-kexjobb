@@ -1,20 +1,21 @@
 #pragma once
 
+#include <vector>
 #include <stdint.h>
 
 class BaseNode
 {
 public:
-	enum NodeType { NODE = 0, LEAF = 1 };
+	enum NodeType { NODE = 0, INT_LEAF = 1, DATA_LEAF = 2 };
 
-	BaseNode(void);
 	BaseNode(BaseNode::NodeType type);
 	~BaseNode(void);
 
-	char getType(void) const;
+	BaseNode::NodeType getType(void) const;
 	virtual int32_t getLength(void) const = 0;
+	virtual std::vector<char> toVector(void) const = 0;
 
 private:
-	const char type;
+	const BaseNode::NodeType type;
 };
 
