@@ -127,6 +127,38 @@ IntLeaf IntLeaf::operator*(const IntLeaf & leaf) const
 }
 
 
+IntLeaf &IntLeaf::expTo(const IntLeaf & leaf)
+{
+    // use mpz_pow_ui ??
+    return (*this);
+}
+
+
+IntLeaf IntLeaf::exp(const IntLeaf & leaf) const
+{
+    IntLeaf res = *this;
+    res.expTo(leaf);
+
+    return res;
+}
+
+IntLeaf &IntLeaf::expToMod(const IntLeaf & leaf, const IntLeaf & mod)
+{
+    mpz_powm(this->data.get_mpz_t(), this->data.get_mpz_t(), leaf.data.get_mpz_t(), mod.data.get_mpz_t());
+
+    return *this;
+}
+
+
+IntLeaf IntLeaf::expMod(const IntLeaf & leaf, const IntLeaf & mod) const
+{
+    IntLeaf res = *this;
+    res.expToMod(leaf, mod);
+
+    return res;
+}
+
+
 bool IntLeaf::operator==(const IntLeaf &leaf) const
 {
     return (this->data == leaf.data);

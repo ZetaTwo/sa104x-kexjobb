@@ -37,7 +37,13 @@ public:
 
 	IntLeaf &operator*=(const IntLeaf &leaf);
 	IntLeaf operator*(const IntLeaf &leaf) const;
-	
+
+	IntLeaf &expTo(const IntLeaf &leaf);
+	IntLeaf exp(const IntLeaf &leaf) const;
+
+	IntLeaf &expToMod(const IntLeaf &leaf, const IntLeaf &mod);
+	IntLeaf expMod(const IntLeaf &leaf, const IntLeaf &mod) const;
+
 	bool operator==(const IntLeaf &leaf) const;
 	bool operator!=(const IntLeaf &leaf) const;
 
