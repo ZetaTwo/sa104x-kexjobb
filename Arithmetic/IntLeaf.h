@@ -10,9 +10,9 @@ class IntLeaf :
 	public BaseLeaf
 {
 public:
-	const int ARRAYORDER = 1; /* -1 for least significant byte first, 1 for most significant byte first */
-	const int ENDIAN = 0;
-	const int NAILS = 0;
+	static const int ARRAYORDER = 1; /* -1 for least significant byte first, 1 for most significant byte first */
+	static const int ENDIAN = 0;
+	static const int NAILS = 0;
 
 	IntLeaf(void);
 	explicit IntLeaf(std::vector<char> bytevec);
@@ -38,8 +38,8 @@ public:
 	IntLeaf &operator*=(const IntLeaf &leaf);
 	IntLeaf operator*(const IntLeaf &leaf) const;
 
-	IntLeaf &expTo(const IntLeaf &leaf);
-	IntLeaf exp(const IntLeaf &leaf) const;
+	IntLeaf &expTo(unsigned long exponent);
+	IntLeaf exp(unsigned long exponent) const;
 
 	IntLeaf &expToMod(const IntLeaf &leaf, const IntLeaf &mod);
 	IntLeaf expMod(const IntLeaf &leaf, const IntLeaf &mod) const;

@@ -127,17 +127,18 @@ IntLeaf IntLeaf::operator*(const IntLeaf & leaf) const
 }
 
 
-IntLeaf &IntLeaf::expTo(const IntLeaf & leaf)
+IntLeaf &IntLeaf::expTo(unsigned long exponent)
 {
-    // use mpz_pow_ui ??
+    mpz_pow_ui(this->data.get_mpz_t(), this->data.get_mpz_t(), exponent);
+
     return (*this);
 }
 
 
-IntLeaf IntLeaf::exp(const IntLeaf & leaf) const
+IntLeaf IntLeaf::exp(unsigned long exponent) const
 {
     IntLeaf res = *this;
-    res.expTo(leaf);
+    res.expTo(exponent);
 
     return res;
 }
