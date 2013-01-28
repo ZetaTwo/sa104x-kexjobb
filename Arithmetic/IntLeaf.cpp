@@ -1,8 +1,26 @@
 #include "IntLeaf.h"
 
-IntLeaf::IntLeaf(void) : BaseLeaf(BaseNode::INT_LEAF)
+IntLeaf::IntLeaf(const IntLeaf &leaf) : BaseLeaf(BaseNode::INT_LEAF)
+{
+    *this = leaf;
+}
+
+IntLeaf::IntLeaf(void) : data(0) , BaseLeaf(BaseNode::INT_LEAF)
 {
 }
+
+
+IntLeaf::IntLeaf(long int input) : BaseLeaf(BaseNode::INT_LEAF)
+{
+    this->data = input;
+}
+
+
+IntLeaf::IntLeaf(std::string input) : BaseLeaf(BaseNode::INT_LEAF)
+{
+    this->data = input;
+}
+
 
 IntLeaf::IntLeaf(std::vector<char> bytevec) : BaseLeaf(BaseNode::INT_LEAF)
 {
@@ -38,6 +56,30 @@ IntLeaf::IntLeaf(std::vector<char> bytevec) : BaseLeaf(BaseNode::INT_LEAF)
 
 IntLeaf::~IntLeaf(void)
 {
+}
+
+
+IntLeaf &IntLeaf::operator=(const IntLeaf &leaf)
+{
+    this->data = leaf.data;
+
+    return *this;
+}
+
+
+IntLeaf &IntLeaf::operator=(long int input)
+{
+    this->data = static_cast<long int>(input);
+
+    return *this;
+}
+
+
+IntLeaf &IntLeaf::operator=(std::string input)
+{
+    data = input;
+
+    return *this;
 }
 
 
@@ -94,7 +136,7 @@ IntLeaf & IntLeaf::multTo(const IntLeaf & leaf)
 
 IntLeaf IntLeaf::mult(const IntLeaf & leaf) const
 {
-    return IntLeaf(*this) += leaf;
+    return IntLeaf(*this) *= leaf;
 }
 
 IntLeaf &IntLeaf::multToMod(const IntLeaf &leaf, const IntLeaf &mod)
