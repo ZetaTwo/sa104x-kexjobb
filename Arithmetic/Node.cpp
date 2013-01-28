@@ -110,6 +110,7 @@ Node Node::mult(const IntLeaf &leaf) const {
 			break;
 		default:
 			break;
+		}
 	}
 
 	return mult;
@@ -136,6 +137,9 @@ Node Node::multMod(const IntLeaf &leaf, const IntLeaf &mod) const {
 		case BaseNode::NODE:
 			mult.addChild(static_cast<Node *>(*itr)->multMod(leaf, mod));
 			break;
+		default:
+			break;
+		}
 	}
 
 	return mult;
