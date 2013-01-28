@@ -53,7 +53,6 @@ public:
 	Node &expTo(const Node &exponents) const;
 	Node &expModTo(const Node &exponents, const IntLeaf &mod) const;
 
-	IntLeaf expMult(const Node &node) const;
 	IntLeaf expMultMod(const Node &node, const IntLeaf &mod) const;
 	IntLeaf expMult(unsigned long exponent) const;
 	IntLeaf expMultMod(unsigned long exponent, const IntLeaf &mod) const;

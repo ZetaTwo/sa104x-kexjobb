@@ -204,17 +204,6 @@ Node Node::expMod(unsigned long exponent, const IntLeaf &mod) const {
 	return exp;
 };
 
-IntLeaf Node::expMult(const Node &node) const {
-	IntLeaf result;
-
-	for (std::vector<BaseNode *>::const_iterator itr1 = children.begin(), itr2 = node.children.begin();
-		itr1 < children.end() && itr2 < node.children.end() ; itr1++, itr2++)
-	{
-		result.addTo(static_cast<IntLeaf *>(*itr1)->exp(*static_cast<IntLeaf *>(*itr2)));
-	}
-
-	return result;
-};
 IntLeaf Node::expMultMod(const Node &node, const IntLeaf &mod) const {
 	IntLeaf result;
 
