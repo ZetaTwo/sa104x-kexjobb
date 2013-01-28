@@ -84,7 +84,9 @@ Node &Node::operator+=(const IntLeaf &leaf) {
 	return addTo(leaf);
 };
 
-//Node Node::operator+(const IntLeaf &leaf) const;
+Node Node::operator+(const IntLeaf &leaf) const {
+	return add(leaf);
+}
 
 Node &Node::multTo(const IntLeaf &leaf) {
 	for (std::vector<BaseNode *>::iterator itr = children.begin(); itr < children.end(); itr++)
@@ -95,7 +97,16 @@ Node &Node::multTo(const IntLeaf &leaf) {
 	return *this;	
 };
 
-//Node Node::mult(const IntLeaf &leaf) const;
+Node Node::mult(const IntLeaf &leaf) const {
+	Node mult;
+
+	for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
+	{
+		mult.addChild(static_cast<IntLeaf *>(*itr)->mult(leaf));
+	}
+
+	return mult;
+};
 
 Node &Node::multToMod(const IntLeaf &leaf, const IntLeaf &mod) {
 	for (std::vector<BaseNode *>::iterator itr = children.begin(); itr < children.end(); itr++)
@@ -106,13 +117,24 @@ Node &Node::multToMod(const IntLeaf &leaf, const IntLeaf &mod) {
 	return *this;	
 };
 
-//Node Node::multMod(const IntLeaf &leaf, const IntLeaf &mod) const;
+Node Node::multMod(const IntLeaf &leaf, const IntLeaf &mod) const {
+	Node mult;
+
+	for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
+	{
+		mult.addChild(static_cast<IntLeaf *>(*itr)->multMod(leaf, mod));
+	}
+
+	return mult;
+}
 
 Node &Node::operator*=(const IntLeaf &leaf) {
 	return multTo(leaf);	
 };
 
-//Node Node::operator*(const IntLeaf &leaf) const;
+Node Node::operator*(const IntLeaf &leaf) const {
+	return mult(leaf);	
+}
 	
 bool Node::operator==(const Node &leaf) const {
 	return (this->children == leaf.children);
@@ -162,32 +184,66 @@ IntLeaf Node::prodMod(const IntLeaf &mod) const {
 
 Node Node::exp(unsigned long exponent) const {
 	Node exp;
-	/*for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
+
+	for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
 	{
-		exp.expTo(*static_cast<IntLeaf *>(*itr));
-	}*/
+		exp.addChild(static_cast<IntLeaf *>(*itr)->exp(exponent));
+	}
 
 	return exp;
 };
+
 Node Node::expMod(unsigned long exponent, const IntLeaf &mod) const {
 	Node exp;
-	/*for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
+	
+	for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
 	{
-		exp.expToMod(*static_cast<IntLeaf *>(*itr), mod);
-	}*/
+		exp.addChild(static_cast<IntLeaf *>(*itr)->expMod(exponent, mod));
+	}
 
 	return exp;
 };
 
-Node Node::expMult(const Node &leaf) const {
-	//TODO
-	Node result;
+IntLeaf Node::expMult(const Node &node) const {
+	IntLeaf result;
+
+	for (std::vector<BaseNode *>::const_iterator itr1 = children.begin(), itr2 = node.children.begin();
+		itr1 < children.end() && itr2 < node.children.end() ; itr1++, itr2++)
+	{
+		result.addTo(static_cast<IntLeaf *>(*itr1)->exp(*static_cast<IntLeaf *>(*itr2)));
+	}
 
 	return result;
 };
-Node Node::expMultMod(const Node &leaf, const IntLeaf &mod) const {
-	//TODO
-	Node result;
+IntLeaf Node::expMultMod(const Node &node, const IntLeaf &mod) const {
+	IntLeaf result;
+
+	for (std::vector<BaseNode *>::const_iterator itr1 = children.begin(), itr2 = node.children.begin();
+		itr1 < children.end() && itr2 < node.children.end() ; itr1++, itr2++)
+	{
+		result.addToMod(static_cast<IntLeaf *>(*itr1)->expMod(*static_cast<IntLeaf *>(*itr2), mod), mod);
+	}
+
+	return result;
+};
+
+IntLeaf Node::expMult(unsigned long exp) const {
+	IntLeaf result;
+
+	for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
+	{
+		result.addTo(static_cast<IntLeaf *>(*itr)->exp(exp));
+	}
+
+	return result;
+};
+IntLeaf Node::expMultMod(const unsigned long exp, const IntLeaf &mod) const {
+	IntLeaf result;
+
+	for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
+	{
+		result.addToMod(static_cast<IntLeaf *>(*itr)->expMod(exp, mod), mod);
+	}
 
 	return result;
 };

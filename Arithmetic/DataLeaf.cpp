@@ -9,9 +9,8 @@ DataLeaf::DataLeaf(void) : BaseLeaf(BaseNode::DATA_LEAF)
 {
 }
 
-DataLeaf::DataLeaf(int32_t size) : BaseLeaf(BaseNode::DATA_LEAF)
+DataLeaf::DataLeaf(int32_t size) : BaseLeaf(BaseNode::DATA_LEAF), data(size, NULL)
 {
-    data.resize(size);
 }
 
 DataLeaf::~DataLeaf(void)
@@ -33,8 +32,9 @@ int32_t DataLeaf::getLength(void) const {
 
 DataLeaf &DataLeaf::operator=(const DataLeaf &leaf)
 {
-        if(this == &leaf)
+        if(this == &leaf) {
     	    return *this;
+		}
 
         data = leaf.toVector();
 
