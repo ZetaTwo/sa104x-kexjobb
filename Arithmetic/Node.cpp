@@ -11,9 +11,8 @@ Node::Node(const Node &node) : BaseNode(BaseNode::NODE)
 {
 	for (std::vector<BaseNode *>::const_iterator itr = node.children.begin(); itr < node.children.end(); itr++)
 	{
-		NodeType type = (*itr)->getType();
 		BaseNode *element;
-		switch(type) {
+		switch((*itr)->getType()) {
 		case NodeType::INT_LEAF:
 			element = new IntLeaf(*static_cast<IntLeaf *>(*itr));
 			break;
@@ -102,7 +101,15 @@ Node Node::mult(const IntLeaf &leaf) const {
 
 	for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
 	{
-		mult.addChild(static_cast<IntLeaf *>(*itr)->mult(leaf));
+		switch((*itr)->getType()) {
+		case BaseNode::INT_LEAF:
+			mult.addChild(static_cast<IntLeaf *>(*itr)->mult(leaf));
+			break;
+		case BaseNode::NODE:
+			mult.addChild(static_cast<Node *>(*itr)->mult(leaf));
+			break;
+		default:
+			break;
 	}
 
 	return mult;
@@ -122,7 +129,13 @@ Node Node::multMod(const IntLeaf &leaf, const IntLeaf &mod) const {
 
 	for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
 	{
-		mult.addChild(static_cast<IntLeaf *>(*itr)->multMod(leaf, mod));
+		switch((*itr)->getType()) {
+		case BaseNode::INT_LEAF:
+			mult.addChild(static_cast<IntLeaf *>(*itr)->multMod(leaf, mod));
+			break;
+		case BaseNode::NODE:
+			mult.addChild(static_cast<Node *>(*itr)->multMod(leaf, mod));
+			break;
 	}
 
 	return mult;
