@@ -20,20 +20,38 @@ public:
 	Node &addTo(const IntLeaf &leaf);
 	Node add(const IntLeaf &leaf) const;
 
+	Node &addTo(const Node &node);
+	Node add(const Node &node) const;
+
 	Node &addToMod(const IntLeaf &leaf, const IntLeaf &mod);
 	Node addMod(const IntLeaf &leaf, const IntLeaf &mod) const;
+
+	Node &addToMod(const Node &node, const IntLeaf &mod);
+	Node addMod(const Node &node, const IntLeaf &mod) const;
 
 	Node &operator+=(const IntLeaf &leaf);
 	Node operator+(const IntLeaf &leaf) const;
 
+	Node &operator+=(const Node &node);
+	Node operator+(const Node &node) const;
+
 	Node &multTo(const IntLeaf &leaf);
 	Node mult(const IntLeaf &leaf) const;
+
+	Node &multTo(const Node &node);
+	Node mult(const Node &node) const;
 
 	Node &multToMod(const IntLeaf &leaf, const IntLeaf &mod);
 	Node multMod(const IntLeaf &leaf, const IntLeaf &mod) const;
 
+	Node &multToMod(const Node &node, const IntLeaf &mod);
+	Node multMod(const Node &node, const IntLeaf &mod) const;
+
 	Node &operator*=(const IntLeaf &leaf);
 	Node operator*(const IntLeaf &leaf) const;
+
+	Node &operator*=(const Node &node);
+	Node operator*(const Node &node) const;
 	
 	bool operator==(const Node &node) const;
 	bool operator!=(const Node &node) const;
