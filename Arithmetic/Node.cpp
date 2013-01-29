@@ -22,7 +22,7 @@ Node::~Node(void)
 {
 	for (std::vector<BaseNode *>::iterator itr = children.begin(); itr < children.end(); itr++)
 	{
-		delete *itr;
+	    delete *itr;
 	}
 }
 
@@ -40,30 +40,58 @@ Node &Node::operator=(const Node &node) {
 };
 
 Node &Node::addTo(const IntLeaf &leaf) {
-	for (std::vector<BaseNode *>::iterator itr = children.begin(); itr < children.end(); itr++)
-	{
-		switch((*itr)->getType()) {
-		case BaseNode::INT_LEAF:
-			static_cast<IntLeaf *>(*itr)->addTo(leaf);
-			break;
-		case BaseNode::NODE:
-			static_cast<Node *>(*itr)->addTo(leaf);
-			break;
-		default:
-			break;
-		}
+    for (std::vector<BaseNode *>::iterator itr = children.begin(); itr < children.end(); itr++)
+    {
+	switch((*itr)->getType()) {
+	case BaseNode::INT_LEAF:
+	    static_cast<IntLeaf *>(*itr)->addTo(leaf);
+	    break;
+	case BaseNode::NODE:
+	    static_cast<Node *>(*itr)->addTo(leaf);
+	    break;
+	default:
+	    break;
 	}
-
-	return *this;
+    }
+    
+    return *this;
 };
+
+Node &Node::addTo(const Node &node) {
+    for (std::vector<BaseNode *>::const_iterator itr1 = children.begin(), itr2 = node.children.begin();
+	 itr1 < children.end() && itr2 < node.children.end() ; itr1++, itr2++)
+    {
+	switch((*itr1)->getType()) {
+	case BaseNode::INT_LEAF:
+	    static_cast<IntLeaf *>(*itr1)->addTo(*static_cast<IntLeaf *>(*itr2));
+	    break;
+	case BaseNode::NODE:
+	    static_cast<Node *>(*itr1)->addTo(*static_cast<Node *>(*itr2));
+	    break;
+	default:
+	    break;
+	}
+    }
+
+    return *this;
+}
+
 
 Node Node::add(const IntLeaf &leaf) const {
-	Node result;
-	result.addTo(leaf);
-	result.addTo(*this);
-	
-	return result;
+    Node result(*this);
+    result.addTo(leaf);
+    
+    return result;
 };
+
+
+Node Node::add(const Node &node) const {
+    Node result(*this);
+    result.addTo(node);
+    
+    return result;
+}
+
 
 Node &Node::addToMod(const IntLeaf &leaf, const IntLeaf &mod) {
 	for (std::vector<BaseNode *>::iterator itr = children.begin(); itr < children.end(); itr++)
@@ -82,12 +110,32 @@ Node &Node::addToMod(const IntLeaf &leaf, const IntLeaf &mod) {
 
 	return *this;
 };
+
+
+Node &Node::addToMod(const Node &node, const IntLeaf &mod) {
+    for (std::vector<BaseNode *>::const_iterator itr1 = children.begin(), itr2 = node.children.begin();
+	 itr1 < children.end() && itr2 < node.children.end() ; itr1++, itr2++)
+    {
+	switch((*itr1)->getType()) {
+	case BaseNode::INT_LEAF:
+	    static_cast<IntLeaf *>(*itr1)->addToMod(*static_cast<IntLeaf *>(*itr2), mod);
+	    break;
+	case BaseNode::NODE:
+	    static_cast<Node *>(*itr1)->addToMod(*static_cast<Node *>(*itr2), mod);
+	    break;
+	default:
+	    break;
+	}
+    }
+
+    return *this;
+}
+
 Node Node::addMod(const IntLeaf &leaf, const IntLeaf &mod) const {
-	Node result;
-	result.addToMod(leaf, mod);
-	result.addToMod(*this, mod);
-	
-	return result;
+    Node result(*this);
+    result.addToMod(leaf, mod);
+    
+    return result;
 };
 
 Node &Node::operator+=(const IntLeaf &leaf) {
@@ -116,6 +164,27 @@ Node &Node::multTo(const IntLeaf &leaf) {
 	return *this;	
 };
 
+
+Node &Node::multTo(const Node &node) {
+    for (std::vector<BaseNode *>::const_iterator itr1 = children.begin(), itr2 = node.children.begin();
+	 itr1 < children.end() && itr2 < node.children.end() ; itr1++, itr2++)
+    {
+	switch((*itr1)->getType()) {
+	case BaseNode::INT_LEAF:
+	    static_cast<IntLeaf *>(*itr1)->multTo(*static_cast<IntLeaf *>(*itr2));
+	    break;
+	case BaseNode::NODE:
+	    static_cast<Node *>(*itr1)->multTo(*static_cast<Node *>(*itr2));
+	    break;
+	default:
+	    break;
+	}
+    }
+
+    return *this;
+}
+
+
 Node Node::mult(const IntLeaf &leaf) const {
 	Node mult;
 
@@ -136,6 +205,15 @@ Node Node::mult(const IntLeaf &leaf) const {
 	return mult;
 };
 
+
+Node Node::mult(const Node &node) const {
+    Node result(*this);
+    result.multTo(node);
+
+    return result;
+}
+
+
 Node &Node::multToMod(const IntLeaf &leaf, const IntLeaf &mod) {
 	for (std::vector<BaseNode *>::iterator itr = children.begin(); itr < children.end(); itr++)
 	{
@@ -153,6 +231,27 @@ Node &Node::multToMod(const IntLeaf &leaf, const IntLeaf &mod) {
 
 	return *this;	
 };
+
+
+Node &Node::multToMod(const Node &node, const IntLeaf &mod) {
+    for (std::vector<BaseNode *>::const_iterator itr1 = children.begin(), itr2 = node.children.begin();
+	 itr1 < children.end() && itr2 < node.children.end() ; itr1++, itr2++)
+    {
+	switch((*itr1)->getType()) {
+	case BaseNode::INT_LEAF:
+	    static_cast<IntLeaf *>(*itr1)->multToMod(*static_cast<IntLeaf *>(*itr2), mod);
+	    break;
+	case BaseNode::NODE:
+	    static_cast<Node *>(*itr1)->multToMod(*static_cast<Node *>(*itr2), mod);
+	    break;
+	default:
+	    break;
+	}
+    }
+
+    return *this;
+}
+
 
 Node Node::multMod(const IntLeaf &leaf, const IntLeaf &mod) const {
 	Node mult;
@@ -172,6 +271,14 @@ Node Node::multMod(const IntLeaf &leaf, const IntLeaf &mod) const {
 	}
 
 	return mult;
+}
+
+
+Node Node::multMod(const Node &node, const IntLeaf &mod) const {
+    Node result(*this);
+    result.multToMod(node, mod);
+
+    return result;
 }
 
 Node &Node::operator*=(const IntLeaf &leaf) {
