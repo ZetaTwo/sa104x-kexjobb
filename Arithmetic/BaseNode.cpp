@@ -18,13 +18,13 @@ BaseNode::NodeType BaseNode::getType(void) const {
 BaseNode *BaseNode::copy(const BaseNode *node) {
 	BaseNode *element;
 	switch(node->getType()) {
-	case NodeType::INT_LEAF:
+	case BaseNode::INT_LEAF:
 		element = new IntLeaf(*static_cast<const IntLeaf *>(node));
 		break;
-	case NodeType::NODE:
+	case BaseNode::NODE:
 		element = new Node(*static_cast<const Node *>(node));
 		break;
-	case NodeType::DATA_LEAF:
+	case BaseNode::DATA_LEAF:
 		element = new DataLeaf(*static_cast<const DataLeaf *>(node));
 		break;
 	default:
