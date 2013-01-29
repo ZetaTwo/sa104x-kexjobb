@@ -2,7 +2,6 @@
 
 #include "IntLeaf.h"
 #include "Node.h"
-#include <iostream>
 
 TEST(NodeToStringTests, Vector)
 {
