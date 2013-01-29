@@ -13,13 +13,13 @@ Node::Node(const Node &node) : BaseNode(BaseNode::NODE)
 	{
 		BaseNode *element;
 		switch((*itr)->getType()) {
-		case NodeType::INT_LEAF:
+		case BaseNode::INT_LEAF:
 			element = new IntLeaf(*static_cast<IntLeaf *>(*itr));
 			break;
-		case NodeType::NODE:
+		case BaseNode::NODE:
 			element = new Node(*static_cast<Node *>(*itr));
 			break;
-		case NodeType::DATA_LEAF:
+		case BaseNode::DATA_LEAF:
 			element = new DataLeaf(*static_cast<DataLeaf *>(*itr));
 			break;
 		default:
@@ -38,9 +38,6 @@ Node::~Node(void)
 	}
 }
 
-std::vector<char> Node::toVector(void) const {
-	return std::vector<char>();
-};
 
 int32_t Node::getLength(void) const {
 	return children.size();
@@ -253,3 +250,51 @@ IntLeaf Node::expMultMod(const unsigned long exp, const IntLeaf &mod) const {
 
 	return result;
 };
+
+
+std::vector<char> Node::toVector(void) const {
+    std::vector<char> res;
+
+    res.push_back(getType());
+
+    int length = getLength();
+
+    for(unsigned int i=0; i<4; i++)
+    {
+	res.push_back(length >> 24);
+	length <<= 8;
+    }
+
+    for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
+    {
+	std::vector<char> nextelem = (*itr)->toVector();
+	res.insert(res.begin(), nextelem.begin(), nextelem.end());
+    }
+    
+    return res;
+}
+
+
+std::string Node::toString(void) const {
+    std::string res = "(";
+
+    for(std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
+    {
+	switch((*itr)->getType()) {
+	case BaseNode::INT_LEAF:
+	    res += static_cast<IntLeaf *>(*itr)->toString();
+	    break;
+	case BaseNode::NODE:
+	    res += static_cast<Node *>(*itr)->toString();
+	    break;
+	default:
+	    break;
+	}
+
+	if(itr < children.end()-1)
+	    res += ", ";
+    }
+
+    return res + ")";
+}
+
