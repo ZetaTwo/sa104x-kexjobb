@@ -90,22 +90,3 @@ TEST(IntLeafArithmeticTests, AdditionNegative)
 }
 
 
-TEST(IntLeafArithmeticTests, MultiplicationNegative)
-{
-    IntLeaf k, l, m;
-
-    k = -1;
-    l = 23;
-
-    m = k * l;
-
-    EXPECT_EQ("-23", m.toString());
-
-    k = -13;
-    l = -12;
-
-    m = k * l;
-
-    EXPECT_EQ("-156", m.toString());
-}
-
