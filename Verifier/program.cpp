@@ -2,7 +2,7 @@
 #include <sstream>
 #include <vector>
 
-#include <rapidxml\rapidxml.hpp>
+#include <rapidxml/rapidxml.hpp>
 
 int main() {
 	// Read the xml file into a vector
