@@ -9,7 +9,7 @@ DataLeaf::DataLeaf(void) : BaseLeaf(BaseNode::DATA_LEAF)
 {
 }
 
-DataLeaf::DataLeaf(int32_t size) : BaseLeaf(BaseNode::DATA_LEAF), data(size, NULL)
+DataLeaf::DataLeaf(int32_t size) : BaseLeaf(BaseNode::DATA_LEAF), data(size)
 {
 }
 
