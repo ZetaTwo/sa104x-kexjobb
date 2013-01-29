@@ -17,5 +17,8 @@ public:
 
 private:
 	const BaseNode::NodeType type;
+
+protected:
+	static BaseNode *copy(const BaseNode *node);
 };
 

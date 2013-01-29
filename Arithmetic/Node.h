@@ -11,6 +11,7 @@ class Node :
 public:
 	Node(void);
 	Node(const Node &node);
+	Node(const std::vector<char> data);
 	~Node(void);
 
 	virtual std::vector<char> toVector(void) const;
@@ -76,6 +77,7 @@ public:
 	IntLeaf expMultMod(unsigned long exponent, const IntLeaf &mod) const;
 
 	Node &addChild(const BaseNode &child);
+	BaseNode &getChild(int32_t index);
 	std::string toString(void) const;
 
 	virtual int32_t getLength(void) const;
