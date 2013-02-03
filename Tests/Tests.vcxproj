@@ -81,6 +81,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ByteTreeTests.cpp" />
+    <ClCompile Include="IntLeafArithmeticsTests.cpp" />
+    <ClCompile Include="NodeArithmeticsTests.cpp" />
+    <ClCompile Include="NodeToStringTests.cpp" />
     <ClCompile Include="TestRunner.cpp" />
   </ItemGroup>
   <ItemGroup>
