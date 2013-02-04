@@ -20,9 +20,10 @@ public:
     IntLeaf(long int input);
     explicit IntLeaf(std::string input);
     explicit IntLeaf(std::vector<char> bytevec);
+    explicit IntLeaf(std::istream &file);
     ~IntLeaf(void);
 
-	static BaseNode *contructPartFromFile(std::istream &file, uint32_t length);
+    static BaseNode *contructPartFromFile(std::istream &file, uint32_t length);
 
     IntLeaf &operator=(const IntLeaf &leaf);
     IntLeaf &operator=(long int input);
