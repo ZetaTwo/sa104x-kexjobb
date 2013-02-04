@@ -5,7 +5,7 @@
  *      nr_servers: number of servers in mix-net
  *      G: underlying group 
  */
-Node *verifyKeys(int nr_servers, Node &G);
+Node *verifyKeys(int lambda, Node &G);
 
 bool isPublicKey(Node &node);
 bool isPartialPublicKey(IntLeaf &leaf);

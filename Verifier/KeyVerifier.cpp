@@ -5,7 +5,7 @@
 #include "Node.h"
 #include "IntLeaf.h"
 
-Node *verifyKeys(int nr_servers, Node &G)
+Node *verifyKeys(int lambda, Node &G)
 {
 
     // Step 1
@@ -21,7 +21,7 @@ Node *verifyKeys(int nr_servers, Node &G)
     Node pub_keys = Node();
     IntLeaf pub_key;
     
-    for(int i=0; i<nr_servers; i++) 
+    for(int i=1; i<=lambda; i++) 
     {
 	const std::string partial_public_key_file_name = 
 	    PARTIAL_PUBLIC_KEY_FILE_PREFIX + std::to_string(i) + std::string(".bt");
@@ -57,7 +57,7 @@ Node *verifyKeys(int nr_servers, Node &G)
     // Step 3
     Node sec_keys = Node();
     IntLeaf sec_key;
-    for(int i=0; i<nr_servers; i++)
+    for(int i=1; i<=lambda; i++)
     {
 	const std::string partial_secret_key_file_name = 
 	    PARTIAL_SECRET_KEY_FILE_PREFIX + std::to_string(i) + std::string(".bt");
