@@ -30,5 +30,11 @@
     <ClCompile Include="NodeToStringTests.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="NodeDataInitTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="testfiles\test1.txt" />
   </ItemGroup>
 </Project>

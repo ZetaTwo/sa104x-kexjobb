@@ -1,6 +1,12 @@
 #include "Node.h"
 #include "DataLeaf.h"
 
+#include <sstream>
+#include <iomanip>
+#include <stdlib.h>
+
+#include <iostream>
+
 Node::Node() : BaseNode(BaseNode::NODE)
 {
 }
@@ -15,8 +21,56 @@ Node::Node(const Node &node) : BaseNode(BaseNode::NODE)
 }
 
 Node::Node(const std::vector<char> data) : BaseNode(BaseNode::NODE) {
-
+	std::stringstream ioss;    
+	std::copy(data.begin(), data.end(), std::ostream_iterator<char>(ioss, ""));
+	contructFromFile(ioss);
 }
+
+Node::Node(const std::string filename) : BaseNode(BaseNode::NODE) {
+	contructFromFilename(filename);
+}
+
+Node::Node(std::istream &file) : BaseNode(BaseNode::NODE) {
+	contructFromFile(file);
+}
+
+void Node::contructFromFilename(const std::string filename) {
+	std::ifstream file(filename, std::fstream::in);
+	contructFromFile(file);
+}
+void Node::contructFromFile(std::istream &file) {
+	char type;
+	uint32_t count;
+	ReadNodeHeader(file, type, count);
+
+	contructChildrenFromFile(file, count);
+}
+
+BaseNode *Node::contructPartFromFile(std::istream &file, uint32_t count) {
+	Node *result = new Node();
+	result->contructChildrenFromFile(file, count);
+
+	return result;
+}
+
+void Node::contructChildrenFromFile(std::istream &file, uint32_t count) {
+	Node *result = new Node();
+	for (uint32_t i = 0; i < count; i++)
+	{
+		char type;
+		uint32_t childCount;
+		ReadNodeHeader(file, type, childCount);
+
+		if(type == 0) {
+			addChild(*Node::contructPartFromFile(file, childCount));
+		} else if(type == 1) {
+			addChild(*IntLeaf::contructPartFromFile(file, childCount));
+		} else {
+			break;
+		}
+	}
+}
+
 
 Node::~Node(void)
 {
@@ -25,7 +79,6 @@ Node::~Node(void)
 	    delete *itr;
 	}
 }
-
 
 int32_t Node::getLength(void) const {
 	return children.size();
@@ -184,7 +237,6 @@ Node &Node::multTo(const Node &node) {
     return *this;
 }
 
-
 Node Node::mult(const IntLeaf &leaf) const {
 	Node mult;
 
@@ -205,14 +257,12 @@ Node Node::mult(const IntLeaf &leaf) const {
 	return mult;
 };
 
-
 Node Node::mult(const Node &node) const {
     Node result(*this);
     result.multTo(node);
 
     return result;
 }
-
 
 Node &Node::multToMod(const IntLeaf &leaf, const IntLeaf &mod) {
 	for (std::vector<BaseNode *>::iterator itr = children.begin(); itr < children.end(); itr++)
@@ -231,7 +281,6 @@ Node &Node::multToMod(const IntLeaf &leaf, const IntLeaf &mod) {
 
 	return *this;	
 };
-
 
 Node &Node::multToMod(const Node &node, const IntLeaf &mod) {
     for (std::vector<BaseNode *>::const_iterator itr1 = children.begin(), itr2 = node.children.begin();
@@ -252,7 +301,6 @@ Node &Node::multToMod(const Node &node, const IntLeaf &mod) {
     return *this;
 }
 
-
 Node Node::multMod(const IntLeaf &leaf, const IntLeaf &mod) const {
 	Node mult;
 
@@ -272,7 +320,6 @@ Node Node::multMod(const IntLeaf &leaf, const IntLeaf &mod) const {
 
 	return mult;
 }
-
 
 Node Node::multMod(const Node &node, const IntLeaf &mod) const {
     Node result(*this);

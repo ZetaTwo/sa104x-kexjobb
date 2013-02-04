@@ -20,5 +20,6 @@ private:
 
 protected:
 	static BaseNode *copy(const BaseNode *node);
+	static void ReadNodeHeader(std::istream &file, char &type, uint32_t &length);
 };
 

@@ -4,6 +4,8 @@
 #include "IntLeaf.h"
 
 #include <vector>
+#include <fstream>
+#include <string>
 
 class Node :
 	public BaseNode
@@ -12,7 +14,12 @@ public:
 	Node(void);
 	Node(const Node &node);
 	Node(const std::vector<char> data);
+	explicit Node(const std::string filename);
+	explicit Node(std::istream &file);
 	~Node(void);
+
+	static BaseNode *contructPartFromFile(std::istream &file, uint32_t count);
+	
 
 	virtual std::vector<char> toVector(void) const;
 
@@ -83,4 +90,8 @@ public:
 	virtual int32_t getLength(void) const;
 private:
 	std::vector<BaseNode *> children;
+
+	void contructFromFilename(const std::string filename);
+	void contructFromFile(std::istream &file);
+	void contructChildrenFromFile(std::istream &file, uint32_t count);
 };

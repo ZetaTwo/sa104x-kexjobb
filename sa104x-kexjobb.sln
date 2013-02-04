@@ -11,6 +11,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Tests", "Tests\Tests.vcxpro
 	EndProjectSection
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Verifier", "Verifier\Verifier.vcxproj", "{4BA30224-68FB-4AE2-92BD-FA1A6721C989}"
+	ProjectSection(ProjectDependencies) = postProject
+		{0B22BDBB-A708-4A76-8CEF-CBF31D55603D} = {0B22BDBB-A708-4A76-8CEF-CBF31D55603D}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

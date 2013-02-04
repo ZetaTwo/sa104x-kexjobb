@@ -5,6 +5,7 @@
 #include <gmpxx.h>
 
 #include <string>
+#include <fstream>
 
 class IntLeaf :
 	public BaseLeaf
@@ -20,6 +21,8 @@ public:
     explicit IntLeaf(std::string input);
     explicit IntLeaf(std::vector<char> bytevec);
     ~IntLeaf(void);
+
+	static BaseNode *contructPartFromFile(std::istream &file, uint32_t length);
 
     IntLeaf &operator=(const IntLeaf &leaf);
     IntLeaf &operator=(long int input);

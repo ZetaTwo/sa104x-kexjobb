@@ -83,6 +83,7 @@
     <ClCompile Include="ByteTreeTests.cpp" />
     <ClCompile Include="IntLeafArithmeticsTests.cpp" />
     <ClCompile Include="NodeArithmeticsTests.cpp" />
+    <ClCompile Include="NodeDataInitTests.cpp" />
     <ClCompile Include="NodeToStringTests.cpp" />
     <ClCompile Include="TestRunner.cpp" />
   </ItemGroup>
@@ -90,6 +91,9 @@
     <ProjectReference Include="..\Arithmetic\Arithmetic.vcxproj">
       <Project>{0b22bdbb-a708-4a76-8cef-cbf31d55603d}</Project>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="testfiles\test1.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
