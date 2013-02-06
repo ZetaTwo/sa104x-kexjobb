@@ -5,7 +5,7 @@
 #include "Node.h"
 #include "IntLeaf.h"
 
-Node *verifyKeys(int lambda, Node &G)
+Node *verifyKeys(int lambda, const Node &Gq)
 {
 
     // Step 1
@@ -14,7 +14,7 @@ Node *verifyKeys(int lambda, Node &G)
     if(!isPublicKey(pk))
     {
         // Did not read a key from file, reject proof
-	// throw exception?
+	return null;
     }
 
     // Step 2
@@ -35,7 +35,7 @@ Node *verifyKeys(int lambda, Node &G)
 	    if(!isPartialPublicKey(pub_key))
 	    {
 		// Did not read a key from file, reject proof
-		// throw exception?
+		return null;
 	    }
     
 	    pub_keys.addChild(pub_key);
@@ -50,7 +50,7 @@ Node *verifyKeys(int lambda, Node &G)
     if(pub_keys.prod() != y)
     {
 	// Public keys do not match, reject proof
-	// throw exception?
+	return null;
     }
     
 
@@ -70,13 +70,13 @@ Node *verifyKeys(int lambda, Node &G)
 	    if(!isPartialSecretKey(sec_key))
 	    {
 		// Did not read a key from file, reject proof
-		// throw exception?
+		return null;
 	    }
 
 	    if(sec_key != g.expMod(sec_key, p))
 	    {
 		// secret key does not match public key, reject proof
-		// throw exception?
+	        return null;
 	    }
 	    
 	}

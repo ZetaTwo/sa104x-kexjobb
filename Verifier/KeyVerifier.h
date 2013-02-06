@@ -2,10 +2,10 @@
 #include <string>
 
 /* Arguments:
- *      nr_servers: number of servers in mix-net
+ *      lambda: number of servers in mix-net
  *      G: underlying group 
  */
-Node *verifyKeys(int lambda, Node &G);
+Node *verifyKeys(int lambda, const Node &Gq);
 
 bool isPublicKey(Node &node);
 bool isPartialPublicKey(IntLeaf &leaf);
