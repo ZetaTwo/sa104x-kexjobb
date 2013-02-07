@@ -3,8 +3,11 @@
 
 #include "Node.h"
 #include "IntLeaf.h"
+#include "ShufflingVerifier.h"
+#include "ProofOfShuffle.h"
+#include "Utilities.h"
 
-bool verifyShuffling(rho, int lambda, N, nE, nR, nV, PRG, Node &Gq, Rw, Cw, Node &pk, Node &L0, Node &Llambda, posc, ccpos)
+bool verifyShuffling(proofStruct &pfStr, int lambda, Node &L0, Node &Llambda, Node &posc, Node &ccpos)
 {
     std::ifstream fstr(MAXCIPH_FILE_NAME, std::fstream::in);
     
@@ -20,7 +23,7 @@ bool verifyShuffling(rho, int lambda, N, nE, nR, nV, PRG, Node &Gq, Rw, Cw, Node
 	    if(l < lambda)
 	    {
 		const std::string cipher_text_file_name = 
-		    CIPHER_TEXTS_FILE_NAME + std::to_string(i) + std::string(".bt");
+		    CIPHER_TEXTS_FILE_NAME_PREFIX + std::to_string(l) + std::string(".bt");
 		
 		std::ifstream ciphtext_stream(cipher_text_file_name, std::fstream::in);
 		
@@ -42,7 +45,7 @@ bool verifyShuffling(rho, int lambda, N, nE, nR, nV, PRG, Node &Gq, Rw, Cw, Node
 	    // Step 2
 	    // Verify proof of shuffle
 	    // Execute Algorithm 19 with specified input
-	    if(!Algorithm19(/* arg list */) && L.getChild(i) != L.getChild(i-1))
+	    if(/*!proofOfShuffle(...) && */static_cast<Node &>(L_array.getChild(l)) != static_cast<Node &>(L_array.getChild(l-1)))
 		return false;
 
 	}
