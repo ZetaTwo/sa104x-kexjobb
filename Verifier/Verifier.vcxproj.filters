@@ -24,12 +24,24 @@
     <ClCompile Include="Algorithm26.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="KeyVerifier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ShufflingVerifier.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Algorithm22.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Algorithm26.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyVerifier.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ShufflingVerifier.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
