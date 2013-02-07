@@ -1,4 +1,4 @@
-#include "Algorithm27.h"
+#include "Verifier.h"
 
 #include <string>
 #include <fstream>
@@ -9,7 +9,7 @@ using std::string;
 #include <rapidxml\rapidxml.hpp>
 
 
-bool Algorithm27(string protinfo, string directory,
+bool Verifier(string protinfo, string directory,
 				 string typeExp, string auxsidExp, string wExp,
 				 bool posc, bool ccpos, bool dec) {
 

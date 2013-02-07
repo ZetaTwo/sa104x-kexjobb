@@ -79,15 +79,19 @@
   <ItemGroup>
     <ClCompile Include="Algorithm22.cpp" />
     <ClCompile Include="Algorithm26.cpp" />
+    <ClCompile Include="Algorithm27.cpp" />
     <ClCompile Include="KeyVerifier.cpp" />
     <ClCompile Include="program.cpp" />
     <ClCompile Include="ShufflingVerifier.cpp" />
+    <ClCompile Include="Utilities.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Algorithm22.h" />
     <ClInclude Include="Algorithm26.h" />
+    <ClInclude Include="Algorithm27.h" />
     <ClInclude Include="KeyVerifier.h" />
     <ClInclude Include="ShufflingVerifier.h" />
+    <ClInclude Include="Utilities.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

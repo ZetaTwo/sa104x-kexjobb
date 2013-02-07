@@ -1,9 +1,9 @@
-#include "Algorithm26.h"
-#include "Algorithm22.h"
+#include "DecryptionVerifier.h"
+#include "DecryptionFactorsVerifier.h"
 
 #include "Node.h"
 
-bool algorithm26(rho, N, nE, nR, nV, PRG, Gq, Mw, Cw, pk, Node y, L, m) {
+bool DecryptionVerifier(rho, N, nE, nR, nV, PRG, Gq, Mw, Cw, pk, Node y, L, m) {
 
 	//Step 1
 	Node f = Node("f.dat");

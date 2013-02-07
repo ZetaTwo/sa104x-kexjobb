@@ -1,6 +1,6 @@
-#include "Algorithm22.h"
+#include "DecryptionFactorsVerifier.h"
 
-bool algorithm22(j, Rho, N, nE, nR, nV, PRG, Gq, Node y, Cw, Mw, w, f, tauDec, sigmaDec) {
+bool DecryptionFactorsVerifier(j, Rho, N, nE, nR, nV, PRG, Gq, Node y, Cw, Mw, w, f, tauDec, sigmaDec) {
 
 	//Step 1
 	//Foreach tauDecL in tauDec {
