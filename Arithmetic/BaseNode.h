@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <stdint.h>
+#include <istream>
 
 class BaseNode
 {
