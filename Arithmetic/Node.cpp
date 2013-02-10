@@ -548,3 +548,7 @@ Node &Node::addChild(const BaseNode &child) {
 BaseNode &Node::getChild(int32_t index) {
 	return *children[index];
 }
+
+const BaseNode &Node::getChild(int32_t index) const {
+    return *children[index];
+}

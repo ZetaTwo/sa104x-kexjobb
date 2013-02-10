@@ -85,6 +85,7 @@ public:
 
 	Node &addChild(const BaseNode &child);
 	BaseNode &getChild(int32_t index);
+	const BaseNode &getChild(int32_t index) const;
 	std::string toString(void) const;
 
 	virtual int32_t getLength(void) const;
