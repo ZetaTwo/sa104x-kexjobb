@@ -57,6 +57,7 @@ public:
     bool operator!=(const IntLeaf &leaf) const;
 
     bool operator<(const IntLeaf &leaf) const;
+    bool operator>(const IntLeaf &leaf) const;
     
     mpz_class getBigInt(void) const;
     virtual std::vector<char> toVector(void) const;
