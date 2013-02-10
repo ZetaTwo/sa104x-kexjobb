@@ -230,6 +230,11 @@ bool IntLeaf::operator!=(const IntLeaf &leaf) const
     return !(*this == leaf);
 }
 
+bool IntLeaf::operator<(const IntLeaf &leaf) const
+{
+    return this->data < leaf.data;
+}
+
 
 mpz_class IntLeaf::getBigInt(void) const
 {
