@@ -8,12 +8,12 @@ using std::string;
 
 #include <rapidxml\rapidxml.hpp>
 
+#include "PRG.h"
+#include "SHA256_PRG.h"
 
 bool Verifier(string protinfo, string directory,
 				 string typeExp, string auxsidExp, string wExp,
 				 bool posc, bool ccpos, bool dec) {
-
-
 	//Step 1
 	// Read the xml file into a vector
 	std::ifstream xml_file(protinfo);
@@ -27,29 +27,67 @@ bool Verifier(string protinfo, string directory,
 	rapidxml::xml_node<> *root_node;
 	root_node = doc.first_node("protocol");
 
+	string versionProt;
+	string Sh;
+
 	try {
-		string versionProt = root_node->first_node("version")->value();
+		versionProt = root_node->first_node("version")->value();
 		string sid = root_node->first_node("sid")->value();
-		//string name = root_node->first_node("name")->value();
-		//string descr = root_node->first_node("descr")->value();
 		string k = root_node->first_node("nopart")->value();
-		//string statdist = root_node->first_node("statdist")->value();
-		//string bullboard = root_node->first_node("bullboard")->value();
 		string lambda = root_node->first_node("thres")->value();
-		string pgroup = root_node->first_node("pgroup")->value();
-		string cbitlen = root_node->first_node("cbitlen")->value();
-		string cbitlenro = root_node->first_node("cbitlenro")->value();
-		string vbitlen = root_node->first_node("vbitlen")->value();
-		string vbitlenro = root_node->first_node("vbitlenro")->value();
-		string prg = root_node->first_node("prg")->value();
-		string rohash = root_node->first_node("rohash")->value();
-		string corr = root_node->first_node("corr")->value();
-		string width = root_node->first_node("width")->value();
-		string maxciph = root_node->first_node("maxciph")->value();
+		string Nv = root_node->first_node("cbitlen")->value();
+		string Ne = root_node->first_node("vbitlen")->value();
+		string Sprg = root_node->first_node("prg")->value();
+		Sh = root_node->first_node("rohash")->value();
+		string Cw = root_node->first_node("width")->value();
 	} catch (...) {
 		return false;
 	}
 
+	xml_file.close();
+
+	//Step 2
+	string versionProof;
+	string type;
+	string auxsid;
+	string width;
+
+	std::ifstream datafile(directory + "/version", std::ios::in);
+	datafile >> versionProof;
+	if(versionProof != versionProt) { return false; }
+
+	datafile.open(directory + "/type");
+	datafile >> type;
+	if(type != typeExp) { return false; }
+
+	datafile.open(directory + "/auxsid");
+	datafile >> auxsid;
+	if(auxsid != auxsidExp) { return false; }
+
+	datafile.open(directory + "/width");
+	datafile >> width;
+	if(wExp != "" && wExp != width) { return false; }
+
+	//Step 3
+	//H *h = switch(...);
+
+	PRG *prg;
+	if(Sh == "SHA-256") {
+		prg = new SHA256_PRG();
+	} else {
+		return false;
+	}
+
+	//Step 4
+	//rho = H(node(versionProof, sid + "." auxsid, omega, Ne, Nr, Nv, Gq, Sprg, Sh))
+
+	//Step 5
+	//keys = Algorithm23(...)
+
+	//Step 6
+
+
+	//Step 7
 
 	return false;
 }
