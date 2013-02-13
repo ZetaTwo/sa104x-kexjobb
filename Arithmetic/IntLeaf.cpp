@@ -58,16 +58,14 @@ IntLeaf::~IntLeaf(void)
 {
 }
 
-BaseNode *IntLeaf::contructPartFromFile(std::istream &file, uint32_t length) {
+BaseNode *IntLeaf::constructPartFromFile(std::istream &file, uint32_t length) {
 	
 	std::vector<char> data;
 	for (uint32_t i = 0; i < length; i++)
 	{
-		char* buffer = new char[3];
-		file.read(buffer, 2);
-		buffer[2] = 0;
-		unsigned int word = strtoul(buffer, NULL, 16);
-		data.push_back(word);
+		char buffer[1];
+		file.read(buffer, 1);
+		data.push_back(buffer[0]);
 	}
 
 	IntLeaf *result = new IntLeaf(data);

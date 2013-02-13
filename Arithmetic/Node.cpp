@@ -23,37 +23,37 @@ Node::Node(const Node &node) : BaseNode(BaseNode::NODE)
 Node::Node(const std::vector<char> data) : BaseNode(BaseNode::NODE) {
 	std::stringstream ioss;    
 	std::copy(data.begin(), data.end(), std::ostream_iterator<char>(ioss, ""));
-	contructFromFile(ioss);
+	constructFromFile(ioss);
 }
 
 Node::Node(const std::string filename) : BaseNode(BaseNode::NODE) {
-	contructFromFilename(filename);
+	constructFromFilename(filename);
 }
 
 Node::Node(std::istream &file) : BaseNode(BaseNode::NODE) {
-	contructFromFile(file);
+	constructFromFile(file);
 }
 
-void Node::contructFromFilename(const std::string filename) {
+void Node::constructFromFilename(const std::string filename) {
 	std::ifstream file(filename, std::fstream::in);
-	contructFromFile(file);
+	constructFromFile(file);
 }
-void Node::contructFromFile(std::istream &file) {
+void Node::constructFromFile(std::istream &file) {
 	char type;
 	uint32_t count;
 	ReadNodeHeader(file, type, count);
 
-	contructChildrenFromFile(file, count);
+	constructChildrenFromFile(file, count);
 }
 
-BaseNode *Node::contructPartFromFile(std::istream &file, uint32_t count) {
+BaseNode *Node::constructPartFromFile(std::istream &file, uint32_t count) {
 	Node *result = new Node();
-	result->contructChildrenFromFile(file, count);
+	result->constructChildrenFromFile(file, count);
 
 	return result;
 }
 
-void Node::contructChildrenFromFile(std::istream &file, uint32_t count) {
+void Node::constructChildrenFromFile(std::istream &file, uint32_t count) {
 	Node *result = new Node();
 	for (uint32_t i = 0; i < count; i++)
 	{
@@ -62,15 +62,14 @@ void Node::contructChildrenFromFile(std::istream &file, uint32_t count) {
 		ReadNodeHeader(file, type, childCount);
 
 		if(type == 0) {
-			addChild(*Node::contructPartFromFile(file, childCount));
+			addChild(*Node::constructPartFromFile(file, childCount));
 		} else if(type == 1) {
-			addChild(*IntLeaf::contructPartFromFile(file, childCount));
+			addChild(*IntLeaf::constructPartFromFile(file, childCount));
 		} else {
 			break;
 		}
 	}
 }
-
 
 Node::~Node(void)
 {

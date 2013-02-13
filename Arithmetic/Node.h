@@ -18,7 +18,7 @@ public:
 	explicit Node(std::istream &file);
 	~Node(void);
 
-	static BaseNode *contructPartFromFile(std::istream &file, uint32_t count);
+	static BaseNode *constructPartFromFile(std::istream &file, uint32_t count);
 	
 
 	virtual std::vector<char> toVector(void) const;
@@ -92,7 +92,7 @@ public:
 private:
 	std::vector<BaseNode *> children;
 
-	void contructFromFilename(const std::string filename);
-	void contructFromFile(std::istream &file);
-	void contructChildrenFromFile(std::istream &file, uint32_t count);
+	void constructFromFilename(const std::string filename);
+	void constructFromFile(std::istream &file);
+	void constructChildrenFromFile(std::istream &file, uint32_t count);
 };

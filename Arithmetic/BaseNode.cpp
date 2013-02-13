@@ -35,12 +35,18 @@ BaseNode *BaseNode::copy(const BaseNode *node) {
 }
 
 void BaseNode::ReadNodeHeader(std::istream &file, char &type, uint32_t &length) {
-	char* buffer = new char[9];
-	file.read(buffer, 2);
-	buffer[2] = 0;
-	type = strtoul(buffer, NULL, 16);
-	file.read(buffer, 8);
-	buffer[8] = 0;
-	length = strtoul(buffer+1, NULL, 16);
-	delete buffer;
+	char buffer[4]
+	
+	file.read(buffer, 1);
+	type = buffer[0];
+
+	/* make int out of byte array */
+	file.read(buffer, 4);
+	length = buffer[0];
+	length <<= sizeof(char);
+	length |= buffer[1];
+	length <<= sizeof(char);
+	length |= buffer[2];
+	length <<= sizeof(char);
+	length |= buffer[3];
 }

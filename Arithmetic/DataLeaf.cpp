@@ -34,7 +34,7 @@ DataLeaf &DataLeaf::operator=(const DataLeaf &leaf)
 {
         if(this == &leaf) {
     	    return *this;
-		}
+	}
 
         data = leaf.toVector();
 
