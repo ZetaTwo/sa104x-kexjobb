@@ -13,6 +13,25 @@ DataLeaf::DataLeaf(int32_t size) : BaseLeaf(BaseNode::DATA_LEAF), data(size)
 {
 }
 
+DataLeaf::DataLeaf(std::istream &file) : BaseLeaf(BaseNode::DATA_LEAF)
+{
+    char type;
+    uint32_t length;
+
+    ReadNodeHeader(file, type, length);
+
+    if(type != 0x01);
+	/* Trying to build a dataleaf from a node, throw exception? */
+   
+    for (uint32_t i = 0; i < length; i++)
+    {
+	char buffer[1];
+	file.read(buffer, 1);
+	data.push_back(buffer[0]);
+    }
+}
+
+
 DataLeaf::~DataLeaf(void)
 {
 }
