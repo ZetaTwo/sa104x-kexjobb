@@ -1,13 +1,16 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 class PRG
 {
 public:
-	PRG();
+	PRG(std::vector<char> (*hash)(std::vector<char> data));
 	~PRG(void);
 
-	virtual void Generate(std::string seed) = 0;
+	std::vector<char> operator()(std::vector<char> seed);
+private:
+	std::vector<char> (*hash)(std::vector<char> data);
 };
 
