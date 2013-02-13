@@ -67,5 +67,6 @@ public:
 	
 private:
     mpz_class data;
+    uint32_t length;
 };
 

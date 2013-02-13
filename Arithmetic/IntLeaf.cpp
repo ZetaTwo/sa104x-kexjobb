@@ -26,6 +26,8 @@ IntLeaf::IntLeaf(std::vector<char> bytevec) : BaseLeaf(BaseNode::INT_LEAF)
 {
     bool negative = false;
 
+    length = bytevec.size();
+
     /* Check if negative - if signed bit is 1 */
     if(ARRAYORDER == 1)
 	negative = bytevec[0] & 0x80;
@@ -246,10 +248,13 @@ mpz_class IntLeaf::getBigInt(void) const
 
 std::vector<char> IntLeaf::toVector(void) const 
 {
+    /* number of bytes needed for bigint */
     unsigned int size = mpz_sizeinbase(data.get_mpz_t(), 256);
-    std::vector<char> bytevec(size);
+    
+    std::vector<char> bytevec(getLength(), 0);
 
-    mpz_export(bytevec.data(), NULL, ARRAYORDER, sizeof(bytevec[0]), ENDIAN, NAILS, data.get_mpz_t());
+    /* if getLength() != size the first (getLength() - size) bytes will be zero as they should */
+    mpz_export(bytevec.data() + (getLength() - size), NULL, ARRAYORDER, sizeof(bytevec[0]), ENDIAN, NAILS, data.get_mpz_t());
 
     /* Check if negative */
     bool negative = (mpz_sgn(data.get_mpz_t()) == -1);
@@ -274,7 +279,14 @@ std::vector<char> IntLeaf::toVector(void) const
 
 int32_t IntLeaf::getLength(void) const
 {
-    return mpz_sizeinbase(data.get_mpz_t(), 256);
+    /* This happens if IntLeaf was not constructed from file or byte vector */
+    if(length == 0) {
+	return mpz_sizeinbase(data.get_mpz_t(), 256);
+    }
+    else
+    {
+	return length;
+    }
 }
 
 
