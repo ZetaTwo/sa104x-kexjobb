@@ -35,7 +35,7 @@ BaseNode *BaseNode::copy(const BaseNode *node) {
 }
 
 void BaseNode::ReadNodeHeader(std::istream &file, char &type, uint32_t &length) {
-	char buffer[4]
+	char buffer[4];
 	
 	file.read(buffer, 1);
 	type = buffer[0];

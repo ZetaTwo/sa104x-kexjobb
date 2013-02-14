@@ -79,7 +79,6 @@
   <ItemGroup>
     <ClCompile Include="DecryptionFactorsVerifier.cpp" />
     <ClCompile Include="DecryptionVerifier.cpp" />
-    <ClCompile Include="PRG.cpp" />
     <ClCompile Include="Verifier.cpp" />
     <ClCompile Include="KeyVerifier.cpp" />
     <ClCompile Include="main.cpp" />
@@ -90,7 +89,6 @@
   <ItemGroup>
     <ClInclude Include="DecryptionFactorsVerifier.h" />
     <ClInclude Include="DecryptionVerifier.h" />
-    <ClInclude Include="PRG.h" />
     <ClInclude Include="Verifier.h" />
     <ClInclude Include="KeyVerifier.h" />
     <ClInclude Include="ProofOfShuffle.h" />

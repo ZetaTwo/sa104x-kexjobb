@@ -13,12 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\PRG">
-      <UniqueIdentifier>{49901233-6dc9-48a8-a4e2-076254639c8f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\PRG">
-      <UniqueIdentifier>{e2bd93d5-c25d-4698-895a-11d98517ff53}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="KeyVerifier.cpp">
@@ -45,9 +39,6 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PRG.cpp">
-      <Filter>Source Files\PRG</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="KeyVerifier.h">
@@ -70,9 +61,6 @@
     </ClInclude>
     <ClInclude Include="Verifier.h">
       <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="PRG.h">
-      <Filter>Header Files\PRG</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

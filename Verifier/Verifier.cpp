@@ -9,7 +9,6 @@ using std::string;
 #include <rapidxml\rapidxml.hpp>
 
 #include "PRG.h"
-#include "SHA256_PRG.h"
 
 bool Verifier(string protinfo, string directory,
 				 string typeExp, string auxsidExp, string wExp,

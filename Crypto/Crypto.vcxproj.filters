@@ -13,10 +13,42 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Header Files\PRG">
+      <UniqueIdentifier>{8e4765cf-0645-410c-931a-7ae3f699ab17}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\PRG">
+      <UniqueIdentifier>{ea916df5-16b5-448b-a2f2-3957a804d1b7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="program.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PRG.cpp">
+      <Filter>Source Files\PRG</Filter>
+    </ClCompile>
+    <ClCompile Include="RO.cpp">
+      <Filter>Source Files\PRG</Filter>
+    </ClCompile>
+    <ClCompile Include="ElGamal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="H_SHA256.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="PRG.h">
+      <Filter>Header Files\PRG</Filter>
+    </ClInclude>
+    <ClInclude Include="RO.h">
+      <Filter>Header Files\PRG</Filter>
+    </ClInclude>
+    <ClInclude Include="ElGamal.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="H_SHA256.h">
+      <Filter>Header Files\PRG</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

@@ -52,7 +52,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Arithmetic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -80,7 +80,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ElGamal.cpp" />
+    <ClCompile Include="H_SHA256.cpp" />
+    <ClCompile Include="PRG.cpp" />
     <ClCompile Include="program.cpp" />
+    <ClCompile Include="RO.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="ElGamal.h" />
+    <ClInclude Include="H_SHA256.h" />
+    <ClInclude Include="PRG.h" />
+    <ClInclude Include="RO.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
