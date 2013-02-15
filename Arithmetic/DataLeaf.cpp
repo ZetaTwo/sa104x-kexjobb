@@ -25,9 +25,9 @@ DataLeaf::DataLeaf(std::istream &file) : BaseLeaf(BaseNode::DATA_LEAF)
    
     for (uint32_t i = 0; i < length; i++)
     {
-	char buffer[1];
-	file.read(buffer, 1);
-	data.push_back(buffer[0]);
+	char buffer;
+	file.read(&buffer, 1);
+	data.push_back(buffer);
     }
 }
 
