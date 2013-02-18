@@ -21,9 +21,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="program.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PRG.cpp">
       <Filter>Source Files\PRG</Filter>
     </ClCompile>
@@ -33,7 +30,7 @@
     <ClCompile Include="ElGamal.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="H_SHA256.cpp">
+    <ClCompile Include="H_SHA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,8 +44,8 @@
     <ClInclude Include="ElGamal.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="H_SHA256.h">
-      <Filter>Header Files\PRG</Filter>
+    <ClInclude Include="H_SHA.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -17,7 +17,7 @@
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v110</PlatformToolset>
     <CharacterSet>Unicode</CharacterSet>
@@ -60,6 +60,9 @@
       <AdditionalLibraryDirectories>%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <Lib>
+      <AdditionalDependencies>ssleay32.lib;libeay32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Lib>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -81,14 +84,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ElGamal.cpp" />
-    <ClCompile Include="H_SHA256.cpp" />
+    <ClCompile Include="H_SHA.cpp" />
     <ClCompile Include="PRG.cpp" />
-    <ClCompile Include="program.cpp" />
     <ClCompile Include="RO.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ElGamal.h" />
-    <ClInclude Include="H_SHA256.h" />
+    <ClInclude Include="H_SHA.h" />
     <ClInclude Include="PRG.h" />
     <ClInclude Include="RO.h" />
   </ItemGroup>

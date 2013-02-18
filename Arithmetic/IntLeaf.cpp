@@ -1,23 +1,24 @@
 #include "IntLeaf.h"
 
-IntLeaf::IntLeaf(const IntLeaf &leaf) : BaseLeaf(BaseNode::INT_LEAF), data(leaf.data)
+IntLeaf::IntLeaf(const IntLeaf &leaf) : BaseLeaf(BaseNode::INT_LEAF), data(leaf.data), length(0)
 {
 }
 
-IntLeaf::IntLeaf(void) : data(0) , BaseLeaf(BaseNode::INT_LEAF)
+IntLeaf::IntLeaf(void) : data(0) , BaseLeaf(BaseNode::INT_LEAF), length(0)
 {
 }
 
-
-IntLeaf::IntLeaf(long int input) : BaseLeaf(BaseNode::INT_LEAF), data(input)
+IntLeaf::IntLeaf(long int input) : BaseLeaf(BaseNode::INT_LEAF), data(input), length(0)
 {
 }
 
-
-IntLeaf::IntLeaf(std::string input) : BaseLeaf(BaseNode::INT_LEAF), data(input)
+IntLeaf::IntLeaf(long int input, long int length) : BaseLeaf(BaseNode::INT_LEAF), data(input), length(length)
 {
 }
 
+IntLeaf::IntLeaf(std::string input) : BaseLeaf(BaseNode::INT_LEAF), data(input), length(0)
+{
+}
 
 IntLeaf::IntLeaf(std::vector<unsigned char> bytevec) : BaseLeaf(BaseNode::INT_LEAF)
 {
@@ -26,23 +27,25 @@ IntLeaf::IntLeaf(std::vector<unsigned char> bytevec) : BaseLeaf(BaseNode::INT_LE
     length = bytevec.size();
 
     /* Check if negative - if signed bit is 1 */
-    if(ARRAYORDER == 1)
-	negative = bytevec[0] & 0x80;
-    else
-	negative = bytevec[bytevec.size()-1] & 0x80;
+    if(ARRAYORDER == 1) {
+		negative = bytevec[0] & 0x80;
+	} else {
+		negative = bytevec[bytevec.size()-1] & 0x80;
+	}
 
     if(negative) 
     {
-	/* Change to corresponding positive number using two's complement */
-	for(unsigned int i=0; i < bytevec.size(); i++)
-	{
-	    bytevec[i] ^= 0xFF;
-	}
+		/* Change to corresponding positive number using two's complement */
+		for(unsigned int i=0; i < bytevec.size(); i++)
+		{
+			bytevec[i] ^= 0xFF;
+		}
 
-	if(ARRAYORDER == 1)
-	    bytevec[bytevec.size() - 1]++;
-	else
-	    bytevec[0]++;
+		if(ARRAYORDER == 1) {
+			bytevec[bytevec.size() - 1]++;
+		} else {
+			bytevec[0]++;
+		}
     }
 
     mpz_import(data.get_mpz_t(), bytevec.size(), ARRAYORDER, 
@@ -51,7 +54,6 @@ IntLeaf::IntLeaf(std::vector<unsigned char> bytevec) : BaseLeaf(BaseNode::INT_LE
     if(negative)
 	mpz_neg(data.get_mpz_t(), data.get_mpz_t());
 }
-
 
 IntLeaf::~IntLeaf(void)
 {
@@ -282,11 +284,9 @@ int32_t IntLeaf::getLength(void) const
 {
     /* This happens if IntLeaf was not constructed from file or byte vector */
     if(length == 0) {
-	return mpz_sizeinbase(data.get_mpz_t(), 256);
-    }
-    else
-    {
-	return length;
+		return mpz_sizeinbase(data.get_mpz_t(), 256);
+    } else {
+		return length;
     }
 }
 

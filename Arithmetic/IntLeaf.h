@@ -18,6 +18,7 @@ public:
     IntLeaf(void);
     IntLeaf(const IntLeaf &leaf);
     IntLeaf(long int input);
+	IntLeaf(long int input, long int length);
     explicit IntLeaf(std::string input);
     explicit IntLeaf(std::vector<unsigned char> bytevec);
     explicit IntLeaf(std::istream &file);

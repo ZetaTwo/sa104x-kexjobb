@@ -1,6 +1,6 @@
 #include "PRG.h"
 
-PRG::PRG(std::vector<unsigned char> (*hash)(std::vector<unsigned char> data), std::vector<unsigned char> seed) : hash(hash), counter(0), data(seed)
+PRG::PRG(std::vector<unsigned char> (*hash)(std::vector<unsigned char> data), std::vector<unsigned char> seed) : hash(hash), counter(0, sizeof(uint32_t)), data(seed)
 {
 	data.push_back(0);
 	data.push_back(0);
