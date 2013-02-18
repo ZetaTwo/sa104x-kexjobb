@@ -13,25 +13,34 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\ByteTree">
+      <UniqueIdentifier>{953aa021-5557-4222-b6c3-cd0069872065}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Crypto">
+      <UniqueIdentifier>{d39333e6-859b-47cb-99b1-e6d3d0f01a7f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ByteTreeTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TestRunner.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\ByteTree</Filter>
     </ClCompile>
     <ClCompile Include="IntLeafArithmeticsTests.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\ByteTree</Filter>
     </ClCompile>
     <ClCompile Include="NodeArithmeticsTests.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NodeToStringTests.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\ByteTree</Filter>
     </ClCompile>
     <ClCompile Include="NodeDataInitTests.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\ByteTree</Filter>
+    </ClCompile>
+    <ClCompile Include="NodeToStringTests.cpp">
+      <Filter>Source Files\ByteTree</Filter>
+    </ClCompile>
+    <ClCompile Include="TestRunner.cpp">
+      <Filter>Source Files\ByteTree</Filter>
+    </ClCompile>
+    <ClCompile Include="PRGTests.cpp">
+      <Filter>Source Files\Crypto</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

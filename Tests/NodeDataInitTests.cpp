@@ -4,7 +4,7 @@
 
 TEST(NodeDataInitTests, NodeFromFileTest)
 {
-	std::ifstream file("testfiles/test1.txt", std::ios::in);
+	std::ifstream file("testfiles/test1.dat", std::ios::in);
 	Node node1(file);
 
 	std::string result = node1.toString();
@@ -14,7 +14,7 @@ TEST(NodeDataInitTests, NodeFromFileTest)
 
 TEST(NodeDataInitTests, NodeFromFileNameTest)
 {
-	Node node1("testfiles/test1.txt");
+	Node node1("testfiles/test1.dat");
 
 	std::string result = node1.toString();
 
@@ -23,7 +23,12 @@ TEST(NodeDataInitTests, NodeFromFileNameTest)
 
 TEST(NodeDataInitTests, NodeFromVectorTest)
 {
-	const char arr[] = "000000000200000000020100000001AF010000000203E101000000022D52";
+	const char arr[] = { 0x00, 0x00, 0x00, 0x00, 0x02, 
+							0x00, 0x00, 0x00, 0x00, 0x02,
+								0x01, 0x00, 0x00, 0x00, 0x01, 0xAF,
+								0x01, 0x00, 0x00, 0x00, 0x02, 0x03, 0xE1, 
+							0x01, 0x00, 0x00, 0x00, 0x02, 0x2D, 0x52
+						};
 	std::vector<char> data(arr, arr + sizeof(arr) / sizeof(arr[0]) );
 
 	Node node1(data);

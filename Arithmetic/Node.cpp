@@ -13,11 +13,7 @@ Node::Node() : BaseNode(BaseNode::NODE)
 
 Node::Node(const Node &node) : BaseNode(BaseNode::NODE)
 {
-	for (std::vector<BaseNode *>::const_iterator itr = node.children.begin(); itr < node.children.end(); itr++)
-	{
-		BaseNode *element = copy(*itr);
-		children.push_back(element);
-	}
+	copyElements(node.children);
 }
 
 Node::Node(const std::vector<char> data) : BaseNode(BaseNode::NODE) {
@@ -73,10 +69,7 @@ void Node::constructChildrenFromFile(std::istream &file, uint32_t count) {
 
 Node::~Node(void)
 {
-	for (std::vector<BaseNode *>::iterator itr = children.begin(); itr < children.end(); itr++)
-	{
-	    delete *itr;
-	}
+	
 }
 
 int32_t Node::getLength(void) const {
@@ -85,7 +78,8 @@ int32_t Node::getLength(void) const {
 
 Node &Node::operator=(const Node &node) {
 	if(*this != node) {
-		children = node.children;	
+		clearElements();
+		copyElements(node.children);	
 	}
 
 	return *this;
@@ -130,10 +124,12 @@ Node &Node::addTo(const Node &node) {
 
 
 Node Node::add(const IntLeaf &leaf) const {
-    Node result(*this);
-    result.addTo(leaf);
+    Node *result = new Node(*this);
+    result->addTo(leaf);
+
+	std::string result2 = result->toString();
     
-    return result;
+    return *result;
 };
 
 
@@ -492,8 +488,8 @@ IntLeaf Node::expMultMod(const unsigned long exp, const IntLeaf &mod) const {
 	return result;
 };
 
-std::vector<char> Node::toVector(void) const {
-    std::vector<char> res;
+std::vector<unsigned char> Node::toVector(void) const {
+    std::vector<unsigned char> res;
 
     res.push_back(getType());
 
@@ -501,14 +497,14 @@ std::vector<char> Node::toVector(void) const {
 
     for(unsigned int i=0; i<4; i++)
     {
-	res.push_back(length >> 24);
-	length <<= 8;
+		res.push_back(length >> 24);
+		length <<= 8;
     }
 
     for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
     {
-	std::vector<char> nextelem = (*itr)->toVector();
-	res.insert(res.begin(), nextelem.begin(), nextelem.end());
+		std::vector<unsigned char> nextelem = (*itr)->toVector();
+		res.insert(res.begin(), nextelem.begin(), nextelem.end());
     }
     
     return res;
@@ -520,19 +516,20 @@ std::string Node::toString(void) const {
 
     for(std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
     {
-	switch((*itr)->getType()) {
-	case BaseNode::INT_LEAF:
-	    res += static_cast<IntLeaf *>(*itr)->toString();
-	    break;
-	case BaseNode::NODE:
-	    res += static_cast<Node *>(*itr)->toString();
-	    break;
-	default:
-	    break;
-	}
+		switch((*itr)->getType()) {
+		case BaseNode::INT_LEAF:
+			res += static_cast<IntLeaf *>(*itr)->toString();
+			break;
+		case BaseNode::NODE:
+			res += static_cast<Node *>(*itr)->toString();
+			break;
+		default:
+			break;
+		}
 
-	if(itr < children.end()-1)
-	    res += ", ";
+		if(itr < children.end()-1) {
+			res += ", ";
+		}
     }
 
     return res + ")";
@@ -550,4 +547,19 @@ BaseNode &Node::getChild(int32_t index) {
 
 const BaseNode &Node::getChild(int32_t index) const {
     return *children[index];
+}
+
+void Node::copyElements(std::vector<BaseNode *> elements) {
+	for (std::vector<BaseNode *>::const_iterator itr = elements.begin(); itr < elements.end(); itr++)
+	{
+		BaseNode *element = copy(*itr);
+		children.push_back(element);
+	}
+}
+
+void Node::clearElements() {
+	for (std::vector<BaseNode *>::iterator itr = children.begin(); itr < children.end(); itr++)
+	{
+	    delete *itr;
+	}
 }

@@ -1,8 +1,7 @@
 #include "IntLeaf.h"
 
-IntLeaf::IntLeaf(const IntLeaf &leaf) : BaseLeaf(BaseNode::INT_LEAF)
+IntLeaf::IntLeaf(const IntLeaf &leaf) : BaseLeaf(BaseNode::INT_LEAF), data(leaf.data)
 {
-    *this = leaf;
 }
 
 IntLeaf::IntLeaf(void) : data(0) , BaseLeaf(BaseNode::INT_LEAF)
@@ -10,19 +9,17 @@ IntLeaf::IntLeaf(void) : data(0) , BaseLeaf(BaseNode::INT_LEAF)
 }
 
 
-IntLeaf::IntLeaf(long int input) : BaseLeaf(BaseNode::INT_LEAF)
+IntLeaf::IntLeaf(long int input) : BaseLeaf(BaseNode::INT_LEAF), data(input)
 {
-    this->data = input;
 }
 
 
-IntLeaf::IntLeaf(std::string input) : BaseLeaf(BaseNode::INT_LEAF)
+IntLeaf::IntLeaf(std::string input) : BaseLeaf(BaseNode::INT_LEAF), data(input)
 {
-    this->data = input;
 }
 
 
-IntLeaf::IntLeaf(std::vector<char> bytevec) : BaseLeaf(BaseNode::INT_LEAF)
+IntLeaf::IntLeaf(std::vector<unsigned char> bytevec) : BaseLeaf(BaseNode::INT_LEAF)
 {
     bool negative = false;
 
@@ -62,7 +59,7 @@ IntLeaf::~IntLeaf(void)
 
 BaseNode *IntLeaf::constructPartFromFile(std::istream &file, uint32_t length) {
 	
-	std::vector<char> data;
+	std::vector<unsigned char> data;
 	for (uint32_t i = 0; i < length; i++)
 	{
 		char buffer[1];
@@ -240,18 +237,22 @@ bool IntLeaf::operator>(const IntLeaf &leaf) const
     return !(*this < leaf) || (*this == leaf);
 }
 
+IntLeaf IntLeaf::operator-() const {
+	return (*this) * -1;
+}
+
 mpz_class IntLeaf::getBigInt(void) const
 {
     return data;
 }
 
 
-std::vector<char> IntLeaf::toVector(void) const 
+std::vector<unsigned char> IntLeaf::toVector(void) const 
 {
     /* number of bytes needed for bigint */
     unsigned int size = mpz_sizeinbase(data.get_mpz_t(), 256);
     
-    std::vector<char> bytevec(getLength(), 0);
+    std::vector<unsigned char> bytevec(getLength(), 0);
 
     /* if getLength() != size the first (getLength() - size) bytes will be zero as they should */
     mpz_export(bytevec.data() + (getLength() - size), NULL, ARRAYORDER, sizeof(bytevec[0]), ENDIAN, NAILS, data.get_mpz_t());

@@ -14,7 +14,7 @@ public:
 
 	BaseNode::NodeType getType(void) const;
 	virtual int32_t getLength(void) const = 0;
-	virtual std::vector<char> toVector(void) const = 0;
+	virtual std::vector<unsigned char> toVector(void) const = 0;
 
 private:
 	const BaseNode::NodeType type;

@@ -20,14 +20,16 @@ DataLeaf::DataLeaf(std::istream &file) : BaseLeaf(BaseNode::DATA_LEAF)
 
     ReadNodeHeader(file, type, length);
 
-    if(type != 0x01);
-	/* Trying to build a dataleaf from a node, throw exception? */
+    if(type != 0x01) {
+		//TODO
+		/* Trying to build a dataleaf from a node, throw exception? */
+	}
    
     for (uint32_t i = 0; i < length; i++)
     {
-	char buffer;
-	file.read(&buffer, 1);
-	data.push_back(buffer);
+		char buffer;
+		file.read(&buffer, 1);
+		data.push_back(buffer);
     }
 }
 
@@ -36,11 +38,11 @@ DataLeaf::~DataLeaf(void)
 {
 }
 
-std::vector<char> &DataLeaf::getData(void) {
+std::vector<unsigned char> &DataLeaf::getData(void) {
 	return data;
 }
 
-const std::vector<char> &DataLeaf::getData(void) const {
+const std::vector<unsigned char> &DataLeaf::getData(void) const {
         return data;
 }
 
@@ -60,8 +62,8 @@ DataLeaf &DataLeaf::operator=(const DataLeaf &leaf)
         return *this;
 }
 
-std::vector<char> DataLeaf::toVector(void) const {
-	return std::vector<char>();
+std::vector<unsigned char> DataLeaf::toVector(void) const {
+	return std::vector<unsigned char>();
 }
 
 

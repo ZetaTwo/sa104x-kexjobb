@@ -19,7 +19,7 @@ public:
     IntLeaf(const IntLeaf &leaf);
     IntLeaf(long int input);
     explicit IntLeaf(std::string input);
-    explicit IntLeaf(std::vector<char> bytevec);
+    explicit IntLeaf(std::vector<unsigned char> bytevec);
     explicit IntLeaf(std::istream &file);
     ~IntLeaf(void);
 
@@ -58,9 +58,11 @@ public:
 
     bool operator<(const IntLeaf &leaf) const;
     bool operator>(const IntLeaf &leaf) const;
+
+	IntLeaf operator-() const;
     
     mpz_class getBigInt(void) const;
-    virtual std::vector<char> toVector(void) const;
+    virtual std::vector<unsigned char> toVector(void) const;
     virtual int32_t getLength(void) const;
     
     std::string toString(void) const;

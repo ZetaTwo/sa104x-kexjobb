@@ -21,7 +21,7 @@ public:
 	static BaseNode *constructPartFromFile(std::istream &file, uint32_t count);
 	
 
-	virtual std::vector<char> toVector(void) const;
+	virtual std::vector<unsigned char> toVector(void) const;
 
 	Node &operator=(const Node &node);
 
@@ -95,4 +95,7 @@ private:
 	void constructFromFilename(const std::string filename);
 	void constructFromFile(std::istream &file);
 	void constructChildrenFromFile(std::istream &file, uint32_t count);
+
+	void copyElements(std::vector<BaseNode *> elements);
+	void clearElements();
 };

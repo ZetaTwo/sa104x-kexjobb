@@ -13,14 +13,14 @@ public:
 	DataLeaf(std::istream &file);
 	~DataLeaf(void);
 
-	std::vector<char> &getData(void);
-	const std::vector<char> &getData(void) const;
-	virtual std::vector<char> toVector(void) const;
+	std::vector<unsigned char> &getData(void);
+	const std::vector<unsigned char> &getData(void) const;
+	virtual std::vector<unsigned char> toVector(void) const;
 	virtual int32_t getLength(void) const;
 
 	DataLeaf &operator=(const DataLeaf &leaf);
 
 private:
-	std::vector<char> data;
+	std::vector<unsigned char> data;
 };
 

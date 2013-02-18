@@ -92,6 +92,11 @@
     <ClInclude Include="PRG.h" />
     <ClInclude Include="RO.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Arithmetic\Arithmetic.vcxproj">
+      <Project>{0b22bdbb-a708-4a76-8cef-cbf31d55603d}</Project>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
