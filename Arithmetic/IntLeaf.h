@@ -67,7 +67,7 @@ public:
     IntLeaf inverse(const IntLeaf &mod) const;
 
     mpz_class getBigInt(void) const;
-    virtual std::vector<char> toVector(void) const;
+    virtual std::vector<unsigned char> toVector(void) const;
     virtual int32_t getLength(void) const;
     
     std::string toString(void) const;

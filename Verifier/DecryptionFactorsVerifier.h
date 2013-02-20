@@ -1,3 +1,5 @@
 #pragma once
 
-bool DecryptionFactorsVerifier(j, Rho, N, nE, nR, nV, PRG, Gq, Node y, Cw, Mw, w, f, tauDec, sigmaDec);
+#include "Utilities.h"
+
+bool DecryptionFactorsVerifier(int j, proofStruct &ps, const Node &f, const Node &tauDec, const Node &sigmaDec);

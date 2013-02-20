@@ -19,9 +19,8 @@ public:
 	~Node(void);
 
 	static BaseNode *constructPartFromFile(std::istream &file, uint32_t count);
-	
 
-	virtual std::vector<char> toVector(void) const;
+	virtual std::vector<unsigned char> toVector(void) const;
 
 	Node &operator=(const Node &node);
 
