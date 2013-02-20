@@ -16,6 +16,10 @@ IntLeaf::IntLeaf(long int input, long int length) : BaseLeaf(BaseNode::INT_LEAF)
 {
 }
 
+IntLeaf::IntLeaf(const mpz_class &bigint) : BaseLeaf(BaseNode::INT_LEAF), data(bigint)
+{
+}
+
 IntLeaf::IntLeaf(std::string input) : BaseLeaf(BaseNode::INT_LEAF), data(input), length(0)
 {
 }
@@ -239,9 +243,22 @@ bool IntLeaf::operator>(const IntLeaf &leaf) const
     return !(*this < leaf) || (*this == leaf);
 }
 
-IntLeaf IntLeaf::operator-() const {
+IntLeaf IntLeaf::operator-(void) const {
 	return (*this) * -1;
 }
+
+IntLeaf IntLeaf::inverse(const IntLeaf &mod) const
+{
+    mpz_class res;
+
+    if(mpz_invert(res.get_mpz_t(), data.get_mpz_t(), mod.getBigInt().get_mpz_t()) != 0)
+    {
+        // throw exception?
+    }
+
+    return IntLeaf(res);
+} 
+
 
 mpz_class IntLeaf::getBigInt(void) const
 {
@@ -284,9 +301,9 @@ int32_t IntLeaf::getLength(void) const
 {
     /* This happens if IntLeaf was not constructed from file or byte vector */
     if(length == 0) {
-		return mpz_sizeinbase(data.get_mpz_t(), 256);
+	return mpz_sizeinbase(data.get_mpz_t(), 256);
     } else {
-		return length;
+	return length;
     }
 }
 

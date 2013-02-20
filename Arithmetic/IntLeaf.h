@@ -8,7 +8,7 @@
 #include <fstream>
 
 class IntLeaf :
-	public BaseLeaf
+    public BaseLeaf
 {
 public:
     static const int ARRAYORDER = 1; /* -1 for least significant byte first, 1 for most significant byte first */
@@ -17,11 +17,13 @@ public:
 
     IntLeaf(void);
     IntLeaf(const IntLeaf &leaf);
+    explicit IntLeaf(const mpz_class &bigint);
     IntLeaf(long int input);
-	IntLeaf(long int input, long int length);
+    IntLeaf(long int input, long int length);
     explicit IntLeaf(std::string input);
     explicit IntLeaf(std::vector<unsigned char> bytevec);
     explicit IntLeaf(std::istream &file);
+    
     ~IntLeaf(void);
 
     static BaseNode *constructPartFromFile(std::istream &file, uint32_t length);
@@ -60,10 +62,12 @@ public:
     bool operator<(const IntLeaf &leaf) const;
     bool operator>(const IntLeaf &leaf) const;
 
-	IntLeaf operator-() const;
+    IntLeaf operator-(void) const;
     
+    IntLeaf inverse(const IntLeaf &mod) const;
+
     mpz_class getBigInt(void) const;
-    virtual std::vector<unsigned char> toVector(void) const;
+    virtual std::vector<char> toVector(void) const;
     virtual int32_t getLength(void) const;
     
     std::string toString(void) const;
