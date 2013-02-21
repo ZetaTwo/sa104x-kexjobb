@@ -1,17 +1,47 @@
 #include "ProofOfShuffle.h"
 
+#include "PRG.h"
+#include "RO.h"
+
+#include <cmath>
+
 bool proofOfShuffle(proofStruct &pfStr, const Node &tau_pos, const Node &sigma_pos)
 {
+    Node u;
+
+    IntLeaf A_prime;
+    IntLeaf C_prime;
+    IntLeaf D_prime;
+
+    Node F_prime;
+
+    Node B;
+    Node B_prime;
+
+    IntLeaf kA;
+    IntLeaf kC;
+    IntLeaf kD;
+    IntLeaf kF;
+
+    Node kB;
+    Node kE;
+    
+    const IntLeaf &p = static_cast<const IntLeaf &>(pfStr.Gq->getChild(0));
+    const IntLeaf &q = static_cast<const IntLeaf &>(pfStr.Gq->getChild(1));
+    const IntLeaf &g = static_cast<const IntLeaf &>(pfStr.Gq->getChild(2));
+
     // Step 1
 
     // a) assert that pfStr->mu is array of Pdersen commitments in pfStr->Gq
     
     try
     {
+	u = *pfStr.mu;
+
 	for(unsigned int i=0; i < pfStr.N; ++i)
 	{
 	    if(!isPedersenCommitment(*pfStr.Gq, 
-				     static_cast<const IntLeaf &>(pfStr.mu->getChild(i))))
+				     static_cast<const IntLeaf &>(u.getChild(i))))
 	    {
 		return false;
 	    }
@@ -28,27 +58,31 @@ bool proofOfShuffle(proofStruct &pfStr, const Node &tau_pos, const Node &sigma_p
 
     try
     {
-	if(!isElemOf(*pfStr.Gq, static_cast<const IntLeaf &>(tau_pos.getChild(1))) ||
-	   !isElemOf(*pfStr.Gq, static_cast<const IntLeaf &>(tau_pos.getChild(3))) ||
-	   !isElemOf(*pfStr.Gq, static_cast<const IntLeaf &>(tau_pos.getChild(4))))
+	A_prime = static_cast<const IntLeaf &>(tau_pos.getChild(1));
+	C_prime = static_cast<const IntLeaf &>(tau_pos.getChild(3));
+	D_prime = static_cast<const IntLeaf &>(tau_pos.getChild(4));
+
+	if(!isElemOf(*pfStr.Gq, A_prime) ||
+	   !isElemOf(*pfStr.Gq, C_prime) ||
+	   !isElemOf(*pfStr.Gq, D_prime))
 	{
 	    return false;
 	}
 	
-	Node Fprime = static_cast<const Node &>(tau_pos.getChild(5));
-	if(!isElemOf(*pfStr.Gq, static_cast<const IntLeaf &>(Fprime.getChild(0))) ||
-	   !isElemOf(*pfStr.Gq, static_cast<const IntLeaf &>(Fprime.getChild(1))))
+	F_prime = static_cast<const Node &>(tau_pos.getChild(5));
+	if(!isElemOf(*pfStr.Gq, static_cast<const IntLeaf &>(F_prime.getChild(0))) ||
+	   !isElemOf(*pfStr.Gq, static_cast<const IntLeaf &>(F_prime.getChild(1))))
 	{
 	    return false;
 	}
 
-	Node B = static_cast<const Node &>(tau_pos.getChild(0));
-	Node Bprime = static_cast<const Node &>(tau_pos.getChild(2));
+	B = static_cast<const Node &>(tau_pos.getChild(0));
+	B_prime = static_cast<const Node &>(tau_pos.getChild(2));
 
 	for(unsigned int i=0; i<pfStr.N; ++i)
 	{
 	    if(!isElemOf(*pfStr.Gq, static_cast<const IntLeaf &>(B.getChild(i))) ||
-	       !isElemOf(*pfStr.Gq, static_cast<const IntLeaf &>(Bprime.getChild(i))))
+	       !isElemOf(*pfStr.Gq, static_cast<const IntLeaf &>(B_prime.getChild(i))))
 	    {
 		return false;
 	    }
@@ -65,15 +99,13 @@ bool proofOfShuffle(proofStruct &pfStr, const Node &tau_pos, const Node &sigma_p
 
     try
     {
-	const IntLeaf &kA = static_cast<const IntLeaf &>(sigma_pos.getChild(0));
-	const IntLeaf &kC = static_cast<const IntLeaf &>(sigma_pos.getChild(2));
-	const IntLeaf &kD = static_cast<const IntLeaf &>(sigma_pos.getChild(3));
-	const IntLeaf &kF = static_cast<const IntLeaf &>(sigma_pos.getChild(5));
+        kA = static_cast<const IntLeaf &>(sigma_pos.getChild(0));
+        kC = static_cast<const IntLeaf &>(sigma_pos.getChild(2));
+        kD = static_cast<const IntLeaf &>(sigma_pos.getChild(3));
+	kF = static_cast<const IntLeaf &>(sigma_pos.getChild(5));
 
-	const Node &kB = static_cast<const Node &>(sigma_pos.getChild(1));
-	const Node &kE = static_cast<const Node &>(sigma_pos.getChild(4));
-
-	const IntLeaf &q = static_cast<const IntLeaf &>(pfStr.Gq->getChild(1));
+	kB = static_cast<const Node &>(sigma_pos.getChild(1));
+	kE = static_cast<const Node &>(sigma_pos.getChild(4));
 
 	if(!isElemOf(q, kA) ||
 	   !isElemOf(q, kC) ||
@@ -100,29 +132,42 @@ bool proofOfShuffle(proofStruct &pfStr, const Node &tau_pos, const Node &sigma_p
 	return false;
     }
 
-
+    Node h; // = calles_metod();
 
     // Step 2, compute a seed
     Node seed_gen;
-    seed_gen.addChild(pfStr.Gq->getChild(2)); // add g, generator of Gq
-    /* generator.addChild(h) add h? */
-    seed_gen.addChild(*pfStr.mu); // add u vector
-    seed_gen.addChild(*pfStr.pk); // add public key
+    seed_gen.addChild(g); // add g, generator of Gq
+    seed_gen.addChild(h);
+    seed_gen.addChild(u);
+    seed_gen.addChild(*pfStr.pk);
     seed_gen.addChild(*pfStr.w); 
     seed_gen.addChild(*pfStr.w_prime);
 
-    /* IntLeaf seed = RO_seed(*pfStr.rho, seed_gen); */
+
+    std::vector<unsigned char> gen = pfStr.rho->toVector();
+    std::vector<unsigned char> seed_gen_vec = seed_gen.toVector();
+    gen.insert(gen.end(), seed_gen_vec.begin(), seed_gen_vec.end());
+
+    RO rs = RO(pfStr.hash, (pfStr.nE/8)*8);
+
+    IntLeaf seed = rs(gen);
 
     // Step 3
-    Node t;/* = PRG(seed); */
+
+    PRG prg = PRG(pfStr.hash, seed.toVector());
+
+    Node t;    
+    for(unsigned int i=0; i<pfStr.N; ++i)
+    {
+	t.addChild(prg.next());
+    }
 
     IntLeaf exp(2);
     exp.expTo(pfStr.nE);
 
     Node e = t.mod(exp);
 
-    const IntLeaf &p = static_cast<const IntLeaf &>(pfStr.Gq->getChild(0));
-    IntLeaf A = pfStr.mu->expMultMod(e, p);
+    IntLeaf A = u.expMultMod(e, p);
     IntLeaf F = pfStr.w->expMultMod(e, p);
 
     // Step 4, compute a challenge
@@ -130,11 +175,59 @@ bool proofOfShuffle(proofStruct &pfStr, const Node &tau_pos, const Node &sigma_p
     challenge_gen.addChild(seed);
     challenge_gen.addChild(tau_pos);
 
-    IntLeaf v; /* RO_challenge(*pfStr.rho, challenge_gen); */
+    gen = pfStr.rho->toVector();
+    std::vector<unsigned char> chal_gen_vec = challenge_gen.toVector();
+    gen.insert(gen.end(), chal_gen_vec.begin(), chal_gen_vec.end());
+
+
+    RO rc = RO(pfStr.hash, std::pow(2,pfStr.nV));
+
+    IntLeaf v = rc(gen);
 
     // Step 5
-    // C = pfStr.mu->prodMod(p);
-    // Includes division?		  
+    IntLeaf C = u.prodMod(p) * h.prodMod(p).inverse(p);
+
+    IntLeaf D = static_cast<const IntLeaf &>(B.getChild(pfStr.N - 1)) * static_cast<const IntLeaf &>(h.getChild(0)).expMod(e.prodMod(p), p).inverse(p);
+    
+    if(A.expMod(v, p)*A_prime != g.expMod(kA, p)*h.expMultMod(kE, p))
+    {
+	return false;
+    }
+
+    // Handling case: B.getChild(i-1) = h_0
+    if(static_cast<const IntLeaf &>(B.getChild(0)).expMod(v,p) * static_cast<const IntLeaf &>(B_prime.getChild(0)) != 
+       g.expMod(static_cast<const IntLeaf &>(kB.getChild(0)),p)*
+       static_cast<const IntLeaf &>(h.getChild(0)).expMod(static_cast<const IntLeaf &>(kE.getChild(0)),p))
+    {
+	return false;
+    }
+
+    for(unsigned int i=1; i<pfStr.N; ++i)
+    {
+	if(static_cast<const IntLeaf &>(B.getChild(i)).expMod(v, p) * static_cast<const IntLeaf &>(B_prime.getChild(i)) !=
+	   g.expMod(static_cast<const IntLeaf &>(kB.getChild(i)),p) * 
+	   static_cast<const IntLeaf &>(B.getChild(i-1)).expMod(static_cast<const IntLeaf &>(kE.getChild(i)),p))
+	{
+	    return false;
+	}
+    }
+
+    if(C.expMod(v, p)*C_prime != g.expMod(kC, p))
+    {
+	return false;
+    }
+
+    if(D.expMod(v, p)*D_prime != g.expMod(kD, p))
+    {
+	return false;
+    }
+
+/*
+    if(F.expMod(v, p) * F_prime != Enc(*pfStr.pk, IntLeaf(1), -kF, g, p) * pfStr.w_prime->expProdMod(kE, p))
+    {
+	return false;
+    }
+*/
 
     return true;
 } 
