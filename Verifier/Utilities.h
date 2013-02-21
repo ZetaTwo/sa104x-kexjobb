@@ -11,7 +11,7 @@ struct proofStruct
     int nE;
     int nR;
     int nV;
-    //PRG
+    std::vector<unsigned char> (*hash)(std::vector<unsigned char>);
     const Node *Gq;
     const Node *Rw;
     const Node *Cw;
