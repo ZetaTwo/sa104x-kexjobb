@@ -85,6 +85,34 @@ Node &Node::operator=(const Node &node) {
 	return *this;
 };
 
+
+Node &Node::modTo(const IntLeaf &leaf) {
+    for (std::vector<BaseNode *>::iterator itr = children.begin(); itr < children.end(); itr++)
+    {
+	switch((*itr)->getType()) {
+	case BaseNode::INT_LEAF:
+	    static_cast<IntLeaf *>(*itr)->modTo(leaf);
+	    break;
+	case BaseNode::NODE:
+	    static_cast<Node *>(*itr)->modTo(leaf);
+	    break;
+	default:
+	    break;
+	}
+    }
+    
+    return *this;
+}
+
+
+Node Node::mod(const IntLeaf &leaf) const {
+    Node *result = new Node(*this);
+    result->modTo(leaf);
+    
+    return *result;
+};
+
+
 Node &Node::addTo(const IntLeaf &leaf) {
     for (std::vector<BaseNode *>::iterator itr = children.begin(); itr < children.end(); itr++)
     {
@@ -126,8 +154,6 @@ Node &Node::addTo(const Node &node) {
 Node Node::add(const IntLeaf &leaf) const {
     Node *result = new Node(*this);
     result->addTo(leaf);
-
-	std::string result2 = result->toString();
     
     return *result;
 };

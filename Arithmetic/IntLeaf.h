@@ -32,6 +32,9 @@ public:
     IntLeaf &operator=(long int input);
     IntLeaf &operator=(std::string input);	
     
+    IntLeaf &modTo(const IntLeaf &leaf);
+    IntLeaf mod(const IntLeaf &leaf) const;
+
     IntLeaf &addTo(const IntLeaf &leaf);
     IntLeaf add(const IntLeaf &leaf) const;
     

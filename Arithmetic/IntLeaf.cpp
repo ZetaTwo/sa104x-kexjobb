@@ -103,6 +103,20 @@ IntLeaf &IntLeaf::operator=(std::string input)
 }
 
 
+IntLeaf & IntLeaf::modTo(const IntLeaf & leaf)
+{
+    this->data = this->data % leaf.data;
+
+    return *this;
+}
+
+
+IntLeaf IntLeaf::mod(const IntLeaf & leaf) const
+{
+    return IntLeaf(*this).modTo(leaf);
+}
+
+
 IntLeaf & IntLeaf::addTo(const IntLeaf & leaf)
 {
     this->data += leaf.data;

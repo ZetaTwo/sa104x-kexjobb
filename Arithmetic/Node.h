@@ -24,6 +24,9 @@ public:
 
 	Node &operator=(const Node &node);
 
+	Node modTo(const IntLeaf &leaf);
+	Node mod(const IntLeaf &leaf) const;
+
 	Node &addTo(const IntLeaf &leaf);
 	Node add(const IntLeaf &leaf) const;
 
