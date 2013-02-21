@@ -16,9 +16,12 @@ bool verifyShuffling(proofStruct &pfStr, int lambda, Node &L0, Node &Llambda, No
     {
 	Node L_array = Node();	
 	L_array.addChild(L0);
+	Node * last = &L0;
 
 	for(int l=1; l<=lambda; l++)
 	{
+	    Node L;
+
 	    // Step 1
 	    if(l < lambda)
 	    {
@@ -30,7 +33,7 @@ bool verifyShuffling(proofStruct &pfStr, int lambda, Node &L0, Node &Llambda, No
 		if(!ciphtext_stream)
 		    return false;
 
-		Node L = Node(ciphtext_stream);
+		L = Node(ciphtext_stream);
 
 		if(!isListOfCipherTexts(L))
 		    return false;
@@ -42,11 +45,34 @@ bool verifyShuffling(proofStruct &pfStr, int lambda, Node &L0, Node &Llambda, No
 		L_array.addChild(Llambda);
 	    }
 
-	    // Step 2
+	    
+	    pfStr.w = last;
+	    pfStr.w_prime = &L;
+
+	    Node tau_pos;
+	    Node sigma_pos;
+
+	    try
+	    {
+		pfStr.mu = new Node("PermutationCommitment<" + std::to_string(l) + ">.bt");
+		tau_pos = Node("PoSCommitment<" + std::to_string(l) + ">.bt");
+		sigma_pos = Node("PoSReply<" + std::to_string(l) + ">.bt");
+	    }
+	    catch(...)
+	    {
+		return false;
+	    }
+
+
+	    //Step 2
 	    // Verify proof of shuffle
 	    // Execute Algorithm 19 with specified input
-	    if(/*!proofOfShuffle(...) && */static_cast<Node &>(L_array.getChild(l)) != static_cast<Node &>(L_array.getChild(l-1)))
+	    if(!proofOfShuffle(pfStr, tau_pos, sigma_pos) &&
+	       static_cast<Node &>(L_array.getChild(l)) != static_cast<Node &>(L_array.getChild(l-1)))
 		return false;
+
+	    last = &L;
+	    delete pfStr.mu;
 
 	}
 
