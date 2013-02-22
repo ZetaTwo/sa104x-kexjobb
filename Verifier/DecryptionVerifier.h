@@ -1,3 +1,3 @@
 #pragma once
 
-bool DecryptionVerifier(void);
+bool DecryptionVerifier(const proofStruct &ps, const Node L, const Node m);

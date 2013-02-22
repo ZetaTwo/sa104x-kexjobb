@@ -33,6 +33,9 @@
     <ClCompile Include="H_SHA.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="RandomArray.cpp">
+      <Filter>Source Files\PRG</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PRG.h">
@@ -46,6 +49,9 @@
     </ClInclude>
     <ClInclude Include="H_SHA.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomArray.h">
+      <Filter>Header Files\PRG</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

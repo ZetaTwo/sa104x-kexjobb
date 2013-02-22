@@ -1,9 +1,12 @@
 #include "DecryptionVerifier.h"
 #include "DecryptionFactorsVerifier.h"
 
+#include "ProofOfShuffle.h"
+#include "ElGamal.h"
+
 #include "Node.h"
 
-bool DecryptionVerifier(rho, N, nE, nR, nV, PRG, Gq, Mw, Cw, pk, Node y, L, m) {
+bool DecryptionVerifier(const proofStruct &ps, const Node L, const Node m) {
 
 	//Step 1
 	Node f = Node("f.dat");
@@ -12,14 +15,14 @@ bool DecryptionVerifier(rho, N, nE, nR, nV, PRG, Gq, Mw, Cw, pk, Node y, L, m) {
 	//If fail, return false;
 
 	//Step 2
-	bool result = algorithm22(0, rho, N, nE, nR, nV, PRG, Gq, g, y, Cw, Mw, L, f, tauDec, sigmaDec);
+	bool result = DecryptionFactorsVerifier(0, ps, f, tauDec, sigmaDec);
 
 	if(!result) {
 		//Step 3
-		for (int l = 0; l < lambda; l++)
+		for (int l = 0; l < f.getLength(); l++)
 		{
-			result = algorithm22(l, rho, N, nE, nR, nV, PRG, Gq, g, y, Cw, Mw, L, f, tauDec, sigmaDec);
-			if(!result && (xL = BOTTOM || fL != PDec(xL, L))) {
+			result = DecryptionFactorsVerifier(l, ps, f, tauDec, sigmaDec);
+			if(!result && (xL = BOTTOM || static_cast<IntLeaf>(f.getChild(l)) != PDec(xL, L))) {
 				return false;
 			}
 		}

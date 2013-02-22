@@ -5,7 +5,7 @@
 #include "PRG.h"
 #include "H_SHA.h"
 
-bool DecryptionFactorsVerifier(int j, proofStruct &ps, const Node &f, const Node &tauDec, const Node &sigmaDec) {
+bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f, const Node &tauDec, const Node &sigmaDec) {
 
 	//Step 1
 	//Foreach tauDecL in tauDec {
@@ -72,6 +72,7 @@ bool DecryptionFactorsVerifier(int j, proofStruct &ps, const Node &f, const Node
 	}
 	IntLeaf A = u.expMultMod(e, static_cast<const IntLeaf &>(ps.Gq->getChild(0)));
 	if(j == 0) {
+
 		Node B = f.prod().expMult(e);
 		//Some more calculations
 		//If fail: return false;
