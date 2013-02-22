@@ -50,7 +50,7 @@ bool DecryptionFactorsVerifier(int j, proofStruct &ps, const Node &f, const Node
 	}
 	IntLeaf mod(2);
 	mod.expTo(ps.nE);
-	Node e = t.addMod(0, mod);
+	Node e = t.mod(mod);
 
 	//Step 4
 	Node challenge;
