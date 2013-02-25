@@ -168,7 +168,7 @@ bool proofOfShuffle(proofStruct &pfStr, const Node &tau_pos, const Node &sigma_p
     Node e = t.mod(exp);
 
     IntLeaf A = u.expMultMod(e, p);
-    IntLeaf F = pfStr.w->expMultMod(e, p);
+    Node F = pfStr.w->expMultMod(e, p);
 
     // Step 4, compute a challenge
     Node challenge_gen;
@@ -222,12 +222,11 @@ bool proofOfShuffle(proofStruct &pfStr, const Node &tau_pos, const Node &sigma_p
 	return false;
     }
 
-/*
     if(F.expMod(v, p) * F_prime != Enc(*pfStr.pk, IntLeaf(1), -kF, g, p) * pfStr.w_prime->expProdMod(kE, p))
     {
 	return false;
     }
-*/
+
 
     return true;
 } 
