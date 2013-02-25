@@ -86,6 +86,7 @@ public:
 	IntLeaf expMultMod(unsigned long exponent, const IntLeaf &mod) const;
 
 	Node &addChild(const BaseNode &child);
+	Node getChildren(int32_t index) const;
 	BaseNode &getChild(int32_t index);
 	const BaseNode &getChild(int32_t index) const;
 	std::string toString(void) const;

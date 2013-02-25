@@ -575,6 +575,17 @@ const BaseNode &Node::getChild(int32_t index) const {
     return *children[index];
 }
 
+Node Node::getChildren(int32_t index) const {
+    Node res;
+
+    for(std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
+    {
+        res.addChild(static_cast<const Node *>(*itr)->getChild(index));
+    }
+
+    return res;
+}
+
 void Node::copyElements(std::vector<BaseNode *> elements) {
 	for (std::vector<BaseNode *>::const_iterator itr = elements.begin(); itr < elements.end(); itr++)
 	{
