@@ -2,6 +2,7 @@
 
 #include "PRG.h"
 #include "RO.h"
+#include "ElGamal.h"
 
 #include <cmath>
 
@@ -168,7 +169,12 @@ bool proofOfShuffle(proofStruct &pfStr, const Node &tau_pos, const Node &sigma_p
     Node e = t.mod(exp);
 
     IntLeaf A = u.expMultMod(e, p);
-    Node F = pfStr.w->expMultMod(e, p);
+    
+
+    Node F;
+
+    F.addChild(pfStr.w->getChildren(0).expMultMod(e, p));
+    F.addChild(pfStr.w->getChildren(1).expMultMod(e, p));
 
     // Step 4, compute a challenge
     Node challenge_gen;
@@ -222,7 +228,7 @@ bool proofOfShuffle(proofStruct &pfStr, const Node &tau_pos, const Node &sigma_p
 	return false;
     }
 
-    if(F.expMod(v, p) * F_prime != Enc(*pfStr.pk, IntLeaf(1), -kF, g, p) * pfStr.w_prime->expProdMod(kE, p))
+    if(F.expMod(v, p) * F_prime != Enc(*pfStr.pk, IntLeaf(1), -kF, g, p) * pfStr.w_prime->expMultMod(kE, p))
     {
 	return false;
     }
@@ -230,3 +236,4 @@ bool proofOfShuffle(proofStruct &pfStr, const Node &tau_pos, const Node &sigma_p
 
     return true;
 } 
+
