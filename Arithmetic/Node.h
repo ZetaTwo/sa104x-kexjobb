@@ -74,10 +74,12 @@ public:
 
 	Node exp(unsigned long exponent) const;
 	Node expMod(unsigned long exponent, const IntLeaf &mod) const;
+	Node expMod(const Intleaf &exponent, const IntLeaf &mod) const;
 	Node exp(const Node &exponents) const;
 	Node expMod(const Node &exponents, const IntLeaf &mod) const;
 	Node &expTo(unsigned long exponent) const;
 	Node &expModTo(unsigned long exponent, const IntLeaf &mod) const;
+	Node &expModTo(const IntLeaf &exponent, const IntLeaf &mod);
 	Node &expTo(const Node &exponents) const;
 	Node &expModTo(const Node &exponents, const IntLeaf &mod) const;
 
