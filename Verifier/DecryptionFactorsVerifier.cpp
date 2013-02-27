@@ -42,7 +42,7 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 	IntLeaf s = RO_seed(seed_data);
 
 	//Step 3
-	PRG prg(H_SHA256, s.toVector());
+	PRG prg(H_SHA256, s.toVector(), 256);
 	Node t;
 	for (int i = 0; i < ps.N; i++)
 	{
@@ -65,20 +65,34 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 	IntLeaf v = RO_challenge(challenge_data);
 
 	//Step 5
-	Node u;
-	for (int i = 0; i < ps.w->getLength(); i++)
-	{
-		u.addChild(static_cast<const Node &>(ps.w->getChild(i)).getChild(0));
-	}
-	IntLeaf A = u.expMultMod(e, static_cast<const IntLeaf &>(ps.Gq->getChild(0)));
+	IntLeaf p = static_cast<const IntLeaf &>(ps.Gq->getChild(0));
+	Node u = ps.w->getChildren(0);
+	Node yPrime = tauDec.getChildren(0);
+	IntLeaf A = u.expMultMod(e, p);
 	if(j == 0) {
 
-		Node B = f.prod().expMult(e);
-		//Some more calculations
-		//If fail: return false;
+		Node Bnode;
+		for (int i = 0; i < f.getLength(); i++)
+		{
+			Bnode.addChild(f.getChildren(i).prodMod(p));
+		}
+		IntLeaf B = Bnode.expMultMod(e, p);
+		
+		IntLeaf cond1left = ps.pk->prodMod(p).expMod(v, p) * yPrime.prodMod(p);
+		IntLeaf cond1right = static_cast<const IntLeaf &>(ps.Gq->getChild(2)).expMod(sigmaDec.prodMod(p), p);
+
+		IntLeaf cond2left = B.expMod(v, p) * tauDec.getChildren(1).prodMod(p);
+		IntLeaf cond2right = PDec(); //TODO
+
+		return cond1left == cond1right && cond2left == cond2right;
 	} else {
-		//Some other calculations
-		//If fail: return false;
+		IntLeaf Bj = f.getChildren(j).expMultMod(e, p);
+
+		IntLeaf cond1left = static_cast<const IntLeaf &>(ps.pk->getChild(j)).expMod(v, p) * static_cast<const IntLeaf &>(yPrime.getChild(j));
+		IntLeaf cond1right = static_cast<const IntLeaf &>(ps.Gq->getChild(2)).expMod(static_cast<const IntLeaf &>(sigmaDec.getChild(j)), p);
+
+		IntLeaf cond2left = Bj.expMod(v, p) * static_cast<const IntLeaf &>(tauDec.getChild(j));
+		IntLeaf cond2right = PDec(); //TODO
 	}
 
 	return true;
