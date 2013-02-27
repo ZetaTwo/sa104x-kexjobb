@@ -9,11 +9,15 @@ IntLeaf TDec(Node x, Node c, IntLeaf mod) {
 		static_cast<IntLeaf &>(c.getChild(0)).expMod(-x.sum(), mod);
 }
 
-Node Enc(IntLeaf pk, IntLeaf m, IntLeaf s, IntLeaf g, IntLeaf mod) {
+Node Enc(Node pk, IntLeaf m, IntLeaf s, IntLeaf mod) {
 	Node result;
+
 	//IntLeaf s(); <-- Choose at random
 
+	IntLeaf y = static_cast<IntLeaf &>(pk.getChild(0));;
+	IntLeaf g = static_cast<IntLeaf &>(pk.getChild(1));
+
 	result.addChild(g.expMod(s, mod));
-	result.addChild(g.expMod(pk, mod).expMod(s, mod).multMod(m, mod));
+	result.addChild(g.expMod(y, mod).expMod(s, mod).multMod(m, mod));
 	return result;
 }
