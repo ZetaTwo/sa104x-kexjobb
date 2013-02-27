@@ -29,10 +29,15 @@ TEST(PRGTests, TestVector256) {
 	std::vector<unsigned char> datavec;
 	datavec.insert(datavec.begin(), data, data+32);
 
-	PRG prg(H_SHA256, datavec);
-	std::vector<unsigned char> next = prg.next().toVector();
+	PRG prg(H_SHA256, datavec, 256);
+	std::vector<unsigned char> result;
+	for (int i = 0; i < 128/32; i++)
+	{
+		std::vector<unsigned char> next = prg.next().toVector();
+		result.insert(result.end(), next.begin(), next.end());
+	}
 
-	EXPECT_EQ(expected, next);
+	EXPECT_EQ(expected, result);
 }
 
 
@@ -59,10 +64,16 @@ TEST(PRGTests, TestVector384) {
 	std::vector<unsigned char> datavec;
 	datavec.insert(datavec.begin(), data, data+48);
 
-	PRG prg(H_SHA256, datavec);
-	std::vector<unsigned char> next = prg.next().toVector();
+	PRG prg(H_SHA384, datavec, 8*48);
+	std::vector<unsigned char> result;
+	for (int i = 0; i < 3; i++)
+	{
+		std::vector<unsigned char> next = prg.next().toVector();
+		result.insert(result.end(), next.begin(), next.end());
+	}
+	result.resize(128);
 
-	EXPECT_EQ(expected, next);
+	EXPECT_EQ(expected, result);
 }
 
 TEST(PRGTests, TestVector512) {
@@ -86,8 +97,13 @@ TEST(PRGTests, TestVector512) {
 	std::vector<unsigned char> datavec;
 	datavec.insert(datavec.begin(), data, data+64);
 
-	PRG prg(H_SHA256, datavec);
-	std::vector<unsigned char> next = prg.next().toVector();
+	PRG prg(H_SHA512, datavec, 64*8);
+	std::vector<unsigned char> result;
+	for (int i = 0; i < 2; i++)
+	{
+		std::vector<unsigned char> next = prg.next().toVector();
+		result.insert(result.end(), next.begin(), next.end());
+	}
 
-	EXPECT_EQ(expected, next);
+	EXPECT_EQ(expected, result);
 }
