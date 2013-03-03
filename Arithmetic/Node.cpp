@@ -595,6 +595,22 @@ const BaseNode &Node::getChild(int32_t index) const {
     return *children[index];
 }
 
+IntLeaf &Node::getIntLeafChild(int32_t index) {
+    return static_cast<IntLeaf &>(getChild(index));
+}
+
+const IntLeaf &Node::getIntLeafChild(int32_t index) const {
+    return static_cast<const IntLeaf &>(getChild(index));
+}
+
+Node &Node::getNodeChild(int32_t index) {
+    return static_cast<Node &>(getChild(index));
+}
+
+const Node &Node::getNodeChild(int32_t index) const {
+    return static_cast<const Node &>(getChild(index));
+}
+
 Node Node::getChildren(int32_t index) const {
     Node res;
 
