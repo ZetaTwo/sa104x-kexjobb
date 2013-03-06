@@ -22,7 +22,7 @@ bool DecryptionVerifier(const proofStruct &ps, const Node L, const Node m) {
 		for (int l = 0; l < f.getLength(); l++)
 		{
 			result = DecryptionFactorsVerifier(l, ps, f, tauDec, sigmaDec);
-			if(!result && (xL = BOTTOM || static_cast<IntLeaf>(f.getChild(l)) != PDec(xL, L))) {
+			if(!result && (xL = BOTTOM || f.getIntLeafChild(l) != PDec(xL, L))) {
 				return false;
 			}
 		}

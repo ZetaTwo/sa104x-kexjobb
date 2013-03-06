@@ -25,7 +25,7 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 	Node seed;
 	Node seed_a;
 	Node seed_b;
-	seed_a.addChild(static_cast<const Node *>(ps.Gq)->getChild(2));
+	seed_a.addChild(ps.Gq->getChild(2));
 	seed_a.addChild(*ps.w);
 	seed_b.addChild(*ps.pk);
 	seed_b.addChild(f);
@@ -65,7 +65,7 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 	IntLeaf v = RO_challenge(challenge_data);
 
 	//Step 5
-	IntLeaf p = static_cast<const IntLeaf &>(ps.Gq->getChild(0));
+	IntLeaf p = ps.Gq->getIntLeafChild(0);
 	Node u = ps.w->getChildren(0);
 	Node yPrime = tauDec.getChildren(0);
 	IntLeaf A = u.expMultMod(e, p);
@@ -79,7 +79,7 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 		IntLeaf B = Bnode.expMultMod(e, p);
 		
 		IntLeaf cond1left = ps.pk->prodMod(p).expMod(v, p) * yPrime.prodMod(p);
-		IntLeaf cond1right = static_cast<const IntLeaf &>(ps.Gq->getChild(2)).expMod(sigmaDec.prodMod(p), p);
+		IntLeaf cond1right = ps.Gq->getIntLeafChild(2).expMod(sigmaDec.prodMod(p), p);
 
 		IntLeaf cond2left = B.expMod(v, p) * tauDec.getChildren(1).prodMod(p);
 		IntLeaf cond2right = PDec(); //TODO
@@ -88,8 +88,8 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 	} else {
 		IntLeaf Bj = f.getChildren(j).expMultMod(e, p);
 
-		IntLeaf cond1left = static_cast<const IntLeaf &>(ps.pk->getChild(j)).expMod(v, p) * static_cast<const IntLeaf &>(yPrime.getChild(j));
-		IntLeaf cond1right = static_cast<const IntLeaf &>(ps.Gq->getChild(2)).expMod(static_cast<const IntLeaf &>(sigmaDec.getChild(j)), p);
+		IntLeaf cond1left = ps.pk->getIntLeafChild(j).expMod(v, p) * yPrime.getIntLeafChild(j);
+		IntLeaf cond1right = ps.Gq->getIntLeafChild(2).expMod(sigmaDec.getIntLeafChild(j), p);
 
 		IntLeaf cond2left = Bj.expMod(v, p) * static_cast<const IntLeaf &>(tauDec.getChild(j));
 		IntLeaf cond2right = PDec(); //TODO

@@ -43,9 +43,9 @@ Node *verifyKeys(int lambda, const Node &Gq)
 
     }
 
-    IntLeaf &g = static_cast<IntLeaf &>(pk.getChild(0));
-    IntLeaf &y = static_cast<IntLeaf &>(pk.getChild(1));
-    IntLeaf &p = static_cast<IntLeaf &>(G.getChild(0));
+    IntLeaf &g = pk.getIntLeafChild(0);
+    IntLeaf &y = pk.getIntLeafChild(1);
+    IntLeaf &p = G.getIntLeafChild(0);
 
     if(pub_keys.prod() != y)
     {

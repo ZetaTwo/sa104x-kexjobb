@@ -68,7 +68,7 @@ bool verifyShuffling(proofStruct &pfStr, int lambda, Node &L0, Node &Llambda, No
 	    // Verify proof of shuffle
 	    // Execute Algorithm 19 with specified input
 	    if(!proofOfShuffle(pfStr, tau_pos, sigma_pos) &&
-	       static_cast<Node &>(L_array.getChild(l)) != static_cast<Node &>(L_array.getChild(l-1)))
+	       L_array.getNodeChild(l) != L_array.getNodeChild(l-1))
 		return false;
 
 	    last = &L;
