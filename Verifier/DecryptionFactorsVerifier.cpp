@@ -91,7 +91,7 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 		IntLeaf cond1left = ps.pk->getIntLeafChild(j).expMod(v, p) * yPrime.getIntLeafChild(j);
 		IntLeaf cond1right = ps.Gq->getIntLeafChild(2).expMod(sigmaDec.getIntLeafChild(j), p);
 
-		IntLeaf cond2left = Bj.expMod(v, p) * static_cast<const IntLeaf &>(tauDec.getChild(j));
+		IntLeaf cond2left = Bj.expMod(v, p) * tauDec.getIntLeafChild(j);
 		IntLeaf cond2right = PDec(); //TODO
 	}
 
