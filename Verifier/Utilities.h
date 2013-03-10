@@ -7,7 +7,7 @@
 struct proofStruct
 {
     const IntLeaf *rho;
-    const int N;
+    int N;
     int nE;
     int nR;
     int nV;
@@ -20,6 +20,8 @@ struct proofStruct
     const Node *w;
     const Node *w_prime;
     const Node *mu;
+    const Node *L0;
+    const Node *Llambda;
 };
 
 bool isElemOf(const Node &group, const IntLeaf &elem);

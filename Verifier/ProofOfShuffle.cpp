@@ -154,7 +154,7 @@ bool proofOfShuffle(proofStruct &pfStr, const Node &tau_pos, const Node &sigma_p
 
     // Step 3
 
-    PRG prg = PRG(pfStr.hash, seed.toVector());
+    PRG prg = PRG(pfStr.hash, seed.toVector(), pfStr.nE);
 
     Node t;    
     for(unsigned int i=0; i<pfStr.N; ++i)
