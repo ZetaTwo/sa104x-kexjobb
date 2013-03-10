@@ -5,6 +5,7 @@
 #include <iomanip>
 #include <stdlib.h>
 
+#include <iterator>
 #include <iostream>
 
 Node::Node() : BaseNode(BaseNode::NODE)
@@ -441,65 +442,80 @@ IntLeaf Node::prodMod(const IntLeaf &mod) const {
 	return prod;
 };
 
-Node Node::exp(unsigned long exponent) const {
-	Node exp;
+Node &Node::expTo(unsigned long exponent) {
 
-	for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
-	{
-		switch((*itr)->getType()) {
-		case BaseNode::INT_LEAF:
-			exp.addChild(static_cast<IntLeaf *>(*itr)->exp(exponent));
-			break;
-		case BaseNode::NODE:
-			exp.addChild(static_cast<Node *>(*itr)->exp(exponent));
-			break;
-		default:
-			break;
-		}
+    for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
+    {
+	switch((*itr)->getType()) {
+	case BaseNode::INT_LEAF:
+	    static_cast<IntLeaf *>(*itr)->expTo(exponent);
+	    break;
+	case BaseNode::NODE:
+	    static_cast<Node *>(*itr)->expTo(exponent);
+	    break;
+	default:
+	    break;
 	}
+    }
 
-	return exp;
+    return *this;
+
+}
+
+Node Node::exp(unsigned long exponent) const {
+    Node exp(*this);
+
+    return exp.expTo(exponent);
 };
+
+Node &Node::expToMod(unsigned long exponent, const IntLeaf &mod) {
+    for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
+    {
+	switch((*itr)->getType()) {
+	case BaseNode::INT_LEAF:
+	    static_cast<IntLeaf *>(*itr)->expToMod(exponent, mod);
+	    break;
+	case BaseNode::NODE:
+	    static_cast<Node *>(*itr)->expToMod(exponent, mod);
+	    break;
+	default:
+	    break;
+	}
+    }
+
+    return *this;
+}
 
 Node Node::expMod(unsigned long exponent, const IntLeaf &mod) const {
-	Node exp;
-	
-	for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
-	{
-		switch((*itr)->getType()) {
-		case BaseNode::INT_LEAF:
-			exp.addChild(static_cast<IntLeaf *>(*itr)->expMod(exponent, mod));
-			break;
-		case BaseNode::NODE:
-			exp.addChild(static_cast<Node *>(*itr)->expMod(exponent, mod));
-			break;
-		default:
-			break;
-		}
-	}
+    Node exp(*this);
 
-	return exp;
+    return exp.expToMod(exponent, mod);
 };
+
+Node &Node::expToMod(const IntLeaf &exponent, const IntLeaf &mod) {
+    for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
+    {
+	switch((*itr)->getType()) {
+	case BaseNode::INT_LEAF:
+	    static_cast<IntLeaf *>(*itr)->expToMod(exponent, mod);
+	    break;
+	case BaseNode::NODE:
+	    static_cast<Node *>(*itr)->expToMod(exponent, mod);
+	    break;
+	default:
+	    break;
+	}
+    }
+
+    return *this;
+}
 
 Node Node::expMod(const IntLeaf &exponent, const IntLeaf &mod) const {
-	Node exp;
-	
-	for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
-	{
-		switch((*itr)->getType()) {
-		case BaseNode::INT_LEAF:
-			exp.addChild(static_cast<IntLeaf *>(*itr)->expMod(exponent, mod));
-			break;
-		case BaseNode::NODE:
-			exp.addChild(static_cast<Node *>(*itr)->expMod(exponent, mod));
-			break;
-		default:
-			break;
-		}
-	}
-
-	return exp;
+    Node exp(*this);
+    return exp.expToMod(exponent, mod);
 };
+
+
 
 IntLeaf Node::expMultMod(const Node &node, const IntLeaf &mod) const {
 	IntLeaf result;
