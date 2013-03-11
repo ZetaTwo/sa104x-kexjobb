@@ -89,8 +89,6 @@ public:
 
 	Node &addChild(const BaseNode &child);
 	Node getChildren(int32_t index) const;
-	BaseNode &getChild(int32_t index);
-	const BaseNode &getChild(int32_t index) const;
 
 	IntLeaf &getIntLeafChild(int32_t index);
 	const IntLeaf &getIntLeafChild(int32_t index) const;
@@ -102,6 +100,9 @@ public:
 
 	virtual int32_t getLength(void) const;
 private:
+	BaseNode &getChild(int32_t index);
+	const BaseNode &getChild(int32_t index) const;
+
 	std::vector<BaseNode *> children;
 
 	void constructFromFilename(const std::string filename);

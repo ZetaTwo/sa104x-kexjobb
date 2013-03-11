@@ -25,7 +25,7 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 	Node seed;
 	Node seed_a;
 	Node seed_b;
-	seed_a.addChild(ps.Gq->getChild(2));
+	seed_a.addChild(ps.Gq->getIntLeafChild(2));
 	seed_a.addChild(*ps.w);
 	seed_b.addChild(*ps.pk);
 	seed_b.addChild(f);
