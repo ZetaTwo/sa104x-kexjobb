@@ -101,7 +101,13 @@ bool keyVerifier(int lambda, const Node &G, Node &key_node)
 
 bool isPublicKey(const Node &G, const Node &pk) 
 {
-    return true;
+    if(isElemOf(G, pk.getIntLeafChild(0)) &&
+       isElemOf(G, pk.getIntLeafChild(1)))
+    {
+	return true;
+    }
+
+    return false;
 }
 
 bool isPartialPublicKey(const Node &G, IntLeaf &ppk)
