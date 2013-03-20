@@ -6,19 +6,19 @@
 #include "IntLeaf.h"
 #include "Utilities.h"
 
-bool keyVerifier(int lambda, const Node &G, Node &key_node)
+bool keyVerifier(int lambda, const Node &G, proofStruct &pfStr)
 {
     // Step 1
-    Node pk = Node(FULL_PUBLIC_KEY_FILE_NAME);
+    Node *pk = new Node(FULL_PUBLIC_KEY_FILE_NAME);
     
-    if(!isPublicKey(G, pk))
+    if(!isPublicKey(G, *pk))
     {
         // Did not read a key from file, reject proof
         return false;
     }
 
     // Step 2
-    Node pub_keys = Node();
+    Node *pub_keys = new Node();
     IntLeaf pub_key;
     
     for(int i=1; i <= lambda; i++) 
@@ -38,16 +38,16 @@ bool keyVerifier(int lambda, const Node &G, Node &key_node)
 		return false;
 	    }
     
-	    pub_keys.addChild(pub_key);
+	    pub_keys->addChild(pub_key);
 	}
 
     }
 
-    const IntLeaf &g = pk.getIntLeafChild(0);
-    const IntLeaf &y = pk.getIntLeafChild(1);
+    const IntLeaf &g = pk->getIntLeafChild(0);
+    const IntLeaf &y = pk->getIntLeafChild(1);
     const IntLeaf &p = G.getIntLeafChild(0);
 
-    if(pub_keys.prod() != y)
+    if(pub_keys->prod() != y)
     {
 	// Public keys do not match, reject proof
 	return false;
@@ -55,7 +55,7 @@ bool keyVerifier(int lambda, const Node &G, Node &key_node)
     
 
     // Step 3
-    Node sec_keys = Node();
+    Node *sec_keys = new Node();
     IntLeaf sec_key;
     for(int i=1; i<=lambda; i++)
     {
@@ -83,18 +83,18 @@ bool keyVerifier(int lambda, const Node &G, Node &key_node)
 	else
 	{
 	    /* Set nonsense value? */
-	    sec_key = IntLeaf(-1);
+	    
 	}
 
-	sec_keys.addChild(sec_key);
+	sec_keys->addChild(sec_key);
     }
 
 
     // Step 4
     
-    key_node.addChild(pk);
-    key_node.addChild(pub_keys);
-    key_node.addChild(sec_keys);
+    pfStr.pk = pk;
+    pfStr.y = pub_keys;
+    pfStr.x = sec_keys;
 
     return true;
 }

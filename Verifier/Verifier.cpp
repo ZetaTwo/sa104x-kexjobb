@@ -36,10 +36,10 @@ bool Verifier(string protinfo, string directory,
 
     string versionProt;
     string Sh;
-	string sid;
-	IntLeaf Nv;
-	IntLeaf Ne;
-	IntLeaf lambda;
+    string sid;
+    IntLeaf Nv;
+    IntLeaf Ne;
+    IntLeaf lambda;
     
     try {
 		versionProt = root_node->first_node("version")->value();
@@ -119,12 +119,17 @@ bool Verifier(string protinfo, string directory,
 
     
     //Step 5
-    //keys = Algorithm23(...)
+	
+    Node key_node;
     
+    if(!keyVerifier(lambda, G, pfStr))
+    {
+	return false;
+    }
+    
+
     //Step 6 Read lists
-    
-    Node pub_keys = Node();
-    
+        
     Node *L0;
     Node *Llambda;
 
