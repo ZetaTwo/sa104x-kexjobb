@@ -26,5 +26,5 @@ bool isElemOf(const IntLeaf &Zn, const IntLeaf &elem)
 
 bool isPedersenCommitment(const Node &group, const IntLeaf &elem)
 {
-    return true;
+    return isElemOf(group, elem);
 }
