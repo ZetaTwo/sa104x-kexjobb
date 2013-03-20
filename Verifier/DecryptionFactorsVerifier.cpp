@@ -79,21 +79,25 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 		}
 		IntLeaf B = Bnode.expMultMod(e, p);
 		
+		IntLeaf x = sigmaDec.sumMod(p);
+
 		IntLeaf cond1left = ps.pk->prodMod(p).expMod(v, p) * yPrime.prodMod(p);
-		IntLeaf cond1right = ps.Gq->getIntLeafChild(2).expMod(sigmaDec.prodMod(p), p);
+		IntLeaf cond1right = ps.Gq->getIntLeafChild(2).expMod(x, p);
 
 		IntLeaf cond2left = B.expMod(v, p) * tauDec.getChildren(1).prodMod(p);
-		IntLeaf cond2right = PDec(); //TODO
+		IntLeaf cond2right = PDec(x, A, p);
 
 		return cond1left == cond1right && cond2left == cond2right;
 	} else {
 		IntLeaf Bj = f.getChildren(j).expMultMod(e, p);
 
+		IntLeaf x = sigmaDec.getIntLeafChild(j);
+
 		IntLeaf cond1left = ps.pk->getIntLeafChild(j).expMod(v, p) * yPrime.getIntLeafChild(j);
-		IntLeaf cond1right = ps.Gq->getIntLeafChild(2).expMod(sigmaDec.getIntLeafChild(j), p);
+		IntLeaf cond1right = ps.Gq->getIntLeafChild(2).expMod(x, p);
 
 		IntLeaf cond2left = Bj.expMod(v, p) * tauDec.getIntLeafChild(j);
-		IntLeaf cond2right = PDec(); //TODO
+		IntLeaf cond2right = PDec(x, A, p);
 	}
 
 	return true;
