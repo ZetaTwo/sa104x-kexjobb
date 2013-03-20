@@ -11,7 +11,9 @@ using std::string;
 
 #include <rapidxml/rapidxml.hpp>
 
-#include "PRG.h"
+#include "DataLeaf.h"
+#include "Node.h"
+#include "H_SHA.h"
 
 bool Verifier(string protinfo, string directory,
 				 string typeExp, string auxsidExp, string wExp,
@@ -34,19 +36,30 @@ bool Verifier(string protinfo, string directory,
 
     string versionProt;
     string Sh;
+	string sid;
+	IntLeaf Nv;
+	IntLeaf Ne;
+	IntLeaf lambda;
     
     try {
-	versionProt = root_node->first_node("version")->value();
-	string sid = root_node->first_node("sid")->value();
-	string k = root_node->first_node("nopart")->value();
-	string lambda = root_node->first_node("thres")->value();
-	string Nv = root_node->first_node("cbitlen")->value();
-	string Ne = root_node->first_node("vbitlen")->value();
-	string Sprg = root_node->first_node("prg")->value();
-	Sh = root_node->first_node("rohash")->value();
-	string Cw = root_node->first_node("width")->value();
+		versionProt = root_node->first_node("version")->value();
+		sid = root_node->first_node("sid")->value();
+		string k = root_node->first_node("nopart")->value();
+		
+		string strLambda = root_node->first_node("thres")->value();
+		lambda = atol(strLambda.c_str());
+		
+		string strNv = root_node->first_node("cbitlen")->value();
+		Nv = atol(strNv.c_str());
+		
+		string strNe = root_node->first_node("vbitlen")->value();
+		Ne = atol(strNe.c_str());
+
+		string Sprg = root_node->first_node("prg")->value();
+		Sh = root_node->first_node("rohash")->value();
+		string Cw = root_node->first_node("width")->value();
     } catch (...) {
-	return false;
+		return false;
     }
     
     xml_file.close();
@@ -74,17 +87,36 @@ bool Verifier(string protinfo, string directory,
     if(wExp != "" && wExp != width) { return false; }
     
     //Step 3
-    //H *h = switch(...);
-    
-    PRG *prg;
-    if(Sh == "SHA-256") {
-	prg = new SHA256_PRG();
-    } else {
-	return false;
-    }
+	if(Sh == "SHA-256") {
+		pfStr.hash = H_SHA256;
+	} else if(Sh == "SHA-384") {
+		pfStr.hash = H_SHA384;
+	} else if(Sh == "SHA-512") {
+		pfStr.hash = H_SHA512;
+	} else {
+		return false;
+	}
     
     //Step 4
     //rho = H(node(versionProof, sid + "." auxsid, omega, Ne, Nr, Nv, Gq, Sprg, Sh))
+	DataLeaf rho_version;
+	std::vector<unsigned char> version_data = rho_version.getData();
+	version_data.insert(version_data.end(), versionProof.begin(), versionProof.end());
+
+	DataLeaf rho_id;
+	std::vector<unsigned char> id_data = rho_id.getData();
+	id_data.insert(id_data.end(), sid.begin(), sid.end());
+	id_data.push_back('.');
+	id_data.insert(id_data.begin(), auxsid.begin(), auxsid.end());
+	
+	Node rho;
+	rho.addChild(rho_version);
+	rho.addChild(rho_id);
+	rho.addChild(IntLeaf(atol(width.c_str())));
+	rho.addChild(Ne);
+	rho.addChild(...);
+	rho.addChild(Nv);
+
     
     //Step 5
     //keys = Algorithm23(...)
@@ -95,12 +127,11 @@ bool Verifier(string protinfo, string directory,
     
     Node *L0;
     Node *Llambda;
-    
+
     /* Read first ciphertext */
-    try
-    {
-	const std::string ciphertext_file_name = CIPHERTEXT_FILE_PREFIX + std::to_string(0) + std::string(".bt");
-	std::ifstream fstr(ciphertext_file_name, std::fstream::in);
+    try {
+		const std::string ciphertext_file_name = CIPHERTEXT_FILE_PREFIX + std::to_string(0) + std::string(".bt");
+		std::ifstream fstr(ciphertext_file_name, std::fstream::in);
 
 	L0 = new Node(fstr);
     }
@@ -111,13 +142,11 @@ bool Verifier(string protinfo, string directory,
     
     pfStr.N = L0->getLength();
 
-    if(type == "mixing")
-    {
+    if(type == "mixing") {
 	/* Read threshold ciphertext */
-	try
-	{
-	    const std::string ciphertext_file_name = CIPHERTEXT_FILE_PREFIX + std::to_string(lambda) + std::string(".bt");
-	    std::ifstream fstr(ciphertext_file_name, std::fstream::in);
+		try {
+			const std::string ciphertext_file_name = CIPHERTEXT_FILE_PREFIX + std::to_string(lambda) + std::string(".bt");
+			std::ifstream fstr(ciphertext_file_name, std::fstream::in);
 	    
 	    Llambda = new Node(fstr);
 	}
@@ -139,24 +168,18 @@ bool Verifier(string protinfo, string directory,
 	{
 	    return 0;
 	}
-
     }
 
     Node* m;
     if(type == "mixing" || type == "decryption")
     {
-	/* Read plaintexts */
-	
-	try
-	{
-	    std::ifstream fstr("Plaintexts.bt", std::fstream::in);
-	    
-	    m = new Node(fstr);
-	}
-	catch(...)
-	{
-	    return 0;
-	}
+		/* Read plaintexts */
+		try {
+			std::ifstream fstr("Plaintexts.bt", std::fstream::in); 
+			m = new Node(fstr);
+		} catch(...) {
+			return 0;
+		}
     }
 	
     //Step 7 Verify relations between lists
@@ -186,11 +209,7 @@ bool Verifier(string protinfo, string directory,
 	if(!DecryptionVerifier(pfStr, L, *m))
 	{
 	    return false;
-	}
-    }
-    
-	
-
+	}    }
 
     return false;
 }
