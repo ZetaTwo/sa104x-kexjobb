@@ -1,1 +1,2 @@
 Protocol 19 -> Algorithm 19 ???
+Algo 22: w -> L ?

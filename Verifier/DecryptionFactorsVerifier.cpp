@@ -4,8 +4,9 @@
 #include "RO.h"
 #include "PRG.h"
 #include "H_SHA.h"
+#include "ElGamal.h"
 
-bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f, const Node &tauDec, const Node &sigmaDec) {
+bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f, const Node &tauDec, const Node &sigmaDec, const Node &w) {
 
 	//Step 1
 	//Foreach tauDecL in tauDec {
@@ -26,7 +27,7 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 	Node seed_a;
 	Node seed_b;
 	seed_a.addChild(ps.Gq->getIntLeafChild(2));
-	seed_a.addChild(*ps.w);
+	seed_a.addChild(w);
 	seed_b.addChild(*ps.pk);
 	seed_b.addChild(f);
 	seed.addChild(seed_a);
@@ -66,7 +67,7 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 
 	//Step 5
 	IntLeaf p = ps.Gq->getIntLeafChild(0);
-	Node u = ps.w->getChildren(0);
+	Node u = w.getChildren(0);
 	Node yPrime = tauDec.getChildren(0);
 	IntLeaf A = u.expMultMod(e, p);
 	if(j == 0) {
