@@ -11,7 +11,11 @@ bool keyVerifier(int lambda, const Node &G, proofStruct &pfStr)
     // Step 1
     Node *pk = new Node(FULL_PUBLIC_KEY_FILE_NAME);
     
+<<<<<<< HEAD
     if(!isPublicKey(G, *pk))
+=======
+    if(!isPublicKey(G, pk))
+>>>>>>> Decrypion verifiers done.
     {
         // Did not read a key from file, reject proof
         return false;
@@ -32,7 +36,11 @@ bool keyVerifier(int lambda, const Node &G, proofStruct &pfStr)
 	{
 	    pub_key = IntLeaf(fstr);
 
+<<<<<<< HEAD
+	    if(!isPartialPublicKey(G,pub_key))
+=======
 	    if(!isPartialPublicKey(G, pub_key))
+>>>>>>> Decrypion verifiers done.
 	    {
 		// Did not read a key from file, reject proof
 		return false;

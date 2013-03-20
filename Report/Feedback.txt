@@ -1,2 +1,4 @@
 Protocol 19 -> Algorithm 19 ???
 Algo 22: w -> L ?
+Algo 26: private key, x, not in arg list.
+Algo 26: PDec_xL(L) -> PDec_xL(L_l)

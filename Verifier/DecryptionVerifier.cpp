@@ -8,10 +8,13 @@
 
 bool DecryptionVerifier(const proofStruct &ps, const Node L, const Node m) {
 
+	IntLeaf p = ps.Gq->getIntLeafChild(0);
+
 	//Step 1
 	Node f = Node("f.dat");
 	Node tauDec = Node("tauDec.dat");
 	Node sigmaDec = Node("sigmaDec.dat");
+
 	//If fail, return false;
 
 	//Step 2
@@ -22,15 +25,22 @@ bool DecryptionVerifier(const proofStruct &ps, const Node L, const Node m) {
 		for (int l = 0; l < f.getLength(); l++)
 		{
 			result = DecryptionFactorsVerifier(l, ps, f, tauDec, sigmaDec);
-			if(!result && (xL = BOTTOM || f.getIntLeafChild(l) != PDec(xL, L))) {
+
+			IntLeaf xL = (*ps.x)->getIntLeafChildren(l);
+			
+
+			if(!result && (xL == BOTTOM || f.getIntLeafChild(l) != PDec(xL, L.getIntLeafChild(l), p))) {
 				return false;
 			}
 		}
 	}
 
 	//Step 4
-	if(m != TDec(L, f.prod())) {
-		return false;
+	IntLeaf x = f.prod();
+	for(int i = 0; i < L.getLength(); i++) {
+		if(m.getIntLeafChild(i) != TDec(L.getIntLeafChild(i), x, p)) {
+			return false;
+		}
 	}
 
 	return true;
