@@ -7,7 +7,6 @@
 
 bool keyVerifier(int lambda, const Node &G, Node &key_node)
 {
-
     // Step 1
     Node pk = Node(FULL_PUBLIC_KEY_FILE_NAME);
     
@@ -21,7 +20,7 @@ bool keyVerifier(int lambda, const Node &G, Node &key_node)
     Node pub_keys = Node();
     IntLeaf pub_key;
     
-    for(int i=1; i<=lambda; i++) 
+    for(int i=1; i <= lambda; i++) 
     {
 	const std::string partial_public_key_file_name = 
 	    PARTIAL_PUBLIC_KEY_FILE_PREFIX + std::to_string(i) + std::string(".bt");
@@ -100,17 +99,17 @@ bool keyVerifier(int lambda, const Node &G, Node &key_node)
 }
 
 
-bool isPublicKey(Node &node) 
+bool isPublicKey(const Node &G, const Node &pk) 
 {
     return true;
 }
 
-bool isPartialPublicKey(IntLeaf &leaf)
+bool isPartialPublicKey(const Node &G, IntLeaf &ppk)
 {
-    return true;
+    return isElemOf(G, ppk);
 }
 
-bool isPartialSecretKey(IntLeaf &leaf)
+bool isPartialSecretKey(const Node &G, IntLeaf &psk)
 {
-    return true;
+    return isElemOf(G.getIntLeafChild(1), psk);
 }

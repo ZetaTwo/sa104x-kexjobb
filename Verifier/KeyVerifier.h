@@ -11,9 +11,9 @@
  */
 bool keyVerifier(int lambda, const Node &G, Node &key_node);
 
-bool isPublicKey(Node &node);
-bool isPartialPublicKey(IntLeaf &leaf);
-bool isPartialSecretKey(IntLeaf &leaf);
+bool isPublicKey(const Node &G, const Node &pk);
+bool isPartialPublicKey(const Node &G, const IntLeaf &ppk);
+bool isPartialSecretKey(const Node &G, const IntLeaf &psk);
 
 const std::string FULL_PUBLIC_KEY_FILE_NAME = "FullPublicKey.bt";
 const std::string PARTIAL_PUBLIC_KEY_FILE_PREFIX = "PublicKey";
