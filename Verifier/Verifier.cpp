@@ -2,6 +2,7 @@
 #include "Utilities.h"
 #include "DecryptionVerifier.h"
 #include "ShufflingVerifier.h"
+#include "KeyVerifier.h"
 
 #include <string>
 #include <fstream>
@@ -37,9 +38,11 @@ bool Verifier(string protinfo, string directory,
     string versionProt;
     string Sh;
     string sid;
+	string pGroup;
     IntLeaf Nv;
     IntLeaf Ne;
-    IntLeaf lambda;
+
+    int lambda;
     
     try {
 		versionProt = root_node->first_node("version")->value();
@@ -48,6 +51,8 @@ bool Verifier(string protinfo, string directory,
 		
 		string strLambda = root_node->first_node("thres")->value();
 		lambda = atol(strLambda.c_str());
+
+		pGroup = root_node->first_node("pgroup")->value();
 		
 		string strNv = root_node->first_node("cbitlen")->value();
 		Nv = atol(strNv.c_str());

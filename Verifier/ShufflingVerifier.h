@@ -10,8 +10,8 @@ bool verifyShuffling(proofStruct &pfStr,
 		     int lambda,
 		     Node &L0,
 		     Node &Llambda,
-		     Node &posc, 
-		     Node &ccpos);
+		     bool posc, 
+		     bool ccpos);
 
 bool isListOfCipherTexts(Node &L);
 
