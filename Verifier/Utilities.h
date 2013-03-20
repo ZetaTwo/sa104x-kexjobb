@@ -17,11 +17,11 @@ struct proofStruct
     const Node *Cw;
     const Node *Mw;
     const Node *pk;
-    const Node *w;
+/*    const Node *w;
     const Node *w_prime;
     const Node *mu;
     const Node *L0;
-    const Node *Llambda;
+    const Node *Llambda; */
 };
 
 bool isElemOf(const Node &group, const IntLeaf &elem);

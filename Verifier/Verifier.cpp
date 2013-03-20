@@ -93,7 +93,8 @@ bool Verifier(string protinfo, string directory,
     
     Node pub_keys = Node();
     
-    
+    Node *L0;
+    Node *Llambda;
     
     /* Read first ciphertext */
     try
@@ -101,14 +102,14 @@ bool Verifier(string protinfo, string directory,
 	const std::string ciphertext_file_name = CIPHERTEXT_FILE_PREFIX + std::to_string(0) + std::string(".bt");
 	std::ifstream fstr(ciphertext_file_name, std::fstream::in);
 
-	pfStr.L0 = new Node(fstr);
+	L0 = new Node(fstr);
     }
     catch(...)
     {
 	return 0;
     }
     
-    pfStr.N = pfStr.L0->getLength();
+    pfStr.N = L0->getLength();
 
     if(type == "mixing")
     {
@@ -118,7 +119,7 @@ bool Verifier(string protinfo, string directory,
 	    const std::string ciphertext_file_name = CIPHERTEXT_FILE_PREFIX + std::to_string(lambda) + std::string(".bt");
 	    std::ifstream fstr(ciphertext_file_name, std::fstream::in);
 	    
-	    pfStr.Llambda = new Node(fstr);
+	    Llambda = new Node(fstr);
 	}
 	catch(...)
 	{
@@ -132,7 +133,7 @@ bool Verifier(string protinfo, string directory,
 	{
 	    std::ifstream fstr("ShuffledCiphertexts.bt", std::fstream::in);
 	    
-	    pfStr.Llambda = new Node(fstr);
+	    Llambda = new Node(fstr);
 	}
 	catch(...)
 	{
@@ -163,7 +164,7 @@ bool Verifier(string protinfo, string directory,
     if((type == "mixing" || type == "shuffling") &&
        (posc || ccpos))
     {
-	if(!verifyShuffling(pfStr, lambda))
+	if(!verifyShuffling(pfStr, lambda, *L0, *Llambda, posc, ccpos))
 	{
 	    return false;
 	}
@@ -173,7 +174,7 @@ bool Verifier(string protinfo, string directory,
     if(dec && type == "mixing")
     {
 	// set L = Llambda
-	Node L = *pfStr.Llambda;
+	Node L = *Llambda;
 	if(!DecryptionVerifier(pfStr, L, *m))
 	{
 	    return false;
@@ -181,7 +182,7 @@ bool Verifier(string protinfo, string directory,
     }
     else if(dec && type == "decryption")
     {
-	Node L = *pfStr.L0;
+	Node L = *L0;
 	if(!DecryptionVerifier(pfStr, L, *m))
 	{
 	    return false;

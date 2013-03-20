@@ -7,16 +7,21 @@
 #include "ProofOfShuffle.h"
 #include "Utilities.h"
 
-bool verifyShuffling(proofStruct &pfStr, int lambda, Node &L0, Node &Llambda, Node &posc, Node &ccpos)
+bool verifyShuffling(proofStruct &pfStr,
+		     int lambda, 
+		     Node &L0, 
+		     Node &Llambda, 
+		     bool posc, 
+		     bool ccpos)
 {
-    std::ifstream fstr(MAXCIPH_FILE_NAME, std::fstream::in);
+    std::ifstream fstr("maxciph", std::fstream::in);
     
     // maxciph does not exist
     if(!fstr)
     {
 	Node L_array = Node();	
 	L_array.addChild(L0);
-	Node * last = &L0;
+	Node * Llast = &L0;
 
 	for(int l=1; l<=lambda; l++)
 	{
@@ -45,16 +50,15 @@ bool verifyShuffling(proofStruct &pfStr, int lambda, Node &L0, Node &Llambda, No
 		L_array.addChild(Llambda);
 	    }
 
-	    
-	    pfStr.w = last;
-	    pfStr.w_prime = &L;
 
+	    Node *mu;
 	    Node tau_pos;
 	    Node sigma_pos;
+	   
 
 	    try
 	    {
-		pfStr.mu = new Node("PermutationCommitment<" + std::to_string(l) + ">.bt");
+		mu = new Node("PermutationCommitment<" + std::to_string(l) + ">.bt");
 		tau_pos = Node("PoSCommitment<" + std::to_string(l) + ">.bt");
 		sigma_pos = Node("PoSReply<" + std::to_string(l) + ">.bt");
 	    }
@@ -67,12 +71,12 @@ bool verifyShuffling(proofStruct &pfStr, int lambda, Node &L0, Node &Llambda, No
 	    //Step 2
 	    // Verify proof of shuffle
 	    // Execute Algorithm 19 with specified input
-	    if(!proofOfShuffle(pfStr, tau_pos, sigma_pos) &&
+	    if(!proofOfShuffle(pfStr, *Llast, L, *mu, tau_pos, sigma_pos) &&
 	       L_array.getNodeChild(l) != L_array.getNodeChild(l-1))
 		return false;
 
-	    last = &L;
-	    delete pfStr.mu;
+	    Llast = &L;
+	    delete mu;
 
 	}
 
