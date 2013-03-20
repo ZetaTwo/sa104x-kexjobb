@@ -4,11 +4,12 @@
 #include "Node.h"
 #include <string>
 
-/* Arguments:
+/* keyVerifier:
  *      lambda: number of servers in mix-net
  *      G: underlying group 
+ *      key_node: empty node that on return will be filled with (pk, pub_keys, sec_keys)
  */
-Node *verifyKeys(int lambda, const Node &Gq);
+bool keyVerifier(int lambda, const Node &G, Node &key_node);
 
 bool isPublicKey(Node &node);
 bool isPartialPublicKey(IntLeaf &leaf);

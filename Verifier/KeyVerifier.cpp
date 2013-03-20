@@ -5,7 +5,7 @@
 #include "Node.h"
 #include "IntLeaf.h"
 
-Node *verifyKeys(int lambda, const Node &Gq)
+bool keyVerifier(int lambda, const Node &G, Node &key_node)
 {
 
     // Step 1
@@ -14,7 +14,7 @@ Node *verifyKeys(int lambda, const Node &Gq)
     if(!isPublicKey(pk))
     {
         // Did not read a key from file, reject proof
-	return null;
+        return false;
     }
 
     // Step 2
@@ -35,7 +35,7 @@ Node *verifyKeys(int lambda, const Node &Gq)
 	    if(!isPartialPublicKey(pub_key))
 	    {
 		// Did not read a key from file, reject proof
-		return null;
+		return false;
 	    }
     
 	    pub_keys.addChild(pub_key);
@@ -43,14 +43,14 @@ Node *verifyKeys(int lambda, const Node &Gq)
 
     }
 
-    IntLeaf &g = pk.getIntLeafChild(0);
-    IntLeaf &y = pk.getIntLeafChild(1);
-    IntLeaf &p = G.getIntLeafChild(0);
+    const IntLeaf &g = pk.getIntLeafChild(0);
+    const IntLeaf &y = pk.getIntLeafChild(1);
+    const IntLeaf &p = G.getIntLeafChild(0);
 
     if(pub_keys.prod() != y)
     {
 	// Public keys do not match, reject proof
-	return null;
+	return false;
     }
     
 
@@ -70,13 +70,13 @@ Node *verifyKeys(int lambda, const Node &Gq)
 	    if(!isPartialSecretKey(sec_key))
 	    {
 		// Did not read a key from file, reject proof
-		return null;
+		return false;
 	    }
 
 	    if(sec_key != g.expMod(sec_key, p))
 	    {
 		// secret key does not match public key, reject proof
-	        return null;
+	        return false;
 	    }
 	    
 	}
@@ -91,13 +91,12 @@ Node *verifyKeys(int lambda, const Node &Gq)
 
 
     // Step 4
-    Node *ret = new Node();
+    
+    key_node.addChild(pk);
+    key_node.addChild(pub_keys);
+    key_node.addChild(sec_keys);
 
-    ret->addChild(pk);
-    ret->addChild(pub_keys);
-    ret->addChild(sec_keys);
-
-    return ret;
+    return true;
 }
 
 
