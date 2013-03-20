@@ -4,13 +4,14 @@
 #include "KeyVerifier.h"
 #include "Node.h"
 #include "IntLeaf.h"
+#include "Utilities.h"
 
 bool keyVerifier(int lambda, const Node &G, Node &key_node)
 {
     // Step 1
     Node pk = Node(FULL_PUBLIC_KEY_FILE_NAME);
     
-    if(!isPublicKey(pk))
+    if(!isPublicKey(G, pk))
     {
         // Did not read a key from file, reject proof
         return false;
@@ -31,7 +32,7 @@ bool keyVerifier(int lambda, const Node &G, Node &key_node)
 	{
 	    pub_key = IntLeaf(fstr);
 
-	    if(!isPartialPublicKey(pub_key))
+	    if(!isPartialPublicKey(G,pub_key))
 	    {
 		// Did not read a key from file, reject proof
 		return false;
@@ -66,7 +67,7 @@ bool keyVerifier(int lambda, const Node &G, Node &key_node)
 	{   
 	    sec_key = IntLeaf(fstr);
 	    
-	    if(!isPartialSecretKey(sec_key))
+	    if(!isPartialSecretKey(G, sec_key))
 	    {
 		// Did not read a key from file, reject proof
 		return false;
