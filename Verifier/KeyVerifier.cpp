@@ -112,12 +112,12 @@ bool isPublicKey(const Node &G, const Node &pk)
     return false;
 }
 
-bool isPartialPublicKey(const Node &G, IntLeaf &ppk)
+bool isPartialPublicKey(const Node &G, const IntLeaf &ppk)
 {
     return isElemOf(G, ppk);
 }
 
-bool isPartialSecretKey(const Node &G, IntLeaf &psk)
+bool isPartialSecretKey(const Node &G, const IntLeaf &psk)
 {
     return isElemOf(G.getIntLeafChild(1), psk);
 }

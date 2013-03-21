@@ -40,8 +40,10 @@ int Verifier(string protinfo, string directory,
     string Sh;
     string sid;
     string pGroup;
-    IntLeaf Nv;
-    IntLeaf Ne;
+	string Sprg;
+    IntLeaf Nv(0, 4);
+	IntLeaf Nr(0, 4);
+    IntLeaf Ne(0, 4);
 
     int lambda;
     
@@ -62,11 +64,11 @@ int Verifier(string protinfo, string directory,
 	string strNe = root_node->first_node("vbitlen")->value();
 	Ne = atol(strNe.c_str());
 	
-	string Sprg = root_node->first_node("prg")->value();
+	Sprg = root_node->first_node("prg")->value();
 	Sh = root_node->first_node("rohash")->value();
 	string Cw = root_node->first_node("width")->value();
     } catch (...) {
-	return false;
+		return false;
     }
     
     xml_file.close();
@@ -121,16 +123,20 @@ int Verifier(string protinfo, string directory,
 	bytevector id_data = rho_id.getData();
 	id_data.insert(id_data.end(), sid.begin(), sid.end());
 	id_data.push_back('.');
-	id_data.insert(id_data.begin(), auxsid.begin(), auxsid.end());
+	id_data.insert(id_data.end(), auxsid.begin(), auxsid.end());
 	
 	Node rho;
 	rho.addChild(rho_version);
 	rho.addChild(rho_id);
-	rho.addChild(IntLeaf(width));
+	rho.addChild(IntLeaf(width, 4));
 	rho.addChild(Ne);
-	rho.addChild(...);
+	rho.addChild(Nr);
 	rho.addChild(Nv);
+	rho.addChild((DataLeaf)pGroup);
+	rho.addChild((DataLeaf)Sprg);
+	rho.addChild((DataLeaf)Sh);
 
+	pfStr.rho = (IntLeaf)pfStr.hash(rho.serialize());
     
     //Step 5
 	
@@ -206,28 +212,28 @@ int Verifier(string protinfo, string directory,
 	if((type == MIX || type == SHUFFLE) &&
        (posc || ccpos))
     {
-	if(!verifyShuffling(pfStr, lambda, L0, Llambda, posc, ccpos))
-	{
-	    return false;
-	}
-		
+		if(!verifyShuffling(pfStr, lambda, L0, Llambda, posc, ccpos))
+		{
+			return false;
+		}	
     }
     
     if(dec && type == MIX)
     {
-	Node L = Llambda;
-	if(!DecryptionVerifier(pfStr, L, m))
-	{
-	    return false;
-	}
+		Node L = Llambda;
+		if(!DecryptionVerifier(pfStr, L, m))
+		{
+			return false;
+		}
     }
 	else if(dec && type == DECRYPT)
     {
-	Node L = L0;
-	if(!DecryptionVerifier(pfStr, L, m))
-	{
-	    return false;
-	}    }
+		Node L = L0;
+		if(!DecryptionVerifier(pfStr, L, m))
+		{
+			return false;
+		}
+	}
 
     return false;
 }

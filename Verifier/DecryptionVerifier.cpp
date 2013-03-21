@@ -18,13 +18,13 @@ bool DecryptionVerifier(const proofStruct &ps, const Node L, const Node m) {
 	//If fail, return false;
 
 	//Step 2
-	bool result = DecryptionFactorsVerifier(0, ps, f, tauDec, sigmaDec);
+	bool result = DecryptionFactorsVerifier(0, ps, f, tauDec, sigmaDec, L);
 
 	if(!result) {
 		//Step 3
 		for (int l = 0; l < f.getLength(); l++)
 		{
-			result = DecryptionFactorsVerifier(l, ps, f, tauDec, sigmaDec);
+			result = DecryptionFactorsVerifier(l, ps, f, tauDec, sigmaDec, L);
 
 			IntLeaf xL = ps.x.getIntLeafChild(l);
 			
