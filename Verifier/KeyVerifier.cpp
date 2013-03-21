@@ -4,12 +4,13 @@
 #include "KeyVerifier.h"
 #include "Node.h"
 #include "IntLeaf.h"
+#include "FileNames.h"
 
 
 bool keyVerifier(int lambda, proofStruct &pfStr)
 {
     // Step 1
-    Node pk = Node(FULL_PUBLIC_KEY_FILE_NAME);
+    Node pk = Node(FULL_PUBLIC_KEY_FILE);
     
     if(!isPublicKey(pfStr.Gq, pk))
     {
@@ -24,7 +25,7 @@ bool keyVerifier(int lambda, proofStruct &pfStr)
     for(int i=1; i <= lambda; i++) 
     {
 	const std::string partial_public_key_file_name = 
-	    PARTIAL_PUBLIC_KEY_FILE_PREFIX + std::to_string(i) + std::string(".bt");
+	    PARTIAL_PUBLIC_KEY_FILE_PREFIX + std::to_string(i) + FILE_SUFFIX;
 	
 	std::ifstream fstr(partial_public_key_file_name, std::fstream::in);
 
@@ -60,7 +61,7 @@ bool keyVerifier(int lambda, proofStruct &pfStr)
     for(int i=1; i<=lambda; i++)
     {
 	const std::string partial_secret_key_file_name = 
-	    PARTIAL_SECRET_KEY_FILE_PREFIX + std::to_string(i) + std::string(".bt");
+	    PARTIAL_SECRET_KEY_FILE_PREFIX + std::to_string(i) + FILE_SUFFIX;
 	
 	std::ifstream fstr(partial_secret_key_file_name, std::fstream::in);
 	if(fstr)

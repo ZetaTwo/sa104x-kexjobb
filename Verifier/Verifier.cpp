@@ -3,6 +3,7 @@
 #include "DecryptionVerifier.h"
 #include "ShufflingVerifier.h"
 #include "KeyVerifier.h"
+#include "FileNames.h"
 
 #include <string>
 #include <fstream>
@@ -163,7 +164,7 @@ int Verifier(string protinfo, string directory,
     if(type == MIX) {
 	/* Read threshold ciphertext */
 		try {
-			const std::string ciphertext_file_name = CIPHERTEXT_FILE_PREFIX + std::to_string(lambda) + std::string(".bt");
+			const std::string ciphertext_file_name = CIPHERTEXT_FILE_PREFIX + std::to_string(lambda) + FILE_SUFFIX;
 			std::ifstream fstr(ciphertext_file_name, std::fstream::in);
 	    
 	    Llambda = Node(fstr);
@@ -178,7 +179,7 @@ int Verifier(string protinfo, string directory,
 	/* Read threshold ciphertext */
 	try
 	{
-	    std::ifstream fstr("ShuffledCiphertexts.bt", std::fstream::in);
+	    std::ifstream fstr(SHUFFLED_CIPHERTEXTS_FILE, std::fstream::in);
 	    
 	    Llambda = Node(fstr);
 	}
@@ -193,7 +194,7 @@ int Verifier(string protinfo, string directory,
     {
 		/* Read plaintexts */
 		try {
-			std::ifstream fstr("Plaintexts.bt", std::fstream::in); 
+			std::ifstream fstr(PLAINTEXTS_FILE, std::fstream::in); 
 			m = Node(fstr);
 		} catch(...) {
 			return 0;
