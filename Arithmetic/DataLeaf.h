@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <istream>
+#include <string>
 
 class DataLeaf :
 	public BaseLeaf
@@ -11,6 +12,7 @@ public:
 	DataLeaf(void);
 	explicit DataLeaf(int32_t size);
 	DataLeaf(std::istream &file);
+	DataLeaf(std::string str);
 	~DataLeaf(void);
 
 	std::vector<unsigned char> &getData(void);
