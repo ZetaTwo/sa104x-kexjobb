@@ -13,6 +13,7 @@ struct proofStruct
     unsigned int nE;
     unsigned int nR;
     unsigned int nV;
+    unsigned int nHash;
     std::vector<unsigned char> (*hash)(std::vector<unsigned char>);
     Node Gq;
     Node Rw;
