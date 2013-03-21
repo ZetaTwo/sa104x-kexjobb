@@ -16,7 +16,7 @@ Node::Node(const Node &node) : BaseNode(BaseNode::NODE)
 	copyElements(node.children);
 }
 
-Node::Node(const std::vector<char> data) : BaseNode(BaseNode::NODE) {
+Node::Node(const std::vector<unsigned char> data) : BaseNode(BaseNode::NODE) {
 	std::stringstream ioss;    
 	std::copy(data.begin(), data.end(), std::ostream_iterator<char>(ioss, ""));
 	constructFromFile(ioss);

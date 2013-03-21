@@ -13,7 +13,7 @@ class Node :
 public:
 	Node(void);
 	Node(const Node &node);
-	Node(const std::vector<char> data);
+	Node(const std::vector<unsigned char> data);
 	explicit Node(const std::string filename);
 	explicit Node(std::istream &file);
 	~Node(void);
