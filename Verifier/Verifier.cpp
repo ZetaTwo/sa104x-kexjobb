@@ -16,8 +16,8 @@ using std::string;
 #include "Node.h"
 #include "H_SHA.h"
 
-bool Verifier(string protinfo, string directory,
-				 string typeExp, string auxsidExp, string wExp,
+int Verifier(string protinfo, string directory,
+				 RunMode typeExp, string auxsidExp, int wExp,
 				 bool posc, bool ccpos, bool dec) {
     
     proofStruct pfStr;
@@ -72,16 +72,22 @@ bool Verifier(string protinfo, string directory,
     
     //Step 2
     string versionProof;
-    string type;
+    string typeStr;
+	RunMode type;
     string auxsid;
-    string width;
+	int width;
+    string widthStr;
     
     std::ifstream datafile(directory + "/version", std::ios::in);
     datafile >> versionProof;
     if(versionProof != versionProt) { return false; }
     
     datafile.open(directory + "/type");
-    datafile >> type;
+    datafile >> typeStr;
+	if(typeStr == "mixing") { type = MIX; }
+	if(typeStr == "shuffling") { type = SHUFFLE; }
+	if(typeStr == "decryption") { type = DECRYPT; }
+
     if(type != typeExp) { return false; }
     
     datafile.open(directory + "/auxsid");
@@ -89,8 +95,9 @@ bool Verifier(string protinfo, string directory,
     if(auxsid != auxsidExp) { return false; }
     
     datafile.open(directory + "/width");
-    datafile >> width;
-    if(wExp != "" && wExp != width) { return false; }
+    datafile >> widthStr;
+	width = atoi(widthStr.c_str());
+    if(wExp != -1 && wExp != width) { return false; }
     
     //Step 3
 	if(Sh == "SHA-256") {
@@ -118,7 +125,7 @@ bool Verifier(string protinfo, string directory,
 	Node rho;
 	rho.addChild(rho_version);
 	rho.addChild(rho_id);
-	rho.addChild(IntLeaf(atol(width.c_str())));
+	rho.addChild(IntLeaf(width));
 	rho.addChild(Ne);
 	rho.addChild(...);
 	rho.addChild(Nv);
@@ -153,7 +160,7 @@ bool Verifier(string protinfo, string directory,
     
     pfStr.N = L0.getLength();
 
-    if(type == "mixing") {
+    if(type == MIX) {
 	/* Read threshold ciphertext */
 		try {
 			const std::string ciphertext_file_name = CIPHERTEXT_FILE_PREFIX + std::to_string(lambda) + std::string(".bt");
@@ -166,7 +173,7 @@ bool Verifier(string protinfo, string directory,
 	    return 0;
 	}
     }
-    else if(type == "shuffling")
+	else if(type == SHUFFLE)
     {
 	/* Read threshold ciphertext */
 	try
@@ -182,7 +189,7 @@ bool Verifier(string protinfo, string directory,
     }
 
     Node m;
-    if(type == "mixing" || type == "decryption")
+	if(type == MIX || type == DECRYPT)
     {
 		/* Read plaintexts */
 		try {
@@ -195,7 +202,7 @@ bool Verifier(string protinfo, string directory,
 	
     //Step 7 Verify relations between lists
 
-    if((type == "mixing" || type == "shuffling") &&
+	if((type == MIX || type == SHUFFLE) &&
        (posc || ccpos))
     {
 	if(!verifyShuffling(pfStr, lambda, L0, Llambda, posc, ccpos))
@@ -205,7 +212,7 @@ bool Verifier(string protinfo, string directory,
 		
     }
     
-    if(dec && type == "mixing")
+    if(dec && type == MIX)
     {
 	Node L = Llambda;
 	if(!DecryptionVerifier(pfStr, L, m))
@@ -213,7 +220,7 @@ bool Verifier(string protinfo, string directory,
 	    return false;
 	}
     }
-    else if(dec && type == "decryption")
+	else if(dec && type == DECRYPT)
     {
 	Node L = L0;
 	if(!DecryptionVerifier(pfStr, L, m))
