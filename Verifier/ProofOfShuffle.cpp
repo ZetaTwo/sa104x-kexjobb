@@ -155,7 +155,7 @@ bool proofOfShuffle(proofStruct &pfStr,
     seed_gen.addChild(w); 
     seed_gen.addChild(w_prime);
 
-    std::vector<unsigned char> gen = pfStr.rho.concatData(&seed_gen);
+    bytevector gen = pfStr.rho.concatData(&seed_gen);
 		
 
     RO rs = RO(pfStr.hash, (pfStr.nE/8)*8);

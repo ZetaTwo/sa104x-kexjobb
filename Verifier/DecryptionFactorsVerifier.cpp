@@ -33,9 +33,9 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 	seed.addChild(seed_a);
 	seed.addChild(seed_b);
 
-	std::vector<unsigned char> seed_data;
-	std::vector<unsigned char> rho_data = ps.rho.toVector();
-	std::vector<unsigned char> seed_data_a = seed.toVector();
+	bytevector seed_data;
+	bytevector rho_data = ps.rho.toVector();
+	bytevector seed_data_a = seed.toVector();
 	seed_data.insert(seed_data.begin(), rho_data.begin(), rho_data.end());
 	seed_data.insert(seed_data.begin(), seed_data_a.begin(), seed_data_a.end());
 
@@ -57,8 +57,8 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 	Node challenge;
 	challenge.addChild(s);
 	challenge.addChild(tauDec);
-	std::vector<unsigned char> challenge_data;
-	std::vector<unsigned char> challenge_data_a = challenge.toVector();
+	bytevector challenge_data;
+	bytevector challenge_data_a = challenge.toVector();
 	challenge_data.insert(challenge_data.begin(), rho_data.begin(), rho_data.end());
 	challenge_data.insert(challenge_data.begin(), challenge_data_a.begin(), challenge_data_a.end());
 

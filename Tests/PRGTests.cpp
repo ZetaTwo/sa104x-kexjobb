@@ -23,17 +23,17 @@ TEST(PRGTests, TestVector256) {
 						0x62, 0x7e, 0x9d, 0xb8, 0xad, 0x47, 0xbf, 0xe7, 0x6d, 0xbe, 0x65, 0x3d, 0x03, 0xd2, 0xc0, 0xa3,
 						0x59, 0x99, 0xed, 0x28, 0xa5, 0x02, 0x39, 0x24, 0x15, 0x0d, 0x72, 0x50, 0x86, 0x68, 0xd2, 0x44 };
 
-	std::vector<unsigned char> expected;
+	bytevector expected;
 	expected.insert(expected.begin(), expected_data, expected_data+128);
 
-	std::vector<unsigned char> datavec;
+	bytevector datavec;
 	datavec.insert(datavec.begin(), data, data+32);
 
 	PRG prg(H_SHA256, datavec, 256);
-	std::vector<unsigned char> result;
+	bytevector result;
 	for (int i = 0; i < 128/32; i++)
 	{
-		std::vector<unsigned char> next = prg.next().toVector();
+		bytevector next = prg.next().toVector();
 		result.insert(result.end(), next.begin(), next.end());
 	}
 
@@ -58,17 +58,17 @@ TEST(PRGTests, TestVector384) {
 								0x61, 0xed, 0xd4, 0xb1, 0x73, 0x47, 0x17, 0xde, 0x41, 0x06, 0xf9, 0xc1, 0x84, 0xa1, 0x7a, 0x9b,
 								0x5e, 0xe6, 0x1a, 0x43, 0x99, 0xdd, 0x75, 0x5f, 0x32, 0x2f, 0x5d, 0x70, 0x7a, 0x58, 0x1c, 0xc1 };
 
-	std::vector<unsigned char> expected;
+	bytevector expected;
 	expected.insert(expected.begin(), expected_data, expected_data+128);
 
-	std::vector<unsigned char> datavec;
+	bytevector datavec;
 	datavec.insert(datavec.begin(), data, data+48);
 
 	PRG prg(H_SHA384, datavec, 8*48);
-	std::vector<unsigned char> result;
+	bytevector result;
 	for (int i = 0; i < 3; i++)
 	{
-		std::vector<unsigned char> next = prg.next().toVector();
+		bytevector next = prg.next().toVector();
 		result.insert(result.end(), next.begin(), next.end());
 	}
 	result.resize(128);
@@ -91,17 +91,17 @@ TEST(PRGTests, TestVector512) {
 								0xc2, 0x90, 0x4f, 0x6e, 0x2c, 0xf6, 0x0d, 0x3b, 0x76, 0x37, 0xf6, 0x56, 0x14, 0x5a, 0x2d, 0x32,
 								0xa6, 0x02, 0x9f, 0xbd, 0xa9, 0x63, 0x61, 0xe1, 0xb8, 0x09, 0x0c, 0x97, 0x12, 0xa4, 0x89, 0x38 };
 
-	std::vector<unsigned char> expected;
+	bytevector expected;
 	expected.insert(expected.begin(), expected_data, expected_data+128);
 
-	std::vector<unsigned char> datavec;
+	bytevector datavec;
 	datavec.insert(datavec.begin(), data, data+64);
 
 	PRG prg(H_SHA512, datavec, 64*8);
-	std::vector<unsigned char> result;
+	bytevector result;
 	for (int i = 0; i < 2; i++)
 	{
-		std::vector<unsigned char> next = prg.next().toVector();
+		bytevector next = prg.next().toVector();
 		result.insert(result.end(), next.begin(), next.end());
 	}
 

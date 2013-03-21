@@ -14,7 +14,7 @@ struct proofStruct
     unsigned int nR;
     unsigned int nV;
     unsigned int nHash;
-    std::vector<unsigned char> (*hash)(std::vector<unsigned char>);
+    bytevector (*hash)(bytevector);
     Node Gq;
     Node Rw;
     Node Cw;

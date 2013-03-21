@@ -114,11 +114,11 @@ int Verifier(string protinfo, string directory,
     //Step 4
     //rho = H(node(versionProof, sid + "." auxsid, omega, Ne, Nr, Nv, Gq, Sprg, Sh))
 	DataLeaf rho_version;
-	std::vector<unsigned char> version_data = rho_version.getData();
+	bytevector version_data = rho_version.getData();
 	version_data.insert(version_data.end(), versionProof.begin(), versionProof.end());
 
 	DataLeaf rho_id;
-	std::vector<unsigned char> id_data = rho_id.getData();
+	bytevector id_data = rho_id.getData();
 	id_data.insert(id_data.end(), sid.begin(), sid.end());
 	id_data.push_back('.');
 	id_data.insert(id_data.begin(), auxsid.begin(), auxsid.end());

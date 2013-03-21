@@ -9,13 +9,13 @@
 class PRG
 {
 public:
-	PRG(std::vector<unsigned char> (*hash)(std::vector<unsigned char> data), std::vector<unsigned char> seed, unsigned int outbits);
+	PRG(bytevector (*hash)(bytevector data), bytevector seed, unsigned int outbits);
 	~PRG(void);
 
 	IntLeaf next();
 private:
-	std::vector<unsigned char> (*hash)(std::vector<unsigned char> data);
-	std::vector<unsigned char> data;
+	bytevector (*hash)(bytevector data);
+	bytevector data;
 	std::queue<unsigned char> dataqueue;
 	IntLeaf counter;
 	unsigned int outbits;

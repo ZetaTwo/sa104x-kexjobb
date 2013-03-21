@@ -36,18 +36,18 @@ DataLeaf::DataLeaf(std::istream &file) : BaseLeaf(BaseNode::DATA_LEAF)
 
 DataLeaf::DataLeaf(std::string str) : BaseLeaf(BaseNode::DATA_LEAF)
 {
-    data = std::vector<unsigned char>(str.begin(), str.end());
+    data = bytevector(str.begin(), str.end());
 }
 
 DataLeaf::~DataLeaf(void)
 {
 }
 
-std::vector<unsigned char> &DataLeaf::getData(void) {
+bytevector &DataLeaf::getData(void) {
     return data;
 }
 
-const std::vector<unsigned char> &DataLeaf::getData(void) const {
+const bytevector &DataLeaf::getData(void) const {
     return data;
 }
 
@@ -67,7 +67,7 @@ DataLeaf &DataLeaf::operator=(const DataLeaf &leaf)
     return *this;
 }
 
-std::vector<unsigned char> DataLeaf::toVector(void) const {
+bytevector DataLeaf::toVector(void) const {
     return data;
 }
 

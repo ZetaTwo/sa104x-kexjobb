@@ -4,20 +4,20 @@
 
 #include <openssl\sha.h>
 
-std::vector<unsigned char> H_SHA256(std::vector<unsigned char> seed) {
+bytevector H_SHA256(bytevector seed) {
 	return H_SHA(SHA256, seed, SHA256_DIGEST_LENGTH);
 }
 
-std::vector<unsigned char> H_SHA384(std::vector<unsigned char> seed) {
+bytevector H_SHA384(bytevector seed) {
 	return H_SHA(SHA384, seed, SHA384_DIGEST_LENGTH);
 }
 
-std::vector<unsigned char> H_SHA512(std::vector<unsigned char> seed) {
+bytevector H_SHA512(bytevector seed) {
 	return H_SHA(SHA512, seed, SHA512_DIGEST_LENGTH);
 }
 
-std::vector<unsigned char> H_SHA(unsigned char *(*SHA)(const unsigned char *d, size_t n,unsigned char *md), std::vector<unsigned char> seed, unsigned int digest_length) {
-	std::vector<unsigned char> result;
+bytevector H_SHA(unsigned char *(*SHA)(const unsigned char *d, size_t n,unsigned char *md), bytevector seed, unsigned int digest_length) {
+	bytevector result;
 	unsigned char *data = new unsigned char[seed.size()];
 	unsigned char *hash = new unsigned char[digest_length];
 

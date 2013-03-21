@@ -1,8 +1,9 @@
 #pragma once
 
-#include <vector>
 #include <stdint.h>
 #include <istream>
+
+#include "types.h"
 
 class BaseNode
 {
@@ -14,9 +15,9 @@ public:
 
 	BaseNode::NodeType getType(void) const;
 	virtual int32_t getLength(void) const = 0;
-	virtual std::vector<unsigned char> toVector(void) const = 0;
-	std::vector<unsigned char> serialize() const;
-	std::vector<unsigned char> concatData(const BaseNode * const other) const;
+	virtual bytevector toVector(void) const = 0;
+	bytevector serialize() const;
+	bytevector concatData(const BaseNode * const other) const;
 
 
 private:

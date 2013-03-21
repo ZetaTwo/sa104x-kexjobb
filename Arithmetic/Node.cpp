@@ -16,7 +16,7 @@ Node::Node(const Node &node) : BaseNode(BaseNode::NODE)
 	copyElements(node.children);
 }
 
-Node::Node(const std::vector<unsigned char> data) : BaseNode(BaseNode::NODE) {
+Node::Node(const bytevector data) : BaseNode(BaseNode::NODE) {
 	std::stringstream ioss;    
 	std::copy(data.begin(), data.end(), std::ostream_iterator<char>(ioss, ""));
 	constructFromFile(ioss);
@@ -549,12 +549,12 @@ IntLeaf Node::expMultMod(const unsigned long exp, const IntLeaf &mod) const {
 	return result;
 };
 
-std::vector<unsigned char> Node::toVector(void) const {
-    std::vector<unsigned char> res;
+bytevector Node::toVector(void) const {
+    bytevector res;
 
     for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
     {
-		std::vector<unsigned char> nextelem = (*itr)->serialize();
+		bytevector nextelem = (*itr)->serialize();
 		res.insert(res.end(), nextelem.begin(), nextelem.end());
     }
     

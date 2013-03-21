@@ -13,14 +13,14 @@ class Node :
 public:
 	Node(void);
 	Node(const Node &node);
-	Node(const std::vector<unsigned char> data);
+	Node(const bytevector data);
 	explicit Node(const std::string filename);
 	explicit Node(std::istream &file);
 	~Node(void);
 
 	static BaseNode *constructPartFromFile(std::istream &file, uint32_t count);
 
-	virtual std::vector<unsigned char> toVector(void) const;
+	virtual bytevector toVector(void) const;
 
 	Node &operator=(const Node &node);
 

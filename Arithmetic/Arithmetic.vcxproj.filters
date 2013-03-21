@@ -36,6 +36,9 @@
     <ClInclude Include="DataLeaf.h">
       <Filter>Header Files\ByteTree</Filter>
     </ClInclude>
+    <ClInclude Include="types.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BaseNode.cpp">

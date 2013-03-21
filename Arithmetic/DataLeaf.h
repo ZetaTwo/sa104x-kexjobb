@@ -15,14 +15,14 @@ public:
 	DataLeaf(std::string str);
 	~DataLeaf(void);
 
-	std::vector<unsigned char> &getData(void);
-	const std::vector<unsigned char> &getData(void) const;
-	virtual std::vector<unsigned char> toVector(void) const;
+	bytevector &getData(void);
+	const bytevector &getData(void) const;
+	virtual bytevector toVector(void) const;
 	virtual int32_t getLength(void) const;
 
 	DataLeaf &operator=(const DataLeaf &leaf);
 
 private:
-	std::vector<unsigned char> data;
+	bytevector data;
 };
 

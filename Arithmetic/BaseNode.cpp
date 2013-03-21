@@ -51,10 +51,10 @@ void BaseNode::ReadNodeHeader(std::istream &file, char &type, uint32_t &length) 
 	length |= buffer[3];
 }
 
-std::vector<unsigned char> BaseNode::concatData(const BaseNode * const other) const {
-	std::vector<unsigned char> result;
-	std::vector<unsigned char> thisData = this->toVector();
-	std::vector<unsigned char> otherData = other->toVector();
+bytevector BaseNode::concatData(const BaseNode * const other) const {
+	bytevector result;
+	bytevector thisData = this->serialize();
+	bytevector otherData = other->serialize();
 
 	result.insert(result.end(), thisData.begin(), thisData.end());
 	result.insert(result.end(), otherData.begin(), otherData.end());
@@ -62,8 +62,8 @@ std::vector<unsigned char> BaseNode::concatData(const BaseNode * const other) co
 	return result;
 }
 
-std::vector<unsigned char> BaseNode::serialize() const {
-	std::vector<unsigned char> result;
+bytevector BaseNode::serialize() const {
+	bytevector result;
 	if(getType() == NodeType::NODE) {
 		result.push_back(0);
 	} else {
@@ -71,10 +71,10 @@ std::vector<unsigned char> BaseNode::serialize() const {
 	}
 
 	IntLeaf length(getLength(), 4);
-	std::vector<unsigned char> lengthData = length.toVector();
+	bytevector lengthData = length.toVector();
 	result.insert(result.end(), lengthData.begin(), lengthData.end());
 
-	std::vector<unsigned char> data = toVector();
+	bytevector data = toVector();
 	result.insert(result.end(), data.begin(), data.end());
 
 	return result;

@@ -8,12 +8,12 @@
 class RO
 {
 public:
-	RO(std::vector<unsigned char> (*hash)(std::vector<unsigned char> data), int Nout);
+	RO(bytevector (*hash)(bytevector data), int Nout);
 	~RO(void);
 
-	IntLeaf operator()(std::vector<unsigned char> data);
+	IntLeaf operator()(bytevector data);
 private:
-	std::vector<unsigned char> (*hash)(std::vector<unsigned char> data);
+	bytevector (*hash)(bytevector data);
 	IntLeaf Nout;
 };
 

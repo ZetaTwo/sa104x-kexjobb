@@ -1,9 +1,10 @@
 #pragma once
 
 #include <vector>
+#include "types.h"
 
-std::vector<unsigned char> H_SHA(unsigned char *(*SHA)(const unsigned char *d, size_t n,unsigned char *md), std::vector<unsigned char> seed, unsigned int digest_length);
+bytevector H_SHA(unsigned char *(*SHA)(const unsigned char *d, size_t n,unsigned char *md), bytevector seed, unsigned int digest_length);
 
-std::vector<unsigned char> H_SHA256(std::vector<unsigned char> seed);
-std::vector<unsigned char> H_SHA384(std::vector<unsigned char> seed);
-std::vector<unsigned char> H_SHA512(std::vector<unsigned char> seed);
+bytevector H_SHA256(bytevector seed);
+bytevector H_SHA384(bytevector seed);
+bytevector H_SHA512(bytevector seed);

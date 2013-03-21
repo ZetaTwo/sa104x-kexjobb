@@ -34,7 +34,7 @@ bool isPedersenCommitment(const Node &group, const IntLeaf &elem)
 
 void getGroupFromString(proofStruct &pfStr, std::string str)
 {
-    std::vector<unsigned char> byte_vec;
+    bytevector byte_vec;
 
     unsigned int i=0;
 

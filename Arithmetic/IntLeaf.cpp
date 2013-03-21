@@ -25,7 +25,7 @@ IntLeaf::IntLeaf(std::string input) : BaseLeaf(BaseNode::INT_LEAF), data(input),
 {
 }
 
-IntLeaf::IntLeaf(std::vector<unsigned char> bytevec) : BaseLeaf(BaseNode::INT_LEAF)
+IntLeaf::IntLeaf(bytevector bytevec) : BaseLeaf(BaseNode::INT_LEAF)
 {
     bool negative = false;
 
@@ -66,7 +66,7 @@ IntLeaf::~IntLeaf(void)
 
 BaseNode *IntLeaf::constructPartFromFile(std::istream &file, uint32_t length) {
 	
-	std::vector<unsigned char> data;
+	bytevector data;
 	for (uint32_t i = 0; i < length; i++)
 	{
 		char buffer[1];
@@ -281,12 +281,12 @@ mpz_class IntLeaf::getBigInt(void) const
 }
 
 
-std::vector<unsigned char> IntLeaf::toVector(void) const 
+bytevector IntLeaf::toVector(void) const 
 {
     /* number of bytes needed for bigint */
     unsigned int size = mpz_sizeinbase(data.get_mpz_t(), 256);
     
-    std::vector<unsigned char> bytevec(getLength(), 0);
+    bytevector bytevec(getLength(), 0);
 
     /* if getLength() != size the first (getLength() - size) bytes will be zero as they should */
     mpz_export(bytevec.data() + (getLength() - size), NULL, ARRAYORDER, sizeof(bytevec[0]), ENDIAN, NAILS, data.get_mpz_t());

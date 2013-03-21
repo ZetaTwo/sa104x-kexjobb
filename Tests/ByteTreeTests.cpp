@@ -16,17 +16,17 @@ TEST(ByteTreeTests, ConcatData) {
 	BaseNode *a = new IntLeaf(1234);
 	BaseNode *b = new IntLeaf(5678);
 
-	std::vector<unsigned char> result = a->concatData(b);
+	bytevector result = a->concatData(b);
 
 	char expected_data[] = { 0x04, 0xD2, 0x16, 0x2E };
-	std::vector<unsigned char> expected;
+	bytevector expected;
 	expected.insert(expected.end(), expected_data, expected_data+4);
 	EXPECT_EQ(expected, result);
 }
 
 TEST(ByteTreeTests, Serialize) {
 	char expected_data[] = { 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x02, 0x01, 0x00, 0x00, 0x00, 0x02, 0x01, 0x02, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x06, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x05 };
-	std::vector<unsigned char> expected;
+	bytevector expected;
 	expected.insert(expected.end(), expected_data, expected_data+31);
 	
 	Node top;
@@ -40,7 +40,7 @@ TEST(ByteTreeTests, Serialize) {
 	top.addChild(left);
 	top.addChild(c);
 
-	std::vector<unsigned char> result = top.serialize();
+	bytevector result = top.serialize();
 	
 	EXPECT_EQ(expected, result);
 }
