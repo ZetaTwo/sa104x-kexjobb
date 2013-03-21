@@ -38,33 +38,34 @@ bool Verifier(string protinfo, string directory,
     string versionProt;
     string Sh;
     string sid;
-	string pGroup;
+    string pGroup;
     IntLeaf Nv;
     IntLeaf Ne;
 
     int lambda;
     
     try {
-		versionProt = root_node->first_node("version")->value();
-		sid = root_node->first_node("sid")->value();
-		string k = root_node->first_node("nopart")->value();
-		
-		string strLambda = root_node->first_node("thres")->value();
-		lambda = atol(strLambda.c_str());
+	versionProt = root_node->first_node("version")->value();
+	sid = root_node->first_node("sid")->value();
+	string k = root_node->first_node("nopart")->value();
+	
+	string strLambda = root_node->first_node("thres")->value();
+	lambda = atol(strLambda.c_str());
+	
+	pGroup = root_node->first_node("pgroup")->value();
+	getGroupFromString(pfStr, pGroup);
 
-		pGroup = root_node->first_node("pgroup")->value();
-		
-		string strNv = root_node->first_node("cbitlen")->value();
-		Nv = atol(strNv.c_str());
-		
-		string strNe = root_node->first_node("vbitlen")->value();
-		Ne = atol(strNe.c_str());
-
-		string Sprg = root_node->first_node("prg")->value();
-		Sh = root_node->first_node("rohash")->value();
-		string Cw = root_node->first_node("width")->value();
+	string strNv = root_node->first_node("cbitlen")->value();
+	Nv = atol(strNv.c_str());
+	
+	string strNe = root_node->first_node("vbitlen")->value();
+	Ne = atol(strNe.c_str());
+	
+	string Sprg = root_node->first_node("prg")->value();
+	Sh = root_node->first_node("rohash")->value();
+	string Cw = root_node->first_node("width")->value();
     } catch (...) {
-		return false;
+	return false;
     }
     
     xml_file.close();
@@ -127,7 +128,7 @@ bool Verifier(string protinfo, string directory,
 	
     Node key_node;
     
-    if(!keyVerifier(lambda, G, pfStr))
+    if(!keyVerifier(lambda, pfStr))
     {
 	return false;
     }
