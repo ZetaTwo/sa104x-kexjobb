@@ -1,7 +1,8 @@
 #include "IntLeaf.h"
 
-IntLeaf::IntLeaf(const IntLeaf &leaf) : BaseLeaf(BaseNode::INT_LEAF), data(leaf.data), length(0)
+IntLeaf::IntLeaf(const IntLeaf &leaf) : BaseLeaf(BaseNode::INT_LEAF), data(leaf.data), length(leaf.length)
 {
+	
 }
 
 IntLeaf::IntLeaf(void) : data(0) , BaseLeaf(BaseNode::INT_LEAF), length(0)
@@ -315,9 +316,9 @@ int32_t IntLeaf::getLength(void) const
 {
     /* This happens if IntLeaf was not constructed from file or byte vector */
     if(length == 0) {
-	return mpz_sizeinbase(data.get_mpz_t(), 256);
+		return mpz_sizeinbase(data.get_mpz_t(), 256);
     } else {
-	return length;
+		return length;
     }
 }
 

@@ -24,6 +24,27 @@ TEST(ByteTreeTests, ConcatData) {
 	EXPECT_EQ(expected, result);
 }
 
+TEST(ByteTreeTests, Serialize) {
+	char expected_data[] = { 0x00, 0x00, 0x00, 0x00, 0x02, 0x00, 0x00, 0x00, 0x00, 0x02, 0x01, 0x00, 0x00, 0x00, 0x02, 0x01, 0x02, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x06, 0x01, 0x00, 0x00, 0x00, 0x02, 0x00, 0x05 };
+	std::vector<unsigned char> expected;
+	expected.insert(expected.end(), expected_data, expected_data+31);
+	
+	Node top;
+	Node left;
+	IntLeaf a(258, 2);
+	IntLeaf b(6, 2);
+	IntLeaf c(5, 2);
+
+	left.addChild(a);
+	left.addChild(b);
+	top.addChild(left);
+	top.addChild(c);
+
+	std::vector<unsigned char> result = top.serialize();
+	
+	EXPECT_EQ(expected, result);
+}
+
 /*TEST(ByteTreeTests, LeafContructor) {
 	Leaf n;
 

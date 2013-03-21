@@ -552,20 +552,10 @@ IntLeaf Node::expMultMod(const unsigned long exp, const IntLeaf &mod) const {
 std::vector<unsigned char> Node::toVector(void) const {
     std::vector<unsigned char> res;
 
-    res.push_back(getType());
-
-    int length = getLength();
-
-    for(unsigned int i=0; i<4; i++)
-    {
-		res.push_back(length >> 24);
-		length <<= 8;
-    }
-
     for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
     {
-		std::vector<unsigned char> nextelem = (*itr)->toVector();
-		res.insert(res.begin(), nextelem.begin(), nextelem.end());
+		std::vector<unsigned char> nextelem = (*itr)->serialize();
+		res.insert(res.end(), nextelem.begin(), nextelem.end());
     }
     
     return res;

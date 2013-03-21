@@ -61,3 +61,21 @@ std::vector<unsigned char> BaseNode::concatData(const BaseNode * const other) co
 
 	return result;
 }
+
+std::vector<unsigned char> BaseNode::serialize() const {
+	std::vector<unsigned char> result;
+	if(getType() == NodeType::NODE) {
+		result.push_back(0);
+	} else {
+		result.push_back(1);
+	}
+
+	IntLeaf length(getLength(), 4);
+	std::vector<unsigned char> lengthData = length.toVector();
+	result.insert(result.end(), lengthData.begin(), lengthData.end());
+
+	std::vector<unsigned char> data = toVector();
+	result.insert(result.end(), data.begin(), data.end());
+
+	return result;
+}
