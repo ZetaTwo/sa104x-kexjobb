@@ -140,10 +140,11 @@ bool proofOfShuffle(proofStruct &pfStr,
     }
 
     // Get random array
+    DataLeaf generators = DataLeaf("generators");
     RO r = RO(pfStr.hash, pfStr.nHash);
-    IntLeaf s = r(pfStr.rho.concatData(DataLeaf("generators")));
+    IntLeaf s = r(pfStr.rho.concatData(&generators));
 
-    Node h = RandomArray(pfStr.Gq, pfStr.N, pfStr.hash, s.toVector(), pfStr.nR);
+    Node h = RandomArray(pfStr.Gq, pfStr.N, pfStr.hash, s.serialize(), pfStr.nR);
 
     // Step 2, compute a seed
     Node seed_gen;
@@ -154,7 +155,7 @@ bool proofOfShuffle(proofStruct &pfStr,
     seed_gen.addChild(w); 
     seed_gen.addChild(w_prime);
 
-    std::vector<unsigned char> gen = pfStr.rho.concatData(seed_gen);
+    std::vector<unsigned char> gen = pfStr.rho.concatData(&seed_gen);
 		
 
     RO rs = RO(pfStr.hash, (pfStr.nE/8)*8);
@@ -163,7 +164,7 @@ bool proofOfShuffle(proofStruct &pfStr,
 
     // Step 3
 
-    PRG prg = PRG(pfStr.hash, seed.toVector(), pfStr.nE);
+    PRG prg = PRG(pfStr.hash, seed.serialize(), pfStr.nE);
 
     Node t;    
     for(unsigned int i=0; i<pfStr.N; ++i)
@@ -189,7 +190,7 @@ bool proofOfShuffle(proofStruct &pfStr,
     challenge_gen.addChild(seed);
     challenge_gen.addChild(tau_pos);
 
-    gen = pfStr.rho.concatData(challenge_gen);
+    gen = pfStr.rho.concatData(&challenge_gen);
 
     RO rc = RO(pfStr.hash, std::pow(2,pfStr.nV));
 
