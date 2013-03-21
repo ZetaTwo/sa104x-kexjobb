@@ -149,7 +149,7 @@ int Verifier(string protinfo, string directory,
 
     /* Read first ciphertext */
     try {
-		const std::string ciphertext_file_name = CIPHERTEXT_FILE_PREFIX + std::to_string(0) + std::string(".bt");
+		const std::string ciphertext_file_name = CIPHERTEXT_FILE_PREFIX + std::to_string(0) + FILE_SUFFIX;
 		std::ifstream fstr(ciphertext_file_name, std::fstream::in);
 
 	L0 = Node(fstr);
