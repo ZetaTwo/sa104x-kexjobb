@@ -1,12 +1,14 @@
 #ifndef VERIFIER_UTILITIES_H
 #define VERIFIER_UTILITIES_H
 
+#include <string>
+
 #include "Node.h"
 #include "IntLeaf.h"
 
 struct proofStruct
 {
-    const IntLeaf rho;
+    IntLeaf rho;
     unsigned int N;
     unsigned int nE;
     unsigned int nR;

@@ -12,6 +12,18 @@ TEST(ByteTreeTests, NodeContructor) {
 	EXPECT_EQ(0, n.getLength());
 }
 
+TEST(ByteTreeTests, ConcatData) {
+	BaseNode *a = new IntLeaf(1234);
+	BaseNode *b = new IntLeaf(5678);
+
+	std::vector<unsigned char> result = a->concatData(b);
+
+	char expected_data[] = { 0x04, 0xD2, 0x16, 0x2E };
+	std::vector<unsigned char> expected;
+	expected.insert(expected.end(), expected_data, expected_data+4);
+	EXPECT_EQ(expected, result);
+}
+
 /*TEST(ByteTreeTests, LeafContructor) {
 	Leaf n;
 

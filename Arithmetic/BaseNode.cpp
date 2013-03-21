@@ -50,3 +50,14 @@ void BaseNode::ReadNodeHeader(std::istream &file, char &type, uint32_t &length) 
 	length <<= sizeof(char);
 	length |= buffer[3];
 }
+
+std::vector<unsigned char> BaseNode::concatData(const BaseNode * const other) const {
+	std::vector<unsigned char> result;
+	std::vector<unsigned char> thisData = this->toVector();
+	std::vector<unsigned char> otherData = other->toVector();
+
+	result.insert(result.end(), thisData.begin(), thisData.end());
+	result.insert(result.end(), otherData.begin(), otherData.end());
+
+	return result;
+}

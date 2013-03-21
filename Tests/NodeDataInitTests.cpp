@@ -29,7 +29,7 @@ TEST(NodeDataInitTests, NodeFromVectorTest)
 								0x01, 0x00, 0x00, 0x00, 0x02, 0x03, 0xE1, 
 							0x01, 0x00, 0x00, 0x00, 0x02, 0x2D, 0x52
 						};
-	std::vector<char> data(arr, arr + sizeof(arr) / sizeof(arr[0]) );
+	std::vector<unsigned char> data(arr, arr + sizeof(arr) / sizeof(arr[0]) );
 
 	Node node1(data);
 

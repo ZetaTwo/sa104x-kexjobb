@@ -15,6 +15,7 @@ public:
 	BaseNode::NodeType getType(void) const;
 	virtual int32_t getLength(void) const = 0;
 	virtual std::vector<unsigned char> toVector(void) const = 0;
+	std::vector<unsigned char> concatData(const BaseNode * const other) const;
 
 private:
 	const BaseNode::NodeType type;
