@@ -5,21 +5,28 @@
 #include "PRG.h"
 #include "H_SHA.h"
 #include "ElGamal.h"
+#include "Utilities.h"
 
 bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f, const Node &tauDec, const Node &sigmaDec, const Node &w) {
 
 	//Step 1
-	//Foreach tauDecL in tauDec {
-		//if(tauDecL.getChild(0) is not in Gq || tauDecL.getChild(1) is not in Mw) {
-			//return false;
-		//}
-	//}
+    for(unsigned int i=0; i<ps.lambda; ++i)
+    {
+	Node tauDeci = tauDec.getNodeChild(i);
 
-	//Foreach sigmaDecL in sigmaDec {
-		//if(sigmaDecl is not in Zq) {
-			//return false;
-		//}
-	//
+	if(!isElemOf(ps.Gq, tauDeci.getIntLeafChild(0)) ||
+		     !isElemOf(ps.Gq, ps.width, tauDeci.getNodeChild(1))) 
+	{
+	    return false;
+	}
+    
+	IntLeaf sigmaDeci = sigmaDec.getIntLeafChild(i);
+	
+	if(!isElemOf(ps.Gq.getIntLeafChild(0), sigmaDeci))
+	{
+	    return false;
+	}
+    }
 
 	//Step 2
 	//Construct seed
@@ -33,11 +40,7 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 	seed.addChild(seed_a);
 	seed.addChild(seed_b);
 
-	bytevector seed_data;
-	bytevector rho_data = ps.rho.toVector();
-	bytevector seed_data_a = seed.toVector();
-	seed_data.insert(seed_data.begin(), rho_data.begin(), rho_data.end());
-	seed_data.insert(seed_data.begin(), seed_data_a.begin(), seed_data_a.end());
+	bytevector seed_data = ps.rho.concatData(&seed);
 
 	RO RO_seed(H_SHA256, 1);
 	IntLeaf s = RO_seed(seed_data);
@@ -57,10 +60,8 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 	Node challenge;
 	challenge.addChild(s);
 	challenge.addChild(tauDec);
-	bytevector challenge_data;
-	bytevector challenge_data_a = challenge.toVector();
-	challenge_data.insert(challenge_data.begin(), rho_data.begin(), rho_data.end());
-	challenge_data.insert(challenge_data.begin(), challenge_data_a.begin(), challenge_data_a.end());
+
+	bytevector challenge_data = ps.rho.concatData(&challenge);
 
 	RO RO_challenge(H_SHA256, 1);
 	IntLeaf v = RO_challenge(challenge_data);
@@ -98,6 +99,8 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 
 		IntLeaf cond2left = Bj.expMod(v, p) * tauDec.getIntLeafChild(j);
 		IntLeaf cond2right = PDec(x, A, p);
+
+		return cond1left == cond1right && cond2left == cond2right;
 	}
 
 	return true;
