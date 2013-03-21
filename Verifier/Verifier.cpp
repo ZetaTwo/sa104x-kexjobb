@@ -136,22 +136,22 @@ bool Verifier(string protinfo, string directory,
 
     //Step 6 Read lists
         
-    Node *L0;
-    Node *Llambda;
+    Node L0;
+    Node Llambda;
 
     /* Read first ciphertext */
     try {
 		const std::string ciphertext_file_name = CIPHERTEXT_FILE_PREFIX + std::to_string(0) + std::string(".bt");
 		std::ifstream fstr(ciphertext_file_name, std::fstream::in);
 
-	L0 = new Node(fstr);
+	L0 = Node(fstr);
     }
     catch(...)
     {
 	return 0;
     }
     
-    pfStr.N = L0->getLength();
+    pfStr.N = L0.getLength();
 
     if(type == "mixing") {
 	/* Read threshold ciphertext */
@@ -159,7 +159,7 @@ bool Verifier(string protinfo, string directory,
 			const std::string ciphertext_file_name = CIPHERTEXT_FILE_PREFIX + std::to_string(lambda) + std::string(".bt");
 			std::ifstream fstr(ciphertext_file_name, std::fstream::in);
 	    
-	    Llambda = new Node(fstr);
+	    Llambda = Node(fstr);
 	}
 	catch(...)
 	{
@@ -173,7 +173,7 @@ bool Verifier(string protinfo, string directory,
 	{
 	    std::ifstream fstr("ShuffledCiphertexts.bt", std::fstream::in);
 	    
-	    Llambda = new Node(fstr);
+	    Llambda = Node(fstr);
 	}
 	catch(...)
 	{
@@ -181,13 +181,13 @@ bool Verifier(string protinfo, string directory,
 	}
     }
 
-    Node* m;
+    Node m;
     if(type == "mixing" || type == "decryption")
     {
 		/* Read plaintexts */
 		try {
 			std::ifstream fstr("Plaintexts.bt", std::fstream::in); 
-			m = new Node(fstr);
+			m = Node(fstr);
 		} catch(...) {
 			return 0;
 		}
@@ -198,7 +198,7 @@ bool Verifier(string protinfo, string directory,
     if((type == "mixing" || type == "shuffling") &&
        (posc || ccpos))
     {
-	if(!verifyShuffling(pfStr, lambda, *L0, *Llambda, posc, ccpos))
+	if(!verifyShuffling(pfStr, lambda, L0, Llambda, posc, ccpos))
 	{
 	    return false;
 	}
@@ -207,17 +207,16 @@ bool Verifier(string protinfo, string directory,
     
     if(dec && type == "mixing")
     {
-	// set L = Llambda
-	Node L = *Llambda;
-	if(!DecryptionVerifier(pfStr, L, *m))
+	Node L = Llambda;
+	if(!DecryptionVerifier(pfStr, L, m))
 	{
 	    return false;
 	}
     }
     else if(dec && type == "decryption")
     {
-	Node L = *L0;
-	if(!DecryptionVerifier(pfStr, L, *m))
+	Node L = L0;
+	if(!DecryptionVerifier(pfStr, L, m))
 	{
 	    return false;
 	}    }

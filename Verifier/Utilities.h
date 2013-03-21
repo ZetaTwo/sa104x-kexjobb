@@ -7,10 +7,10 @@
 struct proofStruct
 {
     const IntLeaf rho;
-    int N;
-    int nE;
-    int nR;
-    int nV;
+    unsigned int N;
+    unsigned int nE;
+    unsigned int nR;
+    unsigned int nV;
     std::vector<unsigned char> (*hash)(std::vector<unsigned char>);
     Node Gq;
     Node Rw;

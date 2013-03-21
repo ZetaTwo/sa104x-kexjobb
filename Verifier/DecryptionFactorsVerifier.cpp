@@ -26,15 +26,15 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 	Node seed;
 	Node seed_a;
 	Node seed_b;
-	seed_a.addChild(ps.Gq->getIntLeafChild(2));
+	seed_a.addChild(ps.Gq.getIntLeafChild(2));
 	seed_a.addChild(w);
-	seed_b.addChild(*ps.pk);
+	seed_b.addChild(ps.pk);
 	seed_b.addChild(f);
 	seed.addChild(seed_a);
 	seed.addChild(seed_b);
 
 	std::vector<unsigned char> seed_data;
-	std::vector<unsigned char> rho_data = ps.rho->toVector();
+	std::vector<unsigned char> rho_data = ps.rho.toVector();
 	std::vector<unsigned char> seed_data_a = seed.toVector();
 	seed_data.insert(seed_data.begin(), rho_data.begin(), rho_data.end());
 	seed_data.insert(seed_data.begin(), seed_data_a.begin(), seed_data_a.end());
@@ -45,7 +45,7 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 	//Step 3
 	PRG prg(H_SHA256, s.toVector(), 256);
 	Node t;
-	for (int i = 0; i < ps.N; i++)
+	for (unsigned int i = 0; i < ps.N; i++)
 	{
 		t.addChild(prg.next());
 	}
@@ -66,7 +66,7 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 	IntLeaf v = RO_challenge(challenge_data);
 
 	//Step 5
-	IntLeaf p = ps.Gq->getIntLeafChild(0);
+	IntLeaf p = ps.Gq.getIntLeafChild(0);
 	Node u = w.getChildren(0);
 	Node yPrime = tauDec.getChildren(0);
 	IntLeaf A = u.expMultMod(e, p);
@@ -81,8 +81,8 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 		
 		IntLeaf x = sigmaDec.sumMod(p);
 
-		IntLeaf cond1left = ps.pk->prodMod(p).expMod(v, p) * yPrime.prodMod(p);
-		IntLeaf cond1right = ps.Gq->getIntLeafChild(2).expMod(x, p);
+		IntLeaf cond1left = ps.pk.prodMod(p).expMod(v, p) * yPrime.prodMod(p);
+		IntLeaf cond1right = ps.Gq.getIntLeafChild(2).expMod(x, p);
 
 		IntLeaf cond2left = B.expMod(v, p) * tauDec.getChildren(1).prodMod(p);
 		IntLeaf cond2right = PDec(x, A, p);
@@ -93,8 +93,8 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 
 		IntLeaf x = sigmaDec.getIntLeafChild(j);
 
-		IntLeaf cond1left = ps.pk->getIntLeafChild(j).expMod(v, p) * yPrime.getIntLeafChild(j);
-		IntLeaf cond1right = ps.Gq->getIntLeafChild(2).expMod(x, p);
+		IntLeaf cond1left = ps.pk.getIntLeafChild(j).expMod(v, p) * yPrime.getIntLeafChild(j);
+		IntLeaf cond1right = ps.Gq.getIntLeafChild(2).expMod(x, p);
 
 		IntLeaf cond2left = Bj.expMod(v, p) * tauDec.getIntLeafChild(j);
 		IntLeaf cond2right = PDec(x, A, p);

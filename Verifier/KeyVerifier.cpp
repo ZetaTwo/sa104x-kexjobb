@@ -9,16 +9,16 @@
 bool keyVerifier(int lambda, proofStruct &pfStr)
 {
     // Step 1
-    Node *pk = new Node(FULL_PUBLIC_KEY_FILE_NAME);
+    Node pk = Node(FULL_PUBLIC_KEY_FILE_NAME);
     
-    if(!isPublicKey(*pfStr.Gq, *pk))
+    if(!isPublicKey(pfStr.Gq, pk))
     {
         // Did not read a key from file, reject proof
         return false;
     }
 
     // Step 2
-    Node *pub_keys = new Node();
+    Node pub_keys = Node();
     IntLeaf pub_key;
     
     for(int i=1; i <= lambda; i++) 
@@ -32,22 +32,22 @@ bool keyVerifier(int lambda, proofStruct &pfStr)
 	{
 	    pub_key = IntLeaf(fstr);
 
-	    if(!isPartialPublicKey(*pfStr.Gq, pub_key))
+	    if(!isPartialPublicKey(pfStr.Gq, pub_key))
 	    {
 		// Did not read a key from file, reject proof
 		return false;
 	    }
     
-	    pub_keys->addChild(pub_key);
+	    pub_keys.addChild(pub_key);
 	}
 
     }
 
-    const IntLeaf &g = pk->getIntLeafChild(0);
-    const IntLeaf &y = pk->getIntLeafChild(1);
-    const IntLeaf &p = pfStr.Gq->getIntLeafChild(0);
+    const IntLeaf &g = pk.getIntLeafChild(0);
+    const IntLeaf &y = pk.getIntLeafChild(1);
+    const IntLeaf &p = pfStr.Gq.getIntLeafChild(0);
 
-    if(pub_keys->prod() != y)
+    if(pub_keys.prod() != y)
     {
 	// Public keys do not match, reject proof
 	return false;
@@ -55,7 +55,7 @@ bool keyVerifier(int lambda, proofStruct &pfStr)
     
 
     // Step 3
-    Node *sec_keys = new Node();
+    Node sec_keys = Node();
     IntLeaf sec_key;
     for(int i=1; i<=lambda; i++)
     {
@@ -67,7 +67,7 @@ bool keyVerifier(int lambda, proofStruct &pfStr)
 	{   
 	    sec_key = IntLeaf(fstr);
 	    
-	    if(!isPartialSecretKey(*pfStr.Gq, sec_key))
+	    if(!isPartialSecretKey(pfStr.Gq, sec_key))
 	    {
 		// Did not read a key from file, reject proof
 		return false;
@@ -86,7 +86,7 @@ bool keyVerifier(int lambda, proofStruct &pfStr)
 	    
 	}
 
-	sec_keys->addChild(sec_key);
+	sec_keys.addChild(sec_key);
     }
 
 

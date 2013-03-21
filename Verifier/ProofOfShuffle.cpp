@@ -32,13 +32,13 @@ bool proofOfShuffle(proofStruct &pfStr,
     Node kB;
     Node kE;
     
-    const IntLeaf &p = pfStr.Gq->getIntLeafChild(0);
-    const IntLeaf &q = pfStr.Gq->getIntLeafChild(1);
-    const IntLeaf &g = pfStr.Gq->getIntLeafChild(2);
+    const IntLeaf &p = pfStr.Gq.getIntLeafChild(0);
+    const IntLeaf &q = pfStr.Gq.getIntLeafChild(1);
+    const IntLeaf &g = pfStr.Gq.getIntLeafChild(2);
 
     // Step 1
 
-    // a) assert that pfStr->mu is array of Pdersen commitments in pfStr->Gq
+    // a) assert that mu is array of Pdersen commitments in pfStr.Gq
     
     try
     {
@@ -46,7 +46,7 @@ bool proofOfShuffle(proofStruct &pfStr,
 
 	for(unsigned int i=0; i < pfStr.N; ++i)
 	{
-	    if(!isPedersenCommitment(*pfStr.Gq, u.getIntLeafChild(i)))
+	    if(!isPedersenCommitment(pfStr.Gq, u.getIntLeafChild(i)))
 	    {
 		return false;
 	    }
@@ -67,16 +67,16 @@ bool proofOfShuffle(proofStruct &pfStr,
 	C_prime = tau_pos.getIntLeafChild(3);
 	D_prime = tau_pos.getIntLeafChild(4);
 
-	if(!isElemOf(*pfStr.Gq, A_prime) ||
-	   !isElemOf(*pfStr.Gq, C_prime) ||
-	   !isElemOf(*pfStr.Gq, D_prime))
+	if(!isElemOf(pfStr.Gq, A_prime) ||
+	   !isElemOf(pfStr.Gq, C_prime) ||
+	   !isElemOf(pfStr.Gq, D_prime))
 	{
 	    return false;
 	}
 	
 	F_prime = tau_pos.getNodeChild(5);
-	if(!isElemOf(*pfStr.Gq, F_prime.getIntLeafChild(0)) ||
-	   !isElemOf(*pfStr.Gq, F_prime.getIntLeafChild(1)))
+	if(!isElemOf(pfStr.Gq, F_prime.getIntLeafChild(0)) ||
+	   !isElemOf(pfStr.Gq, F_prime.getIntLeafChild(1)))
 	{
 	    return false;
 	}
@@ -86,8 +86,8 @@ bool proofOfShuffle(proofStruct &pfStr,
 
 	for(unsigned int i=0; i<pfStr.N; ++i)
 	{
-	    if(!isElemOf(*pfStr.Gq, B.getIntLeafChild(i)) ||
-	       !isElemOf(*pfStr.Gq, B_prime.getIntLeafChild(i)))
+	    if(!isElemOf(pfStr.Gq, B.getIntLeafChild(i)) ||
+	       !isElemOf(pfStr.Gq, B_prime.getIntLeafChild(i)))
 	    {
 		return false;
 	    }
@@ -144,12 +144,12 @@ bool proofOfShuffle(proofStruct &pfStr,
     seed_gen.addChild(g); // add g, generator of Gq
     seed_gen.addChild(h);
     seed_gen.addChild(u);
-    seed_gen.addChild(*pfStr.pk);
+    seed_gen.addChild(pfStr.pk);
     seed_gen.addChild(w); 
     seed_gen.addChild(w_prime);
 
 
-    std::vector<unsigned char> gen = pfStr.rho->toVector();
+    std::vector<unsigned char> gen = pfStr.rho.toVector();
     std::vector<unsigned char> seed_gen_vec = seed_gen.toVector();
     gen.insert(gen.end(), seed_gen_vec.begin(), seed_gen_vec.end());
 
@@ -185,7 +185,7 @@ bool proofOfShuffle(proofStruct &pfStr,
     challenge_gen.addChild(seed);
     challenge_gen.addChild(tau_pos);
 
-    gen = pfStr.rho->toVector();
+    gen = pfStr.rho.toVector();
     std::vector<unsigned char> chal_gen_vec = challenge_gen.toVector();
     gen.insert(gen.end(), chal_gen_vec.begin(), chal_gen_vec.end());
 
@@ -230,7 +230,7 @@ bool proofOfShuffle(proofStruct &pfStr,
 	return false;
     }
 
-    if(F.expMod(v, p) * F_prime != Enc(*pfStr.pk, IntLeaf(1), -kF, p) * w_prime.expMultMod(kE, p))
+    if(F.expMod(v, p) * F_prime != Enc(pfStr.pk, IntLeaf(1), -kF, p) * w_prime.expMultMod(kE, p))
     {
 	return false;
     }

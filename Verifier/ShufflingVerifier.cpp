@@ -21,7 +21,7 @@ bool verifyShuffling(proofStruct &pfStr,
     {
 	Node L_array = Node();	
 	L_array.addChild(L0);
-	Node * Llast = &L0;
+	Node Llast = L0;
 
 	for(int l=1; l<=lambda; l++)
 	{
@@ -51,14 +51,14 @@ bool verifyShuffling(proofStruct &pfStr,
 	    }
 
 
-	    Node *mu;
+	    Node mu;
 	    Node tau_pos;
 	    Node sigma_pos;
 	   
 
 	    try
 	    {
-		mu = new Node("PermutationCommitment<" + std::to_string(l) + ">.bt");
+		mu = Node("PermutationCommitment<" + std::to_string(l) + ">.bt");
 		tau_pos = Node("PoSCommitment<" + std::to_string(l) + ">.bt");
 		sigma_pos = Node("PoSReply<" + std::to_string(l) + ">.bt");
 	    }
@@ -71,13 +71,11 @@ bool verifyShuffling(proofStruct &pfStr,
 	    //Step 2
 	    // Verify proof of shuffle
 	    // Execute Algorithm 19 with specified input
-	    if(!proofOfShuffle(pfStr, *Llast, L, *mu, tau_pos, sigma_pos) &&
+	    if(!proofOfShuffle(pfStr, Llast, L, mu, tau_pos, sigma_pos) &&
 	       L_array.getNodeChild(l) != L_array.getNodeChild(l-1))
 		return false;
 
-	    Llast = &L;
-	    delete mu;
-
+	    Llast = L;
 	}
 
 	// Step 3

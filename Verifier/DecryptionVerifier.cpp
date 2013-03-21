@@ -8,7 +8,7 @@
 
 bool DecryptionVerifier(const proofStruct &ps, const Node L, const Node m) {
 
-	IntLeaf p = ps.Gq->getIntLeafChild(0);
+	IntLeaf p = ps.Gq.getIntLeafChild(0);
 
 	//Step 1
 	Node f = Node("f.dat");
@@ -26,7 +26,7 @@ bool DecryptionVerifier(const proofStruct &ps, const Node L, const Node m) {
 		{
 			result = DecryptionFactorsVerifier(l, ps, f, tauDec, sigmaDec);
 
-			IntLeaf xL = ps.x->getIntLeafChild(l);
+			IntLeaf xL = ps.x.getIntLeafChild(l);
 			
 
 			if(!result && (xL == BOTTOM || f.getIntLeafChild(l) != PDec(xL, L.getIntLeafChild(l), p))) {
