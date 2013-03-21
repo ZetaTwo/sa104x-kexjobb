@@ -6,19 +6,19 @@
 
 struct proofStruct
 {
-    const IntLeaf *rho;
+    const IntLeaf rho;
     int N;
     int nE;
     int nR;
     int nV;
     std::vector<unsigned char> (*hash)(std::vector<unsigned char>);
-    const Node *Gq;
-    const Node *Rw;
-    const Node *Cw;
-    const Node *Mw;
-    const Node *pk;
-    const Node *y;
-    const Node *x;
+    Node Gq;
+    Node Rw;
+    Node Cw;
+    Node Mw;
+    Node pk;
+    Node y;
+    Node x;
 };
 
 bool isElemOf(const Node &group, const IntLeaf &elem);

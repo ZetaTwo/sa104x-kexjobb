@@ -66,5 +66,5 @@ void getGroupFromString(proofStruct &pfStr, std::string str)
 
     /* TODO: Here is a good place to check if the first child of group_info is a string which says verificatum.arithm.ModPGroup */
 
-    pfStr.Gq = &group_info.getNodeChild(1);
+    pfStr.Gq = group_info.getNodeChild(1);
 }
