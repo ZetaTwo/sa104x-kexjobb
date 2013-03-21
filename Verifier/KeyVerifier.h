@@ -2,6 +2,7 @@
 #define VERIFIER_KEYVERIFIER_H
 
 #include "Node.h"
+#include "Utilities.h"
 #include <string>
 
 /* keyVerifier:
@@ -9,7 +10,7 @@
  *      G: underlying group 
  *      key_node: empty node that on return will be filled with (pk, pub_keys, sec_keys)
  */
-bool keyVerifier(int lambda, const Node &G, Node &key_node);
+bool keyVerifier(int lambda, proofStruct &pfStr);
 
 bool isPublicKey(const Node &G, const Node &pk);
 bool isPartialPublicKey(const Node &G, const IntLeaf &ppk);
