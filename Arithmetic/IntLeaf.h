@@ -98,14 +98,60 @@ public:
 	  */
     IntLeaf mod(const IntLeaf &leaf) const;
 
+	/** Addition assignment
+	  * Takes the IntLeaf and adds the input to the object.
+	  * \param[in] leaf The IntLeaf containing the number to add.
+	  * \return A reference to the IntLeaf object itself.
+	  */
     IntLeaf &addTo(const IntLeaf &leaf);
-    IntLeaf add(const IntLeaf &leaf) const;
+
+	/** Addition assignment operator
+	  * Takes the IntLeaf and adds the input to the object.
+	  * \param[in] leaf The IntLeaf containing the number to add.
+	  * \return A reference to the IntLeaf object itself.
+	  */
 	IntLeaf &operator+=(const IntLeaf &leaf);
+
+	/** Addition
+	  * Takes the IntLeaf, adds the input and returns the result.
+	  * \param[in] leaf The IntLeaf containing the number to add.
+	  * \return The result when adding the input to the IntLeaf object.
+	  */
+    IntLeaf add(const IntLeaf &leaf) const;
+
+	/** Addition operator
+	  * Takes the IntLeaf, adds the input and returns the result.
+	  * \param[in] leaf The IntLeaf containing the number to add.
+	  * \return The result when adding the input to the IntLeaf object.
+	  */
     IntLeaf operator+(const IntLeaf &leaf) const;
     
+	/** Multiply to
+	  * Takes the IntLeaf and multiplies it with the input.
+	  * \param[in] leaf The IntLeaf containing the number to multiply with.
+	  * \return A reference to the IntLeaf object itself.
+	  */
     IntLeaf &multTo(const IntLeaf &leaf);
-    IntLeaf mult(const IntLeaf &leaf) const;
+
+	/** Multiply to operator
+	  * Takes the IntLeaf and multiplies it with the input.
+	  * \param[in] leaf The IntLeaf containing the number to multiply with.
+	  * \return A reference to the IntLeaf object itself.
+	  */
 	IntLeaf &operator*=(const IntLeaf &leaf);
+
+	/** Multiplication
+	  * Takes the IntLeaf, multiplies with the input and returns the result.
+	  * \param[in] leaf The IntLeaf containing the number to multiply with.
+	  * \return The result when multiplying with the input to the IntLeaf object.
+	  */
+    IntLeaf mult(const IntLeaf &leaf) const;
+
+	/** Multiplication operator
+	  * Takes the IntLeaf, multiplies with the input and returns the result.
+	  * \param[in] leaf The IntLeaf containing the number to multiply with.
+	  * \return The result when multiplying with the input to the IntLeaf object.
+	  */
     IntLeaf operator*(const IntLeaf &leaf) const;
     
     IntLeaf &multToMod(const IntLeaf &leaf, const IntLeaf &mod);
