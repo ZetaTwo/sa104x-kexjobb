@@ -42,7 +42,7 @@ void Node::constructFromFile(std::istream &file) {
 	constructChildrenFromFile(file, count);
 }
 
-BaseNode *Node::constructPartFromFile(std::istream &file, uint32_t count) {
+Node *Node::constructPartFromFile(std::istream &file, uint32_t count) {
 	Node *result = new Node();
 	result->constructChildrenFromFile(file, count);
 

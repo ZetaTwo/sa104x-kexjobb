@@ -18,7 +18,7 @@ public:
 	explicit Node(std::istream &file);
 	~Node(void);
 
-	static BaseNode *constructPartFromFile(std::istream &file, uint32_t count);
+	static Node *constructPartFromFile(std::istream &file, uint32_t count);
 
 	virtual bytevector toVector(void) const;
 

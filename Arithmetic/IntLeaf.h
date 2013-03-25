@@ -61,7 +61,7 @@ public:
 	  * \param[in] file The stream containing the data from which the IntLeaf is created.
 	  * \param[in] length The number of bytes to read from the stream.
 	  */
-    static BaseNode *constructPartFromFile(std::istream &file, uint32_t length);
+    static IntLeaf *constructPartFromFile(std::istream &file, uint32_t length);
 
 	/** Assignment operator.
 	  * Assigns the input number to the IntLeaf
