@@ -47,14 +47,21 @@ public:
 	 *  \return A byte vector containing the DataLeaf data.
 	 */
 	const bytevector &getData(void) const;
-	
-	virtual bytevector toVector(void) const;
-	
-	virtual int32_t getLength(void) const;
 
+	/** Overwrite the DataLeaf with new data.
+	 *  Set the data of the DataLeaf to the contents of leaf.
+	 *  \param[in] leaf The leaf containing the data to copy.
+	 *  \return A reference to the current DataLeaf.
+	 */
 	DataLeaf &operator=(const DataLeaf &leaf);
 
+	virtual bytevector toVector(void) const;	
+	virtual int32_t getLength(void) const;
+
 private:
+
+	/** The bytevector holding the nodes data.
+	 */
 	bytevector data;
 };
 

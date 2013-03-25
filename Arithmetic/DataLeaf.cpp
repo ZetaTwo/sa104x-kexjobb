@@ -1,9 +1,6 @@
 #include "DataLeaf.h"
 
 #include <stdexcept>
-//#include <gmp.h>
-
-#define ARRAYORDER -1 /* -1 for least significant first, 1 for most significant first */
 
 DataLeaf::DataLeaf(void) : BaseLeaf(BaseNode::DATA_LEAF)
 {
