@@ -216,14 +216,47 @@ public:
 	  */
     IntLeaf expMod(const IntLeaf &leaf, const IntLeaf &mod) const;
     
+	/** Equality operator
+	  * Checks if the two IntLeaf objects contain the same number
+	  * \param[in] leaf The IntLeaf to compare against.
+	  * \return True if the objects contain the same number, false otherwise.
+	  */
     bool operator==(const IntLeaf &leaf) const;
+
+	/** Inequality operator
+	  * Checks if the two IntLeaf objects contain the different numbers.
+	  * \param[in] leaf The IntLeaf to compare against.
+	  * \return False if the objects contain the same number, true otherwise.
+	  */
     bool operator!=(const IntLeaf &leaf) const;
 
+	/** Less than operator
+	  * Checks if the the IntLeaf number is less than the other number.
+	  * \param[in] leaf The IntLeaf to compare against.
+	  * \return True if the object is less than leaf, false otherwise.
+	  */
     bool operator<(const IntLeaf &leaf) const;
+
+	/** Greater than operator
+	  * Checks if the the IntLeaf number is greater than the other number.
+	  * \param[in] leaf The IntLeaf to compare against.
+	  * \return True if the object is greater than leaf, false otherwise.
+	  */
     bool operator>(const IntLeaf &leaf) const;
 
+	/** Unary minus operator
+	  * Returns the IntLeaf objet with opposite sign.
+	  * \return A copy of the IntLeaf objet with opposite sign.
+	  */
     IntLeaf operator-(void) const;
+
+	/** Inverse
+	  * Returns the inverse of the IntLeaf objet modulo mod.
+	  * \param[in] mod The modulo of the group of which we return the inverse.
+	  * \return The IntLeaf representing the inverse in the group specified by mod.
+	  */
     IntLeaf inverse(const IntLeaf &mod) const;
+
 
     mpz_class getBigInt(void) const;
     std::string toString(void) const;
