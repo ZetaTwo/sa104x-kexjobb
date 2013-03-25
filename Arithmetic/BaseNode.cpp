@@ -64,7 +64,7 @@ bytevector BaseNode::concatData(const BaseNode * const other) const {
 
 bytevector BaseNode::serialize() const {
 	bytevector result;
-	if(getType() == NodeType::NODE) {
+	if(getType() == BaseNode::NODE) {
 		result.push_back(0);
 	} else {
 		result.push_back(1);
