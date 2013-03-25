@@ -56,7 +56,7 @@ bool keyVerifier(int lambda, proofStruct &pfStr)
     
 
     // Step 3
-    Node sec_keys = Node();
+    Node sec_keys;
     IntLeaf sec_key;
     for(int i=1; i<=lambda; i++)
     {
@@ -83,8 +83,8 @@ bool keyVerifier(int lambda, proofStruct &pfStr)
 	}
 	else
 	{
-	    /* Set nonsense value? */
-	    
+	    // Set invalid value
+	    sec_key = BOTTOM;
 	}
 
 	sec_keys.addChild(sec_key);
@@ -103,8 +103,8 @@ bool keyVerifier(int lambda, proofStruct &pfStr)
 
 bool isPublicKey(const Node &G, const Node &pk) 
 {
-    if(isElemOf(G, pk.getIntLeafChild(0)) &&
-       isElemOf(G, pk.getIntLeafChild(1)))
+    if(isElemOfGq(G, pk.getIntLeafChild(0)) &&
+       isElemOfGq(G, pk.getIntLeafChild(1)))
     {
 	return true;
     }
@@ -114,10 +114,10 @@ bool isPublicKey(const Node &G, const Node &pk)
 
 bool isPartialPublicKey(const Node &G, const IntLeaf &ppk)
 {
-    return isElemOf(G, ppk);
+    return isElemOfGq(G, ppk);
 }
 
 bool isPartialSecretKey(const Node &G, const IntLeaf &psk)
 {
-    return isElemOf(G.getIntLeafChild(1), psk);
+    return isElemOfZn(G.getIntLeafChild(1), psk);
 }
