@@ -351,10 +351,18 @@ Node Node::multMod(const Node &node, const IntLeaf &mod) const {
 
 Node &Node::operator*=(const IntLeaf &leaf) {
 	return multTo(leaf);	
-};
+}
 
 Node Node::operator*(const IntLeaf &leaf) const {
 	return mult(leaf);	
+}
+
+Node &Node::operator*=(const Node &node) {
+	return multTo(node);	
+}
+
+Node Node::operator*(const Node &node) const {
+	return mult(node);	
 }
 	
 bool Node::operator==(const Node &leaf) const {
