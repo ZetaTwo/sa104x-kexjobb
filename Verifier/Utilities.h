@@ -28,6 +28,7 @@ bool isElemOfGq(const Node &group, const IntLeaf &elem);
 bool isElemOfZn(const IntLeaf &n, const IntLeaf &elem);
 bool isElemOfCw(const proofStruct &pfStr, const Node &ciphertext);
 bool isElemOfMw(const proofStruct &pfStr, const Node &plaintext);
+bool isElemOfRw(const proofStruct &pfStr, const Node &random);
 
 bool isPedersenCommitment(const Node &group, const IntLeaf &elem);
 
