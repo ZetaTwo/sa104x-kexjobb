@@ -1,10 +1,11 @@
 var searchData=
 [
-  ['ciphertext_5ffile_5fprefix',['CIPHERTEXT_FILE_PREFIX',['../_verifier_8h.html#ae3ef5aa3b56d47c0cddff289bf57bc5c',1,'Verifier.h']]],
-  ['ciphertexts_5ffile',['CIPHERTEXTS_FILE',['../_file_names_8h.html#a8a68d8734ab10d378dd1d8035ae3f97c',1,'FileNames.h']]],
-  ['ciphertexts_5ffile_5fprefix',['CIPHERTEXTS_FILE_PREFIX',['../_file_names_8h.html#a61a3432bb14e0a66953f0c0d6d83ea14',1,'FileNames.h']]],
+  ['cc_5fpos_5fcommitment_5ffile_5ftmpl',['CC_POS_COMMITMENT_FILE_TMPL',['../_file_names_8h.html#a04575341ee57d801529ecf85513c64e9',1,'FileNames.h']]],
+  ['cc_5fpos_5freply_5ffile_5ftmpl',['CC_POS_REPLY_FILE_TMPL',['../_file_names_8h.html#ad572cf2fccb40206e6aa0289a4b6abad',1,'FileNames.h']]],
+  ['ciphertexts_5ffile',['CIPHERTEXTS_FILE',['../_file_names_8h.html#abe9f5d9b3bb29a7a2931a95294cbbb93',1,'FileNames.h']]],
+  ['ciphertexts_5ffile_5ftmpl',['CIPHERTEXTS_FILE_TMPL',['../_file_names_8h.html#a275260d98009933eec25aeb4d7014872',1,'FileNames.h']]],
   ['compat',['COMPAT',['../_verifier_8h.html#a3dfe11cf1a3a8121f6cd7fec4bf5947eaa9689eb5b95db5a9e7463157f64b7f6b',1,'Verifier.h']]],
   ['concatdata',['concatData',['../class_base_node.html#ab9ec930839c38803c8be0638c7096982',1,'BaseNode']]],
-  ['constructpartfromfile',['constructPartFromFile',['../class_int_leaf.html#aeedcffeab76e98891ed98a235696c3db',1,'IntLeaf::constructPartFromFile()'],['../class_node.html#a2b43c8e76e3dd008affda12607770a62',1,'Node::constructPartFromFile()']]],
+  ['constructpartfromfile',['constructPartFromFile',['../class_int_leaf.html#a80144885b4ddcbcb2552753ab93130b1',1,'IntLeaf::constructPartFromFile()'],['../class_node.html#ab6efbde34289d6e6d9c3bd223ae78ff9',1,'Node::constructPartFromFile()']]],
   ['copy',['copy',['../class_base_node.html#ae7b4733f4f9eae9979dc9d8469d51c28',1,'BaseNode']]]
 ];

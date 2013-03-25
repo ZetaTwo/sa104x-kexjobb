@@ -110,7 +110,7 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4bf5930c1238505203c3dcf6e4573bad"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3bb0c374e940be9178df34ba5272f92f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_node.html#a3bb0c374e940be9178df34ba5272f92f">Node</a> (const <a class="el" href="types_8h.html#a64b5be62be31dcda165d2c6c3c262fb5">bytevector</a> data)</td></tr>
 <tr class="separator:a3bb0c374e940be9178df34ba5272f92f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acdaa8db8d24d95d0c92218036a2df7e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_node.html#acdaa8db8d24d95d0c92218036a2df7e9">Node</a> (const std::string filename)</td></tr>
+<tr class="memitem:acdaa8db8d24d95d0c92218036a2df7e9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_node.html#acdaa8db8d24d95d0c92218036a2df7e9">Node</a> (const std::string <a class="el" href="_file_names_8h.html#a102b79998d72fb14da34cf1fe91d4232">filename</a>)</td></tr>
 <tr class="separator:acdaa8db8d24d95d0c92218036a2df7e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae7672b93ee7885c40047f2f2f66578c0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_node.html#ae7672b93ee7885c40047f2f2f66578c0">Node</a> (std::istream &amp;file)</td></tr>
 <tr class="separator:ae7672b93ee7885c40047f2f2f66578c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -246,8 +246,8 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a2b43c8e76e3dd008affda12607770a62"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_base_node.html">BaseNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_node.html#a2b43c8e76e3dd008affda12607770a62">constructPartFromFile</a> (std::istream &amp;file, uint32_t count)</td></tr>
-<tr class="separator:a2b43c8e76e3dd008affda12607770a62"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6efbde34289d6e6d9c3bd223ae78ff9"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_node.html">Node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_node.html#ab6efbde34289d6e6d9c3bd223ae78ff9">constructPartFromFile</a> (std::istream &amp;file, uint32_t count)</td></tr>
+<tr class="separator:ab6efbde34289d6e6d9c3bd223ae78ff9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -563,7 +563,7 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2b43c8e76e3dd008affda12607770a62"></a>
+<a class="anchor" id="ab6efbde34289d6e6d9c3bd223ae78ff9"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -571,7 +571,7 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_base_node.html">BaseNode</a> * Node::constructPartFromFile </td>
+          <td class="memname"><a class="el" href="class_node.html">Node</a> * Node::constructPartFromFile </td>
           <td>(</td>
           <td class="paramtype">std::istream &amp;&#160;</td>
           <td class="paramname"><em>file</em>, </td>
@@ -956,7 +956,7 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Returns how long the node is. </p>
-<p>For a <a class="el" href="class_node.html">Node</a> this returns the number of children. For an <a class="el" href="class_int_leaf.html">IntLeaf</a> this returns the number of bytes the number needs. </p>
+<p>For a <a class="el" href="class_node.html">Node</a> this returns the number of children. For an <a class="el" href="class_int_leaf.html" title="Represents a integer node capable of containing arbitrary large integers.">IntLeaf</a> this returns the number of bytes the number needs. </p>
 <dl class="section return"><dt>Returns</dt><dd>The length of the node. </dd></dl>
 
 <p>Implements <a class="el" href="class_base_node.html#a50aef77f988f7689e96b346705628f91">BaseNode</a>.</p>
@@ -1488,7 +1488,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 25 2013 14:21:15 for SA104X by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Mar 25 2013 16:44:14 for SA104X by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

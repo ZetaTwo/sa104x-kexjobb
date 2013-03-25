@@ -88,22 +88,24 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Verifier.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="_verifier_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="keyword">using</span> std::string;</div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div>
-<div class="line"><a name="l00004"></a><span class="lineno"><a class="code" href="_verifier_8h.html#a3dfe11cf1a3a8121f6cd7fec4bf5947ea1f6610cffbdd8f22512c1987f4d9a574">    4</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="_verifier_8h.html#a3dfe11cf1a3a8121f6cd7fec4bf5947e">RunMode</a> { <a class="code" href="_verifier_8h.html#a3dfe11cf1a3a8121f6cd7fec4bf5947eac157bdf0b85a40d2619cbc8bc1ae5fe2">NONE</a>, <a class="code" href="_verifier_8h.html#a3dfe11cf1a3a8121f6cd7fec4bf5947ea9f5cb747b2e1f0ea781d2b1f2a5b4824">HELP</a>, <a class="code" href="_verifier_8h.html#a3dfe11cf1a3a8121f6cd7fec4bf5947eaa9689eb5b95db5a9e7463157f64b7f6b">COMPAT</a>, <a class="code" href="_verifier_8h.html#a3dfe11cf1a3a8121f6cd7fec4bf5947ea7cd694aa370e2d8cf72b5c796618837b">MIX</a>, <a class="code" href="_verifier_8h.html#a3dfe11cf1a3a8121f6cd7fec4bf5947ea1f6610cffbdd8f22512c1987f4d9a574">SHUFFLE</a>, <a class="code" href="_verifier_8h.html#a3dfe11cf1a3a8121f6cd7fec4bf5947ea3179dbaa639c5906029876801dcf4e11">DECRYPT</a> };</div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_verifier_8cpp.html#a4aa1e2842a563c2fc59039eb5cd3c63e">Verifier</a>(<span class="keywordtype">string</span> protinfo, <span class="keywordtype">string</span> directory,</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;                 <a class="code" href="_verifier_8h.html#a3dfe11cf1a3a8121f6cd7fec4bf5947e">RunMode</a> typeExp, <span class="keywordtype">string</span> auxsidExp, <span class="keywordtype">int</span> wExp,</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;                 <span class="keywordtype">bool</span> posc, <span class="keywordtype">bool</span> ccpos, <span class="keywordtype">bool</span> dec);</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="code" href="_verifier_8h.html#ae3ef5aa3b56d47c0cddff289bf57bc5c">   11</a></span>&#160;<span class="keyword">const</span> std::string <a class="code" href="_verifier_8h.html#ae3ef5aa3b56d47c0cddff289bf57bc5c">CIPHERTEXT_FILE_PREFIX</a> = <span class="stringliteral">&quot;Ciphertexts&quot;</span>;</div>
+<a href="_verifier_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef VERIFIER_VERIFIER_H</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define VERIFIER_VERIFIER_H</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="keyword">using</span> std::string;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00007"></a><span class="lineno"><a class="code" href="_verifier_8h.html#a3dfe11cf1a3a8121f6cd7fec4bf5947ea1f6610cffbdd8f22512c1987f4d9a574">    7</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="_verifier_8h.html#a3dfe11cf1a3a8121f6cd7fec4bf5947e">RunMode</a> { <a class="code" href="_verifier_8h.html#a3dfe11cf1a3a8121f6cd7fec4bf5947eac157bdf0b85a40d2619cbc8bc1ae5fe2">NONE</a>, <a class="code" href="_verifier_8h.html#a3dfe11cf1a3a8121f6cd7fec4bf5947ea9f5cb747b2e1f0ea781d2b1f2a5b4824">HELP</a>, <a class="code" href="_verifier_8h.html#a3dfe11cf1a3a8121f6cd7fec4bf5947eaa9689eb5b95db5a9e7463157f64b7f6b">COMPAT</a>, <a class="code" href="_verifier_8h.html#a3dfe11cf1a3a8121f6cd7fec4bf5947ea7cd694aa370e2d8cf72b5c796618837b">MIX</a>, <a class="code" href="_verifier_8h.html#a3dfe11cf1a3a8121f6cd7fec4bf5947ea1f6610cffbdd8f22512c1987f4d9a574">SHUFFLE</a>, <a class="code" href="_verifier_8h.html#a3dfe11cf1a3a8121f6cd7fec4bf5947ea3179dbaa639c5906029876801dcf4e11">DECRYPT</a> };</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keywordtype">int</span> <a class="code" href="_verifier_8cpp.html#a4aa1e2842a563c2fc59039eb5cd3c63e">Verifier</a>(<span class="keywordtype">string</span> protinfo, <span class="keywordtype">string</span> directory,</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                 <a class="code" href="_verifier_8h.html#a3dfe11cf1a3a8121f6cd7fec4bf5947e">RunMode</a> typeExp, <span class="keywordtype">string</span> auxsidExp, <span class="keywordtype">int</span> wExp,</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;                 <span class="keywordtype">bool</span> posc, <span class="keywordtype">bool</span> ccpos, <span class="keywordtype">bool</span> dec);</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Mar 25 2013 14:21:14 for SA104X by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Mar 25 2013 16:44:14 for SA104X by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>
