@@ -1,0 +1,801 @@
+\begin{theindex}
+
+  \item {$\sim $\discretionary {-}{}{}Base\discretionary {-}{}{}Leaf}
+    \subitem {Base\discretionary {-}{}{}Leaf}, \hyperpage{9}
+  \item {$\sim $\discretionary {-}{}{}Base\discretionary {-}{}{}Node}
+    \subitem {Base\discretionary {-}{}{}Node}, \hyperpage{10}
+  \item {$\sim $\discretionary {-}{}{}Data\discretionary {-}{}{}Leaf}
+    \subitem {Data\discretionary {-}{}{}Leaf}, \hyperpage{12}
+  \item {$\sim $\discretionary {-}{}{}Int\discretionary {-}{}{}Leaf}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{14}
+  \item {$\sim $\discretionary {-}{}{}Node}
+    \subitem {Node}, \hyperpage{17}
+  \item {$\sim $\discretionary {-}{}{}P\discretionary {-}{}{}R\discretionary {-}{}{}G}
+    \subitem {P\discretionary {-}{}{}R\discretionary {-}{}{}G}, 
+		\hyperpage{20}
+  \item {$\sim $\discretionary {-}{}{}R\discretionary {-}{}{}O}
+    \subitem {R\discretionary {-}{}{}O}, \hyperpage{21}
+
+  \indexspace
+
+  \item {A\discretionary {-}{}{}R\discretionary {-}{}{}R\discretionary {-}{}{}A\discretionary {-}{}{}Y\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}D\discretionary {-}{}{}E\discretionary {-}{}{}R}
+    \subitem {Data\discretionary {-}{}{}Leaf.\discretionary {-}{}{}cpp}, 
+		\hyperpage{24}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{15}
+  \item {add}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{14}
+    \subitem {Node}, \hyperpage{17}
+  \item {add\discretionary {-}{}{}Child}
+    \subitem {Node}, \hyperpage{17}
+  \item {add\discretionary {-}{}{}Mod}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{14}
+    \subitem {Node}, \hyperpage{17}
+  \item {add\discretionary {-}{}{}To}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{14}
+    \subitem {Node}, \hyperpage{17}
+  \item {add\discretionary {-}{}{}To\discretionary {-}{}{}Mod}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{14}
+    \subitem {Node}, \hyperpage{17}
+  \item {Arithmetic/\discretionary {-}{}{}Base\discretionary {-}{}{}Leaf.\discretionary {-}{}{}cpp}, 
+		\hyperpage{23}
+  \item {Arithmetic/\discretionary {-}{}{}Base\discretionary {-}{}{}Leaf.\discretionary {-}{}{}h}, 
+		\hyperpage{23}
+  \item {Arithmetic/\discretionary {-}{}{}Base\discretionary {-}{}{}Node.\discretionary {-}{}{}cpp}, 
+		\hyperpage{23}
+  \item {Arithmetic/\discretionary {-}{}{}Base\discretionary {-}{}{}Node.\discretionary {-}{}{}h}, 
+		\hyperpage{23}
+  \item {Arithmetic/\discretionary {-}{}{}Data\discretionary {-}{}{}Leaf.\discretionary {-}{}{}cpp}, 
+		\hyperpage{24}
+  \item {Arithmetic/\discretionary {-}{}{}Data\discretionary {-}{}{}Leaf.\discretionary {-}{}{}h}, 
+		\hyperpage{24}
+  \item {Arithmetic/\discretionary {-}{}{}Int\discretionary {-}{}{}Leaf.\discretionary {-}{}{}cpp}, 
+		\hyperpage{24}
+  \item {Arithmetic/\discretionary {-}{}{}Int\discretionary {-}{}{}Leaf.\discretionary {-}{}{}h}, 
+		\hyperpage{24}
+  \item {Arithmetic/\discretionary {-}{}{}Node.\discretionary {-}{}{}cpp}, 
+		\hyperpage{25}
+  \item {Arithmetic/\discretionary {-}{}{}Node.\discretionary {-}{}{}h}, 
+		\hyperpage{25}
+  \item {Arithmetic/types.\discretionary {-}{}{}h}, \hyperpage{25}
+
+  \indexspace
+
+  \item {B\discretionary {-}{}{}O\discretionary {-}{}{}T\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}M}
+    \subitem {Utilities.\discretionary {-}{}{}h}, \hyperpage{38}
+  \item {Base\-Node}
+    \subitem {D\-A\-T\-A\-\_\-\-L\-E\-A\-F}, \hyperpage{10}
+    \subitem {I\-N\-T\-\_\-\-L\-E\-A\-F}, \hyperpage{10}
+    \subitem {N\-O\-D\-E}, \hyperpage{10}
+  \item {Base\discretionary {-}{}{}Leaf}, \hyperpage{9}
+    \subitem {$\sim $\discretionary {-}{}{}Base\discretionary {-}{}{}Leaf}, 
+		\hyperpage{9}
+    \subitem {Base\discretionary {-}{}{}Leaf}, \hyperpage{9}
+    \subitem {Base\discretionary {-}{}{}Leaf}, \hyperpage{9}
+  \item {Base\discretionary {-}{}{}Node}, \hyperpage{9}
+    \subitem {$\sim $\discretionary {-}{}{}Base\discretionary {-}{}{}Node}, 
+		\hyperpage{10}
+    \subitem {Base\discretionary {-}{}{}Node}, \hyperpage{10}
+    \subitem {Base\discretionary {-}{}{}Node}, \hyperpage{10}
+    \subitem {concat\discretionary {-}{}{}Data}, \hyperpage{10}
+    \subitem {copy}, \hyperpage{10}
+    \subitem {get\discretionary {-}{}{}Length}, \hyperpage{11}
+    \subitem {get\discretionary {-}{}{}Type}, \hyperpage{11}
+    \subitem {Node\discretionary {-}{}{}Type}, \hyperpage{10}
+    \subitem {Read\discretionary {-}{}{}Node\discretionary {-}{}{}Header}, 
+		\hyperpage{11}
+    \subitem {serialize}, \hyperpage{11}
+    \subitem {to\discretionary {-}{}{}Vector}, \hyperpage{11}
+  \item {Byte\discretionary {-}{}{}Tree\discretionary {-}{}{}Tests.\discretionary {-}{}{}cpp}
+    \subitem {T\discretionary {-}{}{}E\discretionary {-}{}{}S\discretionary {-}{}{}T}, 
+		\hyperpage{29}
+  \item {bytevector}
+    \subitem {types.\discretionary {-}{}{}h}, \hyperpage{25}
+
+  \indexspace
+
+  \item {C\-O\-M\-P\-A\-T}
+    \subitem {Verifier.\-h}, \hyperpage{39}
+  \item {C\discretionary {-}{}{}I\discretionary {-}{}{}P\discretionary {-}{}{}H\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}T\discretionary {-}{}{}E\discretionary {-}{}{}X\discretionary {-}{}{}T\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}F\discretionary {-}{}{}I\discretionary {-}{}{}L\discretionary {-}{}{}E}
+    \subitem {File\discretionary {-}{}{}Names.\discretionary {-}{}{}h}, 
+		\hyperpage{33}
+  \item {concat\discretionary {-}{}{}Data}
+    \subitem {Base\discretionary {-}{}{}Node}, \hyperpage{10}
+  \item {construct\discretionary {-}{}{}Part\discretionary {-}{}{}From\discretionary {-}{}{}File}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{14}
+    \subitem {Node}, \hyperpage{17}
+  \item {copy}
+    \subitem {Base\discretionary {-}{}{}Node}, \hyperpage{10}
+  \item {Crypto/\discretionary {-}{}{}El\discretionary {-}{}{}Gamal.\discretionary {-}{}{}cpp}, 
+		\hyperpage{25}
+  \item {Crypto/\discretionary {-}{}{}El\discretionary {-}{}{}Gamal.\discretionary {-}{}{}h}, 
+		\hyperpage{26}
+  \item {Crypto/\discretionary {-}{}{}H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A.\discretionary {-}{}{}cpp}, 
+		\hyperpage{26}
+  \item {Crypto/\discretionary {-}{}{}H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A.\discretionary {-}{}{}h}, 
+		\hyperpage{27}
+  \item {Crypto/\discretionary {-}{}{}P\discretionary {-}{}{}R\discretionary {-}{}{}G.\discretionary {-}{}{}cpp}, 
+		\hyperpage{27}
+  \item {Crypto/\discretionary {-}{}{}P\discretionary {-}{}{}R\discretionary {-}{}{}G.\discretionary {-}{}{}h}, 
+		\hyperpage{27}
+  \item {Crypto/\discretionary {-}{}{}R\discretionary {-}{}{}O.\discretionary {-}{}{}cpp}, 
+		\hyperpage{28}
+  \item {Crypto/\discretionary {-}{}{}R\discretionary {-}{}{}O.\discretionary {-}{}{}h}, 
+		\hyperpage{28}
+  \item {Crypto/\discretionary {-}{}{}Random\discretionary {-}{}{}Array.\discretionary {-}{}{}cpp}, 
+		\hyperpage{27}
+  \item {Crypto/\discretionary {-}{}{}Random\discretionary {-}{}{}Array.\discretionary {-}{}{}h}, 
+		\hyperpage{28}
+
+  \indexspace
+
+  \item {D\-A\-T\-A\-\_\-\-L\-E\-A\-F}
+    \subitem {Base\-Node}, \hyperpage{10}
+  \item {D\-E\-C\-R\-Y\-P\-T}
+    \subitem {Verifier.\-h}, \hyperpage{39}
+  \item {Data\discretionary {-}{}{}Leaf}, \hyperpage{11}
+    \subitem {$\sim $\discretionary {-}{}{}Data\discretionary {-}{}{}Leaf}, 
+		\hyperpage{12}
+    \subitem {Data\discretionary {-}{}{}Leaf}, \hyperpage{11, 12}
+    \subitem {Data\discretionary {-}{}{}Leaf}, \hyperpage{11, 12}
+    \subitem {get\discretionary {-}{}{}Data}, \hyperpage{12}
+    \subitem {get\discretionary {-}{}{}Length}, \hyperpage{12}
+    \subitem {operator=}, \hyperpage{12}
+    \subitem {to\discretionary {-}{}{}Vector}, \hyperpage{12}
+  \item {Data\discretionary {-}{}{}Leaf.\discretionary {-}{}{}cpp}
+    \subitem {A\discretionary {-}{}{}R\discretionary {-}{}{}R\discretionary {-}{}{}A\discretionary {-}{}{}Y\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}D\discretionary {-}{}{}E\discretionary {-}{}{}R}, 
+		\hyperpage{24}
+  \item {Decryption\discretionary {-}{}{}Factors\discretionary {-}{}{}Verifier}
+    \subitem {Decryption\discretionary {-}{}{}Factors\discretionary {-}{}{}Verifier.\discretionary {-}{}{}cpp}, 
+		\hyperpage{32}
+    \subitem {Decryption\discretionary {-}{}{}Factors\discretionary {-}{}{}Verifier.\discretionary {-}{}{}h}, 
+		\hyperpage{32}
+  \item {Decryption\discretionary {-}{}{}Factors\discretionary {-}{}{}Verifier.\discretionary {-}{}{}cpp}
+    \subitem {Decryption\discretionary {-}{}{}Factors\discretionary {-}{}{}Verifier}, 
+		\hyperpage{32}
+  \item {Decryption\discretionary {-}{}{}Factors\discretionary {-}{}{}Verifier.\discretionary {-}{}{}h}
+    \subitem {Decryption\discretionary {-}{}{}Factors\discretionary {-}{}{}Verifier}, 
+		\hyperpage{32}
+  \item {Decryption\discretionary {-}{}{}Verifier}
+    \subitem {Decryption\discretionary {-}{}{}Verifier.\discretionary {-}{}{}cpp}, 
+		\hyperpage{32}
+    \subitem {Decryption\discretionary {-}{}{}Verifier.\discretionary {-}{}{}h}, 
+		\hyperpage{33}
+  \item {Decryption\discretionary {-}{}{}Verifier.\discretionary {-}{}{}cpp}
+    \subitem {Decryption\discretionary {-}{}{}Verifier}, \hyperpage{32}
+  \item {Decryption\discretionary {-}{}{}Verifier.\discretionary {-}{}{}h}
+    \subitem {Decryption\discretionary {-}{}{}Verifier}, \hyperpage{33}
+
+  \indexspace
+
+  \item {E\discretionary {-}{}{}N\discretionary {-}{}{}D\discretionary {-}{}{}I\discretionary {-}{}{}A\discretionary {-}{}{}N}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{15}
+  \item {El\discretionary {-}{}{}Gamal.\discretionary {-}{}{}cpp}
+    \subitem {Enc}, \hyperpage{26}
+    \subitem {P\discretionary {-}{}{}Dec}, \hyperpage{26}
+    \subitem {T\discretionary {-}{}{}Dec}, \hyperpage{26}
+  \item {El\discretionary {-}{}{}Gamal.\discretionary {-}{}{}h}
+    \subitem {Enc}, \hyperpage{26}
+    \subitem {P\discretionary {-}{}{}Dec}, \hyperpage{26}
+    \subitem {T\discretionary {-}{}{}Dec}, \hyperpage{26}
+  \item {Enc}
+    \subitem {El\discretionary {-}{}{}Gamal.\discretionary {-}{}{}cpp}, 
+		\hyperpage{26}
+    \subitem {El\discretionary {-}{}{}Gamal.\discretionary {-}{}{}h}, 
+		\hyperpage{26}
+  \item {exp}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{14}
+    \subitem {Node}, \hyperpage{17}
+  \item {exp\discretionary {-}{}{}Mod}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{14}
+    \subitem {Node}, \hyperpage{17, 18}
+  \item {exp\discretionary {-}{}{}Mult}
+    \subitem {Node}, \hyperpage{18}
+  \item {exp\discretionary {-}{}{}Mult\discretionary {-}{}{}Mod}
+    \subitem {Node}, \hyperpage{18}
+  \item {exp\discretionary {-}{}{}To}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{14}
+    \subitem {Node}, \hyperpage{18}
+  \item {exp\discretionary {-}{}{}To\discretionary {-}{}{}Mod}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{14}
+    \subitem {Node}, \hyperpage{18}
+
+  \indexspace
+
+  \item {F\discretionary {-}{}{}I\discretionary {-}{}{}L\discretionary {-}{}{}E\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}U\discretionary {-}{}{}F\discretionary {-}{}{}F\discretionary {-}{}{}I\discretionary {-}{}{}X}
+    \subitem {File\discretionary {-}{}{}Names.\discretionary {-}{}{}h}, 
+		\hyperpage{33}
+  \item {File\discretionary {-}{}{}Names.\discretionary {-}{}{}h}
+    \subitem {C\discretionary {-}{}{}I\discretionary {-}{}{}P\discretionary {-}{}{}H\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}T\discretionary {-}{}{}E\discretionary {-}{}{}X\discretionary {-}{}{}T\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}F\discretionary {-}{}{}I\discretionary {-}{}{}L\discretionary {-}{}{}E}, 
+		\hyperpage{33}
+    \subitem {F\discretionary {-}{}{}I\discretionary {-}{}{}L\discretionary {-}{}{}E\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}U\discretionary {-}{}{}F\discretionary {-}{}{}F\discretionary {-}{}{}I\discretionary {-}{}{}X}, 
+		\hyperpage{33}
+    \subitem {M\discretionary {-}{}{}A\discretionary {-}{}{}X\discretionary {-}{}{}C\discretionary {-}{}{}I\discretionary {-}{}{}P\discretionary {-}{}{}H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}F\discretionary {-}{}{}I\discretionary {-}{}{}L\discretionary {-}{}{}E}, 
+		\hyperpage{33}
+    \subitem {P\discretionary {-}{}{}L\discretionary {-}{}{}A\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}T\discretionary {-}{}{}E\discretionary {-}{}{}X\discretionary {-}{}{}T\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}F\discretionary {-}{}{}I\discretionary {-}{}{}L\discretionary {-}{}{}E}, 
+		\hyperpage{33}
+
+  \indexspace
+
+  \item {get\discretionary {-}{}{}Big\discretionary {-}{}{}Int}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{14}
+  \item {get\discretionary {-}{}{}Children}
+    \subitem {Node}, \hyperpage{18}
+  \item {get\discretionary {-}{}{}Data}
+    \subitem {Data\discretionary {-}{}{}Leaf}, \hyperpage{12}
+  \item {get\discretionary {-}{}{}Group\discretionary {-}{}{}From\discretionary {-}{}{}String}
+    \subitem {Utilities.\discretionary {-}{}{}cpp}, \hyperpage{37}
+    \subitem {Utilities.\discretionary {-}{}{}h}, \hyperpage{37}
+  \item {get\discretionary {-}{}{}Int\discretionary {-}{}{}Leaf\discretionary {-}{}{}Child}
+    \subitem {Node}, \hyperpage{18}
+  \item {get\discretionary {-}{}{}Length}
+    \subitem {Base\discretionary {-}{}{}Node}, \hyperpage{11}
+    \subitem {Data\discretionary {-}{}{}Leaf}, \hyperpage{12}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{14}
+    \subitem {Node}, \hyperpage{18}
+  \item {get\discretionary {-}{}{}Node\discretionary {-}{}{}Child}
+    \subitem {Node}, \hyperpage{18}
+  \item {get\discretionary {-}{}{}Type}
+    \subitem {Base\discretionary {-}{}{}Node}, \hyperpage{11}
+  \item {Gq}
+    \subitem {proof\discretionary {-}{}{}Struct}, \hyperpage{20}
+
+  \indexspace
+
+  \item {H\-E\-L\-P}
+    \subitem {Verifier.\-h}, \hyperpage{39}
+  \item {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A}
+    \subitem {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A.\discretionary {-}{}{}cpp}, 
+		\hyperpage{26}
+    \subitem {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A.\discretionary {-}{}{}h}, 
+		\hyperpage{27}
+  \item {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A.\discretionary {-}{}{}cpp}
+    \subitem {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A}, 
+		\hyperpage{26}
+    \subitem {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A256}, 
+		\hyperpage{26}
+    \subitem {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A384}, 
+		\hyperpage{26}
+    \subitem {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A512}, 
+		\hyperpage{26}
+  \item {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A.\discretionary {-}{}{}h}
+    \subitem {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A}, 
+		\hyperpage{27}
+    \subitem {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A256}, 
+		\hyperpage{27}
+    \subitem {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A384}, 
+		\hyperpage{27}
+    \subitem {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A512}, 
+		\hyperpage{27}
+  \item {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A256}
+    \subitem {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A.\discretionary {-}{}{}cpp}, 
+		\hyperpage{26}
+    \subitem {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A.\discretionary {-}{}{}h}, 
+		\hyperpage{27}
+  \item {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A384}
+    \subitem {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A.\discretionary {-}{}{}cpp}, 
+		\hyperpage{26}
+    \subitem {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A.\discretionary {-}{}{}h}, 
+		\hyperpage{27}
+  \item {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A512}
+    \subitem {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A.\discretionary {-}{}{}cpp}, 
+		\hyperpage{26}
+    \subitem {H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}S\discretionary {-}{}{}H\discretionary {-}{}{}A.\discretionary {-}{}{}h}, 
+		\hyperpage{27}
+  \item {hash}
+    \subitem {proof\discretionary {-}{}{}Struct}, \hyperpage{20}
+
+  \indexspace
+
+  \item {I\-N\-T\-\_\-\-L\-E\-A\-F}
+    \subitem {Base\-Node}, \hyperpage{10}
+  \item {Int\discretionary {-}{}{}Leaf}, \hyperpage{12}
+    \subitem {$\sim $\discretionary {-}{}{}Int\discretionary {-}{}{}Leaf}, 
+		\hyperpage{14}
+    \subitem {A\discretionary {-}{}{}R\discretionary {-}{}{}R\discretionary {-}{}{}A\discretionary {-}{}{}Y\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}D\discretionary {-}{}{}E\discretionary {-}{}{}R}, 
+		\hyperpage{15}
+    \subitem {add}, \hyperpage{14}
+    \subitem {add\discretionary {-}{}{}Mod}, \hyperpage{14}
+    \subitem {add\discretionary {-}{}{}To}, \hyperpage{14}
+    \subitem {add\discretionary {-}{}{}To\discretionary {-}{}{}Mod}, 
+		\hyperpage{14}
+    \subitem {construct\discretionary {-}{}{}Part\discretionary {-}{}{}From\discretionary {-}{}{}File}, 
+		\hyperpage{14}
+    \subitem {E\discretionary {-}{}{}N\discretionary {-}{}{}D\discretionary {-}{}{}I\discretionary {-}{}{}A\discretionary {-}{}{}N}, 
+		\hyperpage{15}
+    \subitem {exp}, \hyperpage{14}
+    \subitem {exp\discretionary {-}{}{}Mod}, \hyperpage{14}
+    \subitem {exp\discretionary {-}{}{}To}, \hyperpage{14}
+    \subitem {exp\discretionary {-}{}{}To\discretionary {-}{}{}Mod}, 
+		\hyperpage{14}
+    \subitem {get\discretionary {-}{}{}Big\discretionary {-}{}{}Int}, 
+		\hyperpage{14}
+    \subitem {get\discretionary {-}{}{}Length}, \hyperpage{14}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{13, 14}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{13, 14}
+    \subitem {inverse}, \hyperpage{14}
+    \subitem {mod}, \hyperpage{14}
+    \subitem {mod\discretionary {-}{}{}To}, \hyperpage{14}
+    \subitem {mult}, \hyperpage{14}
+    \subitem {mult\discretionary {-}{}{}Mod}, \hyperpage{14}
+    \subitem {mult\discretionary {-}{}{}To}, \hyperpage{14}
+    \subitem {mult\discretionary {-}{}{}To\discretionary {-}{}{}Mod}, 
+		\hyperpage{14}
+    \subitem {N\discretionary {-}{}{}A\discretionary {-}{}{}I\discretionary {-}{}{}L\discretionary {-}{}{}S}, 
+		\hyperpage{15}
+    \subitem {operator$<$}, \hyperpage{15}
+    \subitem {operator$>$}, \hyperpage{15}
+    \subitem {operator$\ast $}, \hyperpage{14}
+    \subitem {operator$\ast $=}, \hyperpage{15}
+    \subitem {operator+}, \hyperpage{15}
+    \subitem {operator+=}, \hyperpage{15}
+    \subitem {operator-\/}, \hyperpage{15}
+    \subitem {operator=}, \hyperpage{15}
+    \subitem {operator==}, \hyperpage{15}
+    \subitem {to\discretionary {-}{}{}String}, \hyperpage{15}
+    \subitem {to\discretionary {-}{}{}Vector}, \hyperpage{15}
+  \item {Int\discretionary {-}{}{}Leaf\discretionary {-}{}{}Arithmetics\discretionary {-}{}{}Tests.\discretionary {-}{}{}cpp}
+    \subitem {T\discretionary {-}{}{}E\discretionary {-}{}{}S\discretionary {-}{}{}T}, 
+		\hyperpage{29}
+  \item {inverse}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{14}
+  \item {is\discretionary {-}{}{}Elem\discretionary {-}{}{}Of\discretionary {-}{}{}Cw}
+    \subitem {Utilities.\discretionary {-}{}{}cpp}, \hyperpage{37}
+    \subitem {Utilities.\discretionary {-}{}{}h}, \hyperpage{37}
+  \item {is\discretionary {-}{}{}Elem\discretionary {-}{}{}Of\discretionary {-}{}{}Gq}
+    \subitem {Utilities.\discretionary {-}{}{}cpp}, \hyperpage{37}
+    \subitem {Utilities.\discretionary {-}{}{}h}, \hyperpage{37}
+  \item {is\discretionary {-}{}{}Elem\discretionary {-}{}{}Of\discretionary {-}{}{}Mw}
+    \subitem {Utilities.\discretionary {-}{}{}cpp}, \hyperpage{37}
+    \subitem {Utilities.\discretionary {-}{}{}h}, \hyperpage{37}
+  \item {is\discretionary {-}{}{}Elem\discretionary {-}{}{}Of\discretionary {-}{}{}Zn}
+    \subitem {Utilities.\discretionary {-}{}{}cpp}, \hyperpage{37}
+    \subitem {Utilities.\discretionary {-}{}{}h}, \hyperpage{38}
+  \item {is\discretionary {-}{}{}List\discretionary {-}{}{}Of\discretionary {-}{}{}Ciphertexts}
+    \subitem {Shuffling\discretionary {-}{}{}Verifier.\discretionary {-}{}{}cpp}, 
+		\hyperpage{36}
+    \subitem {Shuffling\discretionary {-}{}{}Verifier.\discretionary {-}{}{}h}, 
+		\hyperpage{36}
+  \item {is\discretionary {-}{}{}Partial\discretionary {-}{}{}Public\discretionary {-}{}{}Key}
+    \subitem {Key\discretionary {-}{}{}Verifier.\discretionary {-}{}{}cpp}, 
+		\hyperpage{34}
+    \subitem {Key\discretionary {-}{}{}Verifier.\discretionary {-}{}{}h}, 
+		\hyperpage{34}
+  \item {is\discretionary {-}{}{}Partial\discretionary {-}{}{}Secret\discretionary {-}{}{}Key}
+    \subitem {Key\discretionary {-}{}{}Verifier.\discretionary {-}{}{}cpp}, 
+		\hyperpage{34}
+    \subitem {Key\discretionary {-}{}{}Verifier.\discretionary {-}{}{}h}, 
+		\hyperpage{34}
+  \item {is\discretionary {-}{}{}Pedersen\discretionary {-}{}{}Commitment}
+    \subitem {Utilities.\discretionary {-}{}{}cpp}, \hyperpage{37}
+    \subitem {Utilities.\discretionary {-}{}{}h}, \hyperpage{38}
+  \item {is\discretionary {-}{}{}Public\discretionary {-}{}{}Key}
+    \subitem {Key\discretionary {-}{}{}Verifier.\discretionary {-}{}{}cpp}, 
+		\hyperpage{34}
+    \subitem {Key\discretionary {-}{}{}Verifier.\discretionary {-}{}{}h}, 
+		\hyperpage{34}
+
+  \indexspace
+
+  \item {key\discretionary {-}{}{}Verifier}
+    \subitem {Key\discretionary {-}{}{}Verifier.\discretionary {-}{}{}cpp}, 
+		\hyperpage{34}
+    \subitem {Key\discretionary {-}{}{}Verifier.\discretionary {-}{}{}h}, 
+		\hyperpage{34}
+  \item {Key\discretionary {-}{}{}Verifier.\discretionary {-}{}{}cpp}
+    \subitem {is\discretionary {-}{}{}Partial\discretionary {-}{}{}Public\discretionary {-}{}{}Key}, 
+		\hyperpage{34}
+    \subitem {is\discretionary {-}{}{}Partial\discretionary {-}{}{}Secret\discretionary {-}{}{}Key}, 
+		\hyperpage{34}
+    \subitem {is\discretionary {-}{}{}Public\discretionary {-}{}{}Key}, 
+		\hyperpage{34}
+    \subitem {key\discretionary {-}{}{}Verifier}, \hyperpage{34}
+  \item {Key\discretionary {-}{}{}Verifier.\discretionary {-}{}{}h}
+    \subitem {is\discretionary {-}{}{}Partial\discretionary {-}{}{}Public\discretionary {-}{}{}Key}, 
+		\hyperpage{34}
+    \subitem {is\discretionary {-}{}{}Partial\discretionary {-}{}{}Secret\discretionary {-}{}{}Key}, 
+		\hyperpage{34}
+    \subitem {is\discretionary {-}{}{}Public\discretionary {-}{}{}Key}, 
+		\hyperpage{34}
+    \subitem {key\discretionary {-}{}{}Verifier}, \hyperpage{34}
+
+  \indexspace
+
+  \item {lambda}
+    \subitem {proof\discretionary {-}{}{}Struct}, \hyperpage{20}
+
+  \indexspace
+
+  \item {M\-I\-X}
+    \subitem {Verifier.\-h}, \hyperpage{39}
+  \item {M\discretionary {-}{}{}A\discretionary {-}{}{}X\discretionary {-}{}{}C\discretionary {-}{}{}I\discretionary {-}{}{}P\discretionary {-}{}{}H\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}F\discretionary {-}{}{}I\discretionary {-}{}{}L\discretionary {-}{}{}E}
+    \subitem {File\discretionary {-}{}{}Names.\discretionary {-}{}{}h}, 
+		\hyperpage{33}
+  \item {main}
+    \subitem {main.\discretionary {-}{}{}cpp}, \hyperpage{35}
+    \subitem {Test\discretionary {-}{}{}Runner.\discretionary {-}{}{}cpp}, 
+		\hyperpage{31}
+  \item {main.\discretionary {-}{}{}cpp}
+    \subitem {main}, \hyperpage{35}
+    \subitem {Parse\discretionary {-}{}{}Protinfo\discretionary {-}{}{}Directory}, 
+		\hyperpage{35}
+    \subitem {Set\discretionary {-}{}{}Mode}, \hyperpage{35}
+  \item {mod}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{14}
+    \subitem {Node}, \hyperpage{18}
+  \item {mod\discretionary {-}{}{}To}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{14}
+    \subitem {Node}, \hyperpage{18}
+  \item {mult}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{14}
+    \subitem {Node}, \hyperpage{18}
+  \item {mult\discretionary {-}{}{}Mod}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{14}
+    \subitem {Node}, \hyperpage{18}
+  \item {mult\discretionary {-}{}{}To}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{14}
+    \subitem {Node}, \hyperpage{18}
+  \item {mult\discretionary {-}{}{}To\discretionary {-}{}{}Mod}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{14}
+    \subitem {Node}, \hyperpage{18}
+
+  \indexspace
+
+  \item {N}
+    \subitem {proof\discretionary {-}{}{}Struct}, \hyperpage{20}
+  \item {N\-O\-D\-E}
+    \subitem {Base\-Node}, \hyperpage{10}
+  \item {N\-O\-N\-E}
+    \subitem {Verifier.\-h}, \hyperpage{39}
+  \item {N\discretionary {-}{}{}A\discretionary {-}{}{}I\discretionary {-}{}{}L\discretionary {-}{}{}S}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{15}
+  \item {n\discretionary {-}{}{}E}
+    \subitem {proof\discretionary {-}{}{}Struct}, \hyperpage{20}
+  \item {n\discretionary {-}{}{}Hash}
+    \subitem {proof\discretionary {-}{}{}Struct}, \hyperpage{20}
+  \item {n\discretionary {-}{}{}R}
+    \subitem {proof\discretionary {-}{}{}Struct}, \hyperpage{20}
+  \item {n\discretionary {-}{}{}V}
+    \subitem {proof\discretionary {-}{}{}Struct}, \hyperpage{20}
+  \item {next}
+    \subitem {P\discretionary {-}{}{}R\discretionary {-}{}{}G}, 
+		\hyperpage{20}
+  \item {Node}, \hyperpage{15}
+    \subitem {$\sim $\discretionary {-}{}{}Node}, \hyperpage{17}
+    \subitem {add}, \hyperpage{17}
+    \subitem {add\discretionary {-}{}{}Child}, \hyperpage{17}
+    \subitem {add\discretionary {-}{}{}Mod}, \hyperpage{17}
+    \subitem {add\discretionary {-}{}{}To}, \hyperpage{17}
+    \subitem {add\discretionary {-}{}{}To\discretionary {-}{}{}Mod}, 
+		\hyperpage{17}
+    \subitem {construct\discretionary {-}{}{}Part\discretionary {-}{}{}From\discretionary {-}{}{}File}, 
+		\hyperpage{17}
+    \subitem {exp}, \hyperpage{17}
+    \subitem {exp\discretionary {-}{}{}Mod}, \hyperpage{17, 18}
+    \subitem {exp\discretionary {-}{}{}Mult}, \hyperpage{18}
+    \subitem {exp\discretionary {-}{}{}Mult\discretionary {-}{}{}Mod}, 
+		\hyperpage{18}
+    \subitem {exp\discretionary {-}{}{}To}, \hyperpage{18}
+    \subitem {exp\discretionary {-}{}{}To\discretionary {-}{}{}Mod}, 
+		\hyperpage{18}
+    \subitem {get\discretionary {-}{}{}Children}, \hyperpage{18}
+    \subitem {get\discretionary {-}{}{}Int\discretionary {-}{}{}Leaf\discretionary {-}{}{}Child}, 
+		\hyperpage{18}
+    \subitem {get\discretionary {-}{}{}Length}, \hyperpage{18}
+    \subitem {get\discretionary {-}{}{}Node\discretionary {-}{}{}Child}, 
+		\hyperpage{18}
+    \subitem {mod}, \hyperpage{18}
+    \subitem {mod\discretionary {-}{}{}To}, \hyperpage{18}
+    \subitem {mult}, \hyperpage{18}
+    \subitem {mult\discretionary {-}{}{}Mod}, \hyperpage{18}
+    \subitem {mult\discretionary {-}{}{}To}, \hyperpage{18}
+    \subitem {mult\discretionary {-}{}{}To\discretionary {-}{}{}Mod}, 
+		\hyperpage{18}
+    \subitem {Node}, \hyperpage{17}
+    \subitem {operator$\ast $}, \hyperpage{19}
+    \subitem {operator$\ast $=}, \hyperpage{19}
+    \subitem {operator+}, \hyperpage{19}
+    \subitem {operator+=}, \hyperpage{19}
+    \subitem {operator=}, \hyperpage{19}
+    \subitem {operator==}, \hyperpage{19}
+    \subitem {prod}, \hyperpage{19}
+    \subitem {prod\discretionary {-}{}{}Mod}, \hyperpage{19}
+    \subitem {sum}, \hyperpage{19}
+    \subitem {sum\discretionary {-}{}{}Mod}, \hyperpage{19}
+    \subitem {to\discretionary {-}{}{}String}, \hyperpage{19}
+    \subitem {to\discretionary {-}{}{}Vector}, \hyperpage{19}
+  \item {Node\discretionary {-}{}{}Arithmetics\discretionary {-}{}{}Tests.\discretionary {-}{}{}cpp}
+    \subitem {T\discretionary {-}{}{}E\discretionary {-}{}{}S\discretionary {-}{}{}T}, 
+		\hyperpage{30}
+  \item {Node\discretionary {-}{}{}Data\discretionary {-}{}{}Init\discretionary {-}{}{}Tests.\discretionary {-}{}{}cpp}
+    \subitem {T\discretionary {-}{}{}E\discretionary {-}{}{}S\discretionary {-}{}{}T}, 
+		\hyperpage{30}
+  \item {Node\discretionary {-}{}{}To\discretionary {-}{}{}String\discretionary {-}{}{}Tests.\discretionary {-}{}{}cpp}
+    \subitem {T\discretionary {-}{}{}E\discretionary {-}{}{}S\discretionary {-}{}{}T}, 
+		\hyperpage{30}
+  \item {Node\discretionary {-}{}{}Type}
+    \subitem {Base\discretionary {-}{}{}Node}, \hyperpage{10}
+
+  \indexspace
+
+  \item {operator$<$}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{15}
+  \item {operator$>$}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{15}
+  \item {operator$\ast $}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{14}
+    \subitem {Node}, \hyperpage{19}
+  \item {operator$\ast $=}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{15}
+    \subitem {Node}, \hyperpage{19}
+  \item {operator()}
+    \subitem {R\discretionary {-}{}{}O}, \hyperpage{21}
+  \item {operator+}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{15}
+    \subitem {Node}, \hyperpage{19}
+  \item {operator+=}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{15}
+    \subitem {Node}, \hyperpage{19}
+  \item {operator-\/}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{15}
+  \item {operator=}
+    \subitem {Data\discretionary {-}{}{}Leaf}, \hyperpage{12}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{15}
+    \subitem {Node}, \hyperpage{19}
+  \item {operator==}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{15}
+    \subitem {Node}, \hyperpage{19}
+
+  \indexspace
+
+  \item {P\discretionary {-}{}{}Dec}
+    \subitem {El\discretionary {-}{}{}Gamal.\discretionary {-}{}{}cpp}, 
+		\hyperpage{26}
+    \subitem {El\discretionary {-}{}{}Gamal.\discretionary {-}{}{}h}, 
+		\hyperpage{26}
+  \item {P\discretionary {-}{}{}L\discretionary {-}{}{}A\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}T\discretionary {-}{}{}E\discretionary {-}{}{}X\discretionary {-}{}{}T\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}F\discretionary {-}{}{}I\discretionary {-}{}{}L\discretionary {-}{}{}E}
+    \subitem {File\discretionary {-}{}{}Names.\discretionary {-}{}{}h}, 
+		\hyperpage{33}
+  \item {P\discretionary {-}{}{}R\discretionary {-}{}{}G}, 
+		\hyperpage{19}
+    \subitem {$\sim $\discretionary {-}{}{}P\discretionary {-}{}{}R\discretionary {-}{}{}G}, 
+		\hyperpage{20}
+    \subitem {next}, \hyperpage{20}
+    \subitem {P\discretionary {-}{}{}R\discretionary {-}{}{}G}, 
+		\hyperpage{19}
+    \subitem {P\discretionary {-}{}{}R\discretionary {-}{}{}G}, 
+		\hyperpage{19}
+  \item {P\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}Tests.\discretionary {-}{}{}cpp}
+    \subitem {T\discretionary {-}{}{}E\discretionary {-}{}{}S\discretionary {-}{}{}T}, 
+		\hyperpage{31}
+  \item {Parse\discretionary {-}{}{}Protinfo\discretionary {-}{}{}Directory}
+    \subitem {main.\discretionary {-}{}{}cpp}, \hyperpage{35}
+  \item {pk}
+    \subitem {proof\discretionary {-}{}{}Struct}, \hyperpage{20}
+  \item {prod}
+    \subitem {Node}, \hyperpage{19}
+  \item {prod\discretionary {-}{}{}Mod}
+    \subitem {Node}, \hyperpage{19}
+  \item {proof\discretionary {-}{}{}Of\discretionary {-}{}{}Shuffle}
+    \subitem {Proof\discretionary {-}{}{}Of\discretionary {-}{}{}Shuffle.\discretionary {-}{}{}cpp}, 
+		\hyperpage{35}
+    \subitem {Proof\discretionary {-}{}{}Of\discretionary {-}{}{}Shuffle.\discretionary {-}{}{}h}, 
+		\hyperpage{35}
+  \item {Proof\discretionary {-}{}{}Of\discretionary {-}{}{}Shuffle.\discretionary {-}{}{}cpp}
+    \subitem {proof\discretionary {-}{}{}Of\discretionary {-}{}{}Shuffle}, 
+		\hyperpage{35}
+  \item {Proof\discretionary {-}{}{}Of\discretionary {-}{}{}Shuffle.\discretionary {-}{}{}h}
+    \subitem {proof\discretionary {-}{}{}Of\discretionary {-}{}{}Shuffle}, 
+		\hyperpage{35}
+  \item {proof\discretionary {-}{}{}Struct}, \hyperpage{20}
+    \subitem {Gq}, \hyperpage{20}
+    \subitem {hash}, \hyperpage{20}
+    \subitem {lambda}, \hyperpage{20}
+    \subitem {N}, \hyperpage{20}
+    \subitem {n\discretionary {-}{}{}E}, \hyperpage{20}
+    \subitem {n\discretionary {-}{}{}Hash}, \hyperpage{20}
+    \subitem {n\discretionary {-}{}{}R}, \hyperpage{20}
+    \subitem {n\discretionary {-}{}{}V}, \hyperpage{20}
+    \subitem {pk}, \hyperpage{20}
+    \subitem {rho}, \hyperpage{21}
+    \subitem {Rw}, \hyperpage{21}
+    \subitem {width}, \hyperpage{21}
+    \subitem {x}, \hyperpage{21}
+    \subitem {y}, \hyperpage{21}
+
+  \indexspace
+
+  \item {R\discretionary {-}{}{}E\discretionary {-}{}{}A\discretionary {-}{}{}D\discretionary {-}{}{}M\discretionary {-}{}{}E.\discretionary {-}{}{}md}, 
+		\hyperpage{28}
+  \item {R\discretionary {-}{}{}O}, \hyperpage{21}
+    \subitem {$\sim $\discretionary {-}{}{}R\discretionary {-}{}{}O}, 
+		\hyperpage{21}
+    \subitem {operator()}, \hyperpage{21}
+    \subitem {R\discretionary {-}{}{}O}, \hyperpage{21}
+    \subitem {R\discretionary {-}{}{}O}, \hyperpage{21}
+  \item {Random\discretionary {-}{}{}Array}
+    \subitem {Random\discretionary {-}{}{}Array.\discretionary {-}{}{}cpp}, 
+		\hyperpage{28}
+    \subitem {Random\discretionary {-}{}{}Array.\discretionary {-}{}{}h}, 
+		\hyperpage{28}
+  \item {Random\discretionary {-}{}{}Array.\discretionary {-}{}{}cpp}
+    \subitem {Random\discretionary {-}{}{}Array}, \hyperpage{28}
+  \item {Random\discretionary {-}{}{}Array.\discretionary {-}{}{}h}
+    \subitem {Random\discretionary {-}{}{}Array}, \hyperpage{28}
+  \item {Read\discretionary {-}{}{}Node\discretionary {-}{}{}Header}
+    \subitem {Base\discretionary {-}{}{}Node}, \hyperpage{11}
+  \item {rho}
+    \subitem {proof\discretionary {-}{}{}Struct}, \hyperpage{21}
+  \item {Run\discretionary {-}{}{}Mode}
+    \subitem {Verifier.\discretionary {-}{}{}h}, \hyperpage{39}
+  \item {Rw}
+    \subitem {proof\discretionary {-}{}{}Struct}, \hyperpage{21}
+
+  \indexspace
+
+  \item {S\-H\-U\-F\-F\-L\-E}
+    \subitem {Verifier.\-h}, \hyperpage{39}
+  \item {serialize}
+    \subitem {Base\discretionary {-}{}{}Node}, \hyperpage{11}
+  \item {Set\discretionary {-}{}{}Mode}
+    \subitem {main.\discretionary {-}{}{}cpp}, \hyperpage{35}
+  \item {Shuffling\discretionary {-}{}{}Verifier.\discretionary {-}{}{}cpp}
+    \subitem {is\discretionary {-}{}{}List\discretionary {-}{}{}Of\discretionary {-}{}{}Ciphertexts}, 
+		\hyperpage{36}
+    \subitem {verify\discretionary {-}{}{}Shuffling}, \hyperpage{36}
+  \item {Shuffling\discretionary {-}{}{}Verifier.\discretionary {-}{}{}h}
+    \subitem {is\discretionary {-}{}{}List\discretionary {-}{}{}Of\discretionary {-}{}{}Ciphertexts}, 
+		\hyperpage{36}
+    \subitem {verify\discretionary {-}{}{}Shuffling}, \hyperpage{36}
+  \item {sum}
+    \subitem {Node}, \hyperpage{19}
+  \item {sum\discretionary {-}{}{}Mod}
+    \subitem {Node}, \hyperpage{19}
+
+  \indexspace
+
+  \item {T\discretionary {-}{}{}Dec}
+    \subitem {El\discretionary {-}{}{}Gamal.\discretionary {-}{}{}cpp}, 
+		\hyperpage{26}
+    \subitem {El\discretionary {-}{}{}Gamal.\discretionary {-}{}{}h}, 
+		\hyperpage{26}
+  \item {T\discretionary {-}{}{}E\discretionary {-}{}{}S\discretionary {-}{}{}T}
+    \subitem {Byte\discretionary {-}{}{}Tree\discretionary {-}{}{}Tests.\discretionary {-}{}{}cpp}, 
+		\hyperpage{29}
+    \subitem {Int\discretionary {-}{}{}Leaf\discretionary {-}{}{}Arithmetics\discretionary {-}{}{}Tests.\discretionary {-}{}{}cpp}, 
+		\hyperpage{29}
+    \subitem {Node\discretionary {-}{}{}Arithmetics\discretionary {-}{}{}Tests.\discretionary {-}{}{}cpp}, 
+		\hyperpage{30}
+    \subitem {Node\discretionary {-}{}{}Data\discretionary {-}{}{}Init\discretionary {-}{}{}Tests.\discretionary {-}{}{}cpp}, 
+		\hyperpage{30}
+    \subitem {Node\discretionary {-}{}{}To\discretionary {-}{}{}String\discretionary {-}{}{}Tests.\discretionary {-}{}{}cpp}, 
+		\hyperpage{30}
+    \subitem {P\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}Tests.\discretionary {-}{}{}cpp}, 
+		\hyperpage{31}
+  \item {Test\discretionary {-}{}{}Runner.\discretionary {-}{}{}cpp}
+    \subitem {main}, \hyperpage{31}
+  \item {Tests/\discretionary {-}{}{}Byte\discretionary {-}{}{}Tree\discretionary {-}{}{}Tests.\discretionary {-}{}{}cpp}, 
+		\hyperpage{28}
+  \item {Tests/\discretionary {-}{}{}Int\discretionary {-}{}{}Leaf\discretionary {-}{}{}Arithmetics\discretionary {-}{}{}Tests.\discretionary {-}{}{}cpp}, 
+		\hyperpage{29}
+  \item {Tests/\discretionary {-}{}{}Node\discretionary {-}{}{}Arithmetics\discretionary {-}{}{}Tests.\discretionary {-}{}{}cpp}, 
+		\hyperpage{29}
+  \item {Tests/\discretionary {-}{}{}Node\discretionary {-}{}{}Data\discretionary {-}{}{}Init\discretionary {-}{}{}Tests.\discretionary {-}{}{}cpp}, 
+		\hyperpage{30}
+  \item {Tests/\discretionary {-}{}{}Node\discretionary {-}{}{}To\discretionary {-}{}{}String\discretionary {-}{}{}Tests.\discretionary {-}{}{}cpp}, 
+		\hyperpage{30}
+  \item {Tests/\discretionary {-}{}{}P\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}Tests.\discretionary {-}{}{}cpp}, 
+		\hyperpage{31}
+  \item {Tests/\discretionary {-}{}{}Test\discretionary {-}{}{}Runner.\discretionary {-}{}{}cpp}, 
+		\hyperpage{31}
+  \item {to\discretionary {-}{}{}String}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{15}
+    \subitem {Node}, \hyperpage{19}
+  \item {to\discretionary {-}{}{}Vector}
+    \subitem {Base\discretionary {-}{}{}Node}, \hyperpage{11}
+    \subitem {Data\discretionary {-}{}{}Leaf}, \hyperpage{12}
+    \subitem {Int\discretionary {-}{}{}Leaf}, \hyperpage{15}
+    \subitem {Node}, \hyperpage{19}
+  \item {types.\discretionary {-}{}{}h}
+    \subitem {bytevector}, \hyperpage{25}
+
+  \indexspace
+
+  \item {Utilities.\discretionary {-}{}{}cpp}
+    \subitem {get\discretionary {-}{}{}Group\discretionary {-}{}{}From\discretionary {-}{}{}String}, 
+		\hyperpage{37}
+    \subitem {is\discretionary {-}{}{}Elem\discretionary {-}{}{}Of\discretionary {-}{}{}Cw}, 
+		\hyperpage{37}
+    \subitem {is\discretionary {-}{}{}Elem\discretionary {-}{}{}Of\discretionary {-}{}{}Gq}, 
+		\hyperpage{37}
+    \subitem {is\discretionary {-}{}{}Elem\discretionary {-}{}{}Of\discretionary {-}{}{}Mw}, 
+		\hyperpage{37}
+    \subitem {is\discretionary {-}{}{}Elem\discretionary {-}{}{}Of\discretionary {-}{}{}Zn}, 
+		\hyperpage{37}
+    \subitem {is\discretionary {-}{}{}Pedersen\discretionary {-}{}{}Commitment}, 
+		\hyperpage{37}
+  \item {Utilities.\discretionary {-}{}{}h}
+    \subitem {B\discretionary {-}{}{}O\discretionary {-}{}{}T\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}M}, 
+		\hyperpage{38}
+    \subitem {get\discretionary {-}{}{}Group\discretionary {-}{}{}From\discretionary {-}{}{}String}, 
+		\hyperpage{37}
+    \subitem {is\discretionary {-}{}{}Elem\discretionary {-}{}{}Of\discretionary {-}{}{}Cw}, 
+		\hyperpage{37}
+    \subitem {is\discretionary {-}{}{}Elem\discretionary {-}{}{}Of\discretionary {-}{}{}Gq}, 
+		\hyperpage{37}
+    \subitem {is\discretionary {-}{}{}Elem\discretionary {-}{}{}Of\discretionary {-}{}{}Mw}, 
+		\hyperpage{37}
+    \subitem {is\discretionary {-}{}{}Elem\discretionary {-}{}{}Of\discretionary {-}{}{}Zn}, 
+		\hyperpage{38}
+    \subitem {is\discretionary {-}{}{}Pedersen\discretionary {-}{}{}Commitment}, 
+		\hyperpage{38}
+
+  \indexspace
+
+  \item {Verifier}
+    \subitem {Verifier.\discretionary {-}{}{}cpp}, \hyperpage{38}
+    \subitem {Verifier.\discretionary {-}{}{}h}, \hyperpage{39}
+  \item {Verifier.\-h}
+    \subitem {C\-O\-M\-P\-A\-T}, \hyperpage{39}
+    \subitem {D\-E\-C\-R\-Y\-P\-T}, \hyperpage{39}
+    \subitem {H\-E\-L\-P}, \hyperpage{39}
+    \subitem {M\-I\-X}, \hyperpage{39}
+    \subitem {N\-O\-N\-E}, \hyperpage{39}
+    \subitem {S\-H\-U\-F\-F\-L\-E}, \hyperpage{39}
+  \item {Verifier.\discretionary {-}{}{}cpp}
+    \subitem {Verifier}, \hyperpage{38}
+  \item {Verifier.\discretionary {-}{}{}h}
+    \subitem {Run\discretionary {-}{}{}Mode}, \hyperpage{39}
+    \subitem {Verifier}, \hyperpage{39}
+  \item {Verifier/\discretionary {-}{}{}Decryption\discretionary {-}{}{}Factors\discretionary {-}{}{}Verifier.\discretionary {-}{}{}cpp}, 
+		\hyperpage{31}
+  \item {Verifier/\discretionary {-}{}{}Decryption\discretionary {-}{}{}Factors\discretionary {-}{}{}Verifier.\discretionary {-}{}{}h}, 
+		\hyperpage{32}
+  \item {Verifier/\discretionary {-}{}{}Decryption\discretionary {-}{}{}Verifier.\discretionary {-}{}{}cpp}, 
+		\hyperpage{32}
+  \item {Verifier/\discretionary {-}{}{}Decryption\discretionary {-}{}{}Verifier.\discretionary {-}{}{}h}, 
+		\hyperpage{32}
+  \item {Verifier/\discretionary {-}{}{}File\discretionary {-}{}{}Names.\discretionary {-}{}{}h}, 
+		\hyperpage{33}
+  \item {Verifier/\discretionary {-}{}{}Key\discretionary {-}{}{}Verifier.\discretionary {-}{}{}cpp}, 
+		\hyperpage{33}
+  \item {Verifier/\discretionary {-}{}{}Key\discretionary {-}{}{}Verifier.\discretionary {-}{}{}h}, 
+		\hyperpage{34}
+  \item {Verifier/\discretionary {-}{}{}Proof\discretionary {-}{}{}Of\discretionary {-}{}{}Shuffle.\discretionary {-}{}{}cpp}, 
+		\hyperpage{35}
+  \item {Verifier/\discretionary {-}{}{}Proof\discretionary {-}{}{}Of\discretionary {-}{}{}Shuffle.\discretionary {-}{}{}h}, 
+		\hyperpage{35}
+  \item {Verifier/\discretionary {-}{}{}Shuffling\discretionary {-}{}{}Verifier.\discretionary {-}{}{}cpp}, 
+		\hyperpage{36}
+  \item {Verifier/\discretionary {-}{}{}Shuffling\discretionary {-}{}{}Verifier.\discretionary {-}{}{}h}, 
+		\hyperpage{36}
+  \item {Verifier/\discretionary {-}{}{}Utilities.\discretionary {-}{}{}cpp}, 
+		\hyperpage{36}
+  \item {Verifier/\discretionary {-}{}{}Utilities.\discretionary {-}{}{}h}, 
+		\hyperpage{37}
+  \item {Verifier/\discretionary {-}{}{}Verifier.\discretionary {-}{}{}cpp}, 
+		\hyperpage{38}
+  \item {Verifier/\discretionary {-}{}{}Verifier.\discretionary {-}{}{}h}, 
+		\hyperpage{38}
+  \item {Verifier/main.\discretionary {-}{}{}cpp}, \hyperpage{34}
+  \item {verify\discretionary {-}{}{}Shuffling}
+    \subitem {Shuffling\discretionary {-}{}{}Verifier.\discretionary {-}{}{}cpp}, 
+		\hyperpage{36}
+    \subitem {Shuffling\discretionary {-}{}{}Verifier.\discretionary {-}{}{}h}, 
+		\hyperpage{36}
+
+  \indexspace
+
+  \item {width}
+    \subitem {proof\discretionary {-}{}{}Struct}, \hyperpage{21}
+
+  \indexspace
+
+  \item {x}
+    \subitem {proof\discretionary {-}{}{}Struct}, \hyperpage{21}
+
+  \indexspace
+
+  \item {y}
+    \subitem {proof\discretionary {-}{}{}Struct}, \hyperpage{21}
+
+\end{theindex}
