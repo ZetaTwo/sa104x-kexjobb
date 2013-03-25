@@ -2,7 +2,7 @@
 
 #include <algorithm>
 
-#include <openssl\sha.h>
+#include <openssl/sha.h>
 
 bytevector H_SHA256(bytevector seed) {
 	return H_SHA(SHA256, seed, SHA256_DIGEST_LENGTH);
