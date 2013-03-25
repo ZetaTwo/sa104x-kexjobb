@@ -173,13 +173,12 @@ int Verifier(string protinfo, string directory,
     
     pfStr.N = L0.getLength();
 
-    // TODO: KORRIGERA DET HÄR, VILKEN CIPHERTEXT SKA LÄSAS?
     if(type == MIX) {
 	/* Read threshold ciphertext */
 	try {
 		    
 	    char ciphertext_filename[FILENAME_BUFFER_SIZE];
-	    sprintf(ciphertext_filename, CIPHERTEXTS_FILE_TMPL.c_str(), -1 /* FEL */);
+	    sprintf(ciphertext_filename, CIPHERTEXTS_FILE_TMPL.c_str(), pfStr.lambda);
 	
 	    std::ifstream fstr(ciphertext_filename, std::fstream::in);
 
