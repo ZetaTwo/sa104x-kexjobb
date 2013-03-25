@@ -1,0 +1,147 @@
+\hypertarget{class_base_node}{\section{Base\-Node Class Reference}
+\label{class_base_node}\index{Base\-Node@{Base\-Node}}
+}
+
+
+{\ttfamily \#include $<$Base\-Node.\-h$>$}
+
+Inheritance diagram for Base\-Node\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_base_node}
+\end{center}
+\end{figure}
+\subsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{class_base_node_a01f9336072c3fb197a2a0dda45d78544}{Node\-Type} \{ \hyperlink{class_base_node_a01f9336072c3fb197a2a0dda45d78544a528465af535d31fc21605e0c41ac4bc1}{N\-O\-D\-E} = 0, 
+\hyperlink{class_base_node_a01f9336072c3fb197a2a0dda45d78544a19c8347aacceaf071d7a9ebada297de3}{I\-N\-T\-\_\-\-L\-E\-A\-F} = 1, 
+\hyperlink{class_base_node_a01f9336072c3fb197a2a0dda45d78544a3a9022b38c3db828c6479d21994962c4}{D\-A\-T\-A\-\_\-\-L\-E\-A\-F} = 2
+ \}
+\end{DoxyCompactItemize}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_base_node_afc5bd25898054b2e50d6b01451d73b1b}{Base\-Node} (\hyperlink{class_base_node_a01f9336072c3fb197a2a0dda45d78544}{Base\-Node\-::\-Node\-Type} type)
+\item 
+\hyperlink{class_base_node_a27d5e3b508b19fa7887ac95d15a46f9c}{$\sim$\-Base\-Node} (void)
+\item 
+\hyperlink{class_base_node_a01f9336072c3fb197a2a0dda45d78544}{Base\-Node\-::\-Node\-Type} \hyperlink{class_base_node_a080bb4228cc6b0239f29c033257c486e}{get\-Type} (void) const 
+\item 
+virtual int32\-\_\-t \hyperlink{class_base_node_a50aef77f988f7689e96b346705628f91}{get\-Length} (void) const =0
+\item 
+virtual \hyperlink{types_8h_a64b5be62be31dcda165d2c6c3c262fb5}{bytevector} \hyperlink{class_base_node_aad2eb87014be9a786ec9a4c4ac405c45}{to\-Vector} (void) const =0
+\item 
+\hyperlink{types_8h_a64b5be62be31dcda165d2c6c3c262fb5}{bytevector} \hyperlink{class_base_node_aa5206e6e347794cba4068ddd90b8a091}{serialize} () const 
+\item 
+\hyperlink{types_8h_a64b5be62be31dcda165d2c6c3c262fb5}{bytevector} \hyperlink{class_base_node_ab9ec930839c38803c8be0638c7096982}{concat\-Data} (const \hyperlink{class_base_node}{Base\-Node} $\ast$const other) const 
+\end{DoxyCompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_base_node}{Base\-Node} $\ast$ \hyperlink{class_base_node_ae7b4733f4f9eae9979dc9d8469d51c28}{copy} (const \hyperlink{class_base_node}{Base\-Node} $\ast$node)
+\item 
+static void \hyperlink{class_base_node_ae2e188a31e6eb5d04caa4e57314a7f51}{Read\-Node\-Header} (std\-::istream \&file, char \&type, uint32\-\_\-t \&length)
+\end{DoxyCompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\hypertarget{class_base_node_a01f9336072c3fb197a2a0dda45d78544}{\index{Base\-Node@{Base\-Node}!Node\-Type@{Node\-Type}}
+\index{Node\-Type@{Node\-Type}!BaseNode@{Base\-Node}}
+\subsubsection[{Node\-Type}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Base\-Node\-::\-Node\-Type}}}\label{class_base_node_a01f9336072c3fb197a2a0dda45d78544}
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{N\-O\-D\-E@{N\-O\-D\-E}!Base\-Node@{Base\-Node}}\index{Base\-Node@{Base\-Node}!N\-O\-D\-E@{N\-O\-D\-E}}\item[{\em 
+\hypertarget{class_base_node_a01f9336072c3fb197a2a0dda45d78544a528465af535d31fc21605e0c41ac4bc1}{N\-O\-D\-E}\label{class_base_node_a01f9336072c3fb197a2a0dda45d78544a528465af535d31fc21605e0c41ac4bc1}
+}]\index{I\-N\-T\-\_\-\-L\-E\-A\-F@{I\-N\-T\-\_\-\-L\-E\-A\-F}!Base\-Node@{Base\-Node}}\index{Base\-Node@{Base\-Node}!I\-N\-T\-\_\-\-L\-E\-A\-F@{I\-N\-T\-\_\-\-L\-E\-A\-F}}\item[{\em 
+\hypertarget{class_base_node_a01f9336072c3fb197a2a0dda45d78544a19c8347aacceaf071d7a9ebada297de3}{I\-N\-T\-\_\-\-L\-E\-A\-F}\label{class_base_node_a01f9336072c3fb197a2a0dda45d78544a19c8347aacceaf071d7a9ebada297de3}
+}]\index{D\-A\-T\-A\-\_\-\-L\-E\-A\-F@{D\-A\-T\-A\-\_\-\-L\-E\-A\-F}!Base\-Node@{Base\-Node}}\index{Base\-Node@{Base\-Node}!D\-A\-T\-A\-\_\-\-L\-E\-A\-F@{D\-A\-T\-A\-\_\-\-L\-E\-A\-F}}\item[{\em 
+\hypertarget{class_base_node_a01f9336072c3fb197a2a0dda45d78544a3a9022b38c3db828c6479d21994962c4}{D\-A\-T\-A\-\_\-\-L\-E\-A\-F}\label{class_base_node_a01f9336072c3fb197a2a0dda45d78544a3a9022b38c3db828c6479d21994962c4}
+}]\end{description}
+\end{Desc}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_base_node_afc5bd25898054b2e50d6b01451d73b1b}{\index{Base\-Node@{Base\-Node}!Base\-Node@{Base\-Node}}
+\index{Base\-Node@{Base\-Node}!BaseNode@{Base\-Node}}
+\subsubsection[{Base\-Node}]{\setlength{\rightskip}{0pt plus 5cm}Base\-Node\-::\-Base\-Node (
+\begin{DoxyParamCaption}
+\item[{{\bf Base\-Node\-::\-Node\-Type}}]{type}
+\end{DoxyParamCaption}
+)}}\label{class_base_node_afc5bd25898054b2e50d6b01451d73b1b}
+\hypertarget{class_base_node_a27d5e3b508b19fa7887ac95d15a46f9c}{\index{Base\-Node@{Base\-Node}!$\sim$\-Base\-Node@{$\sim$\-Base\-Node}}
+\index{$\sim$\-Base\-Node@{$\sim$\-Base\-Node}!BaseNode@{Base\-Node}}
+\subsubsection[{$\sim$\-Base\-Node}]{\setlength{\rightskip}{0pt plus 5cm}Base\-Node\-::$\sim$\-Base\-Node (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_base_node_a27d5e3b508b19fa7887ac95d15a46f9c}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_base_node_ab9ec930839c38803c8be0638c7096982}{\index{Base\-Node@{Base\-Node}!concat\-Data@{concat\-Data}}
+\index{concat\-Data@{concat\-Data}!BaseNode@{Base\-Node}}
+\subsubsection[{concat\-Data}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bytevector} Base\-Node\-::concat\-Data (
+\begin{DoxyParamCaption}
+\item[{const {\bf Base\-Node} $\ast$const}]{other}
+\end{DoxyParamCaption}
+) const}}\label{class_base_node_ab9ec930839c38803c8be0638c7096982}
+\hypertarget{class_base_node_ae7b4733f4f9eae9979dc9d8469d51c28}{\index{Base\-Node@{Base\-Node}!copy@{copy}}
+\index{copy@{copy}!BaseNode@{Base\-Node}}
+\subsubsection[{copy}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Base\-Node} $\ast$ Base\-Node\-::copy (
+\begin{DoxyParamCaption}
+\item[{const {\bf Base\-Node} $\ast$}]{node}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}}\label{class_base_node_ae7b4733f4f9eae9979dc9d8469d51c28}
+\hypertarget{class_base_node_a50aef77f988f7689e96b346705628f91}{\index{Base\-Node@{Base\-Node}!get\-Length@{get\-Length}}
+\index{get\-Length@{get\-Length}!BaseNode@{Base\-Node}}
+\subsubsection[{get\-Length}]{\setlength{\rightskip}{0pt plus 5cm}virtual int32\-\_\-t Base\-Node\-::get\-Length (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_base_node_a50aef77f988f7689e96b346705628f91}
+
+
+Implemented in \hyperlink{class_node_ad602104b3c245a564f741b65fe97845c}{Node}, \hyperlink{class_int_leaf_a92719f80a7410d76e4fae51de9b28e36}{Int\-Leaf}, and \hyperlink{class_data_leaf_aba4c714ea1dc591023298c50a2e18523}{Data\-Leaf}.
+
+\hypertarget{class_base_node_a080bb4228cc6b0239f29c033257c486e}{\index{Base\-Node@{Base\-Node}!get\-Type@{get\-Type}}
+\index{get\-Type@{get\-Type}!BaseNode@{Base\-Node}}
+\subsubsection[{get\-Type}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Base\-Node\-::\-Node\-Type} Base\-Node\-::get\-Type (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{class_base_node_a080bb4228cc6b0239f29c033257c486e}
+\hypertarget{class_base_node_ae2e188a31e6eb5d04caa4e57314a7f51}{\index{Base\-Node@{Base\-Node}!Read\-Node\-Header@{Read\-Node\-Header}}
+\index{Read\-Node\-Header@{Read\-Node\-Header}!BaseNode@{Base\-Node}}
+\subsubsection[{Read\-Node\-Header}]{\setlength{\rightskip}{0pt plus 5cm}void Base\-Node\-::\-Read\-Node\-Header (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{file, }
+\item[{char \&}]{type, }
+\item[{uint32\-\_\-t \&}]{length}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [protected]}}}\label{class_base_node_ae2e188a31e6eb5d04caa4e57314a7f51}
+\hypertarget{class_base_node_aa5206e6e347794cba4068ddd90b8a091}{\index{Base\-Node@{Base\-Node}!serialize@{serialize}}
+\index{serialize@{serialize}!BaseNode@{Base\-Node}}
+\subsubsection[{serialize}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bytevector} Base\-Node\-::serialize (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_base_node_aa5206e6e347794cba4068ddd90b8a091}
+\hypertarget{class_base_node_aad2eb87014be9a786ec9a4c4ac405c45}{\index{Base\-Node@{Base\-Node}!to\-Vector@{to\-Vector}}
+\index{to\-Vector@{to\-Vector}!BaseNode@{Base\-Node}}
+\subsubsection[{to\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf bytevector} Base\-Node\-::to\-Vector (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [pure virtual]}}}\label{class_base_node_aad2eb87014be9a786ec9a4c4ac405c45}
+
+
+Implemented in \hyperlink{class_int_leaf_a1817ac7916ab1c4ff09717db0a6d95f2}{Int\-Leaf}, \hyperlink{class_node_a858d4b4757880eba1fdead1412418693}{Node}, and \hyperlink{class_data_leaf_a62ce63296d298d6ffdc133dafe3b281f}{Data\-Leaf}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Arithmetic/\hyperlink{_base_node_8h}{Base\-Node.\-h}\item 
+Arithmetic/\hyperlink{_base_node_8cpp}{Base\-Node.\-cpp}\end{DoxyCompactItemize}

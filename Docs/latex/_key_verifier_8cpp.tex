@@ -1,0 +1,55 @@
+\hypertarget{_key_verifier_8cpp}{\section{Verifier/\-Key\-Verifier.cpp File Reference}
+\label{_key_verifier_8cpp}\index{Verifier/\-Key\-Verifier.\-cpp@{Verifier/\-Key\-Verifier.\-cpp}}
+}
+{\ttfamily \#include $<$vector$>$}\\*
+{\ttfamily \#include $<$fstream$>$}\\*
+{\ttfamily \#include \char`\"{}Key\-Verifier.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Node.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}Int\-Leaf.\-h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}File\-Names.\-h\char`\"{}}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{_key_verifier_8cpp_ae2d59483ebc17a44db7864c8d664ff74}{key\-Verifier} (int lambda, \hyperlink{structproof_struct}{proof\-Struct} \&pf\-Str)
+\item 
+bool \hyperlink{_key_verifier_8cpp_aac5330367379597d11734de3ed26f025}{is\-Public\-Key} (const \hyperlink{class_node}{Node} \&G, const \hyperlink{class_node}{Node} \&pk)
+\item 
+bool \hyperlink{_key_verifier_8cpp_a27a21f369b41d8a8256f026df1786031}{is\-Partial\-Public\-Key} (const \hyperlink{class_node}{Node} \&G, const \hyperlink{class_int_leaf}{Int\-Leaf} \&ppk)
+\item 
+bool \hyperlink{_key_verifier_8cpp_a7f4819707747de4279718d1ccdb9346b}{is\-Partial\-Secret\-Key} (const \hyperlink{class_node}{Node} \&G, const \hyperlink{class_int_leaf}{Int\-Leaf} \&psk)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{_key_verifier_8cpp_a27a21f369b41d8a8256f026df1786031}{\index{Key\-Verifier.\-cpp@{Key\-Verifier.\-cpp}!is\-Partial\-Public\-Key@{is\-Partial\-Public\-Key}}
+\index{is\-Partial\-Public\-Key@{is\-Partial\-Public\-Key}!KeyVerifier.cpp@{Key\-Verifier.\-cpp}}
+\subsubsection[{is\-Partial\-Public\-Key}]{\setlength{\rightskip}{0pt plus 5cm}bool is\-Partial\-Public\-Key (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{G, }
+\item[{const {\bf Int\-Leaf} \&}]{ppk}
+\end{DoxyParamCaption}
+)}}\label{_key_verifier_8cpp_a27a21f369b41d8a8256f026df1786031}
+\hypertarget{_key_verifier_8cpp_a7f4819707747de4279718d1ccdb9346b}{\index{Key\-Verifier.\-cpp@{Key\-Verifier.\-cpp}!is\-Partial\-Secret\-Key@{is\-Partial\-Secret\-Key}}
+\index{is\-Partial\-Secret\-Key@{is\-Partial\-Secret\-Key}!KeyVerifier.cpp@{Key\-Verifier.\-cpp}}
+\subsubsection[{is\-Partial\-Secret\-Key}]{\setlength{\rightskip}{0pt plus 5cm}bool is\-Partial\-Secret\-Key (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{G, }
+\item[{const {\bf Int\-Leaf} \&}]{psk}
+\end{DoxyParamCaption}
+)}}\label{_key_verifier_8cpp_a7f4819707747de4279718d1ccdb9346b}
+\hypertarget{_key_verifier_8cpp_aac5330367379597d11734de3ed26f025}{\index{Key\-Verifier.\-cpp@{Key\-Verifier.\-cpp}!is\-Public\-Key@{is\-Public\-Key}}
+\index{is\-Public\-Key@{is\-Public\-Key}!KeyVerifier.cpp@{Key\-Verifier.\-cpp}}
+\subsubsection[{is\-Public\-Key}]{\setlength{\rightskip}{0pt plus 5cm}bool is\-Public\-Key (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{G, }
+\item[{const {\bf Node} \&}]{pk}
+\end{DoxyParamCaption}
+)}}\label{_key_verifier_8cpp_aac5330367379597d11734de3ed26f025}
+\hypertarget{_key_verifier_8cpp_ae2d59483ebc17a44db7864c8d664ff74}{\index{Key\-Verifier.\-cpp@{Key\-Verifier.\-cpp}!key\-Verifier@{key\-Verifier}}
+\index{key\-Verifier@{key\-Verifier}!KeyVerifier.cpp@{Key\-Verifier.\-cpp}}
+\subsubsection[{key\-Verifier}]{\setlength{\rightskip}{0pt plus 5cm}bool key\-Verifier (
+\begin{DoxyParamCaption}
+\item[{int}]{lambda, }
+\item[{{\bf proof\-Struct} \&}]{pf\-Str}
+\end{DoxyParamCaption}
+)}}\label{_key_verifier_8cpp_ae2d59483ebc17a44db7864c8d664ff74}

@@ -1,0 +1,91 @@
+\hypertarget{_utilities_8cpp}{\section{Verifier/\-Utilities.cpp File Reference}
+\label{_utilities_8cpp}\index{Verifier/\-Utilities.\-cpp@{Verifier/\-Utilities.\-cpp}}
+}
+{\ttfamily \#include \char`\"{}Utilities.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$vector$>$}\\*
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{_utilities_8cpp_abb39714105ba577495479b58d2a678b7}{is\-Elem\-Of} (const \hyperlink{class_node}{Node} \&group, const \hyperlink{class_int_leaf}{Int\-Leaf} \&elem)
+\item 
+bool \hyperlink{_utilities_8cpp_a7b1238d69b3fe00815918a56409b46a1}{is\-Elem\-Of} (const \hyperlink{class_int_leaf}{Int\-Leaf} \&Zn, const \hyperlink{class_int_leaf}{Int\-Leaf} \&elem)
+\item 
+bool \hyperlink{_utilities_8cpp_a17791e3ed923dd0ffda867ebf9266ec4}{is\-Elem\-Of\-Gq} (const \hyperlink{class_node}{Node} \&group, const \hyperlink{class_int_leaf}{Int\-Leaf} \&elem)
+\item 
+bool \hyperlink{_utilities_8cpp_ab4fd7a00f20c4b4dae3a4858a05f6d2f}{is\-Elem\-Of\-Zn} (const \hyperlink{class_int_leaf}{Int\-Leaf} \&n, const \hyperlink{class_int_leaf}{Int\-Leaf} \&elem)
+\item 
+bool \hyperlink{_utilities_8cpp_ae848d87f7dc8f30b1f4f3f26c3f8e6b3}{is\-Elem\-Of\-Mw} (const \hyperlink{structproof_struct}{proof\-Struct} \&pf\-Str, const \hyperlink{class_node}{Node} \&plaintext)
+\item 
+bool \hyperlink{_utilities_8cpp_ae5581b6bd85f6eb4b7782a5f98f196d8}{is\-Elem\-Of\-Cw} (const \hyperlink{structproof_struct}{proof\-Struct} \&pf\-Str, const \hyperlink{class_node}{Node} \&ciphertext)
+\item 
+bool \hyperlink{_utilities_8cpp_aa371be473cec3a90ffe087d7680ffcdb}{is\-Pedersen\-Commitment} (const \hyperlink{class_node}{Node} \&group, const \hyperlink{class_int_leaf}{Int\-Leaf} \&elem)
+\item 
+void \hyperlink{_utilities_8cpp_adad9232cb5a263f3a7ba2f1b3954519f}{get\-Group\-From\-String} (\hyperlink{structproof_struct}{proof\-Struct} \&pf\-Str, std\-::string str)
+\end{DoxyCompactItemize}
+
+
+\subsection{Function Documentation}
+\hypertarget{_utilities_8cpp_adad9232cb5a263f3a7ba2f1b3954519f}{\index{Utilities.\-cpp@{Utilities.\-cpp}!get\-Group\-From\-String@{get\-Group\-From\-String}}
+\index{get\-Group\-From\-String@{get\-Group\-From\-String}!Utilities.cpp@{Utilities.\-cpp}}
+\subsubsection[{get\-Group\-From\-String}]{\setlength{\rightskip}{0pt plus 5cm}void get\-Group\-From\-String (
+\begin{DoxyParamCaption}
+\item[{{\bf proof\-Struct} \&}]{pf\-Str, }
+\item[{std\-::string}]{str}
+\end{DoxyParamCaption}
+)}}\label{_utilities_8cpp_adad9232cb5a263f3a7ba2f1b3954519f}
+\hypertarget{_utilities_8cpp_abb39714105ba577495479b58d2a678b7}{\index{Utilities.\-cpp@{Utilities.\-cpp}!is\-Elem\-Of@{is\-Elem\-Of}}
+\index{is\-Elem\-Of@{is\-Elem\-Of}!Utilities.cpp@{Utilities.\-cpp}}
+\subsubsection[{is\-Elem\-Of}]{\setlength{\rightskip}{0pt plus 5cm}bool is\-Elem\-Of (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{group, }
+\item[{const {\bf Int\-Leaf} \&}]{elem}
+\end{DoxyParamCaption}
+)}}\label{_utilities_8cpp_abb39714105ba577495479b58d2a678b7}
+\hypertarget{_utilities_8cpp_a7b1238d69b3fe00815918a56409b46a1}{\index{Utilities.\-cpp@{Utilities.\-cpp}!is\-Elem\-Of@{is\-Elem\-Of}}
+\index{is\-Elem\-Of@{is\-Elem\-Of}!Utilities.cpp@{Utilities.\-cpp}}
+\subsubsection[{is\-Elem\-Of}]{\setlength{\rightskip}{0pt plus 5cm}bool is\-Elem\-Of (
+\begin{DoxyParamCaption}
+\item[{const {\bf Int\-Leaf} \&}]{Zn, }
+\item[{const {\bf Int\-Leaf} \&}]{elem}
+\end{DoxyParamCaption}
+)}}\label{_utilities_8cpp_a7b1238d69b3fe00815918a56409b46a1}
+\hypertarget{_utilities_8cpp_ae5581b6bd85f6eb4b7782a5f98f196d8}{\index{Utilities.\-cpp@{Utilities.\-cpp}!is\-Elem\-Of\-Cw@{is\-Elem\-Of\-Cw}}
+\index{is\-Elem\-Of\-Cw@{is\-Elem\-Of\-Cw}!Utilities.cpp@{Utilities.\-cpp}}
+\subsubsection[{is\-Elem\-Of\-Cw}]{\setlength{\rightskip}{0pt plus 5cm}bool is\-Elem\-Of\-Cw (
+\begin{DoxyParamCaption}
+\item[{const {\bf proof\-Struct} \&}]{pf\-Str, }
+\item[{const {\bf Node} \&}]{ciphertext}
+\end{DoxyParamCaption}
+)}}\label{_utilities_8cpp_ae5581b6bd85f6eb4b7782a5f98f196d8}
+\hypertarget{_utilities_8cpp_a17791e3ed923dd0ffda867ebf9266ec4}{\index{Utilities.\-cpp@{Utilities.\-cpp}!is\-Elem\-Of\-Gq@{is\-Elem\-Of\-Gq}}
+\index{is\-Elem\-Of\-Gq@{is\-Elem\-Of\-Gq}!Utilities.cpp@{Utilities.\-cpp}}
+\subsubsection[{is\-Elem\-Of\-Gq}]{\setlength{\rightskip}{0pt plus 5cm}bool is\-Elem\-Of\-Gq (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{group, }
+\item[{const {\bf Int\-Leaf} \&}]{elem}
+\end{DoxyParamCaption}
+)}}\label{_utilities_8cpp_a17791e3ed923dd0ffda867ebf9266ec4}
+\hypertarget{_utilities_8cpp_ae848d87f7dc8f30b1f4f3f26c3f8e6b3}{\index{Utilities.\-cpp@{Utilities.\-cpp}!is\-Elem\-Of\-Mw@{is\-Elem\-Of\-Mw}}
+\index{is\-Elem\-Of\-Mw@{is\-Elem\-Of\-Mw}!Utilities.cpp@{Utilities.\-cpp}}
+\subsubsection[{is\-Elem\-Of\-Mw}]{\setlength{\rightskip}{0pt plus 5cm}bool is\-Elem\-Of\-Mw (
+\begin{DoxyParamCaption}
+\item[{const {\bf proof\-Struct} \&}]{pf\-Str, }
+\item[{const {\bf Node} \&}]{plaintext}
+\end{DoxyParamCaption}
+)}}\label{_utilities_8cpp_ae848d87f7dc8f30b1f4f3f26c3f8e6b3}
+\hypertarget{_utilities_8cpp_ab4fd7a00f20c4b4dae3a4858a05f6d2f}{\index{Utilities.\-cpp@{Utilities.\-cpp}!is\-Elem\-Of\-Zn@{is\-Elem\-Of\-Zn}}
+\index{is\-Elem\-Of\-Zn@{is\-Elem\-Of\-Zn}!Utilities.cpp@{Utilities.\-cpp}}
+\subsubsection[{is\-Elem\-Of\-Zn}]{\setlength{\rightskip}{0pt plus 5cm}bool is\-Elem\-Of\-Zn (
+\begin{DoxyParamCaption}
+\item[{const {\bf Int\-Leaf} \&}]{n, }
+\item[{const {\bf Int\-Leaf} \&}]{elem}
+\end{DoxyParamCaption}
+)}}\label{_utilities_8cpp_ab4fd7a00f20c4b4dae3a4858a05f6d2f}
+\hypertarget{_utilities_8cpp_aa371be473cec3a90ffe087d7680ffcdb}{\index{Utilities.\-cpp@{Utilities.\-cpp}!is\-Pedersen\-Commitment@{is\-Pedersen\-Commitment}}
+\index{is\-Pedersen\-Commitment@{is\-Pedersen\-Commitment}!Utilities.cpp@{Utilities.\-cpp}}
+\subsubsection[{is\-Pedersen\-Commitment}]{\setlength{\rightskip}{0pt plus 5cm}bool is\-Pedersen\-Commitment (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{group, }
+\item[{const {\bf Int\-Leaf} \&}]{elem}
+\end{DoxyParamCaption}
+)}}\label{_utilities_8cpp_aa371be473cec3a90ffe087d7680ffcdb}

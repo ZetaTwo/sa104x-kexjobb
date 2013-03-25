@@ -1,0 +1,615 @@
+\hypertarget{class_node}{\section{Node Class Reference}
+\label{class_node}\index{Node@{Node}}
+}
+
+
+{\ttfamily \#include $<$Node.\-h$>$}
+
+Inheritance diagram for Node\-:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_node}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_node_a8d9cf8575744ca8c0f236a0a82eda096}{Node} (void)
+\item 
+\hyperlink{class_node_a4bf5930c1238505203c3dcf6e4573bad}{Node} (const \hyperlink{class_node}{Node} \&node)
+\item 
+\hyperlink{class_node_a3bb0c374e940be9178df34ba5272f92f}{Node} (const \hyperlink{types_8h_a64b5be62be31dcda165d2c6c3c262fb5}{bytevector} data)
+\item 
+\hyperlink{class_node_acdaa8db8d24d95d0c92218036a2df7e9}{Node} (const std\-::string filename)
+\item 
+\hyperlink{class_node_ae7672b93ee7885c40047f2f2f66578c0}{Node} (std\-::istream \&file)
+\item 
+\hyperlink{class_node_a2ba9aa5f85c0511a0608435419d248d1}{$\sim$\-Node} (void)
+\item 
+virtual \hyperlink{types_8h_a64b5be62be31dcda165d2c6c3c262fb5}{bytevector} \hyperlink{class_node_a858d4b4757880eba1fdead1412418693}{to\-Vector} (void) const 
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_a443734765d4e94a04ef8a5cba4c2d3fe}{operator=} (const \hyperlink{class_node}{Node} \&node)
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_aaf0d06b7e27f852f325c63b88eb33cdd}{mod\-To} (const \hyperlink{class_int_leaf}{Int\-Leaf} \&leaf)
+\item 
+\hyperlink{class_node}{Node} \hyperlink{class_node_a7744980c6da2415c02b583c5b149d50d}{mod} (const \hyperlink{class_int_leaf}{Int\-Leaf} \&leaf) const 
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_a6ca8cd41ea9f7579064f0c5ab4ae4ecf}{add\-To} (const \hyperlink{class_int_leaf}{Int\-Leaf} \&leaf)
+\item 
+\hyperlink{class_node}{Node} \hyperlink{class_node_ab3a58067bedece32403988a558ccbf96}{add} (const \hyperlink{class_int_leaf}{Int\-Leaf} \&leaf) const 
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_a7fc4be898d3ddebdc1a7341cc89a27f2}{add\-To} (const \hyperlink{class_node}{Node} \&node)
+\item 
+\hyperlink{class_node}{Node} \hyperlink{class_node_a162d4484dacf7c47d4e0bc13d3d29237}{add} (const \hyperlink{class_node}{Node} \&node) const 
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_ab11fa7ff8a60506e6bb40d63e8915cc4}{add\-To\-Mod} (const \hyperlink{class_int_leaf}{Int\-Leaf} \&leaf, const \hyperlink{class_int_leaf}{Int\-Leaf} \&\hyperlink{class_node_a7744980c6da2415c02b583c5b149d50d}{mod})
+\item 
+\hyperlink{class_node}{Node} \hyperlink{class_node_acfacf729f89f5323b6e1b84068f9af9e}{add\-Mod} (const \hyperlink{class_int_leaf}{Int\-Leaf} \&leaf, const \hyperlink{class_int_leaf}{Int\-Leaf} \&\hyperlink{class_node_a7744980c6da2415c02b583c5b149d50d}{mod}) const 
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_aeb43d1eb8c37653b358a6b10146830d5}{add\-To\-Mod} (const \hyperlink{class_node}{Node} \&node, const \hyperlink{class_int_leaf}{Int\-Leaf} \&\hyperlink{class_node_a7744980c6da2415c02b583c5b149d50d}{mod})
+\item 
+\hyperlink{class_node}{Node} \hyperlink{class_node_a7e486eaa03af545ab88e073ff66ade72}{add\-Mod} (const \hyperlink{class_node}{Node} \&node, const \hyperlink{class_int_leaf}{Int\-Leaf} \&\hyperlink{class_node_a7744980c6da2415c02b583c5b149d50d}{mod}) const 
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_a93ad5163448f65efe9ff4f816620ce15}{operator+=} (const \hyperlink{class_int_leaf}{Int\-Leaf} \&leaf)
+\item 
+\hyperlink{class_node}{Node} \hyperlink{class_node_a760ed8d9512bcdbd1d2c50a1e9db0c88}{operator+} (const \hyperlink{class_int_leaf}{Int\-Leaf} \&leaf) const 
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_aefaf03590fe3f94039db698524a263fe}{operator+=} (const \hyperlink{class_node}{Node} \&node)
+\item 
+\hyperlink{class_node}{Node} \hyperlink{class_node_ab340f7a5d7aef6d514c83378c1af3bb9}{operator+} (const \hyperlink{class_node}{Node} \&node) const 
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_a80101b65aa4de587b00ebe31c377e0d8}{mult\-To} (const \hyperlink{class_int_leaf}{Int\-Leaf} \&leaf)
+\item 
+\hyperlink{class_node}{Node} \hyperlink{class_node_aa975fa8176089de17add587ab9dc2f67}{mult} (const \hyperlink{class_int_leaf}{Int\-Leaf} \&leaf) const 
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_ae3250c7847ec855bd8b30105e60349c4}{mult\-To} (const \hyperlink{class_node}{Node} \&node)
+\item 
+\hyperlink{class_node}{Node} \hyperlink{class_node_a22afe59e2c925924d6472a6ffe3e5488}{mult} (const \hyperlink{class_node}{Node} \&node) const 
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_a24f08a59947b6ef5393823ddb47d5bde}{mult\-To\-Mod} (const \hyperlink{class_int_leaf}{Int\-Leaf} \&leaf, const \hyperlink{class_int_leaf}{Int\-Leaf} \&\hyperlink{class_node_a7744980c6da2415c02b583c5b149d50d}{mod})
+\item 
+\hyperlink{class_node}{Node} \hyperlink{class_node_a4e4c3d8ce4cd291c80b34a57eccdcfbc}{mult\-Mod} (const \hyperlink{class_int_leaf}{Int\-Leaf} \&leaf, const \hyperlink{class_int_leaf}{Int\-Leaf} \&\hyperlink{class_node_a7744980c6da2415c02b583c5b149d50d}{mod}) const 
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_a8a8d36cdd28616c89c5231f64eccb88b}{mult\-To\-Mod} (const \hyperlink{class_node}{Node} \&node, const \hyperlink{class_int_leaf}{Int\-Leaf} \&\hyperlink{class_node_a7744980c6da2415c02b583c5b149d50d}{mod})
+\item 
+\hyperlink{class_node}{Node} \hyperlink{class_node_add4a910a5d13cb0c43680de2e38d5758}{mult\-Mod} (const \hyperlink{class_node}{Node} \&node, const \hyperlink{class_int_leaf}{Int\-Leaf} \&\hyperlink{class_node_a7744980c6da2415c02b583c5b149d50d}{mod}) const 
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_acc1124101cc3bb6cfa486361d4593ef9}{operator$\ast$=} (const \hyperlink{class_int_leaf}{Int\-Leaf} \&leaf)
+\item 
+\hyperlink{class_node}{Node} \hyperlink{class_node_abf463388fe626c7412ebd03455b93d24}{operator$\ast$} (const \hyperlink{class_int_leaf}{Int\-Leaf} \&leaf) const 
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_a82be68d29507f13cd58d7a70678c745d}{operator$\ast$=} (const \hyperlink{class_node}{Node} \&node)
+\item 
+\hyperlink{class_node}{Node} \hyperlink{class_node_a74005185f7ea1724fb4891cd9df1e9ef}{operator$\ast$} (const \hyperlink{class_node}{Node} \&node) const 
+\item 
+bool \hyperlink{class_node_af167bfaab0f7e39daf0f39bb3d595e5f}{operator==} (const \hyperlink{class_node}{Node} \&node) const 
+\item 
+bool \hyperlink{class_node_aa2e7398fc0d99fe12c075bd94ee5543b}{operator!=} (const \hyperlink{class_node}{Node} \&node) const 
+\item 
+\hyperlink{class_int_leaf}{Int\-Leaf} \hyperlink{class_node_ac2103aa6d114e52dce1743be7aa4c1d0}{sum} (void) const 
+\item 
+\hyperlink{class_int_leaf}{Int\-Leaf} \hyperlink{class_node_ab70ce6887d26a52ff54bbc96bb79b7a4}{sum\-Mod} (const \hyperlink{class_int_leaf}{Int\-Leaf} \&\hyperlink{class_node_a7744980c6da2415c02b583c5b149d50d}{mod}) const 
+\item 
+\hyperlink{class_int_leaf}{Int\-Leaf} \hyperlink{class_node_ae2b74409d1e5040d11890cfae5a1713c}{prod} (void) const 
+\item 
+\hyperlink{class_int_leaf}{Int\-Leaf} \hyperlink{class_node_af18b21646a0a3e08690de85ffb1d3355}{prod\-Mod} (const \hyperlink{class_int_leaf}{Int\-Leaf} \&\hyperlink{class_node_a7744980c6da2415c02b583c5b149d50d}{mod}) const 
+\item 
+\hyperlink{class_node}{Node} \hyperlink{class_node_a675af8768a53b4c55dde07ba3ee4e335}{exp} (unsigned long exponent) const 
+\item 
+\hyperlink{class_node}{Node} \hyperlink{class_node_a2cf5726aef85163ee34aff6f953897fe}{exp\-Mod} (unsigned long exponent, const \hyperlink{class_int_leaf}{Int\-Leaf} \&\hyperlink{class_node_a7744980c6da2415c02b583c5b149d50d}{mod}) const 
+\item 
+\hyperlink{class_node}{Node} \hyperlink{class_node_ad01843ea664f09880c82a949e094a107}{exp\-Mod} (const \hyperlink{class_int_leaf}{Int\-Leaf} \&exponent, const \hyperlink{class_int_leaf}{Int\-Leaf} \&\hyperlink{class_node_a7744980c6da2415c02b583c5b149d50d}{mod}) const 
+\item 
+\hyperlink{class_node}{Node} \hyperlink{class_node_af49a45863e320ed7b81ff96e4e35a73e}{exp} (const \hyperlink{class_node}{Node} \&exponents) const 
+\item 
+\hyperlink{class_node}{Node} \hyperlink{class_node_a270a6b9f196218ae688e34ec969f465f}{exp\-Mod} (const \hyperlink{class_node}{Node} \&exponents, const \hyperlink{class_int_leaf}{Int\-Leaf} \&\hyperlink{class_node_a7744980c6da2415c02b583c5b149d50d}{mod}) const 
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_a57700c1125aaf77210924a2acc128f48}{exp\-To} (unsigned long exponent)
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_a430517fa1163f53df68e9be38288dcd6}{exp\-To\-Mod} (unsigned long exponent, const \hyperlink{class_int_leaf}{Int\-Leaf} \&\hyperlink{class_node_a7744980c6da2415c02b583c5b149d50d}{mod})
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_afc7a7735704c514be511d52880a7c94c}{exp\-To\-Mod} (const \hyperlink{class_int_leaf}{Int\-Leaf} \&exponent, const \hyperlink{class_int_leaf}{Int\-Leaf} \&\hyperlink{class_node_a7744980c6da2415c02b583c5b149d50d}{mod})
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_a46ae5ee5f73f4f55b1600e93bc45c7f4}{exp\-To} (const \hyperlink{class_node}{Node} \&exponents)
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_aee8354142d2faea6f6e78f2d9dd321c0}{exp\-To\-Mod} (const \hyperlink{class_node}{Node} \&exponents, const \hyperlink{class_int_leaf}{Int\-Leaf} \&\hyperlink{class_node_a7744980c6da2415c02b583c5b149d50d}{mod})
+\item 
+\hyperlink{class_int_leaf}{Int\-Leaf} \hyperlink{class_node_af65555e953a065f650ff875bac1e3c27}{exp\-Mult\-Mod} (const \hyperlink{class_node}{Node} \&node, const \hyperlink{class_int_leaf}{Int\-Leaf} \&\hyperlink{class_node_a7744980c6da2415c02b583c5b149d50d}{mod}) const 
+\item 
+\hyperlink{class_int_leaf}{Int\-Leaf} \hyperlink{class_node_aaaddaae51a5f69c834919ebe9bc6e9e1}{exp\-Mult} (unsigned long exponent) const 
+\item 
+\hyperlink{class_int_leaf}{Int\-Leaf} \hyperlink{class_node_afbf297207f1366bdd0c279d89425b305}{exp\-Mult\-Mod} (unsigned long exponent, const \hyperlink{class_int_leaf}{Int\-Leaf} \&\hyperlink{class_node_a7744980c6da2415c02b583c5b149d50d}{mod}) const 
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_a9b098b18df4102d4e8bcce7114c389ea}{add\-Child} (const \hyperlink{class_base_node}{Base\-Node} \&child)
+\item 
+\hyperlink{class_node}{Node} \hyperlink{class_node_a3932c819906609e93ee189946f658d8d}{get\-Children} (int32\-\_\-t index) const 
+\item 
+\hyperlink{class_int_leaf}{Int\-Leaf} \& \hyperlink{class_node_a4fd5db27b06140e0421565c2b21c3973}{get\-Int\-Leaf\-Child} (int32\-\_\-t index)
+\item 
+const \hyperlink{class_int_leaf}{Int\-Leaf} \& \hyperlink{class_node_acf7ea79479333bee29105efe5d8fa663}{get\-Int\-Leaf\-Child} (int32\-\_\-t index) const 
+\item 
+\hyperlink{class_node}{Node} \& \hyperlink{class_node_a5379035c4d7e6080e40e57bb72e2e761}{get\-Node\-Child} (int32\-\_\-t index)
+\item 
+const \hyperlink{class_node}{Node} \& \hyperlink{class_node_a161add6a6b67043ce1fc5a7b7c9bee87}{get\-Node\-Child} (int32\-\_\-t index) const 
+\item 
+std\-::string \hyperlink{class_node_a1b0277500ee7e1019fc5d69d19071303}{to\-String} (void) const 
+\item 
+virtual int32\-\_\-t \hyperlink{class_node_ad602104b3c245a564f741b65fe97845c}{get\-Length} (void) const 
+\end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_base_node}{Base\-Node} $\ast$ \hyperlink{class_node_a2b43c8e76e3dd008affda12607770a62}{construct\-Part\-From\-File} (std\-::istream \&file, uint32\-\_\-t count)
+\end{DoxyCompactItemize}
+\subsection*{Additional Inherited Members}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_node_a8d9cf8575744ca8c0f236a0a82eda096}{\index{Node@{Node}!Node@{Node}}
+\index{Node@{Node}!Node@{Node}}
+\subsubsection[{Node}]{\setlength{\rightskip}{0pt plus 5cm}Node\-::\-Node (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_node_a8d9cf8575744ca8c0f236a0a82eda096}
+\hypertarget{class_node_a4bf5930c1238505203c3dcf6e4573bad}{\index{Node@{Node}!Node@{Node}}
+\index{Node@{Node}!Node@{Node}}
+\subsubsection[{Node}]{\setlength{\rightskip}{0pt plus 5cm}Node\-::\-Node (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{node}
+\end{DoxyParamCaption}
+)}}\label{class_node_a4bf5930c1238505203c3dcf6e4573bad}
+\hypertarget{class_node_a3bb0c374e940be9178df34ba5272f92f}{\index{Node@{Node}!Node@{Node}}
+\index{Node@{Node}!Node@{Node}}
+\subsubsection[{Node}]{\setlength{\rightskip}{0pt plus 5cm}Node\-::\-Node (
+\begin{DoxyParamCaption}
+\item[{const {\bf bytevector}}]{data}
+\end{DoxyParamCaption}
+)}}\label{class_node_a3bb0c374e940be9178df34ba5272f92f}
+\hypertarget{class_node_acdaa8db8d24d95d0c92218036a2df7e9}{\index{Node@{Node}!Node@{Node}}
+\index{Node@{Node}!Node@{Node}}
+\subsubsection[{Node}]{\setlength{\rightskip}{0pt plus 5cm}Node\-::\-Node (
+\begin{DoxyParamCaption}
+\item[{const std\-::string}]{filename}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{class_node_acdaa8db8d24d95d0c92218036a2df7e9}
+\hypertarget{class_node_ae7672b93ee7885c40047f2f2f66578c0}{\index{Node@{Node}!Node@{Node}}
+\index{Node@{Node}!Node@{Node}}
+\subsubsection[{Node}]{\setlength{\rightskip}{0pt plus 5cm}Node\-::\-Node (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [explicit]}}}\label{class_node_ae7672b93ee7885c40047f2f2f66578c0}
+\hypertarget{class_node_a2ba9aa5f85c0511a0608435419d248d1}{\index{Node@{Node}!$\sim$\-Node@{$\sim$\-Node}}
+\index{$\sim$\-Node@{$\sim$\-Node}!Node@{Node}}
+\subsubsection[{$\sim$\-Node}]{\setlength{\rightskip}{0pt plus 5cm}Node\-::$\sim$\-Node (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{class_node_a2ba9aa5f85c0511a0608435419d248d1}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_node_ab3a58067bedece32403988a558ccbf96}{\index{Node@{Node}!add@{add}}
+\index{add@{add}!Node@{Node}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} Node\-::add (
+\begin{DoxyParamCaption}
+\item[{const {\bf Int\-Leaf} \&}]{leaf}
+\end{DoxyParamCaption}
+) const}}\label{class_node_ab3a58067bedece32403988a558ccbf96}
+\hypertarget{class_node_a162d4484dacf7c47d4e0bc13d3d29237}{\index{Node@{Node}!add@{add}}
+\index{add@{add}!Node@{Node}}
+\subsubsection[{add}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} Node\-::add (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{node}
+\end{DoxyParamCaption}
+) const}}\label{class_node_a162d4484dacf7c47d4e0bc13d3d29237}
+\hypertarget{class_node_a9b098b18df4102d4e8bcce7114c389ea}{\index{Node@{Node}!add\-Child@{add\-Child}}
+\index{add\-Child@{add\-Child}!Node@{Node}}
+\subsubsection[{add\-Child}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} \& Node\-::add\-Child (
+\begin{DoxyParamCaption}
+\item[{const {\bf Base\-Node} \&}]{child}
+\end{DoxyParamCaption}
+)}}\label{class_node_a9b098b18df4102d4e8bcce7114c389ea}
+\hypertarget{class_node_acfacf729f89f5323b6e1b84068f9af9e}{\index{Node@{Node}!add\-Mod@{add\-Mod}}
+\index{add\-Mod@{add\-Mod}!Node@{Node}}
+\subsubsection[{add\-Mod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} Node\-::add\-Mod (
+\begin{DoxyParamCaption}
+\item[{const {\bf Int\-Leaf} \&}]{leaf, }
+\item[{const {\bf Int\-Leaf} \&}]{mod}
+\end{DoxyParamCaption}
+) const}}\label{class_node_acfacf729f89f5323b6e1b84068f9af9e}
+\hypertarget{class_node_a7e486eaa03af545ab88e073ff66ade72}{\index{Node@{Node}!add\-Mod@{add\-Mod}}
+\index{add\-Mod@{add\-Mod}!Node@{Node}}
+\subsubsection[{add\-Mod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} Node\-::add\-Mod (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{node, }
+\item[{const {\bf Int\-Leaf} \&}]{mod}
+\end{DoxyParamCaption}
+) const}}\label{class_node_a7e486eaa03af545ab88e073ff66ade72}
+\hypertarget{class_node_a6ca8cd41ea9f7579064f0c5ab4ae4ecf}{\index{Node@{Node}!add\-To@{add\-To}}
+\index{add\-To@{add\-To}!Node@{Node}}
+\subsubsection[{add\-To}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} \& Node\-::add\-To (
+\begin{DoxyParamCaption}
+\item[{const {\bf Int\-Leaf} \&}]{leaf}
+\end{DoxyParamCaption}
+)}}\label{class_node_a6ca8cd41ea9f7579064f0c5ab4ae4ecf}
+\hypertarget{class_node_a7fc4be898d3ddebdc1a7341cc89a27f2}{\index{Node@{Node}!add\-To@{add\-To}}
+\index{add\-To@{add\-To}!Node@{Node}}
+\subsubsection[{add\-To}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} \& Node\-::add\-To (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{node}
+\end{DoxyParamCaption}
+)}}\label{class_node_a7fc4be898d3ddebdc1a7341cc89a27f2}
+\hypertarget{class_node_ab11fa7ff8a60506e6bb40d63e8915cc4}{\index{Node@{Node}!add\-To\-Mod@{add\-To\-Mod}}
+\index{add\-To\-Mod@{add\-To\-Mod}!Node@{Node}}
+\subsubsection[{add\-To\-Mod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} \& Node\-::add\-To\-Mod (
+\begin{DoxyParamCaption}
+\item[{const {\bf Int\-Leaf} \&}]{leaf, }
+\item[{const {\bf Int\-Leaf} \&}]{mod}
+\end{DoxyParamCaption}
+)}}\label{class_node_ab11fa7ff8a60506e6bb40d63e8915cc4}
+\hypertarget{class_node_aeb43d1eb8c37653b358a6b10146830d5}{\index{Node@{Node}!add\-To\-Mod@{add\-To\-Mod}}
+\index{add\-To\-Mod@{add\-To\-Mod}!Node@{Node}}
+\subsubsection[{add\-To\-Mod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} \& Node\-::add\-To\-Mod (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{node, }
+\item[{const {\bf Int\-Leaf} \&}]{mod}
+\end{DoxyParamCaption}
+)}}\label{class_node_aeb43d1eb8c37653b358a6b10146830d5}
+\hypertarget{class_node_a2b43c8e76e3dd008affda12607770a62}{\index{Node@{Node}!construct\-Part\-From\-File@{construct\-Part\-From\-File}}
+\index{construct\-Part\-From\-File@{construct\-Part\-From\-File}!Node@{Node}}
+\subsubsection[{construct\-Part\-From\-File}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Base\-Node} $\ast$ Node\-::construct\-Part\-From\-File (
+\begin{DoxyParamCaption}
+\item[{std\-::istream \&}]{file, }
+\item[{uint32\-\_\-t}]{count}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_node_a2b43c8e76e3dd008affda12607770a62}
+\hypertarget{class_node_a675af8768a53b4c55dde07ba3ee4e335}{\index{Node@{Node}!exp@{exp}}
+\index{exp@{exp}!Node@{Node}}
+\subsubsection[{exp}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} Node\-::exp (
+\begin{DoxyParamCaption}
+\item[{unsigned long}]{exponent}
+\end{DoxyParamCaption}
+) const}}\label{class_node_a675af8768a53b4c55dde07ba3ee4e335}
+\hypertarget{class_node_af49a45863e320ed7b81ff96e4e35a73e}{\index{Node@{Node}!exp@{exp}}
+\index{exp@{exp}!Node@{Node}}
+\subsubsection[{exp}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} Node\-::exp (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{exponents}
+\end{DoxyParamCaption}
+) const}}\label{class_node_af49a45863e320ed7b81ff96e4e35a73e}
+\hypertarget{class_node_a2cf5726aef85163ee34aff6f953897fe}{\index{Node@{Node}!exp\-Mod@{exp\-Mod}}
+\index{exp\-Mod@{exp\-Mod}!Node@{Node}}
+\subsubsection[{exp\-Mod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} Node\-::exp\-Mod (
+\begin{DoxyParamCaption}
+\item[{unsigned long}]{exponent, }
+\item[{const {\bf Int\-Leaf} \&}]{mod}
+\end{DoxyParamCaption}
+) const}}\label{class_node_a2cf5726aef85163ee34aff6f953897fe}
+\hypertarget{class_node_ad01843ea664f09880c82a949e094a107}{\index{Node@{Node}!exp\-Mod@{exp\-Mod}}
+\index{exp\-Mod@{exp\-Mod}!Node@{Node}}
+\subsubsection[{exp\-Mod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} Node\-::exp\-Mod (
+\begin{DoxyParamCaption}
+\item[{const {\bf Int\-Leaf} \&}]{exponent, }
+\item[{const {\bf Int\-Leaf} \&}]{mod}
+\end{DoxyParamCaption}
+) const}}\label{class_node_ad01843ea664f09880c82a949e094a107}
+\hypertarget{class_node_a270a6b9f196218ae688e34ec969f465f}{\index{Node@{Node}!exp\-Mod@{exp\-Mod}}
+\index{exp\-Mod@{exp\-Mod}!Node@{Node}}
+\subsubsection[{exp\-Mod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} Node\-::exp\-Mod (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{exponents, }
+\item[{const {\bf Int\-Leaf} \&}]{mod}
+\end{DoxyParamCaption}
+) const}}\label{class_node_a270a6b9f196218ae688e34ec969f465f}
+\hypertarget{class_node_aaaddaae51a5f69c834919ebe9bc6e9e1}{\index{Node@{Node}!exp\-Mult@{exp\-Mult}}
+\index{exp\-Mult@{exp\-Mult}!Node@{Node}}
+\subsubsection[{exp\-Mult}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Int\-Leaf} Node\-::exp\-Mult (
+\begin{DoxyParamCaption}
+\item[{unsigned long}]{exponent}
+\end{DoxyParamCaption}
+) const}}\label{class_node_aaaddaae51a5f69c834919ebe9bc6e9e1}
+\hypertarget{class_node_af65555e953a065f650ff875bac1e3c27}{\index{Node@{Node}!exp\-Mult\-Mod@{exp\-Mult\-Mod}}
+\index{exp\-Mult\-Mod@{exp\-Mult\-Mod}!Node@{Node}}
+\subsubsection[{exp\-Mult\-Mod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Int\-Leaf} Node\-::exp\-Mult\-Mod (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{node, }
+\item[{const {\bf Int\-Leaf} \&}]{mod}
+\end{DoxyParamCaption}
+) const}}\label{class_node_af65555e953a065f650ff875bac1e3c27}
+\hypertarget{class_node_afbf297207f1366bdd0c279d89425b305}{\index{Node@{Node}!exp\-Mult\-Mod@{exp\-Mult\-Mod}}
+\index{exp\-Mult\-Mod@{exp\-Mult\-Mod}!Node@{Node}}
+\subsubsection[{exp\-Mult\-Mod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Int\-Leaf} Node\-::exp\-Mult\-Mod (
+\begin{DoxyParamCaption}
+\item[{unsigned long}]{exponent, }
+\item[{const {\bf Int\-Leaf} \&}]{mod}
+\end{DoxyParamCaption}
+) const}}\label{class_node_afbf297207f1366bdd0c279d89425b305}
+\hypertarget{class_node_a57700c1125aaf77210924a2acc128f48}{\index{Node@{Node}!exp\-To@{exp\-To}}
+\index{exp\-To@{exp\-To}!Node@{Node}}
+\subsubsection[{exp\-To}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} \& Node\-::exp\-To (
+\begin{DoxyParamCaption}
+\item[{unsigned long}]{exponent}
+\end{DoxyParamCaption}
+)}}\label{class_node_a57700c1125aaf77210924a2acc128f48}
+\hypertarget{class_node_a46ae5ee5f73f4f55b1600e93bc45c7f4}{\index{Node@{Node}!exp\-To@{exp\-To}}
+\index{exp\-To@{exp\-To}!Node@{Node}}
+\subsubsection[{exp\-To}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}\& Node\-::exp\-To (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{exponents}
+\end{DoxyParamCaption}
+)}}\label{class_node_a46ae5ee5f73f4f55b1600e93bc45c7f4}
+\hypertarget{class_node_a430517fa1163f53df68e9be38288dcd6}{\index{Node@{Node}!exp\-To\-Mod@{exp\-To\-Mod}}
+\index{exp\-To\-Mod@{exp\-To\-Mod}!Node@{Node}}
+\subsubsection[{exp\-To\-Mod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} \& Node\-::exp\-To\-Mod (
+\begin{DoxyParamCaption}
+\item[{unsigned long}]{exponent, }
+\item[{const {\bf Int\-Leaf} \&}]{mod}
+\end{DoxyParamCaption}
+)}}\label{class_node_a430517fa1163f53df68e9be38288dcd6}
+\hypertarget{class_node_afc7a7735704c514be511d52880a7c94c}{\index{Node@{Node}!exp\-To\-Mod@{exp\-To\-Mod}}
+\index{exp\-To\-Mod@{exp\-To\-Mod}!Node@{Node}}
+\subsubsection[{exp\-To\-Mod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} \& Node\-::exp\-To\-Mod (
+\begin{DoxyParamCaption}
+\item[{const {\bf Int\-Leaf} \&}]{exponent, }
+\item[{const {\bf Int\-Leaf} \&}]{mod}
+\end{DoxyParamCaption}
+)}}\label{class_node_afc7a7735704c514be511d52880a7c94c}
+\hypertarget{class_node_aee8354142d2faea6f6e78f2d9dd321c0}{\index{Node@{Node}!exp\-To\-Mod@{exp\-To\-Mod}}
+\index{exp\-To\-Mod@{exp\-To\-Mod}!Node@{Node}}
+\subsubsection[{exp\-To\-Mod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}\& Node\-::exp\-To\-Mod (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{exponents, }
+\item[{const {\bf Int\-Leaf} \&}]{mod}
+\end{DoxyParamCaption}
+)}}\label{class_node_aee8354142d2faea6f6e78f2d9dd321c0}
+\hypertarget{class_node_a3932c819906609e93ee189946f658d8d}{\index{Node@{Node}!get\-Children@{get\-Children}}
+\index{get\-Children@{get\-Children}!Node@{Node}}
+\subsubsection[{get\-Children}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} Node\-::get\-Children (
+\begin{DoxyParamCaption}
+\item[{int32\-\_\-t}]{index}
+\end{DoxyParamCaption}
+) const}}\label{class_node_a3932c819906609e93ee189946f658d8d}
+\hypertarget{class_node_a4fd5db27b06140e0421565c2b21c3973}{\index{Node@{Node}!get\-Int\-Leaf\-Child@{get\-Int\-Leaf\-Child}}
+\index{get\-Int\-Leaf\-Child@{get\-Int\-Leaf\-Child}!Node@{Node}}
+\subsubsection[{get\-Int\-Leaf\-Child}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Int\-Leaf} \& Node\-::get\-Int\-Leaf\-Child (
+\begin{DoxyParamCaption}
+\item[{int32\-\_\-t}]{index}
+\end{DoxyParamCaption}
+)}}\label{class_node_a4fd5db27b06140e0421565c2b21c3973}
+\hypertarget{class_node_acf7ea79479333bee29105efe5d8fa663}{\index{Node@{Node}!get\-Int\-Leaf\-Child@{get\-Int\-Leaf\-Child}}
+\index{get\-Int\-Leaf\-Child@{get\-Int\-Leaf\-Child}!Node@{Node}}
+\subsubsection[{get\-Int\-Leaf\-Child}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Int\-Leaf} \& Node\-::get\-Int\-Leaf\-Child (
+\begin{DoxyParamCaption}
+\item[{int32\-\_\-t}]{index}
+\end{DoxyParamCaption}
+) const}}\label{class_node_acf7ea79479333bee29105efe5d8fa663}
+\hypertarget{class_node_ad602104b3c245a564f741b65fe97845c}{\index{Node@{Node}!get\-Length@{get\-Length}}
+\index{get\-Length@{get\-Length}!Node@{Node}}
+\subsubsection[{get\-Length}]{\setlength{\rightskip}{0pt plus 5cm}int32\-\_\-t Node\-::get\-Length (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_node_ad602104b3c245a564f741b65fe97845c}
+
+
+Implements \hyperlink{class_base_node_a50aef77f988f7689e96b346705628f91}{Base\-Node}.
+
+\hypertarget{class_node_a5379035c4d7e6080e40e57bb72e2e761}{\index{Node@{Node}!get\-Node\-Child@{get\-Node\-Child}}
+\index{get\-Node\-Child@{get\-Node\-Child}!Node@{Node}}
+\subsubsection[{get\-Node\-Child}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} \& Node\-::get\-Node\-Child (
+\begin{DoxyParamCaption}
+\item[{int32\-\_\-t}]{index}
+\end{DoxyParamCaption}
+)}}\label{class_node_a5379035c4d7e6080e40e57bb72e2e761}
+\hypertarget{class_node_a161add6a6b67043ce1fc5a7b7c9bee87}{\index{Node@{Node}!get\-Node\-Child@{get\-Node\-Child}}
+\index{get\-Node\-Child@{get\-Node\-Child}!Node@{Node}}
+\subsubsection[{get\-Node\-Child}]{\setlength{\rightskip}{0pt plus 5cm}const {\bf Node} \& Node\-::get\-Node\-Child (
+\begin{DoxyParamCaption}
+\item[{int32\-\_\-t}]{index}
+\end{DoxyParamCaption}
+) const}}\label{class_node_a161add6a6b67043ce1fc5a7b7c9bee87}
+\hypertarget{class_node_a7744980c6da2415c02b583c5b149d50d}{\index{Node@{Node}!mod@{mod}}
+\index{mod@{mod}!Node@{Node}}
+\subsubsection[{mod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} Node\-::mod (
+\begin{DoxyParamCaption}
+\item[{const {\bf Int\-Leaf} \&}]{leaf}
+\end{DoxyParamCaption}
+) const}}\label{class_node_a7744980c6da2415c02b583c5b149d50d}
+\hypertarget{class_node_aaf0d06b7e27f852f325c63b88eb33cdd}{\index{Node@{Node}!mod\-To@{mod\-To}}
+\index{mod\-To@{mod\-To}!Node@{Node}}
+\subsubsection[{mod\-To}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} \& Node\-::mod\-To (
+\begin{DoxyParamCaption}
+\item[{const {\bf Int\-Leaf} \&}]{leaf}
+\end{DoxyParamCaption}
+)}}\label{class_node_aaf0d06b7e27f852f325c63b88eb33cdd}
+\hypertarget{class_node_aa975fa8176089de17add587ab9dc2f67}{\index{Node@{Node}!mult@{mult}}
+\index{mult@{mult}!Node@{Node}}
+\subsubsection[{mult}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} Node\-::mult (
+\begin{DoxyParamCaption}
+\item[{const {\bf Int\-Leaf} \&}]{leaf}
+\end{DoxyParamCaption}
+) const}}\label{class_node_aa975fa8176089de17add587ab9dc2f67}
+\hypertarget{class_node_a22afe59e2c925924d6472a6ffe3e5488}{\index{Node@{Node}!mult@{mult}}
+\index{mult@{mult}!Node@{Node}}
+\subsubsection[{mult}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} Node\-::mult (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{node}
+\end{DoxyParamCaption}
+) const}}\label{class_node_a22afe59e2c925924d6472a6ffe3e5488}
+\hypertarget{class_node_a4e4c3d8ce4cd291c80b34a57eccdcfbc}{\index{Node@{Node}!mult\-Mod@{mult\-Mod}}
+\index{mult\-Mod@{mult\-Mod}!Node@{Node}}
+\subsubsection[{mult\-Mod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} Node\-::mult\-Mod (
+\begin{DoxyParamCaption}
+\item[{const {\bf Int\-Leaf} \&}]{leaf, }
+\item[{const {\bf Int\-Leaf} \&}]{mod}
+\end{DoxyParamCaption}
+) const}}\label{class_node_a4e4c3d8ce4cd291c80b34a57eccdcfbc}
+\hypertarget{class_node_add4a910a5d13cb0c43680de2e38d5758}{\index{Node@{Node}!mult\-Mod@{mult\-Mod}}
+\index{mult\-Mod@{mult\-Mod}!Node@{Node}}
+\subsubsection[{mult\-Mod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} Node\-::mult\-Mod (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{node, }
+\item[{const {\bf Int\-Leaf} \&}]{mod}
+\end{DoxyParamCaption}
+) const}}\label{class_node_add4a910a5d13cb0c43680de2e38d5758}
+\hypertarget{class_node_a80101b65aa4de587b00ebe31c377e0d8}{\index{Node@{Node}!mult\-To@{mult\-To}}
+\index{mult\-To@{mult\-To}!Node@{Node}}
+\subsubsection[{mult\-To}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} \& Node\-::mult\-To (
+\begin{DoxyParamCaption}
+\item[{const {\bf Int\-Leaf} \&}]{leaf}
+\end{DoxyParamCaption}
+)}}\label{class_node_a80101b65aa4de587b00ebe31c377e0d8}
+\hypertarget{class_node_ae3250c7847ec855bd8b30105e60349c4}{\index{Node@{Node}!mult\-To@{mult\-To}}
+\index{mult\-To@{mult\-To}!Node@{Node}}
+\subsubsection[{mult\-To}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} \& Node\-::mult\-To (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{node}
+\end{DoxyParamCaption}
+)}}\label{class_node_ae3250c7847ec855bd8b30105e60349c4}
+\hypertarget{class_node_a24f08a59947b6ef5393823ddb47d5bde}{\index{Node@{Node}!mult\-To\-Mod@{mult\-To\-Mod}}
+\index{mult\-To\-Mod@{mult\-To\-Mod}!Node@{Node}}
+\subsubsection[{mult\-To\-Mod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} \& Node\-::mult\-To\-Mod (
+\begin{DoxyParamCaption}
+\item[{const {\bf Int\-Leaf} \&}]{leaf, }
+\item[{const {\bf Int\-Leaf} \&}]{mod}
+\end{DoxyParamCaption}
+)}}\label{class_node_a24f08a59947b6ef5393823ddb47d5bde}
+\hypertarget{class_node_a8a8d36cdd28616c89c5231f64eccb88b}{\index{Node@{Node}!mult\-To\-Mod@{mult\-To\-Mod}}
+\index{mult\-To\-Mod@{mult\-To\-Mod}!Node@{Node}}
+\subsubsection[{mult\-To\-Mod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} \& Node\-::mult\-To\-Mod (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{node, }
+\item[{const {\bf Int\-Leaf} \&}]{mod}
+\end{DoxyParamCaption}
+)}}\label{class_node_a8a8d36cdd28616c89c5231f64eccb88b}
+\hypertarget{class_node_aa2e7398fc0d99fe12c075bd94ee5543b}{\index{Node@{Node}!operator!=@{operator!=}}
+\index{operator!=@{operator!=}!Node@{Node}}
+\subsubsection[{operator!=}]{\setlength{\rightskip}{0pt plus 5cm}bool Node\-::operator!= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{node}
+\end{DoxyParamCaption}
+) const}}\label{class_node_aa2e7398fc0d99fe12c075bd94ee5543b}
+\hypertarget{class_node_abf463388fe626c7412ebd03455b93d24}{\index{Node@{Node}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Node@{Node}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} Node\-::operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Int\-Leaf} \&}]{leaf}
+\end{DoxyParamCaption}
+) const}}\label{class_node_abf463388fe626c7412ebd03455b93d24}
+\hypertarget{class_node_a74005185f7ea1724fb4891cd9df1e9ef}{\index{Node@{Node}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Node@{Node}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} Node\-::operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{node}
+\end{DoxyParamCaption}
+) const}}\label{class_node_a74005185f7ea1724fb4891cd9df1e9ef}
+\hypertarget{class_node_acc1124101cc3bb6cfa486361d4593ef9}{\index{Node@{Node}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!Node@{Node}}
+\subsubsection[{operator$\ast$=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} \& Node\-::operator$\ast$= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Int\-Leaf} \&}]{leaf}
+\end{DoxyParamCaption}
+)}}\label{class_node_acc1124101cc3bb6cfa486361d4593ef9}
+\hypertarget{class_node_a82be68d29507f13cd58d7a70678c745d}{\index{Node@{Node}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!Node@{Node}}
+\subsubsection[{operator$\ast$=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} \& Node\-::operator$\ast$= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{node}
+\end{DoxyParamCaption}
+)}}\label{class_node_a82be68d29507f13cd58d7a70678c745d}
+\hypertarget{class_node_a760ed8d9512bcdbd1d2c50a1e9db0c88}{\index{Node@{Node}!operator+@{operator+}}
+\index{operator+@{operator+}!Node@{Node}}
+\subsubsection[{operator+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} Node\-::operator+ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Int\-Leaf} \&}]{leaf}
+\end{DoxyParamCaption}
+) const}}\label{class_node_a760ed8d9512bcdbd1d2c50a1e9db0c88}
+\hypertarget{class_node_ab340f7a5d7aef6d514c83378c1af3bb9}{\index{Node@{Node}!operator+@{operator+}}
+\index{operator+@{operator+}!Node@{Node}}
+\subsubsection[{operator+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} Node\-::operator+ (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{node}
+\end{DoxyParamCaption}
+) const}}\label{class_node_ab340f7a5d7aef6d514c83378c1af3bb9}
+\hypertarget{class_node_a93ad5163448f65efe9ff4f816620ce15}{\index{Node@{Node}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!Node@{Node}}
+\subsubsection[{operator+=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} \& Node\-::operator+= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Int\-Leaf} \&}]{leaf}
+\end{DoxyParamCaption}
+)}}\label{class_node_a93ad5163448f65efe9ff4f816620ce15}
+\hypertarget{class_node_aefaf03590fe3f94039db698524a263fe}{\index{Node@{Node}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!Node@{Node}}
+\subsubsection[{operator+=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node}\& Node\-::operator+= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{node}
+\end{DoxyParamCaption}
+)}}\label{class_node_aefaf03590fe3f94039db698524a263fe}
+\hypertarget{class_node_a443734765d4e94a04ef8a5cba4c2d3fe}{\index{Node@{Node}!operator=@{operator=}}
+\index{operator=@{operator=}!Node@{Node}}
+\subsubsection[{operator=}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Node} \& Node\-::operator= (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{node}
+\end{DoxyParamCaption}
+)}}\label{class_node_a443734765d4e94a04ef8a5cba4c2d3fe}
+\hypertarget{class_node_af167bfaab0f7e39daf0f39bb3d595e5f}{\index{Node@{Node}!operator==@{operator==}}
+\index{operator==@{operator==}!Node@{Node}}
+\subsubsection[{operator==}]{\setlength{\rightskip}{0pt plus 5cm}bool Node\-::operator== (
+\begin{DoxyParamCaption}
+\item[{const {\bf Node} \&}]{node}
+\end{DoxyParamCaption}
+) const}}\label{class_node_af167bfaab0f7e39daf0f39bb3d595e5f}
+\hypertarget{class_node_ae2b74409d1e5040d11890cfae5a1713c}{\index{Node@{Node}!prod@{prod}}
+\index{prod@{prod}!Node@{Node}}
+\subsubsection[{prod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Int\-Leaf} Node\-::prod (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{class_node_ae2b74409d1e5040d11890cfae5a1713c}
+\hypertarget{class_node_af18b21646a0a3e08690de85ffb1d3355}{\index{Node@{Node}!prod\-Mod@{prod\-Mod}}
+\index{prod\-Mod@{prod\-Mod}!Node@{Node}}
+\subsubsection[{prod\-Mod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Int\-Leaf} Node\-::prod\-Mod (
+\begin{DoxyParamCaption}
+\item[{const {\bf Int\-Leaf} \&}]{mod}
+\end{DoxyParamCaption}
+) const}}\label{class_node_af18b21646a0a3e08690de85ffb1d3355}
+\hypertarget{class_node_ac2103aa6d114e52dce1743be7aa4c1d0}{\index{Node@{Node}!sum@{sum}}
+\index{sum@{sum}!Node@{Node}}
+\subsubsection[{sum}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Int\-Leaf} Node\-::sum (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{class_node_ac2103aa6d114e52dce1743be7aa4c1d0}
+\hypertarget{class_node_ab70ce6887d26a52ff54bbc96bb79b7a4}{\index{Node@{Node}!sum\-Mod@{sum\-Mod}}
+\index{sum\-Mod@{sum\-Mod}!Node@{Node}}
+\subsubsection[{sum\-Mod}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Int\-Leaf} Node\-::sum\-Mod (
+\begin{DoxyParamCaption}
+\item[{const {\bf Int\-Leaf} \&}]{mod}
+\end{DoxyParamCaption}
+) const}}\label{class_node_ab70ce6887d26a52ff54bbc96bb79b7a4}
+\hypertarget{class_node_a1b0277500ee7e1019fc5d69d19071303}{\index{Node@{Node}!to\-String@{to\-String}}
+\index{to\-String@{to\-String}!Node@{Node}}
+\subsubsection[{to\-String}]{\setlength{\rightskip}{0pt plus 5cm}std\-::string Node\-::to\-String (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const}}\label{class_node_a1b0277500ee7e1019fc5d69d19071303}
+\hypertarget{class_node_a858d4b4757880eba1fdead1412418693}{\index{Node@{Node}!to\-Vector@{to\-Vector}}
+\index{to\-Vector@{to\-Vector}!Node@{Node}}
+\subsubsection[{to\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf bytevector} Node\-::to\-Vector (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [virtual]}}}\label{class_node_a858d4b4757880eba1fdead1412418693}
+
+
+Implements \hyperlink{class_base_node_aad2eb87014be9a786ec9a4c4ac405c45}{Base\-Node}.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+Arithmetic/\hyperlink{_node_8h}{Node.\-h}\item 
+Arithmetic/\hyperlink{_node_8cpp}{Node.\-cpp}\end{DoxyCompactItemize}
