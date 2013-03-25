@@ -154,16 +154,66 @@ public:
 	  */
     IntLeaf operator*(const IntLeaf &leaf) const;
     
+	/** Multiplication assignment modulo
+	  * Takes the IntLeaf, multiplies with the input and assigns the new result taken modulo.
+	  * \param[in] leaf The IntLeaf containing the number to multiply with.
+	  * \param[in] mod The IntLeaf containing the number to take modulo with.
+	  * \return A reference to the IntLeaf object itself.
+	  */
     IntLeaf &multToMod(const IntLeaf &leaf, const IntLeaf &mod);
+
+	/** Multiplication modulo
+	  * Takes the IntLeaf, multiplies with the input and returns the new result taken modulo.
+	  * \param[in] leaf The IntLeaf containing the number to multiply with.
+	  * \param[in] mod The IntLeaf containing the number to take modulo with.
+	  * \return An IntLeaf containing the result of the opreation.
+	  */
     IntLeaf multMod(const IntLeaf &leaf, const IntLeaf &mod) const;
     
+	/** Addition assignment modulo
+	  * Takes the IntLeaf and adds the input to the object modulo mod.
+	  * \param[in] leaf The IntLeaf containing the number to add.
+	  * \param[in] mod The IntLeaf containing the number to take modulo with.
+	  * \return A reference to the IntLeaf object itself.
+	  */
     IntLeaf &addToMod(const IntLeaf &leaf, const IntLeaf &mod);
+
+	/** Addition modulo
+	  * Takes the IntLeaf, adds the input and returns the result modulo mod.
+	  * \param[in] leaf The IntLeaf containing the number to add.
+	  * \param[in] mod The IntLeaf containing the number to take modulo with.
+	  * \return The result when adding the input to the IntLeaf object.
+	  */
     IntLeaf addMod(const IntLeaf &leaf, const IntLeaf &mod) const;
 
+	/** Exponentiation assignment
+	  * Takes the IntLeaf, raises it to the exponent and assigns the result.
+	  * \param[in] exponent The expontent to which we raise the IntLeaf.
+	  * \return A reference to the IntLeaf object itself.
+	  */
     IntLeaf &expTo(unsigned long exponent);
+
+	/** Exponentiation
+	  * Takes the IntLeaf, raises it to the exponent and returns the result.
+	  * \param[in] exponent The expontent to which we raise the IntLeaf.
+	  * \return The result when rising the IntLeaf to the exponent.
+	  */
     IntLeaf exp(unsigned long exponent) const;
     
+	/** Exponentiation assignment modulo
+	  * Takes the IntLeaf, raises it to the exponent and assigns the result modulo mod.
+	  * \param[in] exponent The expontent to which we raise the IntLeaf.
+	  * \param[in] mod The IntLeaf containing the number to take modulo with.
+	  * \return A reference to the IntLeaf object itself.
+	  */
     IntLeaf &expToMod(const IntLeaf &leaf, const IntLeaf &mod);
+
+	/** Exponentiation modulo
+	  * Takes the IntLeaf, raises it to the exponent and returns the result modulo mod.
+	  * \param[in] exponent The expontent to which we raise the IntLeaf.
+	  * \param[in] mod The IntLeaf containing the number to take modulo with.
+	  * \return The result when rising the IntLeaf to the exponent.
+	  */
     IntLeaf expMod(const IntLeaf &leaf, const IntLeaf &mod) const;
     
     bool operator==(const IntLeaf &leaf) const;
@@ -173,15 +223,13 @@ public:
     bool operator>(const IntLeaf &leaf) const;
 
     IntLeaf operator-(void) const;
-    
     IntLeaf inverse(const IntLeaf &mod) const;
 
     mpz_class getBigInt(void) const;
-    virtual bytevector toVector(void) const;
-    virtual int32_t getLength(void) const;
-    
     std::string toString(void) const;
-	
+
+	virtual bytevector toVector(void) const;
+    virtual int32_t getLength(void) const;
 private:
     mpz_class data;
     uint32_t length;

@@ -31,7 +31,7 @@ Node::Node(std::istream &file) : BaseNode(BaseNode::NODE) {
 }
 
 void Node::constructFromFilename(const std::string filename) {
-	std::ifstream file(filename, std::fstream::in);
+	std::ifstream file(filename.c_str(), std::fstream::in);
 	constructFromFile(file);
 }
 void Node::constructFromFile(std::istream &file) {

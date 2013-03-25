@@ -24,8 +24,10 @@ bool keyVerifier(int lambda, proofStruct &pfStr)
     
     for(int i=1; i <= lambda; i++) 
     {
+		char istr[21];
+		itoa(i, istr, 10);
 	const std::string partial_public_key_file_name = 
-	    PARTIAL_PUBLIC_KEY_FILE_PREFIX + std::to_string(i) + FILE_SUFFIX;
+	    PARTIAL_PUBLIC_KEY_FILE_PREFIX + istr + FILE_SUFFIX;
 	
 	std::ifstream fstr(partial_public_key_file_name, std::fstream::in);
 
