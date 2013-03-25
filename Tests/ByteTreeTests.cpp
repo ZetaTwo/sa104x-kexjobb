@@ -45,6 +45,23 @@ TEST(ByteTreeTests, Serialize) {
 	EXPECT_EQ(expected, result);
 }
 
+
+TEST(ByteTreeTests, NodeEquality) {
+    Node n1;
+    Node n2;
+
+    for(unsigned int i=0; i<10; ++i)
+    {
+	n1.addChild(IntLeaf(i));
+	n2.addChild(IntLeaf(i));
+    }
+
+    n1.addChild(n1);
+    n2.addChild(n2);
+
+    EXPECT_EQ(n1, n2);
+}
+
 /*TEST(ByteTreeTests, LeafContructor) {
 	Leaf n;
 
