@@ -7,6 +7,8 @@
 #include <string>
 #include <fstream>
 
+/** Represents a integer node capable of containing arbitrary large integers.
+  */
 class IntLeaf :
     public BaseLeaf
 {
@@ -202,7 +204,7 @@ public:
     
 	/** Exponentiation assignment modulo
 	  * Takes the IntLeaf, raises it to the exponent and assigns the result modulo mod.
-	  * \param[in] exponent The expontent to which we raise the IntLeaf.
+	  * \param[in] leaf The expontent to which we raise the IntLeaf.
 	  * \param[in] mod The IntLeaf containing the number to take modulo with.
 	  * \return A reference to the IntLeaf object itself.
 	  */
@@ -210,7 +212,7 @@ public:
 
 	/** Exponentiation modulo
 	  * Takes the IntLeaf, raises it to the exponent and returns the result modulo mod.
-	  * \param[in] exponent The expontent to which we raise the IntLeaf.
+	  * \param[in] leaf The expontent to which we raise the IntLeaf.
 	  * \param[in] mod The IntLeaf containing the number to take modulo with.
 	  * \return The result when rising the IntLeaf to the exponent.
 	  */
