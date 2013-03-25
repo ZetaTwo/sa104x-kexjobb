@@ -25,6 +25,76 @@ bool isElemOf(const IntLeaf &Zn, const IntLeaf &elem)
 }
 
 
+bool isElemOfGq(const Node &group, const IntLeaf &elem)
+{
+    const IntLeaf &p = group.getIntLeafChild(0);
+    const IntLeaf &q = group.getIntLeafChild(1);
+
+    if(!(elem < p) || (elem < IntLeaf(1)))
+	return false;
+
+    // A group element raised to the group order equals identity
+    if(elem.expMod(q, p) != IntLeaf(1))
+	return false;
+
+    return true;
+}
+
+bool isElemOfZn(const IntLeaf &n, const IntLeaf &elem)
+{
+    if(!(elem < n) || elem < IntLeaf(0))
+	return false;
+
+    return true;
+}
+
+
+bool isElemOfMw(const proofStruct &pfStr, const Node &plaintext)
+{
+    // The plaintext group Mw is Gq x ... Gq, width times
+
+    try {
+	for(unsigned int i=0; i<pfStr.width; ++i)
+	{
+	    IntLeaf g = plaintext.getIntLeafChild(i);
+	    if(!isElemOfGq(pfStr.Gq, g))
+	    {
+		return false;
+	    }
+	}
+    }
+    catch(...)
+    {
+	return false;
+    }
+
+    return true;
+}
+
+bool isElemOfCw(const proofStruct &pfStr, const Node &ciphertext)
+{
+    // The Ciphertext group Cw = Mw x Mw
+    // hence the elements of Cw must be a pair of Nodes
+    // where both Nodes are elements of Cw.
+
+    try {
+	Node u = ciphertext.getNodeChild(0);
+	Node v = ciphertext.getNodeChild(1);
+
+	if(!isElemOfMw(pfStr, u) || !isElemOfMw(pfStr, v))
+	{
+	    return false;
+	}
+    }
+    catch(...)
+    {
+	return false;
+    }
+
+    return true;
+
+}
+
 
 bool isPedersenCommitment(const Node &group, const IntLeaf &elem)
 {
