@@ -9,20 +9,26 @@
 
 bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f, const Node &tauDec, const Node &sigmaDec, const Node &w) {
 
-	//Step 1
+    
+    //Step 1
     for(unsigned int i=0; i<ps.lambda; ++i)
     {
+	// a)
 	Node tauDeci = tauDec.getNodeChild(i);
 
-	if(!isElemOf(ps.Gq, tauDeci.getIntLeafChild(0)) ||
-		     !isElemOf(ps.Gq, ps.width, tauDeci.getNodeChild(1))) 
+	IntLeaf y_prime = tauDeci.getIntLeafChild(0);
+	Node B_prime = tauDeci.getNodeChild(1);
+
+	if(!isElemOfGq(ps.Gq, y_prime) ||
+	   !isElemOfCw(ps, B_prime)) 
 	{
 	    return false;
 	}
     
+	// b)
 	IntLeaf sigmaDeci = sigmaDec.getIntLeafChild(i);
 	
-	if(!isElemOf(ps.Gq.getIntLeafChild(0), sigmaDeci))
+	if(!isElemOfZn(ps.Gq.getIntLeafChild(0), sigmaDeci))
 	{
 	    return false;
 	}
