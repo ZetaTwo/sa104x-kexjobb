@@ -70,13 +70,13 @@ bool keyVerifier(int lambda, proofStruct &pfStr)
 	    
 	    if(!isPartialSecretKey(pfStr.Gq, sec_key))
 	    {
-		// Did not read a key from file, reject proof
+		// Did not read a valid key from file, reject proof
 		return false;
 	    }
 
-	    if(sec_key != g.expMod(sec_key, p))
+	    if(pub_keys.getIntLeafChild(i-1) != g.expMod(sec_key, p))
 	    {
-		// secret key does not match public key, reject proof
+		// Secret key does not match public key, reject proof
 	        return false;
 	    }
 	    
