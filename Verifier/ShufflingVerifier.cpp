@@ -6,6 +6,7 @@
 #include "ShufflingVerifier.h"
 #include "ProofOfShuffle.h"
 #include "Utilities.h"
+#include "FileNames.h"
 
 bool verifyShuffling(proofStruct &pfStr,
 		     int lambda, 
@@ -31,7 +32,7 @@ bool verifyShuffling(proofStruct &pfStr,
 	    if(l < lambda)
 	    {
 		const std::string cipher_text_file_name = 
-		    CIPHER_TEXTS_FILE_NAME_PREFIX + std::to_string(l) + std::string(".bt");
+		    CIPHERTEXTS_FILE_PREFIX + std::to_string(l) + std::string(".bt");
 		
 		std::ifstream ciphtext_stream(cipher_text_file_name, std::fstream::in);
 		
@@ -40,7 +41,7 @@ bool verifyShuffling(proofStruct &pfStr,
 
 		L = Node(ciphtext_stream);
 
-		if(!isListOfCipherTexts(L))
+		if(!isListOfCiphertexts(pfStr, L))
 		    return false;
 
 		L_array.addChild(L);
@@ -91,3 +92,21 @@ bool verifyShuffling(proofStruct &pfStr,
 
 
 
+bool isListOfCiphertexts(const proofStruct &pfStr, Node &L)
+{
+    try {
+	for(unsigned int i=0; i<pfStr.N; ++i)
+	{
+	    if(!isElemOfCw(pfStr, L.getNodeChild(i)))
+	    {
+		return false;
+	    }
+	}
+    }
+    catch(...)
+    {
+	return false;
+    }
+
+    return true;
+}

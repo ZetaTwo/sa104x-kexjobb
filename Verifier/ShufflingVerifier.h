@@ -13,9 +13,9 @@ bool verifyShuffling(proofStruct &pfStr,
 		     bool posc, 
 		     bool ccpos);
 
-bool isListOfCipherTexts(Node &L);
+bool isListOfCiphertexts(const proofStruct &pfStr, Node &L);
 
-const std::string CIPHER_TEXTS_FILE_NAME_PREFIX = "CipherText";
+//const std::string CIPHER_TEXTS_FILE_NAME_PREFIX = "CipherText";
 
 #endif
 
