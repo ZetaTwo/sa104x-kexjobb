@@ -62,14 +62,9 @@ IntLeaf::IntLeaf(bytevector bytevec) : BaseLeaf(BaseNode::INT_LEAF)
 
 IntLeaf::IntLeaf(std::istream &file) : BaseLeaf(BaseNode::INT_LEAF)
 {
-	char buffer[5];
-	file.read(buffer, 5);
-	if(buffer[0] != 1) {
-		//Error
-		throw 1;
-	}
-	int length = (buffer[1] << 3) + (buffer[2] << 2) + (buffer[3] << 1) + (buffer[4] << 0);
-
+	char type;
+	uint32_t length;
+	ReadNodeHeader(file, type, length);
 	constructPartFromFile(file, length);
 }
 
