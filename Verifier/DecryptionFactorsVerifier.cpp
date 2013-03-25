@@ -20,7 +20,7 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 	Node B_prime = tauDeci.getNodeChild(1);
 
 	if(!isElemOfGq(ps.Gq, y_prime) ||
-	   !isElemOfCw(ps, B_prime)) 
+	   !isElemOfMw(ps, B_prime)) 
 	{
 	    return false;
 	}
