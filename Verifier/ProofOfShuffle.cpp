@@ -123,7 +123,7 @@ bool proofOfShuffle(proofStruct &pfStr,
 
 	for(unsigned int i=0; i<pfStr.N; ++i)
 	{
-	    if(!isElemOfRw(kB.getChild(i)))
+	    if(!isElemOfRw(pfStr, kB.getNodeChild(i)))
 	    { 
 		return false;
 	    }

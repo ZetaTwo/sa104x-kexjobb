@@ -75,7 +75,7 @@ bool isElemOfRw(const proofStruct &pfStr, const Node &random)
 {
     for(unsigned int i=0; i<pfStr.width; ++i)
     {
-	if(!isElemOfZn(pfStr.Gq.getIntLeafChild(1), random))
+	if(!isElemOfZn(pfStr.Gq.getIntLeafChild(1), random.getIntLeafChild(i)))
 	{
 	    return false;
 	}
