@@ -52,7 +52,7 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;_VARIADIC_MAX=10;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\Crypto;..\Arithmetic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\Crypto;..\Verifier;..\Arithmetic;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -91,6 +91,7 @@
     <ClCompile Include="NodeToStringTests.cpp" />
     <ClCompile Include="PRGTests.cpp" />
     <ClCompile Include="TestRunner.cpp" />
+    <ClCompile Include="UtilitiesTests.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Arithmetic\Arithmetic.vcxproj">
@@ -98,6 +99,9 @@
     </ProjectReference>
     <ProjectReference Include="..\Crypto\Crypto.vcxproj">
       <Project>{acfdd9b7-6164-4597-aebf-e699a692d7e2}</Project>
+    </ProjectReference>
+    <ProjectReference Include="..\Verifier\Verifier.vcxproj">
+      <Project>{4ba30224-68fb-4ae2-92bd-fa1a6721c989}</Project>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

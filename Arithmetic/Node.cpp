@@ -367,25 +367,29 @@ Node Node::operator*(const Node &node) const {
 	
 bool Node::operator==(const Node &node) const {
 
-    for(std::vector<BaseNode *>::const_iterator itr1 = children.begin(), itr2 = node.children.begin();
-	itr1 < children.end() && itr2 < node.children.end() ; itr1++, itr2++)
-    {
-	switch((*itr1)->getType()) {
-	case BaseNode::INT_LEAF:
-	    if(!static_cast<IntLeaf *>(*itr1)->operator==(*static_cast<IntLeaf *>(*itr2)))
-	    {
+	if(getLength() != node.getLength()) {
 		return false;
-	    }
-	    break;
-	case BaseNode::NODE:
-	    if(!static_cast<Node *>(*itr1)->operator==(*static_cast<Node *>(*itr2)))
-	    {
-		return false;
-	    }
-	    break;
-	default:
-	    break;
 	}
+
+    for(std::vector<BaseNode *>::const_iterator itr1 = children.begin(), itr2 = node.children.begin();
+		itr1 < children.end() && itr2 < node.children.end() ; itr1++, itr2++)
+    {
+		switch((*itr1)->getType()) {
+		case BaseNode::INT_LEAF:
+			if(!static_cast<IntLeaf *>(*itr1)->operator==(*static_cast<IntLeaf *>(*itr2)))
+			{
+				return false;
+			}
+			break;
+		case BaseNode::NODE:
+			if(!static_cast<Node *>(*itr1)->operator==(*static_cast<Node *>(*itr2)))
+			{
+				return false;
+			}
+			break;
+		default:
+			break;
+		}
     }
 
     return true;

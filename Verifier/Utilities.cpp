@@ -99,7 +99,7 @@ void getGroupFromString(proofStruct &pfStr, std::string str)
 
     while(str[i] != ':' && str[i+1] != ':')
     {
-	++i;
+		++i;
     }
 
     char *buffer = new char[3];
@@ -107,21 +107,21 @@ void getGroupFromString(proofStruct &pfStr, std::string str)
 
     for(; i<str.size(); ++i)
     {	
-	for(int j=0; j<2; ++j)
-	{
-	    if(str[i] == ' ') {
-		++i;
-	    }
-	    else {
-		buffer[j] = str[i++];
-	    }
-	}
+		for(int j=0; j<2; ++j)
+		{
+			if(str[i] == ' ') {
+				++i;
+			}
+			else {
+				buffer[j] = str[i++];
+			}
+		}
     
-	unsigned char c;
-	sscanf("%x", buffer, c);
+		unsigned char c = 0;
+		sscanf(buffer, "%x", c);
 
-	byte_vec.push_back(c);
-    }
+		byte_vec.push_back(c);
+	}
     
     delete buffer;
 

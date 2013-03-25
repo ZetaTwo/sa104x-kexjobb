@@ -42,5 +42,8 @@
     <ClCompile Include="PRGTests.cpp">
       <Filter>Source Files\Crypto</Filter>
     </ClCompile>
+    <ClCompile Include="UtilitiesTests.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
