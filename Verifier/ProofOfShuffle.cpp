@@ -69,16 +69,15 @@ bool proofOfShuffle(proofStruct &pfStr,
 	C_prime = tau_pos.getIntLeafChild(3);
 	D_prime = tau_pos.getIntLeafChild(4);
 
-	if(!isElemOf(pfStr.Gq, A_prime) ||
-	   !isElemOf(pfStr.Gq, C_prime) ||
-	   !isElemOf(pfStr.Gq, D_prime))
+	if(!isElemOfGq(pfStr.Gq, A_prime) ||
+	   !isElemOfGq(pfStr.Gq, C_prime) ||
+	   !isElemOfGq(pfStr.Gq, D_prime))
 	{
 	    return false;
 	}
 	
 	F_prime = tau_pos.getNodeChild(5);
-	if(!isElemOf(pfStr.Gq, F_prime.getIntLeafChild(0)) ||
-	   !isElemOf(pfStr.Gq, F_prime.getIntLeafChild(1)))
+	if(!isElemOfCw(pfStr, F_prime))
 	{
 	    return false;
 	}
@@ -88,8 +87,8 @@ bool proofOfShuffle(proofStruct &pfStr,
 
 	for(unsigned int i=0; i<pfStr.N; ++i)
 	{
-	    if(!isElemOf(pfStr.Gq, B.getIntLeafChild(i)) ||
-	       !isElemOf(pfStr.Gq, B_prime.getIntLeafChild(i)))
+	    if(!isElemOfGq(pfStr.Gq, B.getIntLeafChild(i)) ||
+	       !isElemOfGq(pfStr.Gq, B_prime.getIntLeafChild(i)))
 	    {
 		return false;
 	    }
@@ -114,20 +113,22 @@ bool proofOfShuffle(proofStruct &pfStr,
 	kB = sigma_pos.getNodeChild(1);
 	kE = sigma_pos.getNodeChild(4);
 
-	if(!isElemOf(q, kA) ||
-	   !isElemOf(q, kC) ||
-	   !isElemOf(q, kD) ||
-	   !isElemOf(q, kF))
+	if(!isElemOfZn(q, kA) ||
+	   !isElemOfZn(q, kC) ||
+	   !isElemOfZn(q, kD) ||
+	   !isElemOfZn(q, kF))
 	{
 	    return false;
 	}
 
 	for(unsigned int i=0; i<pfStr.N; ++i)
 	{
-	    // if kB.getChild(i) is not elem of Rw
-	    // return false
+	    if(!isElemOfRw(kB.getChild(i)))
+	    { 
+		return false;
+	    }
 
-	    if(!isElemOf(q, kE.getIntLeafChild(i)))
+	    if(!isElemOfZn(q, kE.getIntLeafChild(i)))
 	    {
 		return false;
 	    }
