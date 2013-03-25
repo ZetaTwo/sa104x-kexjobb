@@ -2,29 +2,6 @@
 
 #include <vector>
 
-bool isElemOf(const Node &group, const IntLeaf &elem)
-{
-    const IntLeaf &p = group.getIntLeafChild(0);
-    const IntLeaf &q = group.getIntLeafChild(1);
-
-    if(!(elem < p) || !(elem > IntLeaf(0)))
-	return false;
-
-    if(elem.expMod(q, p) != IntLeaf(1))
-	return false;
-
-    return true;
-}
-
-bool isElemOf(const IntLeaf &Zn, const IntLeaf &elem)
-{
-    if(!(elem < Zn) || elem < IntLeaf(0))
-	return false;
-
-    return true;
-}
-
-
 bool isElemOfGq(const Node &group, const IntLeaf &elem)
 {
     const IntLeaf &p = group.getIntLeafChild(0);
@@ -98,7 +75,7 @@ bool isElemOfCw(const proofStruct &pfStr, const Node &ciphertext)
 
 bool isPedersenCommitment(const Node &group, const IntLeaf &elem)
 {
-    return isElemOf(group, elem);
+    return isElemOfGq(group, elem);
 }
 
 
