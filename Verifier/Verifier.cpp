@@ -25,7 +25,7 @@ int Verifier(string protinfo, string directory,
 
     //Step 1
     // Read the xml file into a vector
-    std::ifstream xml_file(protinfo);
+    std::ifstream xml_file(protinfo.c_str());
     std::vector<char> buffer((std::istreambuf_iterator<char>(xml_file)), std::istreambuf_iterator<char>());
     buffer.push_back('\0');
     
@@ -81,11 +81,13 @@ int Verifier(string protinfo, string directory,
 	int width;
     string widthStr;
     
-    std::ifstream datafile(directory + "/version", std::ios::in);
+    string filename = directory + "/version";
+    std::ifstream datafile(filename.c_str(), std::ios::in);
     datafile >> versionProof;
     if(versionProof != versionProt) { return false; }
     
-    datafile.open(directory + "/type");
+    filename = directory + "/type";
+    datafile.open(filename.c_str());
     datafile >> typeStr;
 	if(typeStr == "mixing") { type = MIX; }
 	if(typeStr == "shuffling") { type = SHUFFLE; }
@@ -93,11 +95,13 @@ int Verifier(string protinfo, string directory,
 
     if(type != typeExp) { return false; }
     
-    datafile.open(directory + "/auxsid");
+    filename = directory + "/auxsid";
+    datafile.open(filename.c_str());
     datafile >> auxsid;
     if(auxsid != auxsidExp) { return false; }
     
-    datafile.open(directory + "/width");
+    filename = directory + "/width";
+    datafile.open(filename.c_str());
     datafile >> widthStr;
 	width = atoi(widthStr.c_str());
     if(wExp != -1 && wExp != width) { return false; }
@@ -155,8 +159,10 @@ int Verifier(string protinfo, string directory,
 
     /* Read first ciphertext */
     try {
-		const std::string ciphertext_file_name = CIPHERTEXT_FILE_PREFIX + std::to_string(0) + FILE_SUFFIX;
-		std::ifstream fstr(ciphertext_file_name, std::fstream::in);
+	char ciphertext_filename[FILENAME_BUFFER_SIZE];
+	sprintf(ciphertext_filename, CIPHERTEXTS_FILE_TMPL.c_str(), 0);
+	
+	std::ifstream fstr(ciphertext_filename, std::fstream::in);
 
 	L0 = Node(fstr);
     }
@@ -167,12 +173,16 @@ int Verifier(string protinfo, string directory,
     
     pfStr.N = L0.getLength();
 
+    // TODO: KORRIGERA DET HÄR, VILKEN CIPHERTEXT SKA LÄSAS?
     if(type == MIX) {
 	/* Read threshold ciphertext */
-		try {
-			const std::string ciphertext_file_name = CIPHERTEXT_FILE_PREFIX + std::to_string(lambda) + FILE_SUFFIX;
-			std::ifstream fstr(ciphertext_file_name, std::fstream::in);
-	    
+	try {
+		    
+	    char ciphertext_filename[FILENAME_BUFFER_SIZE];
+	    sprintf(ciphertext_filename, CIPHERTEXTS_FILE_TMPL.c_str(), -1 /* FEL */);
+	
+	    std::ifstream fstr(ciphertext_filename, std::fstream::in);
+
 	    Llambda = Node(fstr);
 	}
 	catch(...)
@@ -185,7 +195,7 @@ int Verifier(string protinfo, string directory,
 	/* Read threshold ciphertext */
 	try
 	{
-	    std::ifstream fstr(SHUFFLED_CIPHERTEXTS_FILE, std::fstream::in);
+	    std::ifstream fstr(SHUFFLED_CIPHERTEXTS_FILE.c_str(), std::fstream::in);
 	    
 	    Llambda = Node(fstr);
 	}
@@ -200,8 +210,8 @@ int Verifier(string protinfo, string directory,
     {
 		/* Read plaintexts */
 		try {
-			std::ifstream fstr(PLAINTEXTS_FILE, std::fstream::in); 
-			m = Node(fstr);
+		    std::ifstream fstr(PLAINTEXTS_FILE.c_str(), std::fstream::in); 
+		    m = Node(fstr);
 		} catch(...) {
 			return 0;
 		}

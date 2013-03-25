@@ -8,6 +8,7 @@
 #include "Utilities.h"
 #include "FileNames.h"
 
+
 bool verifyShuffling(proofStruct &pfStr,
 		     int lambda, 
 		     Node &L0, 
@@ -30,12 +31,12 @@ bool verifyShuffling(proofStruct &pfStr,
 
 	    // Step 1
 	    if(l < lambda)
-	    {
-		const std::string cipher_text_file_name = 
-		    CIPHERTEXTS_FILE_PREFIX + std::to_string(l) + std::string(".bt");
-		
-		std::ifstream ciphtext_stream(cipher_text_file_name, std::fstream::in);
-		
+	    {	
+		char ciphertexts_filename[FILENAME_BUFFER_SIZE];
+		sprintf(ciphertexts_filename, CIPHERTEXTS_FILE_TMPL.c_str(), l);
+	
+		std::ifstream ciphtext_stream(ciphertexts_filename, std::fstream::in);
+
 		if(!ciphtext_stream)
 		    return false;
 
@@ -59,9 +60,16 @@ bool verifyShuffling(proofStruct &pfStr,
 
 	    try
 	    {
-		mu = Node("PermutationCommitment<" + std::to_string(l) + ">.bt");
-		tau_pos = Node("PoSCommitment<" + std::to_string(l) + ">.bt");
-		sigma_pos = Node("PoSReply<" + std::to_string(l) + ">.bt");
+		char filename[FILENAME_BUFFER_SIZE];
+
+		sprintf(filename, PERMUTATION_COMMIMENTS_FILE_TMPL.c_str(), l);	
+		mu = Node(filename);
+
+		sprintf(filename, POS_COMMITMENT_FILE_TMPL.c_str(), l);	
+		tau_pos = Node(filename);
+
+		sprintf(filename, POS_REPLY_FILE_TMPL.c_str(), l);	
+		sigma_pos = Node(filename);
 	    }
 	    catch(...)
 	    {

@@ -1,3 +1,6 @@
+#ifndef VERIFIER_FILENAMES_H
+#define VERIFIER_FILENAMES_H
+
 #include <string>
 
 typedef const std::string filename;
@@ -29,3 +32,7 @@ filename CC_POS_REPLY_FILE_TMPL = "CCPoSReply%d.bt";
 filename DECRYPTION_FACTORS_FILE_TMPL = "DecryptionFactors%d.bt";
 filename DECR_FACT_COMMITMENT_FILE_TMPL = "DecrFactCommitment%d.bt";
 filename DECR_FACT_REPLY_FILE_TMPL = "DecrFactReply%d.bt";
+
+const unsigned int FILENAME_BUFFER_SIZE = 100;
+
+#endif

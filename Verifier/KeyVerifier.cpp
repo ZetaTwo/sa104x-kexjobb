@@ -24,12 +24,11 @@ bool keyVerifier(int lambda, proofStruct &pfStr)
     
     for(int i=1; i <= lambda; i++) 
     {
-		char istr[21];
-		itoa(i, istr, 10);
-	const std::string partial_public_key_file_name = 
-	    PARTIAL_PUBLIC_KEY_FILE_PREFIX + istr + FILE_SUFFIX;
+	  
+	char ppk_filename[FILENAME_BUFFER_SIZE];
+	sprintf(ppk_filename, PARTIAL_PUBLIC_KEY_FILE_TMPL.c_str(), i);
 	
-	std::ifstream fstr(partial_public_key_file_name, std::fstream::in);
+	std::ifstream fstr(ppk_filename, std::fstream::in);
 
 	if(fstr)
 	{
@@ -62,10 +61,12 @@ bool keyVerifier(int lambda, proofStruct &pfStr)
     IntLeaf sec_key;
     for(int i=1; i<=lambda; i++)
     {
-	const std::string partial_secret_key_file_name = 
-	    PARTIAL_SECRET_KEY_FILE_PREFIX + std::to_string(i) + FILE_SUFFIX;
+
+	char psk_filename[FILENAME_BUFFER_SIZE];
+	sprintf(psk_filename, PARTIAL_SECRET_KEY_FILE_TMPL.c_str(), i);
 	
-	std::ifstream fstr(partial_secret_key_file_name, std::fstream::in);
+	std::ifstream fstr(psk_filename, std::fstream::in);
+
 	if(fstr)
 	{   
 	    sec_key = IntLeaf(fstr);

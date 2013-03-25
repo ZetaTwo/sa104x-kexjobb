@@ -89,7 +89,8 @@ int main(int argc, char *argv[]) {
 				std::cerr << "Not enough parameters for -width" << std::endl;
 				return 1;
 			}
-			width = atoi(argv[i+1]);
+			sscanf("%d", argv[i+1], width);
+
 		} else if(argv[i] == "-nopos") {
 			posc = false;
 			ccpos = false;

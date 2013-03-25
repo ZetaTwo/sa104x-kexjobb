@@ -112,11 +112,15 @@ void getGroupFromString(proofStruct &pfStr, std::string str)
 	    if(str[i] == ' ') {
 		++i;
 	    }
-	    
-	    buffer[j] = str[i];
+	    else {
+		buffer[j] = str[i++];
+	    }
 	}
     
-	byte_vec.push_back(strtoul(buffer, NULL, 16));
+	unsigned char c;
+	sscanf("%x", buffer, c);
+
+	byte_vec.push_back(c);
     }
     
     delete buffer;

@@ -1,3 +1,6 @@
+#ifndef VERIFIER_VERIFIER_H
+#define VERIFIER_VERIFIER_H
+
 #include <string>
 using std::string;
 
@@ -8,5 +11,4 @@ int Verifier(string protinfo, string directory,
 				 bool posc, bool ccpos, bool dec);
 
 
-const std::string CIPHERTEXT_FILE_PREFIX = "Ciphertexts";
-
+#endif
