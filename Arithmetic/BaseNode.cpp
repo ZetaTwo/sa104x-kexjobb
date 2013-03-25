@@ -12,12 +12,15 @@ BaseNode::~BaseNode(void)
 }
 
 BaseNode::NodeType BaseNode::getType(void) const {
-	return type;
+	return type; //Simply return the type
 };
 
 BaseNode *BaseNode::copy(const BaseNode *node) {
+	//Create the result pointer
 	BaseNode *element;
-	switch(node->getType()) {
+
+	//Cast node to the correct type and call the corresponing copy constructor
+	switch(node->getType()) { //Which kind of node are we working with?
 	case BaseNode::INT_LEAF:
 		element = new IntLeaf(*static_cast<const IntLeaf *>(node));
 		break;
@@ -31,51 +34,60 @@ BaseNode *BaseNode::copy(const BaseNode *node) {
 		break;
 	}
 
+	//Return the result
 	return element;
 }
 
 void BaseNode::ReadNodeHeader(std::istream &file, char &type, uint32_t &length) {
+	//Prepare a big enough header
 	char buffer[4];
 	
+	//Read the first byte which indicates which type of node it is.
 	file.read(buffer, 1);
 	type = buffer[0];
 
-	/* make int out of byte array */
+	//Read the following 4 bytes and convert them into one integer
 	file.read(buffer, 4);
-	length = buffer[0];
-	length <<= sizeof(char);
-	length |= buffer[1];
-	length <<= sizeof(char);
-	length |= buffer[2];
-	length <<= sizeof(char);
-	length |= buffer[3];
+	length = (buffer[0] << 3*sizeof(char)) + (buffer[1] << 2*sizeof(char)) +
+		(buffer[2] << 1*sizeof(char)) + (buffer[3] << 0*sizeof(char));
 }
 
 bytevector BaseNode::concatData(const BaseNode * const other) const {
+	//Prepare the result
 	bytevector result;
+
+	//Serialize the two halves.
 	bytevector thisData = this->serialize();
 	bytevector otherData = other->serialize();
 
+	//Concat the data.
 	result.insert(result.end(), thisData.begin(), thisData.end());
 	result.insert(result.end(), otherData.begin(), otherData.end());
 
+	//Return the result.
 	return result;
 }
 
 bytevector BaseNode::serialize() const {
+	//Prepare the result.
 	bytevector result;
+
+	//Insert the correct type
 	if(getType() == BaseNode::NODE) {
 		result.push_back(0);
 	} else {
 		result.push_back(1);
 	}
 
+	//Insert the 4 bytes indicating the length.
 	IntLeaf length(getLength(), 4);
 	bytevector lengthData = length.toVector();
 	result.insert(result.end(), lengthData.begin(), lengthData.end());
 
+	//Insert the actual data.
 	bytevector data = toVector();
 	result.insert(result.end(), data.begin(), data.end());
 
+	//Return the result.
 	return result;
 }

@@ -89,6 +89,7 @@
   <ItemGroup>
     <ClInclude Include="DecryptionFactorsVerifier.h" />
     <ClInclude Include="DecryptionVerifier.h" />
+    <ClInclude Include="FileNames.h" />
     <ClInclude Include="Verifier.h" />
     <ClInclude Include="KeyVerifier.h" />
     <ClInclude Include="ProofOfShuffle.h" />

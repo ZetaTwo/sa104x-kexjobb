@@ -257,14 +257,30 @@ public:
 	  */
     IntLeaf inverse(const IntLeaf &mod) const;
 
-
+	/** Get GMP object.
+	  * Returns the underlying GMP object.
+	  * \return The IntLeaf's GMP mpz_class object.
+	  */
     mpz_class getBigInt(void) const;
+
+	/** To String.
+	  * Returns a string representation of the object.
+	  * \return an std::string containing the data of the IntLeaf.
+	  */
     std::string toString(void) const;
 
 	virtual bytevector toVector(void) const;
     virtual int32_t getLength(void) const;
 private:
+
+	/** The GMP object.
+	  * An instance of mpz_class which holds the number of the IntLeaf.
+	  */
     mpz_class data;
+
+	/** The IntLeaf length.
+	  * The length which the IntLeaf needs.
+	  */
     uint32_t length;
 };
 
