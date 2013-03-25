@@ -38,6 +38,6 @@ bool isPedersenCommitment(const Node &group, const IntLeaf &elem);
 
 void getGroupFromString(proofStruct &pfStr, std::string str);
 
-const int BOTTOM = 0;
+const IntLeaf BOTTOM = IntLeaf(-1);
 
 #endif
