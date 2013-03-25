@@ -39,3 +39,7 @@ _ReSharper*/
 
 #ignore emacs temporary files
 *~
+
+
+#ignore Output directory
+Output
