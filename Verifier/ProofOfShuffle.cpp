@@ -160,7 +160,7 @@ bool proofOfShuffle(proofStruct &pfStr,
 
     // Get random array h
     DataLeaf generators = DataLeaf("generators");
-    RO r = RO(pfStr.hash, pfStr.nHash);
+    RO r = RO(pfStr.hash, pfStr.nH);
     IntLeaf s = r(pfStr.rho.concatData(&generators));
 
     Node h = RandomArray(pfStr.Gq, pfStr.N, pfStr.hash, s.serialize(), pfStr.nR);
@@ -177,17 +177,15 @@ bool proofOfShuffle(proofStruct &pfStr,
     // Concatenate byte representation of rho with seed_gen
     bytevector gen = pfStr.rho.concatData(&seed_gen);	
 
-    //TODO: ska det verkligen gå till såhär? Till RO anges ne/8*8 men detta borde vara till PRG?
-
-    // Create a random oracle to be used to generate a seed, output size specified
-    RO rs = RO(pfStr.hash, (pfStr.nE/8)*8);
+    // Create a random oracle to be used to generate a seed, seedlen specified
+    RO rs = RO(pfStr.hash, (pfStr.nH));
 
     // Generate the seed
     IntLeaf seed = rs(gen);
 
 
     // Step 3
-    PRG prg = PRG(pfStr.hash, seed.serialize(), pfStr.nE);
+    PRG prg = PRG(pfStr.hash, seed.serialize(), (pfStr.nE/8)*8);
 
     Node t;    
     for(unsigned int i=0; i<pfStr.N; ++i)
@@ -203,11 +201,24 @@ bool proofOfShuffle(proofStruct &pfStr,
     // compute A and F
     IntLeaf A = u.expMultMod(e, p);    
 
+    //TODO: Gör detta snyggare. 
 
-    //TODO: Titta på det här!!
+    // F is in Cw
     Node F;
-    F.addChild(w.getChildren(0).expMultMod(e, p));
-    F.addChild(w.getChildren(1).expMultMod(e, p));
+    for(unsigned int i=0; i<pfStr.width; ++i)
+    {
+	F.addChild(IntLeaf(1));
+    }
+
+    for(unsigned int i=0; i<pfStr.N; ++i)
+    {
+	// wi is in Cw
+	Node wi = w.getNodeChild(i);
+	IntLeaf expi = e.getIntLeafChild(i);
+
+	// F *= wi^ei is in Cw
+	F.multToMod(wi.expMod(expi, p), p);
+    }
 
     // Step 4, compute a challenge
 
