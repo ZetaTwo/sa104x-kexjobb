@@ -5,7 +5,7 @@ CC=g++
 LDFLAGS=-lgmp -gmpxx -lssl -lcrypto
 
 # Options to compiler.
-CFLAGS=-c -Wall -IArithmetic -ICrypto -IVerifier
+CFLAGS=-c -IArithmetic -ICrypto -IVerifier
 
 #Archiver to make static library
 AR=ar rcs
