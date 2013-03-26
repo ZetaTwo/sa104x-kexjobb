@@ -18,7 +18,7 @@ VERIFIER_LINKS = $(addprefix $(INC_DIR)/Verifiers/,$(VERIFIER_OBJ))
 
 LINKS = $(INC_DIR)/Arithmetic/libarithm.a $(INC_DIR)/Crypto/libcrypt.a $(VERIFIER_LINKS)
 
-TEST_OBJS = ByteTreeTests.o IntLeafArithmeticsTests.o NodeArithmeticsTests.o NodeDataInitTests.o UtilitiesTests.o PRGTests.o
+TEST_OBJS = ByteTreeTests.o IntLeafArithmeticsTests.o NodeArithmeticsTests.o NodeDataInitTests.o UtilitiesTests.o PRGTests.o ROTests.o
 
 all: $(TEST_OBJS) $(LINKS) TestRunner.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $(LINKS) $(TEST_OBJS)  TestRunner.o -o run
@@ -41,6 +41,8 @@ UtilitiesTests: $(LINKS) $(VERIFIER_LINKS) UtilitiesTests.o TestRunner.o
 PRGTests: $(LINKS) $(VERIFIER_LINKS) PRGTests.o TestRunner.o
 	$(CC) $(CFLAGS) $(LDFLAGS) $(LINKS) PRGTests.o TestRunner.o -o run
 
+ROTests: $(LINKS) $(VERIFIER_LINKS) ROTests.o TestRunner.o
+	$(CC) $(CFLAGS) $(LDFLAGS) $(LINKS) ROTests.o TestRunner.o -o run
 
 %.o: %.cpp
 	$(CC) -c $(CFLAGS) $< -o $@
