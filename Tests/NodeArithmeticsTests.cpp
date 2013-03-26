@@ -21,14 +21,17 @@ TEST(NodeArithmeticsTests, VectorAddition)
     Node nodevector;
     Node result;
 
+    Node expected;
+
     for(unsigned int i=0; i<10; i++)
     {
-		nodevector.addChild(IntLeaf(i));
+	nodevector.addChild(IntLeaf(i));
+	expected.addChild(IntLeaf(3 + i));	     
     }
     
-	result = nodevector.add(IntLeaf(3));
+    result = nodevector.add(IntLeaf(3));
 
-    EXPECT_EQ("(3, 4, 5, 6, 7, 8, 9, 10, 11, 12)", result.toString());
+    EXPECT_EQ(expected, result);
 }
 
 
@@ -42,14 +45,16 @@ TEST(NodeArithmeticsTests, VectorMultiplication)
 {
     Node *nodevector = new Node();
     Node result;
+    Node expected;
 
     for(unsigned int i=0; i<10; i++)
     {
-		nodevector->addChild(IntLeaf(i));
+	nodevector->addChild(IntLeaf(i));
+	expected.addChild(IntLeaf(3*i));
     }
     
     result = nodevector->mult(IntLeaf(3));
 
-    EXPECT_EQ("(0, 3, 6, 9, 12, 15, 18, 21, 24, 27)", result.toString());
+    EXPECT_EQ(expected, result);
 }
 
