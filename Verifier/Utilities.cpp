@@ -4,9 +4,11 @@
 
 bool isElemOfGq(const Node &group, const IntLeaf &elem)
 {
+    // For convenience
     const IntLeaf &p = group.getIntLeafChild(0);
     const IntLeaf &q = group.getIntLeafChild(1);
 
+    // Make sure elem is in allowed range for elements in Gq
     if(!(elem < p) || (elem < IntLeaf(1)))
 	return false;
 
@@ -19,6 +21,7 @@ bool isElemOfGq(const Node &group, const IntLeaf &elem)
 
 bool isElemOfZn(const IntLeaf &n, const IntLeaf &elem)
 {
+    // Need only test to make sure elem is within allowed range
     if(!(elem < n) || elem < IntLeaf(0))
 	return false;
 
@@ -29,7 +32,6 @@ bool isElemOfZn(const IntLeaf &n, const IntLeaf &elem)
 bool isElemOfMw(const proofStruct &pfStr, const Node &plaintext)
 {
     // The plaintext group Mw is Gq x ... Gq, width times
-
     try {
 	for(unsigned int i=0; i<pfStr.width; ++i)
 	{
@@ -42,6 +44,7 @@ bool isElemOfMw(const proofStruct &pfStr, const Node &plaintext)
     }
     catch(...)
     {
+	// Return false if there are not enough children for example
 	return false;
     }
 
@@ -52,8 +55,9 @@ bool isElemOfCw(const proofStruct &pfStr, const Node &ciphertext)
 {
     // The Ciphertext group Cw = Mw x Mw
     // hence the elements of Cw must be a pair of Nodes
-    // where both Nodes are elements of Cw.
+    // where both Nodes are elements of Mw.
 
+    //ciphertext = (u,v) in Mw x Mw 
     try {
 	Node u = ciphertext.getNodeChild(0);
 	Node v = ciphertext.getNodeChild(1);
@@ -73,8 +77,11 @@ bool isElemOfCw(const proofStruct &pfStr, const Node &ciphertext)
 
 bool isElemOfRw(const proofStruct &pfStr, const Node &random)
 {
+    // Rw is Z_q x ... x Z_q, width times
+
     for(unsigned int i=0; i<pfStr.width; ++i)
     {
+	// Gq = (p,q,g,..)
 	if(!isElemOfZn(pfStr.Gq.getIntLeafChild(1), random.getIntLeafChild(i)))
 	{
 	    return false;
@@ -87,6 +94,7 @@ bool isElemOfRw(const proofStruct &pfStr, const Node &random)
 
 bool isPedersenCommitment(const Node &group, const IntLeaf &elem)
 {
+    // A pedersen commitment is an element in Gq
     return isElemOfGq(group, elem);
 }
 
