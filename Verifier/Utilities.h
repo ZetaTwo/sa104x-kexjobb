@@ -15,7 +15,7 @@ struct proofStruct
     unsigned int nE;
     unsigned int nR;
     unsigned int nV;
-    unsigned int nHash;
+    unsigned int nH;
     bytevector (*hash)(bytevector);
     Node Gq;
     Node Rw;
