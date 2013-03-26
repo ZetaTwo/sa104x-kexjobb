@@ -90,6 +90,7 @@
     <ClCompile Include="NodeDataInitTests.cpp" />
     <ClCompile Include="NodeToStringTests.cpp" />
     <ClCompile Include="PRGTests.cpp" />
+    <ClCompile Include="ROTests.cpp" />
     <ClCompile Include="TestRunner.cpp" />
     <ClCompile Include="UtilitiesTests.cpp" />
   </ItemGroup>

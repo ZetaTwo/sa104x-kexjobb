@@ -14,6 +14,6 @@ public:
 	IntLeaf operator()(bytevector data);
 private:
 	bytevector (*hash)(bytevector data);
-	IntLeaf Nout;
+	unsigned int Nout;
 };
 
