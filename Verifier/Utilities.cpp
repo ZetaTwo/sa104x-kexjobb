@@ -1,6 +1,7 @@
 #include "Utilities.h"
 
 #include <vector>
+#include <algorithm>
 
 bool isElemOfGq(const Node &group, const IntLeaf &elem)
 {
@@ -101,41 +102,43 @@ bool isPedersenCommitment(const Node &group, const IntLeaf &elem)
 
 void getGroupFromString(proofStruct &pfStr, std::string str)
 {
+	//Prepare data vector
     bytevector byte_vec;
 
-    unsigned int i=0;
+	//Remove prefix and whitespace
+	str.erase(str.begin(), str.begin()+str.find("::")+2);
+	str.erase(std::remove_if(str.begin(), str.end(), isspace), str.end());
 
-    while(str[i] != ':' && str[i+1] != ':')
-    {
-		++i;
-    }
-
-    char *buffer = new char[3];
-    buffer[2] = 0;
-
-    for(; i<str.size(); ++i)
-    {	
-		for(int j=0; j<2; ++j)
-		{
-			if(str[i] == ' ') {
-				++i;
-			}
-			else {
-				buffer[j] = str[i++];
-			}
-		}
-    
-		unsigned char c = 0;
-		sscanf(buffer, "%x", c);
+	//Parse string as bytes
+	char buffer[3];
+	unsigned int c;
+	buffer[2] = 0;
+	for(int pos = 0; pos < str.length(); pos+=2) {
+		buffer[0] = str[pos];
+		buffer[1] = str[pos+1];
+        sscanf(buffer, "%2hhx", &c);
 
 		byte_vec.push_back(c);
-	}
-    
-    delete buffer;
+    }
 
+	//Convert to Node
     Node group_info = Node(byte_vec);
 
-    /* TODO: Here is a good place to check if the first child of group_info is a string which says verificatum.arithm.ModPGroup */
+	//Get the group type data
+    IntLeaf groupType = group_info.getIntLeafChild(0);
+	bytevector groupTypeData = groupType.toVector();
 
+	//Create expected data vector
+	char groupTypeExpected[] = "verificatum.arithm.ModPGroup";
+	bytevector groupTypeDataExpected;
+	groupTypeDataExpected.insert(groupTypeDataExpected.end(), groupTypeExpected, groupTypeExpected+28);
+
+	//Verify that the group type is correct
+	if(groupTypeData != groupTypeDataExpected) {
+		//TODO: Fel sorts grupp
+		throw 1;
+	}
+
+	//Save result in proof struct
     pfStr.Gq = group_info.getNodeChild(1);
 }
