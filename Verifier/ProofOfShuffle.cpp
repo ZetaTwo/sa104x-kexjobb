@@ -231,7 +231,7 @@ bool proofOfShuffle(proofStruct &pfStr,
     gen = pfStr.rho.concatData(&challenge_gen);
 
     // create a challenge RO
-    RO rc = RO(pfStr.hash, std::pow(2,pfStr.nV));
+    RO rc = RO(pfStr.hash, static_cast<unsigned int>(std::pow(2,pfStr.nV)));
     
     // use the seed above to generate v, interpret v as non-negative integer
     IntLeaf v = rc(gen);
