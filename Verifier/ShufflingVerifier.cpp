@@ -21,7 +21,7 @@ bool verifyShuffling(proofStruct &pfStr,
     // maxciph does not exist
     if(!fstr)
     {
-	Node L_array = Node();	
+	Node L_array;	
 	L_array.addChild(L0);
 	Node Llast = L0;
 
@@ -29,7 +29,7 @@ bool verifyShuffling(proofStruct &pfStr,
 	{
 	    Node L;
 
-	    // Step 1
+	    // Step 1 - if l < lambda, read array L_l with N ciphertexts
 	    if(l < lambda)
 	    {	
 		char ciphertexts_filename[FILENAME_BUFFER_SIZE];
