@@ -25,7 +25,7 @@ all: arithmetic crypto verifiers
 arithmetic: $(OUT_ARITHMETIC_OBJ)
 	$(AR) $(OUT_DIR)/Arithmetic/libarithm.a $(OUT_ARITHMETIC_OBJ)
 
-crypto: $(OUT_CRYPTO_OBJ)
+crypto: $(OUT_CRYPTO_OBJ) arithmetic
 	$(AR) $(OUT_DIR)/Crypto/libcrypt.a $(OUT_CRYPTO_OBJ)
 
 verifiers: $(OUT_VERIFIER_OBJ) arithmetic crypto
