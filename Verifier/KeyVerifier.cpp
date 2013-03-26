@@ -7,7 +7,7 @@
 #include "FileNames.h"
 
 
-bool keyVerifier(int lambda, proofStruct &pfStr)
+bool keyVerifier(proofStruct &pfStr)
 {
     Node pk;
     // Step 1 - Read public key from file and reject if not successful

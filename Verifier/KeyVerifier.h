@@ -5,7 +5,7 @@
 #include "Utilities.h"
 #include <string>
 
-bool keyVerifier(int lambda, proofStruct &pfStr);
+bool keyVerifier(proofStruct &pfStr);
 
 bool isPublicKey(const Node &G, const Node &pk);
 bool isPartialPublicKey(const Node &G, const IntLeaf &ppk);
