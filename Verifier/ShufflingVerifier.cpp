@@ -10,7 +10,6 @@
 
 
 bool verifyShuffling(proofStruct &pfStr,
-		     int lambda, 
 		     Node &L0, 
 		     Node &Llambda, 
 		     bool posc, 
@@ -25,12 +24,12 @@ bool verifyShuffling(proofStruct &pfStr,
 	L_array.addChild(L0);
 	Node Llast = L0;
 
-	for(int l=1; l<=lambda; l++)
+	for(int l=1; l<=pfStr.lambda; l++)
 	{
 	    Node L;
 
 	    // Step 1 - if l < lambda, read array L_l with N ciphertexts
-	    if(l < lambda)
+	    if(l < pfStr.lambda)
 	    {	
 		char ciphertexts_filename[FILENAME_BUFFER_SIZE];
 		sprintf(ciphertexts_filename, CIPHERTEXTS_FILE_TMPL.c_str(), l);

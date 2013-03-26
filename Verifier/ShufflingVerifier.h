@@ -8,7 +8,6 @@
 
 
 bool verifyShuffling(proofStruct &pfStr,
-		     int lambda,
 		     Node &L0,
 		     Node &Llambda,
 		     bool posc, 

@@ -42,9 +42,6 @@ int Verifier(string protinfo, string directory,
     string pGroup;
     string Sprg;
     unsigned int wDefault;
-    pfStr.nV = IntLeaf(0, 4);
-    pfStr.nR = IntLeaf(0, 4);
-    pfStr.nE = IntLeaf(0, 4);
     
     // Set values in proofStruct
     try {
@@ -146,9 +143,9 @@ int Verifier(string protinfo, string directory,
     rho.addChild(rho_version);
     rho.addChild(rho_id);
     rho.addChild(IntLeaf(pfStr.width, 4));
-    rho.addChild(pfStr.nE);
-    rho.addChild(pfStr.nR);
-    rho.addChild(pfStr.nV);
+    rho.addChild(IntLeaf(pfStr.nE,4));
+    rho.addChild(IntLeaf(pfStr.nR,4));
+    rho.addChild(IntLeaf(pfStr.nV,4));
     rho.addChild((DataLeaf)pGroup);
     rho.addChild((DataLeaf)Sprg);
     rho.addChild((DataLeaf)Sh);
@@ -232,7 +229,7 @@ int Verifier(string protinfo, string directory,
 	if((type == MIX || type == SHUFFLE) &&
        (posc || ccpos))
     {
-		if(!verifyShuffling(pfStr, lambda, L0, Llambda, posc, ccpos))
+		if(!verifyShuffling(pfStr, L0, Llambda, posc, ccpos))
 		{
 			return false;
 		}	

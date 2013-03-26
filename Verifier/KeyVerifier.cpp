@@ -31,7 +31,7 @@ bool keyVerifier(proofStruct &pfStr)
     Node pub_keys;
     IntLeaf pub_key;
     
-    for(int i=1; i <= lambda; i++) 
+    for(int i=1; i <= pfStr.lambda; i++) 
     {
 	// Read correct file for partial public key nr i
 	char ppk_filename[FILENAME_BUFFER_SIZE];
@@ -76,7 +76,7 @@ bool keyVerifier(proofStruct &pfStr)
     Node sec_keys;
     IntLeaf sec_key;
 
-    for(int i=1; i<=lambda; i++)
+    for(int i=1; i<=pfStr.lambda; i++)
     {
 	// Create correct filename
 	char psk_filename[FILENAME_BUFFER_SIZE];
