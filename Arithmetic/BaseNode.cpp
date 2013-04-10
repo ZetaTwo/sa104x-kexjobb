@@ -48,8 +48,8 @@ void BaseNode::ReadNodeHeader(std::istream &file, char &type, uint32_t &length) 
 
 	//Read the following 4 bytes and convert them into one integer
 	file.read(buffer, 4);
-	length = (buffer[0] << 3*sizeof(char)) + (buffer[1] << 2*sizeof(char)) +
-		(buffer[2] << 1*sizeof(char)) + (buffer[3] << 0*sizeof(char));
+	length = ((unsigned char)buffer[0] << 3*sizeof(char)) + ((unsigned char)buffer[1] << 2*sizeof(char)) +
+		((unsigned char)buffer[2] << 1*sizeof(char)) + ((unsigned char)buffer[3] << 0*sizeof(char));
 }
 
 bytevector BaseNode::concatData(const BaseNode * const other) const {

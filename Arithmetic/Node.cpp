@@ -31,7 +31,7 @@ Node::Node(std::istream &file) : BaseNode(BaseNode::NODE) {
 }
 
 void Node::constructFromFilename(const std::string filename) {
-	std::ifstream file(filename.c_str(), std::fstream::in);
+	std::ifstream file(filename.c_str(), std::fstream::in | std::fstream::binary);
 	constructFromFile(file);
 }
 void Node::constructFromFile(std::istream &file) {
@@ -457,7 +457,7 @@ IntLeaf Node::prod(void) const {
 	return prod;
 };
 IntLeaf Node::prodMod(const IntLeaf &mod) const {
-	IntLeaf prod;
+	IntLeaf prod(1, mod.getLength());
 	for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
 	{
 		switch((*itr)->getType()) {

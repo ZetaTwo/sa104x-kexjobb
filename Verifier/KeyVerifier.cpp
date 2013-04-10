@@ -12,7 +12,8 @@ bool keyVerifier(proofStruct &pfStr)
     Node pk;
     // Step 1 - Read public key from file and reject if not successful
     try {
-	pk = Node(FULL_PUBLIC_KEY_FILE);
+
+        pk = Node(pfStr.directory + "/" + FULL_PUBLIC_KEY_FILE);
     }
     catch(...)
     {
@@ -33,29 +34,30 @@ bool keyVerifier(proofStruct &pfStr)
     
     for(int i=1; i <= pfStr.lambda; i++) 
     {
-	// Read correct file for partial public key nr i
-	char ppk_filename[FILENAME_BUFFER_SIZE];
-	sprintf(ppk_filename, PARTIAL_PUBLIC_KEY_FILE_TMPL.c_str(), i);
+		// Read correct file for partial public key nr i
+		char ppk_filename[FILENAME_BUFFER_SIZE];
+		sprintf(ppk_filename, PARTIAL_PUBLIC_KEY_FILE_TMPL.c_str(), i);
 
-	try
-	{
-	    pub_key = IntLeaf(ppk_filename);
-	}
-	catch(...)
-	{
-	    // Not possible to read file
-	    return false;
-	}
+		try
+		{
+			std::ifstream key_file(pfStr.directory + "/proofs/" + ppk_filename, std::ios::binary | std::ios::in);
+			pub_key = IntLeaf(key_file);
+		}
+		catch(...)
+		{
+			// Not possible to read file
+			return false;
+		}
 
-	// Check to see if partial public key is OK
-	if(!isPartialPublicKey(pfStr.Gq, pub_key))
-	{
-	    // Did not read a key from file, reject proof
-	    return false;
-	}
+		// Check to see if partial public key is OK
+		if(!isPartialPublicKey(pfStr.Gq, pub_key))
+		{
+			// Did not read a key from file, reject proof
+			return false;
+		}
 	
-	// Save partial public key in partial public key array
-	pub_keys.addChild(pub_key);
+		// Save partial public key in partial public key array
+		pub_keys.addChild(pub_key);
     }
 
     // Save public key pk = (g,y) and max size of ints p for convenience
@@ -64,56 +66,56 @@ bool keyVerifier(proofStruct &pfStr)
     const IntLeaf &p = pfStr.Gq.getIntLeafChild(0);
 
     // multiply ppk:s and check that the product is consistent with pk
-    if(pub_keys.prod() != y)
+	IntLeaf prod = pub_keys.prodMod(p);
+
+    if(pub_keys.prodMod(p) != y)
     {
-	// Public keys do not match, reject proof
-	return false;
+		// Public keys do not match, reject proof
+		return false;
     }
     
-
     // Step 3 - read partial secret keys 
-    
     Node sec_keys;
     IntLeaf sec_key;
 
-    for(int i=1; i<=pfStr.lambda; i++)
+    for(int i=1; i <= pfStr.lambda; i++)
     {
-	// Create correct filename
-	char psk_filename[FILENAME_BUFFER_SIZE];
-	sprintf(psk_filename, PARTIAL_SECRET_KEY_FILE_TMPL.c_str(), i);
+		// Create correct filename
+		char psk_filename[FILENAME_BUFFER_SIZE];
+		sprintf(psk_filename, PARTIAL_SECRET_KEY_FILE_TMPL.c_str(), i);
 	
-	std::ifstream fstr(psk_filename, std::fstream::in);
+		std::ifstream fstr(pfStr.directory + "/" + psk_filename, std::fstream::in);
 	
-	// If file exists
-	if(fstr)
-	{   
-	    sec_key = IntLeaf(fstr);
+		// If file exists
+		if(fstr)
+		{   
+			sec_key = IntLeaf(fstr);
 	    
-	    // Check to see if sec_key is really a secret key
-	    if(!isPartialSecretKey(pfStr.Gq, sec_key))
-	    {
-		// Did not read a valid key from file, reject proof
-		return false;
-	    }
+			// Check to see if sec_key is really a secret key
+			if(!isPartialSecretKey(pfStr.Gq, sec_key))
+			{
+			// Did not read a valid key from file, reject proof
+			return false;
+			}
 
-	    // Check consistency with ppk:s, (children indices starts with 0)
-	    if(pub_keys.getIntLeafChild(i-1) != g.expMod(sec_key, p))
-	    {
-		// Secret key does not match public key, reject proof
-	        return false;
-	    }
+			// Check consistency with ppk:s, (children indices starts with 0)
+			if(pub_keys.getIntLeafChild(i-1) != g.expMod(sec_key, p))
+			{
+			// Secret key does not match public key, reject proof
+				return false;
+			}
 	    
-	}
+		}
 
-	// If file does not exist
-	else
-	{
-	    // Set invalid value to mark this
-	    sec_key = BOTTOM;
-	}
+		// If file does not exist
+		else
+		{
+			// Set invalid value to mark this
+			sec_key = BOTTOM;
+		}
 
-	// Add psk to psk array
-	sec_keys.addChild(sec_key);
+		// Add psk to psk array
+		sec_keys.addChild(sec_key);
     }
 
 

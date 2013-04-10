@@ -91,6 +91,7 @@ IntLeaf *IntLeaf::constructPartFromFile(std::istream &file, uint32_t length) {
 	{
 		char buffer[1];
 		file.read(buffer, 1);
+		bool eof = file.eof();
 		data.push_back(buffer[0]);
 	}
 

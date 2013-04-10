@@ -8,6 +8,7 @@
 
 struct proofStruct
 {
+    std::string directory;
     IntLeaf rho;
     unsigned int N;
     unsigned int lambda;
@@ -26,7 +27,7 @@ struct proofStruct
 
 bool isElemOfGq(const Node &group, const IntLeaf &elem);
 bool isElemOfZn(const IntLeaf &n, const IntLeaf &elem);
-bool isElemOfCw(const proofStruct &pfStr, const Node &ciphertext);
+bool isElemOfCw(const proofStruct &pfStr, const Node &uv);
 bool isElemOfMw(const proofStruct &pfStr, const Node &plaintext);
 bool isElemOfRw(const proofStruct &pfStr, const Node &random);
 

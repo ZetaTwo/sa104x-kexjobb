@@ -52,7 +52,7 @@ bool isElemOfMw(const proofStruct &pfStr, const Node &plaintext)
     return true;
 }
 
-bool isElemOfCw(const proofStruct &pfStr, const Node &ciphertext)
+bool isElemOfCw(const proofStruct &pfStr, const Node &uv)
 {
     // The Ciphertext group Cw = Mw x Mw
     // hence the elements of Cw must be a pair of Nodes
@@ -60,10 +60,7 @@ bool isElemOfCw(const proofStruct &pfStr, const Node &ciphertext)
 
     //ciphertext = (u,v) in Mw x Mw 
     try {
-	Node u = ciphertext.getNodeChild(0);
-	Node v = ciphertext.getNodeChild(1);
-
-	if(!isElemOfMw(pfStr, u) || !isElemOfMw(pfStr, v))
+        if(!isElemOfMw(pfStr, uv.getNodeChild(0)) || !isElemOfMw(pfStr, uv.getNodeChild(1)))
 	{
 	    return false;
 	}

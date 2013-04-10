@@ -10,109 +10,125 @@
 
 
 bool verifyShuffling(proofStruct &pfStr,
-		     Node &L0, 
-		     Node &Llambda, 
-		     bool posc, 
-		     bool ccpos)
+                     Node &L0, 
+                     Node &Llambda, 
+                     bool posc, 
+                     bool ccpos)
 {
-    std::ifstream fstr("maxciph", std::fstream::in);
-    
+    std::ifstream fstr("maxciph", std::fstream::in | std::fstream::binary);
+
     // maxciph does not exist
     if(!fstr)
     {
-	Node L_array;	
-	L_array.addChild(L0);
-	Node Llast = L0;
+        Node L_array;	
+        L_array.addChild(L0);
+        Node Llast = L0;
 
-	for(int l=1; l<=pfStr.lambda; l++)
-	{
-	    Node L;
+        for(int l=1; l<=pfStr.lambda; l++)
+        {
+            Node L;
 
-	    // Step 1 - if l < lambda, read array L_l with N ciphertexts
-	    if(l < pfStr.lambda)
-	    {	
-		char ciphertexts_filename[FILENAME_BUFFER_SIZE];
-		sprintf(ciphertexts_filename, CIPHERTEXTS_FILE_TMPL.c_str(), l);
-	
-		std::ifstream ciphtext_stream(ciphertexts_filename, std::fstream::in);
+            // Step 1 - if l < lambda, read array L_l with N ciphertexts
+            if(l < pfStr.lambda)
+            {	
+                char ciphertexts_filename[FILENAME_BUFFER_SIZE];
+                sprintf(ciphertexts_filename, CIPHERTEXTS_FILE_TMPL.c_str(), l);
 
-		if(!ciphtext_stream)
-		    return false;
+                std::ifstream ciphtext_stream(pfStr.directory + "/proofs/" + ciphertexts_filename, std::fstream::in | std::fstream::binary);
 
-		L = Node(ciphtext_stream);
+                if(!ciphtext_stream) {
+                    return false;
+                }
 
-		if(!isListOfCiphertexts(pfStr, L))
-		    return false;
+                L = Node(ciphtext_stream);
 
-		L_array.addChild(L);
-	    }
-	    else
-	    {
-		L_array.addChild(Llambda);
-	    }
+                //TODO: Repair
+                if(!isListOfCiphertexts(pfStr, L)) {
+                    return false;
+                }
 
-
-	    Node mu;
-	    Node tau_pos;
-	    Node sigma_pos;
-	   
-
-	    try
-	    {
-		char filename[FILENAME_BUFFER_SIZE];
-
-		sprintf(filename, PERMUTATION_COMMIMENTS_FILE_TMPL.c_str(), l);	
-		mu = Node(filename);
-
-		sprintf(filename, POS_COMMITMENT_FILE_TMPL.c_str(), l);	
-		tau_pos = Node(filename);
-
-		sprintf(filename, POS_REPLY_FILE_TMPL.c_str(), l);	
-		sigma_pos = Node(filename);
-	    }
-	    catch(...)
-	    {
-		return false;
-	    }
+                L_array.addChild(L);
+            }
+            else
+            {
+                L_array.addChild(Llambda);
+            }
 
 
-	    //Step 2
-	    // Verify proof of shuffle
-	    // Execute Algorithm 19 with specified input
-	    if(!proofOfShuffle(pfStr, Llast, L, mu, tau_pos, sigma_pos) &&
-	       L_array.getNodeChild(l) != L_array.getNodeChild(l-1))
-		return false;
+            Node mu;
+            Node tau_pos;
+            Node sigma_pos;
 
-	    Llast = L;
-	}
 
-	// Step 3
-	return true;
+            try
+            {
+                char filename[FILENAME_BUFFER_SIZE];
+
+                sprintf(filename, PERMUTATION_COMMIMENTS_FILE_TMPL.c_str(), l);	
+                mu = Node(pfStr.directory + "/proofs/" + filename);
+
+                sprintf(filename, POS_COMMITMENT_FILE_TMPL.c_str(), l);	
+                tau_pos = Node(pfStr.directory + "/proofs/" + filename);
+
+                sprintf(filename, POS_REPLY_FILE_TMPL.c_str(), l);	
+                sigma_pos = Node(pfStr.directory + "/proofs/" + filename);
+            }
+            catch(...)
+            {
+                return false;
+            }
+
+
+            //Step 2
+            // Verify proof of shuffle
+            // Execute Algorithm 19 with specified input
+            if(!proofOfShuffle(pfStr, Llast, L, mu, tau_pos, sigma_pos) &&
+                L_array.getNodeChild(l) != L_array.getNodeChild(l-1))
+                return false;
+
+            Llast = L;
+        }
+
+        // Step 3
+        return true;
 
     }
     // If maxciph file exists
     else
     {
-	return true;
+        return true;
     }
 }
 
 
 
-bool isListOfCiphertexts(const proofStruct &pfStr, Node &L)
-{
+bool isListOfCiphertexts(const proofStruct &pfStr, Node &L) {
+
     try {
-	for(unsigned int i=0; i<pfStr.N; ++i)
-	{
-	    if(!isElemOfCw(pfStr, L.getNodeChild(i)))
-	    {
-		return false;
-	    }
-	}
+        for(unsigned int i=0; i<pfStr.N; ++i)
+        {
+            Node u;
+            Node v;
+            if(pfStr.width == 1) {
+                u.addChild(L.getNodeChild(0).getIntLeafChild(i));
+                v.addChild(L.getNodeChild(1).getIntLeafChild(i));
+            } else {
+                u = L.getNodeChild(0).getNodeChild(i);
+                v = L.getNodeChild(1).getNodeChild(i);
+            }
+
+            Node uv;
+            uv.addChild(u);
+            uv.addChild(v);
+            if(!isElemOfCw(pfStr, uv))
+            {
+                return false;
+            }
+        }
     }
     catch(...)
     {
-	return false;
+        return false;
     }
 
     return true;
