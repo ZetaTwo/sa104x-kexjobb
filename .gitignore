@@ -43,3 +43,6 @@ _ReSharper*/
 
 #ignore Output directory
 Output
+
+#ignore LaTeX files
+*.synctest.gz
