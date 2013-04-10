@@ -9,6 +9,7 @@ var searchData=
   ['ro',['RO',['../class_r_o.html',1,'RO'],['../class_r_o.html#a82dc027a38b639b89ff2e2fba2f437c3',1,'RO::RO()']]],
   ['ro_2ecpp',['RO.cpp',['../_r_o_8cpp.html',1,'']]],
   ['ro_2eh',['RO.h',['../_r_o_8h.html',1,'']]],
+  ['rotests_2ecpp',['ROTests.cpp',['../_r_o_tests_8cpp.html',1,'']]],
   ['runmode',['RunMode',['../_verifier_8h.html#a3dfe11cf1a3a8121f6cd7fec4bf5947e',1,'Verifier.h']]],
   ['rw',['Rw',['../structproof_struct.html#ab830ed3c916a0d10db146ee28f036027',1,'proofStruct']]]
 ];
