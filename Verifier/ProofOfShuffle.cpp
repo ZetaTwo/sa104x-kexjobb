@@ -91,6 +91,18 @@ bool proofOfShuffle(proofStruct &pfStr,
         }
 
         F_prime = tau_pos.getNodeChild(5);
+        if(pfStr.width == 1) {
+            Node u;
+            Node v;
+            u.addChild(F_prime.getIntLeafChild(0));
+            v.addChild(F_prime.getIntLeafChild(1));
+            Node uv; 
+            uv.addChild(u);
+            uv.addChild(v);
+
+            F_prime = uv;
+        }
+
         if(!isElemOfCw(pfStr, F_prime))
         {
             return false;

@@ -105,7 +105,7 @@ bool verifyShuffling(proofStruct &pfStr,
 bool isListOfCiphertexts(const proofStruct &pfStr, Node &L) {
 
     try {
-        for(unsigned int i=0; i<pfStr.N; ++i)
+        for(unsigned int i=0; i < L.getLength(); ++i)
         {
             Node u;
             Node v;

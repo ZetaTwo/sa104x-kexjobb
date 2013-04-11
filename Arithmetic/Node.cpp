@@ -674,4 +674,5 @@ void Node::clearElements() {
 	{
 	    delete *itr;
 	}
+    children.clear();
 }
