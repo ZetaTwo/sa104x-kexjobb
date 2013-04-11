@@ -8,9 +8,10 @@ compute the public key $(g,y) \in G_q \times G_q$ where $y =
 g^x$. 
 
 Encryption of a plaintext $m \in G_q$ is done by choosing a random $s
-\in Z_q$ and computing $(u,v) \in G_q \times G_q$ where $u = g^s$ and
-$v = y^sm$. Decryption of a ciphertext $(u,v) \in G_q \times G_q$ is
-achieved by using the private key $x$ to compute $m = u^{-x}v$.
+\in Z_q$ and computing $ \mathrm{Enc}_{pk}(m,s) = (u,v) \in G_q \times
+G_q$ where $u = g^s$ and $v = y^sm$. Decryption of a ciphertext $(u,v)
+\in G_q \times G_q$ is achieved by using the private key $x$ to
+compute $m = \mathrm{Dec}_{pk}(u,v) = u^{-x}v$.
 
 \subsection{Security}
 Let $b = g^a \in G_q$ where $a \in \mathbb{Z}_q$. Then $a$ is said to
@@ -26,9 +27,33 @@ El Gamal cryptosystem is secure as long as no one is able to compute
 the discrete logarithm in $G_q$ efficiently. (Källa)
 
 \subsection{Properties}
-The El Gamal cryptosystem is a homomorphic cryptosystem. This 
+The El Gamal cryptosystem is a homomorphic cryptosystem. This means
+that for any two messages $m_1, m_2 \in G_q$ and randomnesses $s_1,
+s_2 \in \mathbb{Z}_q$
+$$
+\mathrm{Enc}_{pk}(m_1, s_1)\mathrm{Enc}_{pk}(m_2, s_2) = (g^{s_1}, y^{s_1}m_1)(g^{s_2},y^{s_2}m_2) =
+$$
+$$
+= (g^{s_1 + s_2}, y^{s_1 + s_2}m_1m_2) = \mathrm{Enc}_{pk}(m_1m_2, s_1 + s_2)
+$$
 
+By choosing $m_1 = m$ and $m_2 = 1$ one obtains
+$$
+\mathrm{Enc}_{pk}(m, s_1) \mathrm{Enc}_{pk}(1, s_2) = \mathrm{Enc}_{pk}(m, s_1 + s_2)
+$$
 
+This homomorphic property of the El Gamal Cryptosystem may be used to
+reencrypt an already encrypted message. If $s_1 \in \mathbb{Z}_q$ and
+$s_2 \in \mathbb{Z}_q$ are both chosen with the uniform randomness,
+then $s_1 + s_2 \in \mathbb{Z}_q$ will be uniformly random as well
+(utveckla + källa).
 
-
-Generalization
+\subsection{Generalization}
+A generalization of the El Gamal Cryptosystem over a group $G_q$ can
+be achieved by considering the plaintext group $M_w$ to be $G_q \times
+.. \times G_q = G_q^w$ and the ciphertext group to be $C_w = M_w
+\times M_w$ (källa: douglas doc). Encryption and decryption is done
+componentwise and the group operation of $M_w$ will also be performed
+componentwise. 
+ 
+Förklara mer?
