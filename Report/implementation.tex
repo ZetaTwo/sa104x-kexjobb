@@ -26,18 +26,26 @@ All of the PRGs and ROs in the verifier are implemented in the verifier but at t
 
 \subsubsection{Testing}
 
-
+To test the byte tree classes and our cryptographic functions we used some unit testing. We used Google Test as our unit test framework since it was very simple and easy to use. The unit tests were invaluable in tracking down several subtle bugs in our byte tree implementation, especially regarding memory management.
 
 \subsection{Math Library}
 
-Hur och varför har vi gjort som vi gjort?
+We built 
 
 \subsection{Pseudorandom Generators and Random Oracles}
 
+
 \subsection{Verifier}
+
+To keep track of some data which is persistent throughout the execution, we created a structure to hold this data. This structure was created at the beginning of the execution and then passed around to the different algorithms.
+
+Apart from the byte tree classes and the cryptographic primitives, we needed a few helper functions. The purpose of these functions was to check that some different byte tree adhered to a certain structure.
+
+Each named algorithm in the specification was implemented as its own function. The functions became long but since none of the code is repeated and the possibilities for isolated testing was minimal, we chose to not split up the algorithms into several functions.
 
 \subsection{Tests}
 
+
 \subsection{Performance}
 
-Viktigt?
+TODO
