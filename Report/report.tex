@@ -4,8 +4,11 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 
-\author{Carl Svensson \& Erik Larsson}
-\title{El Gamal Mixnets and Implementation of a Verifier}
+\author{Carl Svensson carlsven@kth.se \& Erik Larsson erikl3@kth.se}
+\title{El Gamal Mixnets and Implementation of a Verifier \\ SA104x Degree Project in Engineering Physics \\
+KTH Royal Institute of Technology \\
+School of Computer Science and Communication
+Supervisor: Douglas Wikström}
 \begin{document}
 
 \maketitle
@@ -16,6 +19,21 @@
 
 \pagebreak
 \section{Introduction}
+Why cryptography?
+
+Classical vs Modern cryptography
+
+Public key cryptosystem
+
+Uses (Communication, Signatures?, Verification)
+
+Mix networks
+
+Verificatum Mixnet
+
+Verification and its importance
+
+Implementation
 
 
 \section{El Gamal Cryptography}
@@ -53,7 +71,14 @@ The El Gamal cryptosystem is a homomorphic cryptosystem. This
 
 Generalization
 
+\section{Cryptographic Primitives}
+
+PRGs
+ROs
+
 \section{Mix Networks}
+
+
 
 \subsection{Overview}
 
@@ -74,7 +99,9 @@ servers, the list of ciphertexts is decrypted and the result is a list
 of the messages in random order. It is impossible to deduce from where
 each element came.
 
-\subsection{El Gamal Mixnet}
+\subsection{El Gamal Mixnets}
+
+
 
 \subsection{Operation}
 
@@ -82,28 +109,39 @@ each element came.
 
 \section{Specification/Documentation}
 
+Vilken dokumentation har vi använt oss av?
+
+
 \section{Implementation of the Verifier}
 
 \subsection{General Design Choices}
 
 Programming language?
 
+Objects, UML
+
 
 \subsection{Third Party Libraries}
 
 \subsubsection{Arithmetic Library}
 GMP
+why?
 
 \subsubsection{XML Parser}
 RapidXML
+why?
 
 \subsubsection{Cryptographic Primitives}
 OpenSSL
+why?
 
 \subsubsection{Testing}
 Google Test
+why?
 
 \subsection{Math Library}
+
+Hur och varför har vi gjort som vi gjort?
 
 \subsection{Pseudorandom Generators and Random Oracles}
 
@@ -113,7 +151,11 @@ Google Test
 
 \subsection{Performance}
 
+Viktigt?
+
 \section{Conclusion}
+Kunde dokumentationen ha gjorts bättre?
+
 
 \section{References}
 
