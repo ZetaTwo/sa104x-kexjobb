@@ -45,6 +45,6 @@ _ReSharper*/
 Output
 
 #ignore LaTeX files
-*.synctest.gz
+*.synctex.gz
 *.aux
 *.toc
