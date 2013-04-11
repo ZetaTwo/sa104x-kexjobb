@@ -46,3 +46,5 @@ Output
 
 #ignore LaTeX files
 *.synctest.gz
+*.aux
+*.toc
