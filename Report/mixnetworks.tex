@@ -1,11 +1,6 @@
 \section{Mix Networks}
 
-
-
 \subsection{Overview}
-
-Intuitiv beskrivning (gör bättre)
-
 http://www.rsa.com/rsalabs/staff/bios/ajuels/publications/universal/Universal.pdf
 
 One purpose of mix networks, or mixnets, is to provide untraceability
@@ -14,19 +9,102 @@ encrypted messages of different origins. These messages pass through
 the mixnet and is output decrypted and in a randomized order. This
 property may be used to enable anonymous voting systems.
 
-A reencryption mixnet consists of a number of servers which
-sequentially process the messages and reencrypts the list of messages
-and outputs them in a randomized order. After passing through all
-servers, the list of ciphertexts is decrypted and the result is a list
-of the messages in random order. It is impossible to deduce from where
+Different types of mixnets exist. There are decryption mixnets and
+reencryption mixnets. This report treats the latter type. A
+reencryption mixnet consists of a number of servers which sequentially
+process the messages and reencrypts the list of messages and outputs
+them in a randomized order. After passing through all servers, the
+list of ciphertexts is decrypted and the result is a list of the
+messages in random order. It should be infeasible to deduce from where
 each element came.
+
+One use of mixnets is in the context of electronic voting systems. An
+electronic election can be performed by the use of a reencryption
+mixnet \\
+(http://courses.csail.mit.edu/6.897/spring04/L17.pdf):
+\begin{enumerate}
+\item Each voter encrypts his vote and appends it to a public list of
+  encrypted votes.
+\item In sequential order each mix server takes as input the list of
+  encrypted votes, reencrypts and outputs them in a randomized order,
+  replacing the previous list of encrypted votes.
+\item After all mix servers have processed the list, each vote is
+  jointly decrypted and posted on a bulletin board making the outcome
+  of the election universally available.
+\end{enumerate}
+
+Notice that the reencryption step is necessary before the actual
+mixing as if omitted, the mixing would merely scramble the list of
+original cryptotext, providing no untraceable at all.
 
 \subsection{El Gamal Mixnets}
 
-A mix net based on the El Gamal cryptosystem consists of $k$ parties
-(mixnet servers).
+Most reencryption networks use some variant of the El Gamal
+Cryptosystem (http://courses.csail.mit.edu/6.897/spring04/L17.pdf),
+since the homomorphic property of the El Gamal encryption allowes
+reencryption.
 
+A mixnet based on the El Gamal Cryptosystem consists of $k$ mixnet
+servers mixing the votes of $n$ voters. Suppose the underlying group
+is $G_q$ of prime order $q$ and with generator $g \in G_q$. The mixnet
+works as follows \\
+(http://courses.csail.mit.edu/6.897/spring04/L18.pdf)
 
-\subsection{Operation}
+\begin{enumerate}
+\item A public key $pk = (g,y) = (g, g^x)$ is generated (key distribution
+  problems??)
+\item Each voter $j$ encrypts his vote $m_j$ to create $c_{j,0} =
+  \mathrm{Enc}_{pk}(m_j) = (g^{r_j},my^{r_j})$ for some random $r_j \in \mathbb{Z}_q$.
+\item A list of the encrypted votes $c_0 = \left( c_{1,0},
+  \hdots c_{n,0}\right)$ is created. 
+\item For each mix server $i \in \{1,\hdots, k\}$, given the input
+  $c_{i-1}$, a random permutation $\pi _i$ is chosen and a list 
+  $$ 
+  c_i =\left(\mathrm{ReEnc}_{pk}(c_{\pi_i(1),i-1}), \hdots,
+  \mathrm{ReEnc}_{pk}(c_{\pi_i(n), i-1})\right) =
+  $$
+  is returned.
+\item The final list $c_k$ is decrypted using the secret key $sk = x
+  \in \mathbb{Z}_q$ (once again key distribution problems?) to produce
+  the output list
+ $$ 
+  (m_{\pi (1)}, \hdots , m_{\pi (n)}) =
+  \left(\mathrm{Dec}_{sk}(c_{k,1}), \hdots, \mathrm{Dec}(c_{k,n})\right)
+  $$
+  
+  for a permutation $\pi = \pi_k \circ \hdots \circ \pi_1$.
+\end{enumerate}
+
+The result of the election may now be computed while the origin of the
+individual votes is unknown. Remark that all encryptions
+$\mathrm{Enc}_{pk}$ are performed with some randomness $r \in
+\mathbb{Z}_q$.
 
 \subsection{Verification}
+There are some problems related to electronic voting using
+mixnets. One issue is that the mix servers may or may not execute
+their part of the mixnet properly. For, example dishonest servers
+could completely change the outcome of the election by replacing the
+true votes with their own. A first solution may be to make sure that
+every server is reliable. This is however difficult, as even an honest
+party providing a computer acting as mix server may be affected by a
+virus of some sort. Another and more feasible solution is to allow
+verification by external parties.
+
+A verifiable 
+
+\subsection{Verificatum Mix Network}
+
+``Verificatum [...] is an implementation of an El Gamal-based mixnet
+... [that] produce a verifiable proof of correctness during the
+execution of the protocol'' (Abstract i vmnv-1.1.0). It is a
+reencryption mixnet.
+
+There is a key distribution phase.
+
+There is a shuffling phase, during which each server provides a proof
+of shuffle (what is this?)
+
+Detta är inte klart
+
+
