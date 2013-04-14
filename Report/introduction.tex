@@ -1,29 +1,21 @@
 \section{Introduction}
-Why cryptography?
 
-The area of Cryptography concerns the theory of secure communication.
+Cryptography is useful whenever two or more parties want to communicate confidentially with each other. Traditionally, public key cryptography, PKC, enabled two parties to talk directly to each other with confidentiality and integrity. A mix-net is a construction based on PKC which enables two parties to communicate with each other through a collection of nodes. Aside from the usual benefits of PKC you also get anonymity.
 
-Originally Cryptography was interchangeable with the encryption of
-messages in order to allow secret communication between two parties
-over an insecure channel.
+Mix-nets can be implemented in different ways. Our work concerns the Verificatum Mix-Net created by Douglas Wikström. Specifically we have evaluated the implementation manual for a verifier for the Verificatum Mix-Net which purpose is to enable third parties to convince themselves that the mix-net has behaved correctly without revealing any new information.
 
-Symmetric encryption
+Before getting into more details we will take a step back and shortly introduce some background and important concepts. First of all, the area of cryptography concerns the theory of secure communication. For this to have any meaning we must define "secure". This is not easy since the most strict definition is not practically feasible and is thus done on a case to case basis depending on the context.
 
-In 1976 Diffe and Hellman publiced the first paper on public key
-cryptography. This was a new sort of cryptographic construction that
-allowed --. 
+Originally Cryptography was interchangeable with the encryption of messages in order to allow secret communication between two parties over an insecure channel. Early examples include various ciphers such as the Caesar and the Vigenère ciphers. These primitive systems achieves the most central property of a cryptographic system, \emph{confidentiality}, i.e. only the parties which know the key can read the message. This is also an example of a \emph{symmetric encryption} which means that the same piece of information is used for encryption and decryption.
 
-Classical vs Modern cryptography
+One problem with this is that even though a third party cannot read the message, it can be modified without the receiver noticing. One way to counter this is to introduce some kind of "receipt" which is computed from the message and sent along with the ciphertext. This can then be computed again by the receiver to verify that the message is unaltered. This property is what we call \emph{integrity}.
 
-Public key cryptosystem
+In 1976 Whitfield Diffie and Martin Hellman publiced the first paper on public key cryptography. This was a new sort of cryptographic construction that allowed different keys to be used for encryption and decryption of a message. This was the first \emph{asymmetric encryption} scheme.
 
-Uses (Communication, Signatures?, Verification)
+Already at this point we have a very powerful set of tools for secret communication. One thing which is not covered by traditional PKC is \emph{anonymity}. By design, the two communicating parties must have some kind of knowledge of each other to be able to communicate. A mix-net facilitate the anonymity requirement by routing messages to a cluster of nodes. These nodes takes a number of messages from any number of sources, shuffles them around and deliver them to their destination. This description is very brief, partly because there are different flavours of mix-net intended for different purposes.
 
-Mix networks
+The Verificatum mix-net is designed to take a number of encrypted messages, ciphertexts. Encrypted with a public key from the mix-net, shuffle these ciphertexts around and finally decrypt them. This can, for example, be used in an election. Every voter encrypts the vote with the public key and posts it to the mix-net. The mix-net takes all the encrypted votes, shuffles and decrypts them. This way we can see all the votes and count them without knowing which vote belongs to which voter, something which is very central in an election.
 
-Verificatum Mixnet
+Additionally we would like to be able to verify that the mix-net has done its work correctly and not altered any votes. Therefore the mix-net produces some extra data files during its execution. These data files together with the input ciphertexts and the output plaintexts can be run through a verification process that tells if the process has been correctly performed. The neat thing about all this is that it can securely tell whether this is true or false without spilling any more information about the relation between the ciphertexts and the plaintexts, i.e. voter anonymity is preserved.
 
-Verification and its importance
-
-A stand-alone implementation of a verifier for the Verifcatum mixnet
-is based on the document (...).
+The idea is that any third party which want to check the result should be able to implement a verifier for Verificatum. Douglas has published a document describing this verifier. We have, using this document, implemented a verifier to test that the document is complete with all the information needed to implement the verifier.
