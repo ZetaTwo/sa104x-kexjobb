@@ -23,6 +23,8 @@ electronic election can be performed by the use of a reencryption
 mixnet \\
 (http://courses.csail.mit.edu/6.897/spring04/L17.pdf):
 \begin{enumerate}
+\item The mix servers prepare the mix-net by generating public and
+  secret keys.
 \item Each voter encrypts his vote and appends it to a public list of
   encrypted votes.
 \item In sequential order each mix server takes as input the list of
@@ -35,7 +37,7 @@ mixnet \\
 
 Notice that the reencryption step is necessary before the actual
 mixing as if omitted, the mixing would merely scramble the list of
-original cryptotext, providing no untraceable at all.
+original cryptotext, providing no untraceability at all.
 
 \subsection{El Gamal Mixnets}
 
@@ -53,9 +55,9 @@ works as follows \\
 \begin{enumerate}
 \item A public key $pk = (g,y) = (g, g^x)$ is generated (infoga text om key distribution?)
 \item Each voter $j$ encrypts his vote $m_j$ to create $c_{j,0} =
-  \mathrm{Enc}_{pk}(m_j) = (g^{r_j},my^{r_j})$ for some random $r_j \in \mathbb{Z}_q$.
-\item A list of the encrypted votes $c_0 = \left( c_{1,0},
-  \hdots c_{n,0}\right)$ is created. 
+  \mathrm{Enc}_{pk}(m_j) = (g^{r_j},my^{r_j})$ for some random $r_j
+  \in \mathbb{Z}_q$.  A list of all encrypted votes $c_0 = \left(
+  c_{1,0}, \hdots c_{n,0}\right)$ is created.
 \item For each mix server $i \in \{1,\hdots, k\}$, given the input
   $c_{i-1}$, a random permutation $\pi _i$ is chosen and a list 
   $$ 
