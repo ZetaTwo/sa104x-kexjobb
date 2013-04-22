@@ -1,6 +1,6 @@
-\section{Mix Networks}
+\subsection{Mix Networks}
 
-\subsection{Overview}
+\subsubsection{Overview}
 http://www.rsa.com/rsalabs/staff/bios/ajuels/publications/universal/Universal.pdf
 
 One purpose of mix networks, or mixnets, is to provide untraceability
@@ -39,7 +39,7 @@ Notice that the reencryption step is necessary before the actual
 mixing as if omitted, the mixing would merely scramble the list of
 original cryptotext, providing no untraceability at all.
 
-\subsection{El Gamal Mixnets}
+\subsubsection{El Gamal Mixnets}
 
 Most reencryption networks use some variant of the El Gamal
 Cryptosystem (http://courses.csail.mit.edu/6.897/spring04/L17.pdf),
@@ -81,7 +81,7 @@ individual votes is unknown. Remark that all encryptions
 $\mathrm{Enc}_{pk}$ are performed with some randomness $r \in
 \mathbb{Z}_q$.
 
-\subsection{Verification}
+\subsubsection{Verification}
 There are some problems related to electronic voting using
 mixnets. One issue is that the mix servers may or may not execute
 their part of the mixnet properly. For, example dishonest servers
@@ -94,17 +94,7 @@ verification by external parties.
 
 A verifiable 
 
-\subsection{Verificatum Mix Network}
 
-``Verificatum [...] is an implementation of an El Gamal-based mixnet
-... [that] produce a verifiable proof of correctness during the
-execution of the protocol'' (Abstract i vmnv-1.1.0). It is a
-reencryption mixnet.
-
-There is a key distribution phase.
-
-There is a shuffling phase, during which each server provides a proof
-of shuffle (Beskriv vad detta är)
 
 
 
