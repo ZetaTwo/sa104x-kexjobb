@@ -10,6 +10,7 @@ struct proofStruct
 {
     std::string directory;
     IntLeaf rho;
+    unsigned int k;
     unsigned int N;
     unsigned int lambda;
     unsigned int width;

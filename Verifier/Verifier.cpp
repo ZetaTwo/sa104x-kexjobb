@@ -49,6 +49,7 @@ int Verifier(string protinfo, string directory,
         versionProt = root_node->first_node("version")->value();
         sid = root_node->first_node("sid")->value();
         string k = root_node->first_node("nopart")->value();
+        pfStr.k = atol(k.c_str());
 
         string strLambda = root_node->first_node("thres")->value();
         pfStr.lambda = atol(strLambda.c_str());
@@ -62,8 +63,11 @@ int Verifier(string protinfo, string directory,
         string strNe = root_node->first_node("vbitlenro")->value();
         pfStr.nE = atol(strNe.c_str());
 
-        string strNr = root_node->first_node("statdist")->value();
-        pfStr.nR = atol(strNr.c_str());
+        //TODO: ???
+        //string strNr = root_node->first_node("statdist")->value();
+        string strNr1 = root_node->first_node("vbitlen")->value();
+        string strNr2 = root_node->first_node("cbitlen")->value();
+        pfStr.nR = atol(strNr1.c_str()) + atol(strNr2.c_str());
 
         Sprg = root_node->first_node("prg")->value();
         Sh = root_node->first_node("rohash")->value();
@@ -132,20 +136,10 @@ int Verifier(string protinfo, string directory,
     }
 
     //Step 4
-    //rho = H(node(versionProof, sid + "." auxsid, omega, Ne, Nr, Nv, Gq, Sprg, Sh))
-    DataLeaf rho_version;
-    bytevector version_data = rho_version.getData();
-    version_data.insert(version_data.end(), versionProof.begin(), versionProof.end());
-
-    DataLeaf rho_id;
-    bytevector id_data = rho_id.getData();
-    id_data.insert(id_data.end(), sid.begin(), sid.end());
-    id_data.push_back('.');
-    id_data.insert(id_data.end(), auxsid.begin(), auxsid.end());
-
+    //rho = H(node(versionProof, sid + "." auxsid, omega, Ne, Nr, Nv, Gq, Sprg, Sh
     Node rho;
-    rho.addChild(rho_version);
-    rho.addChild(rho_id);
+    rho.addChild((DataLeaf)versionProof);
+    rho.addChild((DataLeaf)(sid + "." + auxsid));
     rho.addChild(IntLeaf(pfStr.width, 4));
     rho.addChild(IntLeaf(pfStr.nE,4));
     rho.addChild(IntLeaf(pfStr.nR,4));
@@ -154,7 +148,10 @@ int Verifier(string protinfo, string directory,
     rho.addChild((DataLeaf)Sprg);
     rho.addChild((DataLeaf)Sh);
 
+    bytevector rhodata = rho.serialize();
+
     pfStr.rho = (IntLeaf)pfStr.hash(rho.serialize());
+    bytevector rhodata2 = pfStr.rho.serialize();
 
     //Step 5       
     if(!keyVerifier(pfStr))
@@ -175,7 +172,11 @@ int Verifier(string protinfo, string directory,
         return 0;
     }
 
-    pfStr.N = L0.getLength();
+    if(pfStr.width == 1) {
+        pfStr.N = L0.getNodeChild(0).getLength();
+    } else {
+        pfStr.N = L0.getNodeChild(0).getNodeChild(0).getLength();
+    }
 
     if(type == MIX) {
         /* Read threshold ciphertext */

@@ -6,7 +6,7 @@
 #include "RandomArray.h"
 #include "DataLeaf.h"
 
-#include <cmath>
+#include <string>
 
 bool proofOfShuffle(proofStruct &pfStr,
                     const Node &w,
@@ -30,7 +30,7 @@ bool proofOfShuffle(proofStruct &pfStr,
     IntLeaf kA;
     IntLeaf kC;
     IntLeaf kD;
-    IntLeaf kF;
+    Node kF;
 
     Node kB;
     Node kE;
@@ -138,23 +138,30 @@ bool proofOfShuffle(proofStruct &pfStr,
         kA = sigma_pos.getIntLeafChild(0);
         kC = sigma_pos.getIntLeafChild(2);
         kD = sigma_pos.getIntLeafChild(3);
-        kF = sigma_pos.getIntLeafChild(5);
 
+        if(pfStr.width == 1) {
+            kF.addChild(sigma_pos.getNodeChild(5));
+        } else {
+            kF = sigma_pos.getNodeChild(5);
+        }
+        
         kB = sigma_pos.getNodeChild(1);
         kE = sigma_pos.getNodeChild(4);
 
         if(!isElemOfZn(q, kA) ||
             !isElemOfZn(q, kC) ||
             !isElemOfZn(q, kD) ||
-            !isElemOfZn(q, kF))
+            !isElemOfRw(pfStr, kF))
         {
             return false;
         }
 
         for(unsigned int i=0; i<pfStr.N; ++i)
         {
-            if(!isElemOfRw(pfStr, kB.getNodeChild(i)))
-            { 
+            
+
+            if(!isElemOfZn(q, kB.getIntLeafChild(i)))
+            {
                 return false;
             }
 
@@ -172,10 +179,16 @@ bool proofOfShuffle(proofStruct &pfStr,
 
     // Get random array h
     DataLeaf generators = DataLeaf("generators");
-    RO r = RO(pfStr.hash, pfStr.nH);
-    IntLeaf s = r(pfStr.rho.concatData(&generators));
+    RO RO_seed = RO(pfStr.hash, pfStr.nH);
+    IntLeaf s = RO_seed(pfStr.rho.concatData(&generators));
+    bytevector sdata = s.serialize();
 
     Node h = RandomArray(pfStr.Gq, pfStr.N, pfStr.hash, s.serialize(), pfStr.nR);
+    std::string hdata = h.toString();
+    for(int i = 0; i < 5; i++) {
+        bytevector hdata2 = h.getIntLeafChild(i).toVector();
+    }
+    
 
     // Step 2, compute a seed by creating the node/array Node(g,h,u,pk,w,w')
     Node seed_gen;
@@ -190,13 +203,14 @@ bool proofOfShuffle(proofStruct &pfStr,
     bytevector gen = pfStr.rho.concatData(&seed_gen);	
 
     // Create a random oracle to be used to generate a seed, seedlen specified
-    RO rs = RO(pfStr.hash, (pfStr.nH));
+    RO rs = RO(pfStr.hash, pfStr.nE);
 
     // Generate the seed
     IntLeaf seed = rs(gen);
+    std::string seeddata = seed.toString();
 
 
-    // Step 3
+    // Step 3 - TODO: Runda upp nE/8
     PRG prg = PRG(pfStr.hash, seed.serialize(), (pfStr.nE/8)*8);
 
     Node t;    
@@ -204,32 +218,39 @@ bool proofOfShuffle(proofStruct &pfStr,
     {
         t.addChild(prg.next());
     }
+    
+
 
     // e_i = t_i mod 2^(nE)
     IntLeaf exp(2);
     exp.expTo(pfStr.nE);
     Node e = t.mod(exp);
 
+    bytevector t0 = t.getIntLeafChild(0).serialize();
+    bytevector e0 = e.getIntLeafChild(0).serialize();
+
     // compute A and F
-    IntLeaf A = u.expMultMod(e, p);    
+    IntLeaf A = u.expMultMod(e, p);
+    std::string astring = A.toString();
 
-    //TODO: Gör detta snyggare. 
-
-    // F is in Cw
     Node F;
-    for(unsigned int i=0; i<pfStr.width; ++i)
     {
-        F.addChild(IntLeaf(1));
-    }
-
-    for(unsigned int i=0; i<pfStr.N; ++i)
-    {
-        // wi is in Cw
-        Node wi = w.getNodeChild(i);
-        IntLeaf expi = e.getIntLeafChild(i);
-
-        // F *= wi^ei is in Cw
-        F.multToMod(wi.expMod(expi, p), p);
+        Node u = w.getNodeChild(0);
+        Node v = w.getNodeChild(1);
+    
+        if(pfStr.width == 1) {
+            F.addChild(u.expMultMod(e, p));
+            F.addChild(v.expMultMod(e, p));
+        } else {
+            Node a, b;
+            for(int i = 0; i < pfStr.width; i++) {
+                a.addChild(u.getNodeChild(i).expMultMod(e, p));
+                b.addChild(v.getNodeChild(i).expMultMod(e, p));
+            }
+            
+            F.addChild(a);
+            F.addChild(b);
+        }
     }
 
     // Step 4, compute a challenge
@@ -243,7 +264,7 @@ bool proofOfShuffle(proofStruct &pfStr,
     gen = pfStr.rho.concatData(&challenge_gen);
 
     // create a challenge RO
-    RO rc = RO(pfStr.hash, static_cast<unsigned int>(std::pow(2,pfStr.nV)));
+    RO rc = RO(pfStr.hash, pfStr.nV);
 
     // use the seed above to generate v, interpret v as non-negative integer
     IntLeaf v = rc(gen);
@@ -254,12 +275,15 @@ bool proofOfShuffle(proofStruct &pfStr,
     IntLeaf D = B.getIntLeafChild(pfStr.N - 1) * h.getIntLeafChild(0).expMod(e.prodMod(p), p).inverse(p);
 
     // Check A^v * A' == g^kA * prod h_i^kE_i
+    IntLeaf left = A.expMod(v, p).multMod(A_prime, p);
+    IntLeaf right = g.expMod(kA, p).multMod(h.expMultMod(kE, p), p);
+    bytevector ldata = left.serialize();
+    bytevector rdata = right.serialize();
+
     if(A.expMod(v, p)*A_prime != g.expMod(kA, p)*h.expMultMod(kE, p))
     {
         return false;
     }
-
-
 
     // Check B_i^v * B'_i == g^kB_i * B_{i-1}^kE_i for i = 1,...,N-1
     for(unsigned int i=1; i<pfStr.N; ++i)
@@ -291,10 +315,13 @@ bool proofOfShuffle(proofStruct &pfStr,
     }
 
     // Check F^v * F' = Enc_pk(1, -kF)* prod (w'_i)^kE_i
+    /*if(pfStr.width == 1) {
+
+
     if(F.expMod(v, p) * F_prime != Enc(pfStr.pk, IntLeaf(1), -kF, p) * w_prime.expMultMod(kE, p))
     {
         return false;
-    }
+    }*/
 
 
     // All equalities holds, return true

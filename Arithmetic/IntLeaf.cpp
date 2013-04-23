@@ -264,6 +264,7 @@ IntLeaf IntLeaf::exp(unsigned long exponent) const
 IntLeaf &IntLeaf::expToMod(const IntLeaf & leaf, const IntLeaf & mod)
 {
 	//Raise data to leaf with modulo mod
+    length = mod.getLength();
     mpz_powm(data.get_mpz_t(), data.get_mpz_t(), leaf.data.get_mpz_t(), mod.data.get_mpz_t());
 
 	//Return a reference to this object.
@@ -313,7 +314,7 @@ IntLeaf IntLeaf::inverse(const IntLeaf &mod) const
 	//Prepare the result
     mpz_class res;
 
-    if(mpz_invert(res.get_mpz_t(), data.get_mpz_t(), mod.getBigInt().get_mpz_t()) != 0)
+    if(mpz_invert(res.get_mpz_t(), data.get_mpz_t(), mod.getBigInt().get_mpz_t()) == 0)
     {
 		//TODO
         // throw exception?
@@ -330,6 +331,9 @@ mpz_class IntLeaf::getBigInt(void) const
     return data; //Simply return the mpz_class object
 }
 
+unsigned int IntLeaf::getBitLength(void) const {
+    return mpz_sizeinbase(data.get_mpz_t(), 2);
+}
 
 bytevector IntLeaf::toVector(void) const 
 {
@@ -377,6 +381,23 @@ int32_t IntLeaf::getLength(void) const
 		//Return the set length.
 		return length;
     }
+}
+
+IntLeaf IntLeaf::div(const IntLeaf &leaf) const {
+    mpz_class res = data/leaf.data;
+    return (IntLeaf)res;
+}
+
+IntLeaf IntLeaf::operator/(const IntLeaf &leaf) const {
+    return div(leaf);
+}
+
+IntLeaf IntLeaf::sub(const IntLeaf &leaf) const {
+    return *this + (-leaf);
+}
+
+IntLeaf IntLeaf::operator-(const IntLeaf &leaf) const {
+    return sub(leaf);
 }
 
 

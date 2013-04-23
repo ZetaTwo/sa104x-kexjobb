@@ -247,10 +247,34 @@ public:
     bool operator>(const IntLeaf &leaf) const;
 
 	/** Unary minus operator
-	  * Returns the IntLeaf objet with opposite sign.
+	  * Returns the IntLeaf object with opposite sign.
 	  * \return A copy of the IntLeaf objet with opposite sign.
 	  */
     IntLeaf operator-(void) const;
+
+    /** Binary minus operator
+	  * Returns an IntLeaf object with the difference between the inputs.
+	  * \return A copy of the IntLeaf object with the difference between the inputs.
+	  */
+    IntLeaf operator-(const IntLeaf &leaf) const;
+
+    /** Minus function
+	  * Returns an IntLeaf object with the difference between the inputs.
+	  * \return A copy of the IntLeaf object with the difference between the inputs.
+	  */
+    IntLeaf sub(const IntLeaf &leaf) const;
+
+    /** Division function
+	  * Returns the IntLeaf containing this/leaf.
+	  * \return A copy of the IntLeaf containing this/leaf.
+	  */
+    IntLeaf div(const IntLeaf &leaf) const;
+
+    /** Division operator
+	  * Returns the IntLeaf containing this/leaf.
+	  * \return A copy of the IntLeaf containing this/leaf.
+	  */
+    IntLeaf operator/(const IntLeaf &leaf) const;
 
 	/** Inverse
 	  * Returns the inverse of the IntLeaf objet modulo mod.
@@ -270,6 +294,12 @@ public:
 	  * \return an std::string containing the data of the IntLeaf.
 	  */
     std::string toString(void) const;
+
+    /** Get bit length.
+	  * Returns the number of bits needed to store the IntLeaf.
+	  * \return the number of bits needed to store the IntLeaf.
+	  */
+    unsigned int getBitLength(void) const;
 
 	virtual bytevector toVector(void) const;
     virtual int32_t getLength(void) const;

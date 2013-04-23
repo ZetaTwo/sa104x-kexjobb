@@ -17,6 +17,11 @@ public:
 	 */
 	DataLeaf(void);
 
+    /** bytevector constructor
+	 *  Creates a DataLeaf from a bytevector.
+	 */
+    DataLeaf(const bytevector &data);
+
 	/** Creates a DataLeaf of a set size.
 	 *  Creates a DataLeaf which has a preset capacity of size.
 	 *  \param[in] size The size of the DataLeaf

@@ -6,6 +6,10 @@ DataLeaf::DataLeaf(void) : BaseLeaf(BaseNode::DATA_LEAF)
 {
 }
 
+DataLeaf::DataLeaf(const bytevector &data) : BaseLeaf(BaseNode::DATA_LEAF), data(data)
+{
+}
+
 DataLeaf::DataLeaf(int32_t size) : BaseLeaf(BaseNode::DATA_LEAF), data(size)
 {
 }

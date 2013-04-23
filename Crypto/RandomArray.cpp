@@ -5,8 +5,8 @@ Node RandomArray(Node Gq, unsigned int Nprime, bytevector (*hash)(bytevector dat
 	IntLeaf p = Gq.getIntLeafChild(0);
 	IntLeaf q = Gq.getIntLeafChild(1);
 
-	unsigned int Nq = p.getLength() * 8;
-	PRG prg(hash, seed, Nq+Nr);
+    unsigned int Nq = p.getBitLength();
+	PRG prg(hash, seed, 8*((Nq+Nr+8-1)/8));
 	IntLeaf mod(2);
 	mod.expTo(Nq+Nr);
 
@@ -16,7 +16,9 @@ Node RandomArray(Node Gq, unsigned int Nprime, bytevector (*hash)(bytevector dat
 	{
 		IntLeaf child = prg.next();
 		child.modTo(mod);
-		child.expToMod((p + (-1)).mult(q.inverse(p)), p);
+        IntLeaf exp = (p - 1) / q;
+        std::string expdata = exp.toString();
+		child.expToMod(exp, p);
 		result.addChild(child);
 	}
 
