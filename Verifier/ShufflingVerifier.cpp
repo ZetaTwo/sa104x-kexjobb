@@ -34,7 +34,7 @@ bool verifyShuffling(proofStruct &pfStr,
                 char ciphertexts_filename[FILENAME_BUFFER_SIZE];
                 sprintf(ciphertexts_filename, CIPHERTEXTS_FILE_TMPL.c_str(), l);
 
-                std::ifstream ciphtext_stream(pfStr.directory + "/proofs/" + ciphertexts_filename, std::fstream::in | std::fstream::binary);
+                std::ifstream ciphtext_stream((pfStr.directory + "/proofs/" + ciphertexts_filename).c_str(), std::fstream::in | std::fstream::binary);
 
                 if(!ciphtext_stream) {
                     return false;

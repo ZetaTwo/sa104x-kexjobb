@@ -1,5 +1,6 @@
 #include <vector>
 #include <fstream>
+#include <ios>
 
 #include "KeyVerifier.h"
 #include "Node.h"
@@ -40,7 +41,7 @@ bool keyVerifier(proofStruct &pfStr)
 
 		try
 		{
-			std::ifstream key_file(pfStr.directory + "/proofs/" + ppk_filename, std::ios::binary | std::ios::in);
+		    std::ifstream key_file((pfStr.directory + "/proofs/" + ppk_filename).c_str(), std::ios_base::binary | std::ios_base::in);
 			pub_key = IntLeaf(key_file);
 		}
 		catch(...)
@@ -84,7 +85,7 @@ bool keyVerifier(proofStruct &pfStr)
 		char psk_filename[FILENAME_BUFFER_SIZE];
 		sprintf(psk_filename, PARTIAL_SECRET_KEY_FILE_TMPL.c_str(), i);
 	
-		std::ifstream fstr(pfStr.directory + "/" + psk_filename, std::fstream::in);
+		std::ifstream fstr((pfStr.directory + "/" + psk_filename).c_str(), std::fstream::in);
 	
 		// If file exists
 		if(fstr)

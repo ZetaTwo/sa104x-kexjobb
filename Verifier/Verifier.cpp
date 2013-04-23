@@ -165,7 +165,7 @@ int Verifier(string protinfo, string directory,
 
     /* Read first ciphertext */
     try {
-        std::ifstream fstr(pfStr.directory + "/" + CIPHERTEXTS_FILE, std::fstream::in | std::fstream::binary);
+        std::ifstream fstr((pfStr.directory + "/" + CIPHERTEXTS_FILE).c_str(), std::fstream::in | std::fstream::binary);
         L0 = Node(fstr);
     }
     catch(...) {
@@ -185,7 +185,7 @@ int Verifier(string protinfo, string directory,
             char ciphertext_filename[FILENAME_BUFFER_SIZE];
             sprintf(ciphertext_filename, CIPHERTEXTS_FILE_TMPL.c_str(), pfStr.lambda);
 
-            std::ifstream fstr(pfStr.directory + "/proofs/" + ciphertext_filename, std::fstream::in | std::fstream::binary);
+            std::ifstream fstr((pfStr.directory + "/proofs/" + ciphertext_filename).c_str(), std::fstream::in | std::fstream::binary);
             Llambda = Node(fstr);
         }
         catch(...) {
@@ -209,7 +209,7 @@ int Verifier(string protinfo, string directory,
     {
         /* Read plaintexts */
         try {
-            std::ifstream fstr(pfStr.directory + "/" + PLAINTEXTS_FILE.c_str(), std::fstream::in | std::fstream::binary); 
+            std::ifstream fstr((pfStr.directory + "/" + PLAINTEXTS_FILE.c_str()).c_str(), std::fstream::in | std::fstream::binary); 
             m = Node(fstr);
         } catch(...) {
             return 0;
