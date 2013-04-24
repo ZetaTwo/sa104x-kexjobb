@@ -20,7 +20,12 @@ OUT_ARITHMETIC_OBJ = $(addprefix $(OUT_DIR)/Arithmetic/,$(ARITHMETIC_OBJ))
 OUT_CRYPTO_OBJ = $(addprefix $(OUT_DIR)/Crypto/,$(CRYPTO_OBJ))
 OUT_VERIFIER_OBJ = $(addprefix $(OUT_DIR)/Verifiers/,$(VERIFIER_OBJ))
 
+
 all: arithmetic crypto verifiers
+
+debug: CFLAGS += -g
+
+debug: arithmetic crypto verifiers
 
 arithmetic: $(OUT_ARITHMETIC_OBJ)
 	$(AR) $(OUT_DIR)/Arithmetic/libarithm.a $(OUT_ARITHMETIC_OBJ)
