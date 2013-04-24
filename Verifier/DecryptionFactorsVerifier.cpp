@@ -13,43 +13,52 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
     //Step 1
     for(unsigned int i=0; i<ps.lambda; ++i)
     {
-	// a)
-	Node tauDeci = tauDec.getNodeChild(i);
+	    // a)
+	    Node tauDeci = tauDec.getNodeChild(i);
 
-	IntLeaf y_prime = tauDeci.getIntLeafChild(0);
-	Node B_prime = tauDeci.getNodeChild(1);
+	    IntLeaf y_prime = tauDeci.getIntLeafChild(0);
+        Node B_prime;
+        if(ps.width == 1) {
+            B_prime.addChild(tauDeci.getNodeChild(1));
+        } else {
+            B_prime = tauDeci.getNodeChild(1);
+        }
 
-	if(!isElemOfGq(ps.Gq, y_prime) ||
-	   !isElemOfMw(ps, B_prime)) 
-	{
-	    return false;
-	}
+	    if(!isElemOfGq(ps.Gq, y_prime) ||
+	       !isElemOfMw(ps, B_prime)) 
+	    {
+	        return false;
+	    }
     
-	// b)
-	IntLeaf sigmaDeci = sigmaDec.getIntLeafChild(i);
+	    // b)
+	    IntLeaf sigmaDeci = sigmaDec.getIntLeafChild(i);
 	
-	if(!isElemOfZn(ps.Gq.getIntLeafChild(0), sigmaDeci))
-	{
-	    return false;
-	}
+	    if(!isElemOfZn(ps.Gq.getIntLeafChild(0), sigmaDeci))
+	    {
+	        return false;
+	    }
     }
 
 	//Step 2
 	//Construct seed
-	Node seed;
-	Node seed_a;
-	Node seed_b;
+	Node seed, seed_a, seed_b;
 	seed_a.addChild(ps.Gq.getIntLeafChild(2));
 	seed_a.addChild(w);
-	seed_b.addChild(ps.pk);
+	seed_b.addChild(ps.y);
 	seed_b.addChild(f);
 	seed.addChild(seed_a);
 	seed.addChild(seed_b);
 
 	bytevector seed_data = ps.rho.concatData(&seed);
 
-	RO RO_seed(H_SHA256, 1);
+    RO RO_seed(ps.hash, ps.nH);
 	IntLeaf s = RO_seed(seed_data);
+
+    //TODO: sdata blir fel!
+    std::string sdata = s.serializeString();
+    std::string ydata = ps.y.serializeString();
+    std::string pkdata = ps.pk.serializeString();
+    std::string xdata = ps.x.serializeString();
 
 	//Step 3
 	PRG prg(H_SHA256, s.toVector(), 256);
@@ -69,7 +78,7 @@ bool DecryptionFactorsVerifier(const int j, const proofStruct &ps, const Node &f
 
 	bytevector challenge_data = ps.rho.concatData(&challenge);
 
-	RO RO_challenge(H_SHA256, 1);
+    RO RO_challenge(ps.hash, 1);
 	IntLeaf v = RO_challenge(challenge_data);
 
 	//Step 5

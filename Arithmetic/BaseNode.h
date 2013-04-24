@@ -46,6 +46,12 @@ public:
 	 */
 	bytevector serialize() const;
 
+    /** Returns the node's data with header as a string.
+	 *  Returns the node's data as a string with the 5 byte prefix.
+	 *  \return The node's data with header.
+	 */
+	std::string serializeString(void) const;    
+
 	/** Returns the concatenation of two nodes data.
 	 *  Returns the node's data with header concatenated with the data of the other node.
 	 *  \param[in] other The node to concatenate to the node.

@@ -1,3 +1,8 @@
+#include <algorithm>
+#include <iterator>
+#include <sstream>
+#include <iomanip>
+
 #include "BaseNode.h"
 #include "Node.h"
 #include "IntLeaf.h"
@@ -90,4 +95,12 @@ bytevector BaseNode::serialize() const {
 
 	//Return the result.
 	return result;
+}
+
+std::string BaseNode::serializeString(void) const {
+    bytevector data = serialize();
+    std::ostringstream ss;
+    ss << std::hex << std::uppercase << std::setfill( '0' );
+    std::for_each( data.cbegin(), data.cend(), [&]( int c ) { ss << std::setw( 2 ) << c; } );
+    return ss.str();
 }

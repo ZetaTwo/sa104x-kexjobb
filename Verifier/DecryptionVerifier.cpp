@@ -6,14 +6,31 @@
 
 #include "Node.h"
 
+#include "FileNames.h"
+
 bool DecryptionVerifier(const proofStruct &ps, const Node L, const Node m) {
 
 	IntLeaf p = ps.Gq.getIntLeafChild(0);
 
 	//Step 1
-	Node f = Node("f.dat");
-	Node tauDec = Node("tauDec.dat");
-	Node sigmaDec = Node("sigmaDec.dat");
+    Node f, tauDec, sigmaDec;
+    for (int l = 1; l <= ps.lambda; l++)
+    {
+        char filename[FILENAME_BUFFER_SIZE];
+        sprintf(filename, DECRYPTION_FACTORS_FILE_TMPL.c_str(), l);
+	    Node f_l = Node(ps.directory + "/proofs/" + filename);
+        f.addChild(f_l);
+
+        sprintf(filename, DECR_FACT_COMMITMENT_FILE_TMPL.c_str(), l);
+	    Node tauDec_l = Node(ps.directory + "/proofs/" + filename);
+        tauDec.addChild(tauDec_l);
+
+        sprintf(filename, DECR_FACT_REPLY_FILE_TMPL.c_str(), l);
+        std::ifstream sigmaDec_l_file((ps.directory + "/proofs/" + filename).c_str(), std::fstream::in | std::fstream::binary);
+	    IntLeaf sigmaDec_l = IntLeaf(sigmaDec_l_file);
+        sigmaDec.addChild(sigmaDec_l);
+    }
+    
 
 	//If fail, return false;
 

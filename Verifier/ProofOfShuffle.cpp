@@ -323,9 +323,11 @@ bool proofOfShuffle(proofStruct &pfStr,
 
     // Check F^v * F' = Enc_pk(1, -kF)* prod (w'_i)^kE_i
     /*if(pfStr.width == 1) {
+    }*/
 
 
-    if(F.expMod(v, p) * F_prime != Enc(pfStr.pk, IntLeaf(1), -kF, p) * w_prime.expMultMod(kE, p))
+    //TODO: Fungerar inte
+    /*if(F.expMod(v, p) * F_prime != Enc(pfStr.pk, IntLeaf(1), -kF, p) * w_prime.expMultMod(kE, p))
     {
         return false;
     }*/

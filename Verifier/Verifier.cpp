@@ -9,12 +9,6 @@
 #include <fstream>
 #include <vector>
 
-//TODO: Ta bort
-#include <algorithm>
-#include <iterator>
-#include <sstream>
-#include <iomanip>
-
 using std::string;
 
 #include <rapidxml/rapidxml.hpp>
@@ -146,27 +140,20 @@ int Verifier(string protinfo, string directory,
     Node rho;
     rho.addChild((DataLeaf)versionProof);
     rho.addChild((DataLeaf)(sid + "." + auxsid));
-    rho.addChild(IntLeaf(pfStr.width, 4));
-    rho.addChild(IntLeaf(pfStr.nE,4));
-    rho.addChild(IntLeaf(pfStr.nR,4));
-    rho.addChild(IntLeaf(pfStr.nV,4));
+    rho.addChild(IntLeaf(pfStr.width));
+    rho.addChild(IntLeaf(pfStr.nE));
+    rho.addChild(IntLeaf(pfStr.nR));
+    rho.addChild(IntLeaf(pfStr.nV));
     rho.addChild((DataLeaf)pGroup);
     rho.addChild((DataLeaf)Sprg);
     rho.addChild((DataLeaf)Sh);
 
-    /*bytevector rhodata = rho.serialize();
-    std::ostringstream ss;
-    ss << std::hex << std::uppercase << std::setfill( '0' );
-    std::for_each( rhodata.cbegin(), rhodata.cend(), [&]( int c ) { ss << std::setw( 2 ) << c; } );
-    std::string result = ss.str();*/
-
+    
     pfStr.rho = (IntLeaf)pfStr.hash(rho.serialize());
 
-    /*bytevector rhodata2 = pfStr.rho.serialize();
-    std::ostringstream ss2;
-    ss2 << std::hex << std::uppercase << std::setfill( '0' );
-    std::for_each( rhodata2.cbegin(), rhodata2.cend(), [&]( int c ) { ss2 << std::setw( 2 ) << c; } );
-    std::string result2 = ss2.str();*/
+    //TODO: Analyze data
+    std::string result = rho.serializeString();
+    std::string result2 = pfStr.rho.serializeString();
 
     //Step 5       
     if(!keyVerifier(pfStr))
@@ -233,14 +220,15 @@ int Verifier(string protinfo, string directory,
 
     //Step 7 Verify relations between lists
 
-    if((type == MIX || type == SHUFFLE) &&
+    //TODO: s blir fel här inne
+    /*if((type == MIX || type == SHUFFLE) &&
         (posc || ccpos))
     {
         if(!verifyShuffling(pfStr, L0, Llambda, posc, ccpos))
         {
             return false;
         }	
-    }
+    }*/
 
     if(dec && type == MIX)
     {
