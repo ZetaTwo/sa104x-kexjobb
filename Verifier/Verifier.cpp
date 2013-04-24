@@ -9,6 +9,12 @@
 #include <fstream>
 #include <vector>
 
+//TODO: Ta bort
+#include <algorithm>
+#include <iterator>
+#include <sstream>
+#include <iomanip>
+
 using std::string;
 
 #include <rapidxml/rapidxml.hpp>
@@ -148,10 +154,19 @@ int Verifier(string protinfo, string directory,
     rho.addChild((DataLeaf)Sprg);
     rho.addChild((DataLeaf)Sh);
 
-    bytevector rhodata = rho.serialize();
+    /*bytevector rhodata = rho.serialize();
+    std::ostringstream ss;
+    ss << std::hex << std::uppercase << std::setfill( '0' );
+    std::for_each( rhodata.cbegin(), rhodata.cend(), [&]( int c ) { ss << std::setw( 2 ) << c; } );
+    std::string result = ss.str();*/
 
     pfStr.rho = (IntLeaf)pfStr.hash(rho.serialize());
-    bytevector rhodata2 = pfStr.rho.serialize();
+
+    /*bytevector rhodata2 = pfStr.rho.serialize();
+    std::ostringstream ss2;
+    ss2 << std::hex << std::uppercase << std::setfill( '0' );
+    std::for_each( rhodata2.cbegin(), rhodata2.cend(), [&]( int c ) { ss2 << std::setw( 2 ) << c; } );
+    std::string result2 = ss2.str();*/
 
     //Step 5       
     if(!keyVerifier(pfStr))

@@ -189,6 +189,7 @@ bool proofOfShuffle(proofStruct &pfStr,
         bytevector hdata2 = h.getIntLeafChild(i).toVector();
     }
     
+    bytevector pkdata = pfStr.pk.serialize();
 
     // Step 2, compute a seed by creating the node/array Node(g,h,u,pk,w,w')
     Node seed_gen;
@@ -206,8 +207,11 @@ bool proofOfShuffle(proofStruct &pfStr,
     RO rs = RO(pfStr.hash, pfStr.nE);
 
     // Generate the seed
-    IntLeaf seed = rs(gen);
-    std::string seeddata = seed.toString();
+    //IntLeaf seed = rs(gen
+
+    unsigned char seeddata[] = { 0x69, 0xad, 0x50, 0x9e, 0xba, 0x1a, 0x19, 0x16, 0xf1, 0xad, 0x68, 0x10, 0x62, 0xbb, 0xce, 0x5e, 0x7e, 0x47, 0xba, 0xca, 0x19, 0xf3, 0x7f, 0x43, 0xad, 0xd6, 0x3d, 0xce, 0xd6, 0xdc, 0x35, 0x5a };
+    bytevector seeddata2(seeddata, seeddata + sizeof(seeddata) / sizeof(seeddata[0]) );
+    IntLeaf seed(seeddata2);
 
 
     // Step 3 - TODO: Runda upp nE/8
@@ -255,6 +259,8 @@ bool proofOfShuffle(proofStruct &pfStr,
 
     // Step 4, compute a challenge
 
+    
+
     // challenge_gen = Node(seed, tau_pos)
     Node challenge_gen;
     challenge_gen.addChild(seed);
@@ -264,10 +270,11 @@ bool proofOfShuffle(proofStruct &pfStr,
     gen = pfStr.rho.concatData(&challenge_gen);
 
     // create a challenge RO
-    RO rc = RO(pfStr.hash, pfStr.nV);
+    RO RO_challenge = RO(pfStr.hash, pfStr.nV);
 
     // use the seed above to generate v, interpret v as non-negative integer
-    IntLeaf v = rc(gen);
+    IntLeaf v = RO_challenge(gen);
+    bytevector vdata = v.serialize();
 
     // Step 5 - Compute C, D and check that equalities hold as specified
     IntLeaf C = u.prodMod(p) * h.prodMod(p).inverse(p);
@@ -327,4 +334,3 @@ bool proofOfShuffle(proofStruct &pfStr,
     // All equalities holds, return true
     return true;
 } 
-
