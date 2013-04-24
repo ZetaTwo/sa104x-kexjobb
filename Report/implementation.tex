@@ -31,15 +31,19 @@ are described in detail in order to allow an independent verifier.
 %- Beskrivning av Pedersen commitments
 %- Borde byte tree för width=1 följa mönstret?
 
-
-
 \subsection{General Design Choices}
 
 The first implementation choice was which programming language to use. We wanted to use well established technologies and have a good performance [REF] on the verifier. Considering these criteria and our programming skills, the choice was made between C, C++ and Java. Since other groups are working on implementations in Java we decided to use C or C++ and since we wanted to use features such as operator overloading and some OOP, we settled on C++.
 
+The program consist of a few different parts. To represent the various mathematical objects in the calculations, we created a collection of classes of function called a \emph{byte tree}. These store group elements and a few other types of data as specified in the specification.
+
 We wanted to keep the verifier as close to the specification in layout as possible. Apart from some cryptographic primitives and the byte trees, there is almost no code repetition in the verifier. This meant that we would gain little to nothing by designing any kind of class structure or abstractions.
 
 The byte trees were modelled with a few classes representing nodes and leaves. This enabled us to hide away complex operations behind simple interfaces which resulted in a more readable and maintainable code throughout the rest of the verifier.
+
+\subsection{Tools}
+
+We developed the program on two different platforms. The code was kept in a git repository and hosted on GitHub. One of the development platforms used OS X 10.8 with Emacs and g++ 4.7. The other used Windows 8 with Visual Studio 2012. We generated reference documents for the program with Doxygen.
 
 \subsection{Third Party Libraries}
 
@@ -61,14 +65,13 @@ All of the PRGs and ROs in the verifier are implemented in the verifier but at t
 
 To test the byte tree classes and our cryptographic functions we used some unit testing. We used Google Test as our unit test framework since it was very simple and easy to use. The unit tests were invaluable in tracking down several subtle bugs in our byte tree implementation, especially regarding memory management.
 
-\subsection{Math Library}
+\subsection{Math Library - The byte tree}
 
-TODO
-
-We built 
+To facilitate for the various calculation that needs to be done with various mathematical objects. We created a collection of \emph{byte tree} classes. The classes use the GMP library internally to perform the actual arithmetic calculations. The classes then wrap these operations in a class hierarchy which enables us to create arrays and trees and perform calculations with these compound structures. There are also functions to import strings and files and convert them into these classes. The classes can also be serialized into arrays and strings which are used for testing and debugging purposes.
 
 \subsection{Pseudorandom Generators and Random Oracles}
 
+The specification also provide pseudo random generators, \emph{PRG}:s and Random Oracles, \emph{RO}:s. These primitives are implemented as classes which are instantiated to perform their respective operations as described earlier. These classes uses hash functions from the OpenSSL library internally to perform the hashing part.
 
 \subsection{Verifier}
 
@@ -80,4 +83,8 @@ Each named algorithm in the specification was implemented as its own function. T
 
 \subsection{Tests \& debugging}
 
-TODO
+For the \emph{byte tree}, PRG and RO classes, a small collection of unit tests were created. The tests for the PRG and RO classes were taken from the test vectors chapter in the specification while the byte tree tests were created by us. The tests were implemented with the Google Test test framework.
+
+When all the parts of the program had been implemented we received test data from Wikström to verify that the program worked. The data contained two small instance with all the input files required by a normal run of the verifier. Additionally the test data contained the correct state of key variables throughout important steps of the execution. The debugging was done in Visual Studio. By stepping through the program and comparing states against the test data we could find and fix a great number of bugs in the program.
+
+Fungerade sen?
