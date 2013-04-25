@@ -1,6 +1,28 @@
 \subsection{Cryptographic Primitives}
 
-TODO
+TODO: Sources
 
-PRGs
-ROs
+Many cryptographic systems, including Verificatum, make use of some basic functions, normally called cryptographic primitives. These primitives are functions or objects which possess properties interesting in cryptographic contexts. In Verificatum we use hash functions, pseudo random generators and random oracles all of which are described in this chapter.
+
+\subsubsection{Hash functions}
+In general, a hash function is a easily function which takes an input from an arbitrarily large input space and map it to an element in a finite sized hash space. As a consequence of this, there will exist several inputs which map to the same hash. Hash functions are used in many different areas of computer science and there are many different kinds tailored to have the properties desired for its particular application. A cryptographic hash function is a hash function with two important properties. First, the hashes are uniformly distributed in the hash space. Simply put, this means that if you try to guess which hash a given input will produce you will never a significantly better chance than one in the size of the hash space. Furthermore, for a cryptographic hash function all of the following are infeasible.
+
+\begin{itemize}
+\item Find an input which produces a given hash.
+\item Given an input and its hash, find another input with the same hash.
+\item Find two inputs which produce the same hash.
+\end{itemize}
+
+In the mix-net any cryptographic hash function will do, but concretely a popular choice is the SHA-2 family of hash functions, namely SHA-256, SHA-384 and SHA-512. Their main difference is the number of bits they output, i.e. the size of the hash space which is 256, 384 and 512 respectively.
+
+\subsubsection{Pseudo Random Generators}
+
+A \emph{Pseudo Random Generator}, PRG, is a function which takes an initial seed and expands it into a longer sequence of random data. The output is random in the sense that it should be indistinguishable from truly random output but the same seed will produce the same output.
+
+In the Verificatum mix-net we use a PRG based on a cryptographic hash function which hashes the seed together with a counter which increases for every iteration.
+
+\subsubsection{Random Oracles}
+
+In theory, a \emph{Random Oracle}, RO, is a black box which takes an input and returns a truly random output from its output space. It will always respond with the same output for the same input. This is very similar to a hash function but has some subtle differences. An RO is a purely theoretical construct which defines no actual function, only a relationship between inputs and outputs.
+
+In practice though, we use a construct within the Verificatum mix-net which we call an RO. This construct is based on a cryptographic hash function and a seed. The purpose of the seed is to permute the relationship between the inputs and outputs of the hash function and thus creating an easily randomizable RO without coming up with a whole new hash function.
