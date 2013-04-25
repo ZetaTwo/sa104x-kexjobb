@@ -65,7 +65,7 @@ All of the PRGs and ROs in the verifier are implemented in the verifier but at t
 
 To test the byte tree classes and our cryptographic functions we used some unit testing. We used Google Test as our unit test framework since it was very simple and easy to use. The unit tests were invaluable in tracking down several subtle bugs in our byte tree implementation, especially regarding memory management.
 
-\subsection{Math Library - The byte tree}
+\subsection{Math Library - The Byte Tree}
 
 To facilitate for the various calculation that needs to be done with various mathematical objects. We created a collection of \emph{byte tree} classes. The classes use the GMP library internally to perform the actual arithmetic calculations. The classes then wrap these operations in a class hierarchy which enables us to create arrays and trees and perform calculations with these compound structures. There are also functions to import strings and files and convert them into these classes. The classes can also be serialized into arrays and strings which are used for testing and debugging purposes.
 
@@ -81,7 +81,7 @@ Apart from the byte tree classes and the cryptographic primitives, we needed a f
 
 Each named algorithm in the specification was implemented as its own function. The functions became long but since none of the code is repeated and the possibilities for isolated testing was minimal, we chose to not split up the algorithms into several functions.
 
-\subsection{Tests \& debugging}
+\subsection{Testing and Debugging}
 
 For the \emph{byte tree}, PRG and RO classes, a small collection of unit tests were created. The tests for the PRG and RO classes were taken from the test vectors chapter in the specification while the byte tree tests were created by us. The tests were implemented with the Google Test test framework.
 

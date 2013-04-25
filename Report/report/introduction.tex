@@ -18,6 +18,6 @@ The Verificatum mix-net is designed to take a number of encrypted messages, ciph
 
 Additionally we would like to be able to verify that the mix-net has done its work correctly and not altered any votes. Therefore the mix-net produces some extra data files during its execution. These data files together with the input ciphertexts and the output plaintexts can be run through a verification process that tells if the process has been correctly performed. The neat thing about all this is that it can securely tell whether this is true or false without spilling any more information about the relation between the ciphertexts and the plaintexts, i.e. voter anonymity is preserved.
 
-\subsection{Goals and Scope (TODO)}
+\subsection{Goals and Scope}
 
-The idea is that any third party which want to check the result should be able to implement a verifier for Verificatum. Douglas has published a document describing this verifier. We have, using this document, implemented a verifier to test that the document is complete with all the information needed to implement the verifier.
+The idea is that any third party which want to check the result should be able to implement a verifier for Verificatum. Wikström has published a document describing this verifier. We have, using this document, implemented a verifier to test that the document is complete with all the information needed to implement the verifier. Because of time constraints, we have limited ourselves to implement a working prototype with only the most common options available, just sufficient to confirm that the specification contain all the necessary parts to implement a verifier. This prototype could later be expanded to facilitate for all the features of the Verificatum mix-net.
