@@ -15,8 +15,9 @@ reencryption mixnet consists of a number of servers which sequentially
 process the messages and reencrypts the list of messages and outputs
 them in a randomized order. After passing through all servers, the
 list of ciphertexts is decrypted and the result is a list of the
-messages in random order. It should be infeasible to deduce from where
-each element came.
+messages in random order. It should after decryption be infeasible to
+deduce the position of each element in the initial list. This is
+called \emph{untraceability}.
 
 One use of mixnets is in the context of electronic voting systems. An
 electronic election can be performed by the use of a reencryption
@@ -36,8 +37,8 @@ mixnet \\
 \end{enumerate}
 
 Notice that the reencryption step is necessary before the actual
-mixing as if omitted, the mixing would merely scramble the list of
-original cryptotext, providing no untraceability at all.
+mixing as if it were omitted, the mixing would merely scramble the
+list of original cryptotexts, providing no untraceability at all.
 
 \subsubsection{El Gamal Mixnets}
 
@@ -80,6 +81,32 @@ The result of the election may now be computed while the origin of the
 individual votes is unknown. Remark that all encryptions
 $\mathrm{Enc}_{pk}$ are performed with some randomness $r \in
 \mathbb{Z}_q$.
+
+Note that this is a simplification, since if all parties were using
+the same public key $pk$, this would imply that all parties also
+possessed the same secret key (källa eller förklaring?). Consequently,
+the mix-net, as stated above, does not provide untraceability.
+
+In order to achieve untraceability, the mix-net servers need to
+generate different public keys and still remain able to jointly
+decrypt the output list of ciphertexts. The El Gamal cryptosystem
+provides protocols for distributed key generation and decryption by
+several parties (douglas doc). The details of these protocols will be
+omitted, but the basic principle is the following.
+
+A beforehand specified threshold number of mix-net servers
+independently generate their own secret keys. The $l$th mix-net server
+generates $sk_l = x \in \mathbb{Z}_Q$, from which a partial public key
+$pk_l = (g,y_l) = (g,g^{x_l})$ can be derived. A joint public key is
+then generated as $pk = \prod_l y_l$ and the corresponding secret key
+$sk = \prod_l x_l$. After each server has processed the ciphertext
+list, the list is jointly decrypted using a certain procedure. Omitted
+in this description is the fact that the secret keys are actually
+shared among all mix-net servers in such a way that no subset of the
+servers smaller than the threshold number is able to [göra någonting
+  dumt]. This protocol with a suitably chosen threshold values makes
+it possible to correctly execute the mix-net even when the mix-net
+contains dishonest parties (Källa på detta stycket, douglas doc?).
 
 \subsubsection{Verification}
 There are some problems related to electronic voting using
