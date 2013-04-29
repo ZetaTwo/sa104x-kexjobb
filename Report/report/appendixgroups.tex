@@ -4,17 +4,54 @@
 A group $(G, \cdot)$ is a set $G$ and a binary operation $\cdot: G \to G$, called
 multiplication, that satisfies the four group axioms:
 \begin{enumerate}
-\item $\forall a,b \in G, \, a\cdot b \in G$
-\item $\forall a,b,c \in G, \, (a\cdot b)\cdot c = a \cdot (b \cdot c)$ 
-\item $\exists! e \in G \text{ such that } \forall a \in G, \, a \cdot e = e \cdot a = a$
-\item $\forall a \in G, \, \exists b \in G \text{ such that } a \cdot b = b \cdot a = e$
+\item The product of any two elements of $G$ is in $G$
+$$\forall a,b \in G, \, a\cdot b \in G$$
+
+\item Multiplication is associative 
+$$
+\forall a,b,c \in G, \, (a\cdot b)\cdot c = a \cdot (b \cdot c)
+$$ 
+\item There exists a unique identity element in $G$
+$$
+\exists! e \in G \text{ such that } \forall a \in G, \, a \cdot e = e \cdot a = a
+$$
+\item Every element in $G$ has an inverse
+$$
+\forall a \in G, \, \exists b \in G \text{ such that } a \cdot b = b \cdot a = e
+$$
 \end{enumerate}
 
 When the operation of the group $(G, \cdot)$ is understood from the
 context, one often abbreviates the notation and calls $(G, \cdot)$
 simply $G$.
 
+Oftentimes one wants to multiply an element to itself a number of
+times. This is called exponentation. Let $g \in G$ and
+$x \in \mathbb{Z}$, then $g$ multiplied to itself $x$ times
+$$
+g \cdot ... \cdot g = g^x
+$$
 
- Definition of a group\\ Multiplicative
-notation/exponentiation\\ Order of group/element\\ Definition of a
-cyclic group, generator\\ Multiplicative subgroups of $Z_n$
+is called $g$ raised to the power of $x$. The usual laws of
+exponentation holds in a group.
+
+The number of elements in a group $G$ is called the order of the
+group. If the order of $G$ is finite, $G$ is said to be finite. If
+$x \in \mathbb{Z}$ is the smallest integer such that $g^x = e$, then
+$x$ is called the order of the element $g \in G$. Notice that if
+$y,y' < x$, $y \neq y'$, then $g^y \neq g^{y'}$ as otherwise
+$$
+g^y = g^{y'} \Rightarrow e = g^{y'} \cdot g^{-y} = g^{y' - y}
+$$
+where $0 < y' - y < x$ and hence $x$ is not the order of $g$, which is
+a contradiction.
+
+If the order of $G$ is $q < \infty$ and there exists an element $g \in
+G$ such that the order of $g$ is $q$, then $G$ is said to be cyclic
+with $g$ as a generator. The motivation behind this naming, is that
+any element $h \in G$ is equal to $g^x$ for some $x \le q$, so $g$
+generates the whole group.
+
+
+
+Multiplicative subgroups of $Z_n$
