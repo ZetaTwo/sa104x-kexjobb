@@ -1,17 +1,13 @@
 \subsection{El Gamal Cryptography}
 
-Before defining more complex cryptographic structures such as mix-nets
-we need to learn about the basic building blocks of these
-compounds. First out is a definition of a common public key
-cryptosystem, called the El Gamal cryptosystem (källa). It is based on
-group theory, to which a short introduction is provided in Appendix A.
-
-In full generality, a public key cryptosystem, or an assymetric
-cryptosystem, provides two parties the means to communicate without
-sharing a common secret beforehand (källa). The cryptosystem consists
-of a public key, a secret key and two functions - one encryption
-function which uses the public key and one decryption function which
-uses the secret key (källa).
+The El Gamal cryptosystem is based on group theory, to which a short
+introduction is provided in Appendix A. In full generality, a public
+key cryptosystem, or an assymetric cryptosystem, provides two parties
+the means to communicate privately without the need of sharing a
+common secret beforehand as is the case in symmetric cryptography
+(källa). The cryptosystem consists of a public key, a secret key and
+two functions - one encryption function which uses the public key and
+one decryption function which uses the secret key (källa).
 
 In the El Gamal cryptosystem the communicating parties agrees on a
 cyclic group and a generator element. The secret key is an integer,
