@@ -1,9 +1,17 @@
 \subsection{Mix Networks}
 
+There are different kinds of mix networks. Here, only reencryption
+mix-nets will be treated - first on a general level and then a certain
+type of reencryption mix-net based on the El Gamal cryptosystem will
+be described. In any mix-net used in the context of electronic
+elections, the need of verification of correct execution is
+essential. How this can be obtained is explored in the end of the
+section.
+
 \subsubsection{Overview}
 http://www.rsa.com/rsalabs/staff/bios/ajuels/publications/universal/Universal.pdf
 
-One purpose of mix networks, or mixnets, is to provide untraceability
+One purpose of mix networks is to provide untraceability
 to its users. A mixnet may, for example, take as input a list of
 encrypted messages of different origins. These messages pass through
 the mixnet and is output decrypted and in a randomized order. This
@@ -119,7 +127,33 @@ party providing a computer acting as mix server may be affected by a
 virus of some sort. Another and more feasible solution is to allow
 verification by external parties.
 
-A verifiable 
+The verification of execution relies on a concept called
+zero-knowledge proof. A zero-knowledge proof is a cryptographic
+protocol that can be used by one party, the prover, to prove to
+another party that some statement is true. The greatest benefit of
+using this protocol is that the prover can convince the other party of
+the truthfulness of the statement without actually revealing any
+additional information.
+
+It is possible create a zero-knowledge proof based on the discrete
+logarithm problem
+(http://cs.nyu.edu/courses/spring07/G22.3220-001/lec3.pdf). In this
+interactive scheme the prover is able to prove that he or she
+possesses some secret discrete logarithm of an element in a group and
+this will be done without actually revealing the secret. Only a
+transcript of the scheme is generated. In fact, the scheme does not
+reveal any additional information as any party is able to produce a
+correct looking scheme on their own, which means that it reusing
+(perhaps showing it someone else) an old transcript does not prove
+knowledge of the secret.
+
+When it comes to mix-nets, in order to ensure correct execution, one
+can use zero-knowledge proofs to prove that every party shuffles their
+input ciphertexts and reencrypts these ciphertexts. The shuffling part
+may be proven to be correct by a zero-knowledge proof that proves that
+a certain secret (encrypted) matrix is a permutation matrix. If the
+list (vector) of ciphertexts is multiplied with this matrix a
+permutation/shuffling has been performed.
 
 
 
