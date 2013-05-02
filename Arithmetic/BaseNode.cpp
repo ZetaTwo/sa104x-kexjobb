@@ -102,7 +102,7 @@ std::string BaseNode::serializeString(void) const {
     std::ostringstream ss;
     ss << std::hex << std::uppercase << std::setfill( '0' );
 
-	for(bytevector::const_iterator itr = data.cbegin(); itr < data.cend(); itr++)
+	for(bytevector::iterator itr = data.begin(); itr < data.end(); itr++)
 	{
 		ss << std::setw( 2 ) << (int)*itr;
 	}
