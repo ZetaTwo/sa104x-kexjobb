@@ -24,7 +24,7 @@ bool verifyShuffling(proofStruct &pfStr,
         L_array.addChild(L0);
         Node Llast = L0;
 
-        for(int l=1; l<=pfStr.lambda; l++)
+        for(unsigned int l=1; l<=pfStr.lambda; l++)
         {
             Node L;
 
@@ -105,7 +105,7 @@ bool verifyShuffling(proofStruct &pfStr,
 bool isListOfCiphertexts(const proofStruct &pfStr, Node &L) {
 
     try {
-        for(unsigned int i=0; i < L.getLength(); ++i)
+        for(int i = 0; i < L.getLength(); ++i)
         {
             Node u;
             Node v;

@@ -1,8 +1,12 @@
 #pragma once
 #include "BaseLeaf.h"
 
+#pragma warning(disable: 4146)
 #include <gmp.h>
+#pragma warning(default: 4146)
+#pragma warning(disable: 4800 4244)
 #include <gmpxx.h>
+#pragma warning(default: 4800 4244)
 
 #include <string>
 #include <fstream>

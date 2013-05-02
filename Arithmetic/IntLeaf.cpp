@@ -35,10 +35,10 @@ IntLeaf::IntLeaf(bytevector bytevec) : BaseLeaf(BaseNode::INT_LEAF)
     //Check if negative - if most significant bit is 1
     if(ARRAYORDER == 1) {
 		//Check most significant bit of first byte
-		negative = bytevec[0] & 0x80;
+		negative = (bytevec[0] & 0x80) > 0;
 	} else {
 		//Check most significant bit of last byte
-		negative = bytevec[bytevec.size()-1] & 0x80;
+		negative = (bytevec[bytevec.size()-1] & 0x80) > 0;
 	}
 
 	//If we have a negative number

@@ -110,7 +110,7 @@ void getGroupFromString(proofStruct &pfStr, std::string str)
 	char buffer[3];
 	unsigned int c;
 	buffer[2] = 0;
-	for(int pos = 0; pos < str.length(); pos+=2) {
+	for(unsigned int pos = 0; pos < str.length(); pos+=2) {
 		buffer[0] = str[pos];
 		buffer[1] = str[pos+1];
         sscanf(buffer, "%2hhx", &c);

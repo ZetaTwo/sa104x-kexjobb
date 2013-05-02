@@ -14,7 +14,7 @@ bool DecryptionVerifier(const proofStruct &ps, const Node L, const Node m) {
 
 	//Step 1
     Node f, tauDec, sigmaDec;
-    for (int l = 1; l <= ps.lambda; l++)
+    for (unsigned int l = 1; l <= ps.lambda; l++)
     {
         char filename[FILENAME_BUFFER_SIZE];
         sprintf(filename, DECRYPTION_FACTORS_FILE_TMPL.c_str(), l);

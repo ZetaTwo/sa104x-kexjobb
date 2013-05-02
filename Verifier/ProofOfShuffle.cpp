@@ -247,7 +247,7 @@ bool proofOfShuffle(proofStruct &pfStr,
             F.addChild(v.expMultMod(e, p));
         } else {
             Node a, b;
-            for(int i = 0; i < pfStr.width; i++) {
+            for(unsigned int i = 0; i < pfStr.width; i++) {
                 a.addChild(u.getNodeChild(i).expMultMod(e, p));
                 b.addChild(v.getNodeChild(i).expMultMod(e, p));
             }

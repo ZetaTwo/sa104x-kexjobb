@@ -20,7 +20,7 @@ IntLeaf RO::operator()(bytevector data) {
 
 	PRG prg(hash, seed, Nout);
 	bytevector result;
-	unsigned int targetN = ceil(Nout/8.0);
+	unsigned int targetN = (unsigned int)ceil(Nout/8.0);
 	while(result.size() < targetN) {
 		IntLeaf next = prg.next();
 		bytevector nextData = next.toVector();

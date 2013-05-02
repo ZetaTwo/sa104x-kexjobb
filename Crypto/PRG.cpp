@@ -32,7 +32,7 @@ IntLeaf PRG::next() {
 
 	//Prepare the result and fill it with enough data from the queue.
 	bytevector result;
-	for (int i = 0; i < outbits/8; i++)
+	for (unsigned int i = 0; i < outbits/8; i++)
 	{
 		result.push_back(dataqueue.front());
 		dataqueue.pop();

@@ -12,7 +12,7 @@ Node RandomArray(Node Gq, unsigned int Nprime, bytevector (*hash)(bytevector dat
 
 
 	Node result;
-	for (int i = 0; i < Nprime; i++)
+	for (unsigned int i = 0; i < Nprime; i++)
 	{
 		IntLeaf child = prg.next();
 		child.modTo(mod);
