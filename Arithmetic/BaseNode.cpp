@@ -101,6 +101,6 @@ std::string BaseNode::serializeString(void) const {
     bytevector data = serialize();
     std::ostringstream ss;
     ss << std::hex << std::uppercase << std::setfill( '0' );
-    std::for_each( data.cbegin(), data.cend(), [&]( int c ) { ss << std::setw( 2 ) << c; } );
+    //std::for_each( data.cbegin(), data.cend(), [&]( int c ) { ss << std::setw( 2 ) << c; } );
     return ss.str();
 }
