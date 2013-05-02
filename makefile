@@ -5,7 +5,7 @@ CC=g++
 LDFLAGS=-lgmp -gmpxx -lssl -lcrypto
 
 # Options to compiler.
-CFLAGS=-c -IArithmetic -ICrypto -IVerifier
+CFLAGS=-c -IArithmetic -ICrypto -IVerifier #-Irapidxml
 
 #Archiver to make static library
 AR=ar rcs
@@ -34,7 +34,7 @@ crypto: $(OUT_CRYPTO_OBJ) arithmetic
 	$(AR) $(OUT_DIR)/Crypto/libcrypt.a $(OUT_CRYPTO_OBJ)
 
 verifiers: $(OUT_VERIFIER_OBJ) arithmetic crypto
-	$(CC) $(LDFLAGS) $(OUT_VERIFIER_OBJ) $(OUT_DIR)/Arithmetic/libarithm.a $(OUT_DIR)/Crypto/libcrypt.a -o $(OUT_DIR)/verifier
+	$(CC)  $(OUT_VERIFIER_OBJ) $(OUT_DIR)/Arithmetic/libarithm.a $(OUT_DIR)/Crypto/libcrypt.a -o $(OUT_DIR)/verifier $(LDFLAGS)
 
 
 $(OUT_DIR)/Arithmetic/%.o: Arithmetic/%.cpp
