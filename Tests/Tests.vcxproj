@@ -90,6 +90,7 @@
     <ClCompile Include="IntLeafArithmeticsTests.cpp" />
     <ClCompile Include="NodeArithmeticsTests.cpp" />
     <ClCompile Include="NodeDataInitTests.cpp" />
+    <ClCompile Include="NodeSerializeString.cpp" />
     <ClCompile Include="NodeToStringTests.cpp" />
     <ClCompile Include="PRGTests.cpp" />
     <ClCompile Include="ROTests.cpp" />

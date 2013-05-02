@@ -48,5 +48,8 @@
     <ClCompile Include="ROTests.cpp">
       <Filter>Source Files\Crypto</Filter>
     </ClCompile>
+    <ClCompile Include="NodeSerializeString.cpp">
+      <Filter>Source Files\ByteTree</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
