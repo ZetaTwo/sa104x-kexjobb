@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <string.h>
+#include <cstdio>
 using std::string;
 
 #include "Verifier.h"
