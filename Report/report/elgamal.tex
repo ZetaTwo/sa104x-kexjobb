@@ -14,16 +14,15 @@ cyclic group and a generator element. The secret key is an integer,
 while the public key is a group element - the exponentation of the
 generator by the secret key integer (källa). Encryption of a message
 (note that the messages need to be encoded into elements of the group)
-is done by multiplying the message with a random group element, that
-however has special relation to the public key. Now, only the
-possessor of the secret key can decrypt, since without the key it is
-unfeasible to invert this multiplication. This is a slight
-simplification, but it should capture the main idea of the
-cryptosystem.
+is done by multiplying the message with a group element that has a
+special relation to the public key. Now, only the possessor of the
+secret key can decrypt, since without the key it is unfeasible to
+invert this multiplication. This is a slight simplification, but it
+should capture the main idea of the cryptosystem.
 
-As every other asymmetric crypto, the security of the El Gamal
-cryptosystem relies on the assumption that there exist computationally
-hard problems (källa). In this case the security depends on the
+Every asymmetric cryptosystem depends on the assumption that there
+exist computationally difficult problems. This is the case also for
+the El Gamal cryptosystem for which the security depends on the
 difficulty of deducing information about the discrete logarithm in a
 cyclic group (källa).
 
@@ -93,7 +92,7 @@ the assumption is true. (Källa)
 If $G_q$ is a group, then so is $G_q \times G_q$ with the group
 operation defined as $(a,b)(c,d) = (a c, b d)$ for any $(a,b),(c,d)
 \in G_q \times G_q$. From this and the definition of the El Gamal
-cryptosystem, one can deduce that it is homomorphic. This means that
+cryptosystem, one can deduce that it is \emph{homomorphic}. This means that
 for any two messages $m_1, m_2 \in G_q$ and randomnesses $s_1, s_2 \in
 \mathbb{Z}_q$
 $$
@@ -113,11 +112,11 @@ $$
 
 This homomorphic property of the El Gamal Cryptosystem may be used to
 reencrypt an already encrypted message. If $s_1 \in \mathbb{Z}_q$ and
-$s_2 \in \mathbb{Z}_q$ are both chosen with uniform randomness, then
-$s_1 + s_2 \in \mathbb{Z}_q$ will be uniformly random as well
-(källa). So the distribution of ciphertexts encrypted once
-will be indistinguishable from the distribution of ciphertexts that
-have been reencrypted. (Källa)
+$s_2 \in \mathbb{Z}_q$ are chosen with uniform randomness, then $s_1 +
+s_2 \in \mathbb{Z}_q$ will be uniformly random as well (källa). So the
+distribution of ciphertexts encrypted once will be indistinguishable
+from the distribution of ciphertexts that have been
+reencrypted. (Källa)
 
 For future convenience we define
 $$

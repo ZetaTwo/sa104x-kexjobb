@@ -1,10 +1,10 @@
 \subsection{Mix Networks}
 
 There are different kinds of mix networks. Here, only reencryption
-mix-nets will be treated - first on a general level and then a certain
-type of reencryption mix-net based on the El Gamal cryptosystem will
-be described. In any mix-net used in the context of electronic
-elections, the need of verification of correct execution is
+mix-nets will be treated - first on a general level followed by a
+description of a certain type of reencryption mix-net based on the El
+Gamal cryptosystem. In any mix-net used in the context of electronic
+elections, the need for verification of correct execution is
 essential. How this can be obtained is explored in the end of the
 section.
 
@@ -12,24 +12,24 @@ section.
 http://www.rsa.com/rsalabs/staff/bios/ajuels/publications/universal/Universal.pdf
 
 One purpose of mix networks is to provide untraceability
-to its users. A mixnet may, for example, take as input a list of
+to its users. A mix-net may, for example, take as input a list of
 encrypted messages of different origins. These messages pass through
-the mixnet and is output decrypted and in a randomized order. This
+the mix-net and is output decrypted and in a randomized order. This
 property may be used to enable anonymous voting systems.
 
-Different types of mixnets exist. There are decryption mixnets and
-reencryption mixnets. This report treats the latter type. A
-reencryption mixnet consists of a number of servers which sequentially
-process the messages and reencrypts the list of messages and outputs
-them in a randomized order. After passing through all servers, the
-list of ciphertexts is decrypted and the result is a list of the
-messages in random order. It should after decryption be infeasible to
-deduce the position of each element in the initial list. This is
-called \emph{untraceability}.
+Different types of mix-nets exist. There are decryption mix-nets and
+reencryption mix-nets. This report treats the latter type. A
+reencryption mix-net consists of a number of servers, henceforth, the
+mix servers, which sequentially process the messages and reencrypts
+the list of messages and outputs them in a randomized order. After
+passing through all servers, the list of ciphertexts is decrypted and
+the result is a list of the messages in random order. It should after
+decryption be infeasible to deduce the position of each element in the
+initial list. This is called \emph{untraceability}.
 
-One use of mixnets is in the context of electronic voting systems. An
+One use of mix-nets is in the context of electronic voting systems. An
 electronic election can be performed by the use of a reencryption
-mixnet \\
+mix-net \\
 (http://courses.csail.mit.edu/6.897/spring04/L17.pdf):
 \begin{enumerate}
 \item The mix servers prepare the mix-net by generating public and
@@ -48,21 +48,21 @@ Notice that the reencryption step is necessary before the actual
 mixing as if it were omitted, the mixing would merely scramble the
 list of original cryptotexts, providing no untraceability at all.
 
-\subsubsection{El Gamal Mixnets}
+\subsubsection{El Gamal Mix-Nets}
 
-Most reencryption networks use some variant of the El Gamal
+Most reencryption mix-nets use some variant of the El Gamal
 Cryptosystem (http://courses.csail.mit.edu/6.897/spring04/L17.pdf),
 since the homomorphic property of the El Gamal encryption allowes
 reencryption.
 
-A mixnet based on the El Gamal Cryptosystem consists of $k$ mixnet
+A mix-net based on the El Gamal cryptosystem consists of $k$ mix-net
 servers mixing the votes of $n$ voters. Suppose the underlying group
 is $G_q$ of prime order $q$ and with generator $g \in G_q$. The mixnet
 works as follows \\
 (http://courses.csail.mit.edu/6.897/spring04/L18.pdf)
 
 \begin{enumerate}
-\item A public key $pk = (g,y) = (g, g^x)$ is generated (infoga text om key distribution?)
+\item An El Gamal public key $pk = (g,y)$ is generated (infoga text om key distribution?)
 \item Each voter $j$ encrypts his vote $m_j$ to create $c_{j,0} =
   \mathrm{Enc}_{pk}(m_j) = (g^{r_j},my^{r_j})$ for some random $r_j
   \in \mathbb{Z}_q$.  A list of all encrypted votes $c_0 = \left(
@@ -111,15 +111,16 @@ $sk = \prod_l x_l$. After each server has processed the ciphertext
 list, the list is jointly decrypted using a certain procedure. Omitted
 in this description is the fact that the secret keys are actually
 shared among all mix-net servers in such a way that no subset of the
-servers smaller than the threshold number is able to [göra någonting
-  dumt]. This protocol with a suitably chosen threshold values makes
-it possible to correctly execute the mix-net even when the mix-net
-contains dishonest parties (Källa på detta stycket, douglas doc?).
+servers smaller than the threshold number is able to reveal
+information about the voting before completion of execution. This
+protocol with a suitably chosen threshold values makes it possible to
+correctly execute the mix-net even when the mix-net contains dishonest
+parties (Källa på detta stycket, douglas doc?).
 
 \subsubsection{Verification}
 There are some problems related to electronic voting using
-mixnets. One issue is that the mix servers may or may not execute
-their part of the mixnet properly. For, example dishonest servers
+mix-nets. One issue is that the mix servers may or may not execute
+their part of the mix-net properly. For, example dishonest servers
 could completely change the outcome of the election by replacing the
 true votes with their own. A first solution may be to make sure that
 every server is reliable. This is however difficult, as even an honest
@@ -141,11 +142,12 @@ logarithm problem
 interactive scheme the prover is able to prove that he or she
 possesses some secret discrete logarithm of an element in a group and
 this will be done without actually revealing the secret. Only a
-transcript of the scheme is generated. In fact, the scheme does not
-reveal any additional information as any party is able to produce a
-correct looking scheme on their own, which means that it reusing
-(perhaps showing it someone else) an old transcript does not prove
-knowledge of the secret.
+transcript, containing communication during the scheme, is
+generated. In fact, the scheme does not reveal any additional
+information because any party is able to produce a correct looking
+transcript on their own, which means that reusing (perhaps showing it
+someone else) an old transcript does not prove knowledge of the
+secret.
 
 When it comes to mix-nets, in order to ensure correct execution, one
 can use zero-knowledge proofs to prove that every party shuffles their
