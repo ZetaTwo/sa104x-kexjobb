@@ -63,11 +63,8 @@ int Verifier(string protinfo, string directory,
         string strNe = root_node->first_node("vbitlenro")->value();
         pfStr.nE = atol(strNe.c_str());
 
-        //TODO: ???
-        //string strNr = root_node->first_node("statdist")->value();
-        string strNr1 = root_node->first_node("vbitlen")->value();
-        string strNr2 = root_node->first_node("cbitlen")->value();
-        pfStr.nR = atol(strNr1.c_str()) + atol(strNr2.c_str());
+        string strNr = root_node->first_node("statdist")->value();
+		pfStr.nR = atol(strNr.c_str());
 
         Sprg = root_node->first_node("prg")->value();
         Sh = root_node->first_node("rohash")->value();
@@ -136,26 +133,20 @@ int Verifier(string protinfo, string directory,
     }
 
     //Step 4
-    //rho = H(node(versionProof, sid + "." auxsid, omega, Ne, Nr, Nv, Gq, Sprg, Sh
+    //rho = H(node(versionProof, sid + "." auxsid, Nr, Ne, Nv, Sprg, Gq, Sh))
     Node rho;
     rho.addChild((DataLeaf)versionProof);
     rho.addChild((DataLeaf)(sid + "." + auxsid));
-    rho.addChild(IntLeaf(pfStr.width));
-    rho.addChild(IntLeaf(pfStr.nE));
-    rho.addChild(IntLeaf(pfStr.nR));
-    rho.addChild(IntLeaf(pfStr.nV));
-    rho.addChild((DataLeaf)pGroup);
+	rho.addChild(IntLeaf(pfStr.nR, 4));
+	rho.addChild(IntLeaf(pfStr.nE, 4));
+    rho.addChild(IntLeaf(pfStr.nV, 4));
     rho.addChild((DataLeaf)Sprg);
+	rho.addChild((DataLeaf)pGroup);
     rho.addChild((DataLeaf)Sh);
-
     
-    pfStr.rho = (IntLeaf)pfStr.hash(rho.serialize());
+    pfStr.rho = pfStr.hash(rho.serialize());
 
-    //TODO: Analyze data
-    std::string result = rho.serializeString();
-    std::string result2 = pfStr.rho.serializeString();
-
-    //Step 5       
+    //Step 5
     if(!keyVerifier(pfStr))
     {
         return false;
@@ -221,14 +212,14 @@ int Verifier(string protinfo, string directory,
     //Step 7 Verify relations between lists
 
     //TODO: s blir fel här inne
-    /*if((type == MIX || type == SHUFFLE) &&
+    if((type == MIX || type == SHUFFLE) &&
         (posc || ccpos))
     {
         if(!verifyShuffling(pfStr, L0, Llambda, posc, ccpos))
         {
             return false;
         }	
-    }*/
+    }
 
     if(dec && type == MIX)
     {

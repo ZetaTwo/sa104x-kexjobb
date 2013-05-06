@@ -9,7 +9,7 @@
 struct proofStruct
 {
     std::string directory;
-    IntLeaf rho;
+	bytevector rho;
     unsigned int k;
     unsigned int N;
     unsigned int lambda;

@@ -179,17 +179,15 @@ bool proofOfShuffle(proofStruct &pfStr,
 
     // Get random array h
     DataLeaf generators = DataLeaf("generators");
-    RO RO_seed = RO(pfStr.hash, pfStr.nH);
-    IntLeaf s = RO_seed(pfStr.rho.concatData(&generators));
-    bytevector sdata = s.serialize();
-
-    Node h = RandomArray(pfStr.Gq, pfStr.N, pfStr.hash, s.serialize(), pfStr.nR);
-    std::string hdata = h.toString();
-    for(int i = 0; i < 5; i++) {
-        bytevector hdata2 = h.getIntLeafChild(i).toVector();
-    }
+	bytevector seed_data = pfStr.rho;
+	bytevector seed_data2 = generators.serialize();
+	seed_data.insert(seed_data.end(), seed_data2.begin(), seed_data2.end());
     
-    bytevector pkdata = pfStr.pk.serialize();
+    RO RO_seed = RO(pfStr.hash, pfStr.nH);
+	IntLeaf s = RO_seed(seed_data);
+
+    Node h = RandomArray(pfStr.Gq, pfStr.N, pfStr.hash, s.toVector(), pfStr.nR);
+	std::string hdata = h.serializeString();
 
     // Step 2, compute a seed by creating the node/array Node(g,h,u,pk,w,w')
     Node seed_gen;
@@ -201,18 +199,15 @@ bool proofOfShuffle(proofStruct &pfStr,
     seed_gen.addChild(w_prime);
 
     // Concatenate byte representation of rho with seed_gen
-    bytevector gen = pfStr.rho.concatData(&seed_gen);	
+    bytevector gen = pfStr.rho;
+	bytevector gen2 = seed_gen.serialize();
+	gen.insert(gen.end(), gen2.begin(), gen2.end());	
 
     // Create a random oracle to be used to generate a seed, seedlen specified
     RO rs = RO(pfStr.hash, pfStr.nE);
 
     // Generate the seed
-    //IntLeaf seed = rs(gen
-
-    unsigned char seeddata[] = { 0x69, 0xad, 0x50, 0x9e, 0xba, 0x1a, 0x19, 0x16, 0xf1, 0xad, 0x68, 0x10, 0x62, 0xbb, 0xce, 0x5e, 0x7e, 0x47, 0xba, 0xca, 0x19, 0xf3, 0x7f, 0x43, 0xad, 0xd6, 0x3d, 0xce, 0xd6, 0xdc, 0x35, 0x5a };
-    bytevector seeddata2(seeddata, seeddata + sizeof(seeddata) / sizeof(seeddata[0]) );
-    IntLeaf seed(seeddata2);
-
+    IntLeaf seed = rs(gen);
 
     // Step 3 - TODO: Runda upp nE/8
     PRG prg = PRG(pfStr.hash, seed.serialize(), (pfStr.nE/8)*8);
@@ -267,7 +262,9 @@ bool proofOfShuffle(proofStruct &pfStr,
     challenge_gen.addChild(tau_pos);
 
     // concatenate rho with the Node above
-    gen = pfStr.rho.concatData(&challenge_gen);
+    gen = pfStr.rho;
+	gen2 = challenge_gen.serialize();
+	seed_data.insert(gen.end(), gen2.begin(), gen2.end());
 
     // create a challenge RO
     RO RO_challenge = RO(pfStr.hash, pfStr.nV);

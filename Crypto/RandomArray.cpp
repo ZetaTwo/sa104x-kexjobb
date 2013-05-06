@@ -10,15 +10,15 @@ Node RandomArray(Node Gq, unsigned int Nprime, bytevector (*hash)(bytevector dat
 	IntLeaf mod(2);
 	mod.expTo(Nq+Nr);
 
-
 	Node result;
 	for (unsigned int i = 0; i < Nprime; i++)
 	{
-		IntLeaf child = prg.next();
-		child.modTo(mod);
-        IntLeaf exp = (p - 1) / q;
-        std::string expdata = exp.toString();
-		child.expToMod(exp, p);
+		IntLeaf child = prg.next(); //t = PRG()
+		child.modTo(mod); //t' = t mod 2^(Nq+Nr)
+
+        IntLeaf exp = (p - 1) / q; // ^((p-1)/q)
+		child.expToMod(exp, p); //h = t' ^((p-1)/q) mod p
+
 		result.addChild(child);
 	}
 
