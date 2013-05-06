@@ -49,3 +49,5 @@ Output
 *.aux
 *.toc
 report.pdf
+mixnets.pdf
+elgamal.pdf
