@@ -1,0 +1,109 @@
+%%
+%%Class Options (see http://www.brian-amberg.de/uni/poster/baposter/baposter_guide.pdf for more details)
+%%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% paper size: a0paper, a1paper, a2paper, a3paper, a4paper, archE
+% paper size (alternative): paperwidth=length,paperheight=length
+% paper layout: landscape/portrait
+% margin: margin=length
+% font size: fontscale=number
+% frame: showframe
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+\documentclass[a0paper,landscape]{baposter}
+\usepackage{graphicx} %to insert pictures
+\usepackage{color} %to set colors
+\usepackage{helvet} %to use helvet font
+\renewcommand{\familydefault}{\sfdefault} %set default font to sans-serif for entire document.
+\begin{document}
+\begin{poster}{
+%%
+%%Poster Environment Options (see http://www.brian-amberg.de/uni/poster/baposter/baposter_guide.pdf for more details)
+%%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% grid for helping design: grid=true,false
+% no of columns: columns=4 (default 4 in landscape and 3 in portrait format, maximum number is 6)
+% space betweeen columns: colspacing=length
+% height of header (not boxes): headerheight=length (default value is 0.1\textheight)
+% backgournd type: background=plain (set as bgColorOne)
+%                            =shade-lr (from bgColorOne to bgColorTwo)
+%                            =shade-tb (from bgColorOne to bgColorTwo)
+%                            =user (set as \background{…})
+%                            =none
+% backgound color 1: bgColorOne=color name
+% backgound color 2: bgColorTwo=color name (used for shade)
+% eyecatcher: eyecatcher=true,false
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+grid=false,
+columns=4,
+colspacing=0.5cm,
+headerheight=0.1\textheight,
+background=plain,
+bgColorOne=white,
+bgColorTwo=red,
+eyecatcher=false,
+%%
+%%Posterbox Environment Options (see http://www.brian-amberg.de/uni/poster/baposter/baposter_guide.pdf for more details)
+%%
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+% box border color: borderColor=color
+% box header color 1: headerColorOne=color
+% box header color 2: headerColorTwo=color
+% lower box border type/shape: textborder=none, bars, coils ,triangles, rectangle, rounded, faded, roundedsmall, roundedleft, roundedright
+% upper box border type: headerborder=none, closed, open
+% upper box border shape: headershape=rectangle, small-rounded, roundedright, roundedleft, rounded
+% upper box shading type: headershade=plain, shade-lr, shade-tb, shade-tb-inverse,
+% lower box shading type: boxshade=shade-lr, shade-tb, plain, none
+% font type in box header: headerfont=font
+% font color in box header: headerFontColor=color
+% width of box border lines: linewidth=length
+% % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
+borderColor=black,
+headerColorOne=red,
+headerColorTwo=red,
+textborder=roundedsmall,
+headerborder=closed,
+headershape=roundedright,
+headershade=none,
+boxshade=none,
+headerfont=\sc,
+headerFontColor=white,
+linewidth=0.15cm
+}
+%%
+%%POSTER HEADER
+%%
+% Eye Catcher Images to go left of your title.
+{\includegraphics[height=0.1\textheight]{rolling-stones.pdf}} %will not show if put eyecatcher=false
+{Poster Title}
+{Author}
+{\includegraphics[height=0.1\textheight]{rolling-stones.pdf}}
+
+%%
+%%POSTER CONTENTS
+%%
+% BOX 1
+\headerbox{Box 1}{name=box1,column=0,row=0}{
+blah
+}
+% BOX 2
+\headerbox{Box 2}{name=box2,column=0,below=box1}{
+blah blah
+}
+% BOX 3
+\headerbox{Box 3}{name=box3,column=1}{
+blah blah blah
+}
+% BOX 4
+\headerbox{Box 4}{name=box4,column=1,below=box3,span=2}{
+blah blah blah, blah blah blah
+}
+% BOX 5
+\headerbox{Box 5}{name=box5,column=2}{
+blah blah
+}
+% BOX 6
+\headerbox{Box 6}{name=box6,column=3}{
+blah blah blah blah
+}
+\end{poster}
+\end{document}
