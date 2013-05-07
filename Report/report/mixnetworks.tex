@@ -91,10 +91,11 @@ There are some problems related to electronic voting using
 mix-nets. One issue is that the mix servers may or may not execute
 their part of the mix-net properly. For, example dishonest servers
 could completely change the outcome of the election by replacing the
-true votes with their own. A first solution may be to make sure that
-every server is reliable. This is difficult however since there is
-always a risk that a server is compromised. Another and more feasible
-solution is to allow verification by external parties.
+true votes with their own \cite{electronicvoting}. A first solution
+may be to make sure that every server is reliable. This is difficult
+however since there is always a risk that a server is
+compromised. Another and more feasible solution is to allow
+verification by external parties.
 
 The verification of execution relies on a concept called
 zero-knowledge proof. A zero-knowledge proof is a cryptographic
@@ -102,7 +103,7 @@ protocol that can be used by one party, the prover, to prove to
 another party that some statement is true. The greatest benefit of
 using this protocol is that the prover can convince the other party of
 the truthfulness of the statement without actually revealing any
-additional information.
+additional information. (källa)
 
 It is possible create a zero-knowledge proof based on the discrete
 logarithm problem
@@ -123,22 +124,21 @@ input ciphertexts and reencrypts these ciphertexts. The shuffling part
 may be proven to be correct by a zero-knowledge proof that proves that
 a certain secret (encrypted) matrix is a permutation matrix. If the
 list (vector) of ciphertexts is multiplied with this matrix a
-permutation/shuffling has been performed.
+permutation/shuffling has been performed. (källa)
 
 It is also important to consider the possibility that one corrupt mix
 server may reveal information that should not be revealed, for example
-revealing the origin of every vote.
-
-Note that this is a simplification, since if all parties were using
-the same public key $pk$, this would imply that all parties also
-possessed the same secret key (källa eller förklaring?).
+revealing the origin of every vote \cite{electronicvoting}. This is a
+problem in the El Gamal mix-net described above, since if all parties
+were using the same public key $pk$, all parties would also possessed
+the same secret key.
 
 In order to achieve untraceability, the mix-net servers need to
 generate different public keys and still remain able to jointly
 decrypt the output list of ciphertexts. The El Gamal cryptosystem
 provides protocols for distributed key generation and decryption by
-several parties (douglas doc). The details of these protocols will be
-omitted, but the basic principle is the following.
+several parties (källa douglas doc). The details of these protocols
+will be omitted, but the basic principle is the following.
 
 A beforehand specified threshold number of mix-net servers
 independently generate their own secret keys. The $l$th mix-net server
