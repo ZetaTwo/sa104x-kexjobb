@@ -2,10 +2,13 @@
 
 \subsection{Verificatum Mix Network (TODO)}
 
-"Verificatum [...] is an implementation of an El Gamal-based mixnet
-... [that] produce a verifiable proof of correctness during the
-execution of the protocol" (Abstract i vmnv-1.1.0). It is a
-reencryption mixnet.
+Verificatum is a reencryption mix-net based on the El Gamal
+cryptosystem \cite[p.~1]{wikstrom1}. During execution it generates a
+verifiable proof of correctness. 
+
+
+Verificatum has different types of execution, all of which require
+different verification. There is mixing, shuffling + combination?
 
 There is a key distribution phase.
 
@@ -14,22 +17,16 @@ of shuffle (Beskriv vad detta är)
 
 \subsection{Specification (TODO)}
 
-The documentation describing the Verificatum Mixnet verifier---.
-
-The document describes a number of subtasks, some of which may be
-implemented independently. The subtasks include include implementation
-of general representation of data, an arithmetic library needed to
-perform group operations, the cryptographic primitives and the
-structure of files created during an execution of the
-mixnet. Furthermore, all algorithms executed during the verification
-are described in detail in order to allow an independent verifier.
-
-%Here follows some suggestions to improve the readability and ---.
-
-%- Inkonsekvent namngivning i vissa algoritmer
-%- h-vektorn som inte står med i argumentlistan
-%- Beskrivning av Pedersen commitments
-%- Borde byte tree för width=1 följa mönstret?
+The document describing a verifier for correct execution of the
+Verificatum mix-net contains detailed instruction for the
+implementation. A number of subtasks are described, some of which may
+be implemented independently. The subtasks include include
+implementation of general representation of data, an arithmetic
+library needed to perform group operations, the cryptographic
+primitives and the structure of files created during an execution of
+the mixnet. Furthermore, all algorithms executed during the
+verification are described in detail in order to allow an independent
+verifier.
 
 \subsection{General Design Choices}
 
