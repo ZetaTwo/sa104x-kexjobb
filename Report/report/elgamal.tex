@@ -71,8 +71,8 @@ different plaintexts \cite[p.~306]{hac}. This means that if an
 attacker is given the encryption of one of two possible plaintexts he
 or she will not be able to tell which plaintext was encrypted better
 than just guessing. The semantic security of the El Gamal cryptosystem
-relies on the Decisional Diffie-Hellman assumption (Lecture 08
-Wikström DD2448), which is explained below.
+relies on the Decisional Diffie-Hellman assumption \cite{wikstrom2},
+which is explained below.
 
 Let $b = g^a \in G_q$ where $a \in \mathbb{Z}_q$, then $a$ is said to
 be the discrete logarithm of $b$ in the group $G_q$. There is
@@ -84,13 +84,12 @@ The Decisional Diffie-Hellman assumption concerns a problem related to
 the discrete logarithm. The assumption in a certain group $G_q$ means
 that if $a,b,c \in \mathbb{Z}_q$ are chosen randomly, every efficient
 algorithm, on input $g^a$, $g^b$ and $y \in \{g^{ab}, g^c\}$, is
-unable to tell if $y = g^{ab}$ or $y = g^c$ (Lecture 08 Wikström
-DD2448).
+unable to tell if $y = g^{ab}$ or $y = g^c$ \cite{wikstrom2}.
 
 The semantic security of the El Gamal cryptosystem relies on the
 Decisional Diffe-Hellman assumption in finite cyclic groups
 $G_q$. This means that the El Gamal cryptosystem is secure as long as
-the assumption is true. (Lecture 08 Wikström DD2448)
+the assumption is true \cite{wikstrom2}. 
 
 \subsubsection{Properties}
 If $G_q$ is a group, then so is $G_q \times G_q$ with the group
