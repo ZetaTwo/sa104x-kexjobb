@@ -11,25 +11,26 @@ section.
 \subsubsection{Overview}
 http://www.rsa.com/rsalabs/staff/bios/ajuels/publications/universal/Universal.pdf
 
-One purpose of mix networks is to provide untraceability
-to its users. A mix-net may, for example, take as input a list of
-encrypted messages of different origins. These messages pass through
-the mix-net and is output decrypted and in a randomized order. This
-property may be used to enable anonymous voting systems.
+One purpose of mix networks is to provide untraceability to its
+users. A mix-net may, for example, take as input a list of encrypted
+messages of different origins. These messages pass through the mix-net
+and is output decrypted and in a randomized order \cite{mixnets}. This
+property may be used to enable anonymous voting systems (källa).
 
 Different types of mix-nets exist. There are decryption mix-nets and
 reencryption mix-nets. This report treats the latter type. A
 reencryption mix-net consists of a number of servers, henceforth, the
 mix servers, which sequentially process the messages and reencrypts
-the list of messages and outputs them in a randomized order. After
-passing through all servers, the list of ciphertexts is decrypted and
-the result is a list of the messages in random order. It should after
-decryption be infeasible to deduce the position of each element in the
-initial list. This is called \emph{untraceability}.
+the list of messages and outputs them in a randomized order
+\cite{mixnets}. After passing through all servers, the list of
+ciphertexts is decrypted and the result is a list of the messages in
+random order. It should after decryption be infeasible to deduce the
+position of each element in the initial list. This is called
+\emph{untraceability}.
 
 One use of mix-nets is in the context of electronic voting systems. An
 electronic election can be performed by the use of a reencryption
-mix-net \\
+mix-net as follows \cite{electronicvoting} \\
 (http://courses.csail.mit.edu/6.897/spring04/L17.pdf):
 \begin{enumerate}
 \item The mix servers prepare the mix-net by generating public and
