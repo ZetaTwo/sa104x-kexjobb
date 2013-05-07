@@ -39,7 +39,7 @@ to be able to communicate.
 A cryptographic construction, called a mix network or mix-net,
 facilitates the anonymity requirement by routing messages to a cluster
 of nodes \cite[p.~1]{mixnets}. These nodes takes a number of messages
-from any number of sources, shuffles them around and deliver them to
+from any number of sources, shuffle them around and deliver them to
 their destination. This description is very brief, partly because
 there are different flavours of mix-net intended for different
 purposes.
@@ -47,12 +47,12 @@ purposes.
 \subsection{Background}
 
 The Verificatum mix-net is designed to take a number of encrypted
-messages, ciphertexts. The ciphertexts have been encrypted with a
-public key from the mix-net and are shuffled around and eventually
-decrypted. This can, for example, be used in an election. Every voter
+messages, ciphertexts, which have been encrypted with a
+public key from the mix-net, shuffle them around and eventually
+decrypt them. This can, for example, be used in an election. Every voter
 encrypts a vote with the public key and posts it to the mix-net. The
 mix-net takes all the encrypted votes, shuffles and decrypts
-them. This way all votes become visible and possible to count without
+them. This way all votes are revealed and are possible to count without
 revealing information about which vote belongs to which voter - 
 an important property in elections.
 
