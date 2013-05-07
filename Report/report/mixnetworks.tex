@@ -13,7 +13,7 @@ One purpose of mix networks is to provide untraceability to its
 users. A mix-net may, for example, take as input a list of encrypted
 messages of different origins. These messages pass through the mix-net
 and is output decrypted and in a randomized order \cite{mixnets}. This
-property may be used to enable anonymous voting systems (källa).
+property may be used to enable anonymous voting systems \cite{mixnets2}.
 
 Different types of mix-nets exist. There are decryption mix-nets and
 reencryption mix-nets. This report treats the latter type. A
@@ -58,7 +58,7 @@ is $G_q$ of prime order $q$ and with generator $g \in G_q$. The mixnet
 works as follows \cite{electronicvoting2}\\
 
 \begin{enumerate}
-\item An El Gamal public key $pk = (g,y)$ is generated (infoga text om key distribution?)
+\item An El Gamal public key $pk = (g,y)$ is generated
 \item Each voter $j$ encrypts his vote $m_j$ to create $c_{j,0} =
   \mathrm{Enc}_{pk}(m_j) = (g^{r_j},my^{r_j})$ for some random $r_j
   \in \mathbb{Z}_q$.  A list of all encrypted votes $c_0 = \left(
@@ -71,8 +71,7 @@ works as follows \cite{electronicvoting2}\\
   $$
   is returned.
 \item The final list $c_k$ is decrypted using the secret key $sk = x
-  \in \mathbb{Z}_q$ (infoga text om key distribution?) to produce
-  the output list
+  \in \mathbb{Z}_q$ to produce the output list
  $$ 
   (m_{\pi (1)}, \hdots , m_{\pi (n)}) =
   \left(\mathrm{Dec}_{sk}(c_{k,1}), \hdots, \mathrm{Dec}(c_{k,n})\right)
