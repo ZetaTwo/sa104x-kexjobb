@@ -3,8 +3,48 @@
 \subsection{Performance}
 
 TODO
-We must do this.
+We must do this. Must we?
+
+\subsection{Comments on the Documentation}
+
+The overall impression of the documentation was that it contained all
+information needed to implement the verifier. There were, however,
+errors affecting the execution of the verifier. Some of (beror på hur
+långt vi kommer med implementeringen) the problems arising from these
+errors were overcome after discussion with Wikström. See Appendix B
+for a complete list with errors found and specific comments about the
+report.
+
+In the absolute beginning of the document, the reader is thrown into
+details about the zero-knowledge proofs used in Verificatum. A more
+gentle approach would be to introduce the Verificatum mix-net without
+assuming to much acquaintance with it or provide the means for the
+reader to do so on his or her own.
+
+The background, including a description of a mix-net based on the El
+Gamal cryptosystem, is clear and concise. After the background, the
+document contains a list of manageable subtasks in order to facilitate
+implementation. This list was appreciated as it gave someone
+unacquainted with Verificatum ideas of suitable starting points.
+
+Chapters 4 through 6 contain necessary and easily accessible
+information. However, chapter 4 on byte trees and chapter 6 on
+representation of arithmetic objects are closely related and could
+advantageously be presented together while bringing up the
+cryptographic primitives of chapter 5 afterwards. The part on deriving
+group elements from random strings depends on chapter 5 and
+consequently needs to be presented after. See Appendix C for a
+clarification on these comments.
+
+Chapter 6.6 on Marshalling Groups contains specific details regarding
+the Verificatum software with strong connections to Java. This chapter
+could be rephrased to only include information actually needed for
+implementation of a verifier.
+
+Lastly, the chapter on verification of Fiat-Shamir proofs relies
+heavily on the derivation of group elements from random strings. By
+moving chapter 7 to before the chapter on cryptographic primitives,
+usage of the document will probably demand less page turns.
 
 \subsection{Conclusion}
-Kunde dokumentationen ha gjorts bättre?
 
