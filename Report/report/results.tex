@@ -2,8 +2,7 @@
 
 \subsection{Performance}
 
-TODO
-We must do this. Must we?
+TODO: Fixa detta om vi lyckas få en fungerande version.
 
 \subsection{Comments on the Documentation}
 
@@ -16,9 +15,9 @@ for a complete list with errors found and specific comments about the
 report.
 
 In the absolute beginning of the document, the reader is thrown into
-details about the zero-knowledge proofs used in Verificatum. A more
-gentle approach would be to introduce the Verificatum mix-net without
-assuming to much acquaintance with it or provide the means for the
+details about the zero-knowledge proofs used in VMN. A more
+gentle approach would be to introduce the VMN without
+assuming too much acquaintance with it or provide the means for the
 reader to do so on his or her own.
 
 The background, including a description of a mix-net based on the El
@@ -48,3 +47,8 @@ usage of the document will probably demand less page turns.
 
 \subsection{Conclusion}
 
+Regarding the programming it would have helped with having more layers of abstractions in the code. Specifically, some classes representing various mathematical objects would have made the code easier to maintain. We believe that a more solid understanding of the structure of VMN before we started programming would have helped in creating a better structure of the verifier. The choices of third party libraries were good and they all were easy to use in our project. This also makes amount of code which need to be written smaller.
+
+The specification document for the verifier does include all the information required to write the verifier. However, as described earlier, the structure could be improved for greater readability. There is also some unnecessary information in the document. Lastly, the document could benefit from an improved description of the VMN so that one easier can get a better understanding of what approach to take when implementing the verifier.
+
+We can conclude that the document contains all the information but we still weren't able to implement the verifier without test data to verify our code.
