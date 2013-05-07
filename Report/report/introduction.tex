@@ -12,7 +12,7 @@ over an insecure channel. Early examples include various ciphers such
 as the Caesar and the Vigenère ciphers. These primitive systems
 achieve the most central property of a cryptographic system,
 \emph{confidentiality}, i.e. only parties in possession of the key can
-encrypt and decrypt the message.\cite[p.~3]{hac} This is also an example of a
+encrypt and decrypt the message \cite[p.~3]{hac}. This is also an example of a
 \emph{symmetric encryption} which means that the same piece of
 information, the key, is used for encryption and decryption.
 
@@ -25,7 +25,7 @@ to verify that the message is unaltered. This property is what we call
 \emph{integrity}.
 
 In 1976 Whitfield Diffie and Martin Hellman publiced the first paper
-on \emph{public key cryptography}.\cite[p.~2]{hac} This was a new sort of
+on \emph{public key cryptography} \cite[p.~2]{hac}. This was a new sort of
 cryptographic construction that allowed different keys to be used for
 encryption and decryption of a message. It was the first
 \emph{asymmetric encryption} scheme.
@@ -38,10 +38,11 @@ to be able to communicate.
 
 A cryptographic construction, called a mix network or mix-net,
 facilitates the anonymity requirement by routing messages to a cluster
-of nodes.\cite[p.~1]{mixnet} These nodes takes a number of messages from any number of
-sources, shuffles them around and deliver them to their
-destination. This description is very brief, partly because there are
-different flavours of mix-net intended for different purposes.
+of nodes \cite[p.~1]{mixnets}. These nodes takes a number of messages
+from any number of sources, shuffles them around and deliver them to
+their destination. This description is very brief, partly because
+there are different flavours of mix-net intended for different
+purposes.
 
 \subsection{Background}
 
@@ -68,12 +69,13 @@ ciphertexts and the plaintexts, i.e. voter anonymity is preserved.
 \subsection{Goals and Scope}
 
 The idea is that any third party that wants to check the result should
-be able to implement a verifier for Verificatum. Wikström has
-created a document describing this verifier.\cite{wikstrom1} We have, using this
-document, implemented a verifier to test that the document is complete
-with all the information needed for the implementation. Because of
-time constraints, we have limited ourselves to implement a working
-prototype with only the most common options available, just sufficient
-to confirm that the specification contain all the necessary parts to
-implement a verifier. This prototype could later be expanded to
-facilitate for all features of the Verificatum mix-net.
+be able to implement a verifier for Verificatum. Wikström has created
+a document describing this verifier.\cite{wikstrom1} We have, using
+this document, implemented a verifier to test that the document is
+complete with all the information needed for the
+implementation. Because of time constraints, we have limited ourselves
+to implement a working prototype with only the most common options
+available, just sufficient to confirm that the specification contain
+all the necessary parts to implement a verifier. This prototype could
+later be expanded to facilitate for all features of the Verificatum
+mix-net.
