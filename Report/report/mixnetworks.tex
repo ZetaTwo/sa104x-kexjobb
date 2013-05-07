@@ -89,11 +89,11 @@ works as follows \cite{electronicvoting2}\\
 \subsubsection{Verification}
 There are some problems related to electronic voting using
 mix-nets. One issue is that the mix servers may or may not execute
-their part of the mix-net properly. For, example dishonest servers
+their part of the mix-net properly. For example dishonest servers
 could completely change the outcome of the election by replacing the
 true votes with their own \cite{electronicvoting}. A first solution
-may be to make sure that every server is reliable. This is difficult
-however since there is always a risk that a server is
+may be to make sure that every server is reliable. This is difficult,
+however, since there is always a risk that a server is
 compromised. Another and more feasible solution is to allow
 verification by external parties.
 
@@ -103,28 +103,24 @@ protocol that can be used by one party, the prover, to prove to
 another party that some statement is true. The greatest benefit of
 using this protocol is that the prover can convince the other party of
 the truthfulness of the statement without actually revealing any
-additional information. (källa)
+additional information \cite{shoup}.
 
 It is possible create a zero-knowledge proof based on the discrete
-logarithm problem
-(http://cs.nyu.edu/courses/spring07/G22.3220-001/lec3.pdf). In this
-interactive scheme the prover is able to prove that he or she
-possesses some secret discrete logarithm of an element in a group and
-this will be done without actually revealing the secret. Only a
-transcript, containing communication during the scheme, is
-generated. In fact, the scheme does not reveal any additional
-information because any party is able to produce a correct looking
-transcript on their own, which means that reusing (perhaps showing it
-someone else) an old transcript does not prove knowledge of the
-secret.
+logarithm problem \cite{shoup}. In this interactive scheme the prover
+is able to prove that he or she possesses some secret discrete
+logarithm of an element in a group and this will be done without
+actually revealing the secret. Only a transcript, containing
+communication during the scheme, is generated. In fact, the scheme
+does not reveal any additional information because any party is able
+to produce a correct looking transcript on their own, which means that
+reusing (showing it someone else) an old transcript does not prove
+knowledge of the secret.
 
 When it comes to mix-nets, in order to ensure correct execution, one
 can use zero-knowledge proofs to prove that every party shuffles their
 input ciphertexts and reencrypts these ciphertexts. The shuffling part
 may be proven to be correct by a zero-knowledge proof that proves that
-a certain secret (encrypted) matrix is a permutation matrix. If the
-list (vector) of ciphertexts is multiplied with this matrix a
-permutation/shuffling has been performed. (källa)
+two lists of ciphertexts are permutation of eachother \cite{terelius}. 
 
 It is also important to consider the possibility that one corrupt mix
 server may reveal information that should not be revealed, for example
@@ -137,7 +133,7 @@ In order to achieve untraceability, the mix-net servers need to
 generate different public keys and still remain able to jointly
 decrypt the output list of ciphertexts. The El Gamal cryptosystem
 provides protocols for distributed key generation and decryption by
-several parties (källa douglas doc). The details of these protocols
+several parties \cite{wikstrom1}. The details of these protocols
 will be omitted, but the basic principle is the following.
 
 A beforehand specified threshold number of mix-net servers
@@ -153,6 +149,6 @@ servers smaller than the threshold number is able to reveal
 information about the voting before completion of execution. This
 protocol with a suitably chosen threshold values makes it possible to
 correctly execute the mix-net even when the mix-net contains dishonest
-parties (Källa på detta stycket, douglas doc?).
+parties \cite{wikstrom1}.
 
 

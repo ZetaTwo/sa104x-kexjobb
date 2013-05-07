@@ -2,25 +2,24 @@
 
 \subsection{Verificatum Mix Network (TODO)}
 
-Verificatum is a reencryption mix-net based on the El Gamal
-cryptosystem \cite[p.~1]{wikstrom1}. During execution it generates a
-verifiable proof of correctness. 
+The Verificatum mix-net, VMN, is a reencryption mix-net based on the
+El Gamal cryptosystem \cite[p.~1]{wikstrom1}. During execution it
+generates a verifiable proof of correctness. 
 
-
-Verificatum has different types of execution, all of which require
-different verification. There is mixing, shuffling + combination?
-
-There is a key distribution phase.
-
-There is a shuffling phase, during which each server provides a proof
-of shuffle (Beskriv vad detta är)
+VMN has different types of execution, all of which require different
+verification. There is a shuffle session, a decryption session and a
+mixing session, producing different types of proofs. However, the
+proofs for the mixing session consists of a shuffle and decryption
+proof. The details on how to verify these different proofs is
+described in the document \cite{wikstrom1} by Wikström. We have
+evaluated this document in order to provide feedback to its author.
 
 \subsection{Specification}
 
-The document \cite{wikstrom1} describing a verifier for correct execution of the
-Verificatum mix-net contains detailed instruction for the
-implementation. A number of subtasks are described, some of which may
-be implemented independently. The subtasks include include
+The document \cite{wikstrom1} describing a verifier for correct
+execution of the Verificatum mix-net contains detailed instructions
+for the implementation. A number of subtasks are described, some of
+which may be implemented independently. The subtasks include
 implementation of general representation of data, an arithmetic
 library needed to perform group operations, the cryptographic
 primitives and the structure of files created during an execution of
@@ -32,7 +31,7 @@ verifier.
 
 The first implementation choice was which programming language to
 use. We wanted to use well established technologies and have a good
-performance [REF] on the verifier. Considering these criteria and our
+performance on the verifier. Considering these criteria and our
 programming skills, the choice was made between C, C++ and Java. Since
 other groups are working on implementations in Java we decided to use
 C or C++ and since we wanted to use features such as operator
@@ -158,5 +157,3 @@ correct state of key variables throughout important steps of the
 execution. The debugging was done in Visual Studio. By stepping
 through the program and comparing states against the test data we
 removed bugs in the program.
-
-Fungerade sen?
