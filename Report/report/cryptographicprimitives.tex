@@ -12,7 +12,7 @@ are described in this chapter.
 \subsubsection{Hash functions}
 In general, a hash function is an easily computable function that
 takes an input from an arbitrarily large input space and map it to an
-element in a finite sized hash space. As a consequence of this, there
+element in a finite sized hash space.\cite[p.~321]{hac} As a consequence of this, there
 will exist several inputs which map to the same hash. Hash functions
 are used in many different areas of computer science and there are
 many different kinds tailored to have the properties desired for its
@@ -40,7 +40,7 @@ respectively.
 
 A \emph{Pseudo Random Generator}, PRG, is a function which takes an
 initial seed and expands it into a longer sequence of seemingly random
-data. The output is random in the sense that it should be
+data.\cite[p.~170]{hac} The output is random in the sense that it should be
 indistinguishable from truly random output but the same seed will
 always produce the same output.
 
@@ -51,7 +51,7 @@ for every iteration.
 \subsubsection{Random Oracles}
 
 In theory, a \emph{Random Oracle}, RO, is a black box which takes an
-input and returns a truly random output from its output space. It will
+input and returns a truly random output from its output space.\cite{oracle} It will
 always respond with the same output for the same input. This is very
 similar to a hash function but has some subtle differences. An RO is a
 purely theoretical construct which defines no actual function, only a
