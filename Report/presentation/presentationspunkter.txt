@@ -1,0 +1,133 @@
+Presentation av oss och om ämnet/arbetet
+
+\\
+Vikten av säkerhet kring folkomröstningar
+- Röstarsäkerhet
+  - hemlighet/anonymitet
+- Verifierbarhet
+- Robusthet
+
+- Hur kan detta effektiviseras?
+  - Använda datorer
+  - Elektronisk röstning
+  - Problem med säkerhet?
+  - Nä, för det finns mixnät
+
+\\
+Presentation av mixnät
+- digital tombola
+- indata krypterade röster
+- blandas runt digitalt
+- utdata dekrypterade röster i okänd ordning
+- Nu vet man inte vem som har lagt vilken röst
+
+- Så vill vi göra men!
+- Hur kan vi veta att servrarna gör rätt?
+- Behövs kryptografi för detta
+
+\\
+Kryptografi - kort historia
+- Symmetrisk kryptering
+  - samma nyckel används för kryptering och dekryptering
+  - kräver att båda parter känner till varandra/har kommunicerat tidigare
+
+Räddningen är public key cryptography/asymmetrisk kryptering
+- 1976 av Diffie och Hellman (ideer redan på 1800-talet)
+- Skillnaden är att olika nycklar används vid kryptering och dekryptering
+- Två, för varandra okända, parter kan nu kommunicera dolt
+
+\\
+Hur kan detta vara möjligt?
+- El Gamal kryptot
+  - introducera diskreta logaritmen
+  - envägsfunktion - svårt i ena riktningen, lätt i den andra
+  - visa hur det används i El Gamal
+  - det finns andra envägsfunktioner
+
+- Viktig egenskap hos El Gamal - homomorft
+  - Kan användas för att kryptera om - omkryptering
+
+Kan generaliseras till valfri cyklisk grupp
+
+\\
+Zero-Knowledge proofs
+
+- Procedur för att bevisa ett påstående utan att avslöja information 
+  - ex bevisa att man besitter kunskap utan att avslöja den Diskreta
+    logaritmen
+  - Ställa speciella frågor som bara den med kunskap om
+    diskreta logaritmen kan besvara
+
+\\
+Mixnät
+
+Stort mixnät -> Varje server
+
+Varje server gör
+- Krypterad lista som indata
+- Servern krypterar om alla element i listan med egen slumpmässighet
+- Blandar om i hemlighet
+- Utdata ny krypterad lista
+
+Efter alla servrar är klara sker gemensam dekryptering (kan göras på smart sätt
+så att ingen får reda på hemlig nyckel)
+
+Om flera servrar gör det de ska kommer ingen att känna till ordningen på rösterna
+
+\\
+Verifierbarhet
+- Varje server skapar ett zero-knowledge proof som bevis för att den har skött sig
+
+- Tag indata kryptotexter, utdata röster samt alla zeroknowledge proofs och mata
+  in i verifierare
+- Ger ja eller nej beroende på om mixnätet gjort som det ska eller ej
+
+\\
+Verificatum
+- Implementation av ett verifierbart mixnät av Wikström
+- Oberoende parter ska kunna skriva verifierare för att försäkra sig om valresultat är bra
+- Vem som helst (tänk civilingenjör) ska kunna implementera en verifiare
+- Dokumentet beskriver detta och vi har utvärderat detta genom
+  - Försökt förstå dokumentet
+  - Implementerat en verifierare
+- Innehåller dokumentat allt det ska?
+
+\\
+Implementation
+- Verifieraren skrevs i C++
+- Externa bibliotek
+  - Stora tal - GMP
+  - OpenSSL
+
+- Byteträd
+  - Representerar matematiska objekt
+
+- Algoritmer
+  - Genomför sjävla verifieringen
+
+\\
+Hur gick det?
+
+- Har vi lyckats? Ja eller nästan
+- Strukturen hade kunnat vara bättre 
+  - Beror på avsaknad av överblick av materialet
+  - Abstrahera mera
+- Dokumentet innehåller all info
+  - Hittade små fel/misstag - kunde rättas
+  - Förslag på strukturförbättringar/-förändringar för att göra det mer lättillgänglig
+
+\\
+Avslutning 
+
+Intressant arbete 
+Fördjupat oss i kryptografi samt varit lärorikt rent
+programmeringsmässigt 
+Som det ser ut verkar det möjligt att skapa ett elektroniskt röstningssystem
+
+Verificatum kommer att användas i nästa norska val
+
+
+
+
+
+
