@@ -1,4 +1,4 @@
-\section{Mixnät}
+\section{Introduktion till mixnät}
 \begin{frame}
 \frametitle{Innehåll}
 \tableofcontents[currentsection]
@@ -6,10 +6,28 @@
 
 \begin{frame}{Mixnät - En digital tombola}
 
-\begin{center}
-  \makebox[\textwidth]{\includegraphics[height=0.9\textheight]{images/mix1.pdf}}
-\end{center}
-
-%%  Skapandet av kryptotextslistan ¨ar utanf¨or v˚art arbete. Listan g˚ar igenom noderna och krypteras om och blandas. Vi f˚ar ut en lista med r¨oster och kan inte veta vem som r¨ostat p˚a vad. F¨or att kunna g˚a igenom detaljer beh¨ovs lite krypto.
+\begin{columns}
+    \begin{column}{0.4\textwidth}
+        \begin{itemize}
+			\item Indata:
+			\begin{itemize}
+				\item[-] Krypterade röster
+			\end{itemize}
+			\item[]
+			\item Körning:
+			\begin{itemize}
+				\item[-] Blandas hemligt
+			\end{itemize}
+			\item[]
+			\item Utdata:
+			\begin{itemize}
+				\item[-] Dekrypterade röster
+			\end{itemize}
+		\end{itemize}
+    \end{column}
+	\begin{column}{0.6\textwidth}
+    	\includegraphics[height=0.7\textwidth]{images/mix1.pdf}
+	\end{column}
+\end{columns}
 
 \end{frame}

@@ -6,45 +6,83 @@
 
 \begin{frame}{Kryptografi}
 
-\begin{itemize}
-\item Första 2000 år bc.
-\item Public key crypto 1976
-\end{itemize}
 
-
-\begin{center}
-  \makebox[0.8\textwidth]{\includegraphics[width=0.8\textwidth]{images/symmetric.png}}
-\end{center}
-
-%% ¨ Oversiktlig beskrivning av kryptograﬁ. Caesar-chiﬀer F¨orut fanns bara symmetriska, gemensam nyckel. xxxx bc. - 1976
+\begin{columns}
+    \begin{column}{0.45\textwidth}
+        \begin{itemize}
+			\item Historia
+			\item Symmetrisk kryptering
+			\begin{itemize}
+				\item[-] Gemensam nyckel
+			\end{itemize}
+			\item Exempel
+			\begin{itemize}
+				\item[-] Caesar
+				\item[-] Enigma
+			\end{itemize}
+		\end{itemize}
+    \end{column}
+	\begin{column}{0.55\textwidth}
+    	\includegraphics[width=\textwidth]{images/symmetric.png}
+	\end{column}
+\end{columns}
 
 \end{frame}
 
 \begin{frame}{Public Key Cryptography}
 
-%% En nyckel f¨or kryptering, en f¨or dekryptering
-
-\begin{center}
-  \makebox[0.8\textwidth]{\includegraphics[width=0.8\textwidth]{images/asymmetric.png}}
-\end{center}
+\begin{columns}
+    \begin{column}{0.45\textwidth}
+        \begin{itemize}
+			\item Räddningen
+			\item Diffie \& Hellman
+			\item Olika nycklar
+			\item Okända parter kan kommunicera
+		\end{itemize}
+    \end{column}
+	\begin{column}{0.55\textwidth}
+    	\includegraphics[width=\textwidth]{images/asymmetric.png}
+	\end{column}
+\end{columns}
 
 \end{frame}
 
-\begin{frame}
+\begin{frame}{El Gamal kryptografi}
 
-$$
-y := g^x \mod{p}
-$$
+\begin{columns}
+	\begin{column}{0.5\textwidth}
+		\begin{itemize}
+			\item Givet y, g \& p, vad är x?
+			\item Diskreta logaritmen svår
+			\item Grunden i El Gamal-krypto
+		\end{itemize}
+	\end{column}
+	\begin{column}{0.5\textwidth}
+		{\LARGE $$y := g^x \mod{p}$$}
+	\end{column}
+\end{columns}
 
-Givet y, g och p. Vad är x? Svårt! Tack vare detta så kan vi skapa El Gamal.
+\vspace{3pt}
 
-$$ y := g^{x} $$
-$$ s random $$
-$$ c = (g^s, y^s\cdot m) = (u, v) $$
-$$ m = u^{-x}\cdot v = g^{-s\cdot x}\cdot y^s\cdot m = (g^x)^{-s}\cdot(g^x)^s\cdot m = m $$
+{\LARGE
+\begin{align*}
+y &\vcentcolon= g^{x} \,\,\,\,\,\,\,\,\,\, s\in \mathcal{R} \\
+c &= (g^s, y^s\cdot m) = (u, v) \\
+ m &= u^{-x}\cdot v
+\end{align*}}
 
-Förklara hur lätt logaritm => knäckt krypto. Homomorfism, lager på lager Detta kan generaliseras till valfri cyklisk grupp.
+\end{frame}
 
+\begin{frame}{Egenskaper hos El Gamal}
+
+\begin{itemize}
+\item Lätt logaritm $\Rightarrow$ knäckt krypto.
+\item Homomorft
+\begin{itemize}
+\item[-] Möjliggör flera lager kryptering
+\end{itemize}
+\item Generalisering till andra grupper
+\end{itemize}
 
 \end{frame}
 
