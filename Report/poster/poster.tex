@@ -10,7 +10,7 @@
 % frame: showframe
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 \documentclass[a0paper,landscape,margin=100pt]{baposter}
-\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
 \usepackage{graphicx} %to insert pictures
 \usepackage{color} %to set colors
 \usepackage{amsmath}
@@ -18,7 +18,7 @@
 \usepackage{amssymb}
 \usepackage{parskip}
 %\usepackage{helvet} %to use helvet font
-\renewcommand{\familydefault}{\sfdefault} %set default font to sans-serif for entire document.
+%\renewcommand{\familydefault}{\scdefault} %set default font to sans-serif for entire document.
 \begin{document}
 \begin{poster}{
 %%
@@ -41,12 +41,12 @@
 grid=false,
 columns=3,
 colspacing=0.5cm,
-headerfont=\textsc
+%headerfont=\textsc
 headerheight=0.1\textheight,
 background=plain,
 bgColorOne=white,
 bgColorTwo=red,
-eyecatcher=false,
+eyecatcher=true,
 %%
 %%Posterbox Environment Options (see http://www.brian-amberg.de/uni/poster/baposter/baposter_guide.pdf for more details)
 %%
@@ -79,23 +79,27 @@ linewidth=0.15cm
 %%POSTER HEADER
 %%
 % Eye Catcher Images to go left of your title.
-{\includegraphics[height=0.1\textheight]{rolling-stones.pdf}} %will not show if put eyecatcher=false
+%{\includegraphics[height=0.1\textheight]{rolling-stones.pdf}} %will not show if put eyecatcher=false
+{}
 {El Gamal Mix-Nets and Implementation of a Verifier}
 {Erik Larsson and Carl Svensson}
-{\includegraphics[height=0.1\textheight]{rolling-stones.pdf}}
+{}
+%{\includegraphics[height=0.1\textheight]{rolling-stones.pdf}}
 
+
+{ \small
 %%
 %%POSTER CONTENTS
 %%
-% BOX 1
+
 \headerbox{Introduction}{name=introduction,column=0,row=0}{
-blah
+\include{introduction}
 }
-% BOX 2
+
 \headerbox{Mix Networks}{name=mixnets,column=0,below=introduction}{
   \include{mixnets}
 }
-% BOX 3
+
 \headerbox{Mix Server}{name=mixserver,column=1}{
   \include{mixing}
 }
@@ -109,11 +113,12 @@ blah
 \headerbox{El Gamal Cryptography}{name=elgamal,column=2}{
   \input{elgamal}
 }
-x
-% BOX 5
-% BOX 6
-\headerbox{Conclusion}{name=box6,below=elgamal,column=2}{
+
+
+
+\headerbox{Conclusion}{name=conclusion,below=elgamal,column=2}{
 blah blah blah blah
+}
 }
 \end{poster}
 \end{document}
