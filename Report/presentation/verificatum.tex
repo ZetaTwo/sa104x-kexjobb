@@ -4,48 +4,69 @@
 \tableofcontents[currentsection]
 \end{frame}
 
-\begin{frame}{Krypteringsnät}
+\begin{frame}{Mixnät}
 
-%Förklara detaljerna i varje server
-
-\begin{center}
-  \makebox[\textwidth]{\includegraphics[height=0.7\textheight]{images/mix4.pdf}}
-\end{center}
-
-\begin{itemize}
-\item El gamal
-\end{itemize}
-
-\end{frame}
-
-\begin{frame}{Verifierbarhet}
-
-%Det skapas extra data.
-
-\only<1>{
-\begin{center}
-  \makebox[\textwidth]{\includegraphics[height=0.6\textheight]{images/mix1.pdf}}
-\end{center}
-}
-
-\only<2>{
-\begin{center}
-  \makebox[\textwidth]{\includegraphics[height=0.6\textheight]{images/mix2.pdf}}
-\end{center}
-}
-
-\begin{itemize}
-\item Verifiering
-\item Zero-knowledge
-\end{itemize}
+\begin{columns}
+    \begin{column}{0.4\textwidth}
+        \begin{itemize}
+        	\item Mixnät blandar
+        	\item Hur går detta till?
+        \end{itemize}
+    \end{column}
+	\begin{column}{0.6\textwidth}
+    	\includegraphics[width=\textwidth]{images/mix1.pdf}
+	\end{column}
+\end{columns}
 
 \end{frame}
 
-\begin{frame}{Verifiering}
+\begin{frame}{Hur fungerar varje server?}
+
+\begin{columns}
+    \begin{column}{0.4\textwidth}
+        \begin{itemize}
+        	\item Indata: kryptotexter
+        	\item Kryptera om
+        	\item Blanda
+        	\item Mata ut
+        \end{itemize}
+    \end{column}
+	\begin{column}{0.6\textwidth}
+    	\includegraphics[width=\textwidth]{images/mix4.pdf}
+	\end{column}
+\end{columns}
+
+
+\end{frame}
+
+\begin{frame}{Hur kan vi verifiera att det blir rätt?}
+
+\begin{columns}
+    \begin{column}{0.4\textwidth}
+        \begin{itemize}
+        	\item Verifiering
+        	\item Zero-knowledge
+        	\item Extra data
+        \end{itemize}
+    \end{column}
+	\begin{column}{0.6\textwidth}
+    	\only<1>{\includegraphics[width=\textwidth]{images/mix1.pdf}}
+    	\only<2>{\includegraphics[width=\textwidth]{images/mix2.pdf}}
+	\end{column}
+\end{columns}
+
+\end{frame}
+
+\begin{frame}{Verifieraren analyserar körningen}
 
 \begin{center}
   \makebox[\textwidth]{\includegraphics[height=0.9\textheight]{images/mix3.pdf}}
 \end{center}
+
+\begin{itemize}
+\item Vi får reda på om allt gått rätt till
+\item Fortfarande inte möjligt att veta vems röst som är vem
+\end{itemize}
 
 \end{frame}
 
@@ -55,8 +76,17 @@
 \tableofcontents[currentsection]
 \end{frame}
 
-\begin{frame}{Verifactum}
+\begin{frame}{Vad är Verifactum?}
 
-Implementation, Wikström, titel, CSC
+\begin{itemize}
+\item Implementation av mixnät
+\item Verifierbart
+\item Vem som helst ska kunna verifiera
+\item Specifkationsdokument
+\begin{itemize}
+	\item[-] Är det korrekt?
+	\item[-] Är det användbart?
+\end{itemize}
+\end{itemize}
 
 \end{frame}
