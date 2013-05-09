@@ -52,6 +52,8 @@ Kan generaliseras till valfri cyklisk grupp
 \\
 Zero-Knowledge proofs
 
+Bevis för ett påstående utan att "förklara varför"
+
 - Procedur för att bevisa ett påstående utan att avslöja information 
   - ex bevisa att man besitter kunskap utan att avslöja den Diskreta
     logaritmen
