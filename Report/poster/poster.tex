@@ -12,7 +12,11 @@
 \documentclass[a0paper,landscape]{baposter}
 \usepackage{graphicx} %to insert pictures
 \usepackage{color} %to set colors
-\usepackage{helvet} %to use helvet font
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{parskip}
+%\usepackage{helvet} %to use helvet font
 \renewcommand{\familydefault}{\sfdefault} %set default font to sans-serif for entire document.
 \begin{document}
 \begin{poster}{
@@ -34,7 +38,7 @@
 % eyecatcher: eyecatcher=true,false
 % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % % %
 grid=false,
-columns=4,
+columns=3,
 colspacing=0.5cm,
 headerheight=0.1\textheight,
 background=plain,
@@ -74,35 +78,39 @@ linewidth=0.15cm
 %%
 % Eye Catcher Images to go left of your title.
 {\includegraphics[height=0.1\textheight]{rolling-stones.pdf}} %will not show if put eyecatcher=false
-{Poster Title}
-{Author}
+{El Gamal Mix-Nets and Implementation of a Verifier}
+{Erik Larsson and Carl Svensson}
 {\includegraphics[height=0.1\textheight]{rolling-stones.pdf}}
 
 %%
 %%POSTER CONTENTS
 %%
 % BOX 1
-\headerbox{Box 1}{name=box1,column=0,row=0}{
+\headerbox{Introduction}{name=introduction,column=0,row=0}{
 blah
 }
 % BOX 2
-\headerbox{Box 2}{name=box2,column=0,below=box1}{
-blah blah
+\headerbox{Mix Networks}{name=mixnets,column=0,below=introduction}{
+  \include{mixnets}
 }
 % BOX 3
-\headerbox{Box 3}{name=box3,column=1}{
-blah blah blah
+\headerbox{Mix Server}{name=mixserver,column=1}{
+  \include{mixing}
 }
-% BOX 4
-\headerbox{Box 4}{name=box4,column=1,below=box3,span=2}{
-blah blah blah, blah blah blah
+
+
+\headerbox{Verifier}{name=verifier,column=1, below=mixserver}{
+  \include{verifier}
 }
+
+
+\headerbox{El Gamal Cryptography}{name=elgamal,column=2}{
+  \input{elgamal}
+}
+x
 % BOX 5
-\headerbox{Box 5}{name=box5,column=2}{
-blah blah
-}
 % BOX 6
-\headerbox{Box 6}{name=box6,column=3}{
+\headerbox{Conclusion}{name=box6,below=elgamal,column=2}{
 blah blah blah blah
 }
 \end{poster}
