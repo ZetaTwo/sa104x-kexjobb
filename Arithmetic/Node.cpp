@@ -676,3 +676,22 @@ void Node::clearElements() {
 	}
     children.clear();
 }
+
+
+void Node::setChildrenLength(uint32_t length)
+{
+    for (std::vector<BaseNode *>::const_iterator itr = children.begin(); itr < children.end(); itr++)
+    {
+	switch((*itr)->getType()) {
+	case BaseNode::INT_LEAF:
+	    static_cast<IntLeaf *>(*itr)->setLength(length);
+	    break;
+	case BaseNode::NODE:
+	    static_cast<Node *>(*itr)->setChildrenLength(length);
+	    break;
+	default:
+	    break;
+	}
+    }
+
+}

@@ -99,6 +99,7 @@ public:
 	std::string toString(void) const;
 
 	virtual int32_t getLength(void) const;
+	void setChildrenLength(uint32_t length);
 private:
 	BaseNode &getChild(int32_t index);
 	const BaseNode &getChild(int32_t index) const;

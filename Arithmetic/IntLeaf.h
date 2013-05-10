@@ -307,6 +307,7 @@ public:
 
 	virtual bytevector toVector(void) const;
     virtual int32_t getLength(void) const;
+    void setLength(uint32_t length);
 private:
 
 	/** The GMP object.
@@ -319,4 +320,5 @@ private:
 	  */
     uint32_t length;
 };
+
 

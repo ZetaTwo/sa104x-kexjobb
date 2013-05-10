@@ -407,4 +407,7 @@ std::string IntLeaf::toString(void) const
 }
 
 
-
+void IntLeaf::setLength(uint32_t length)
+{
+    this->length = length;
+}
