@@ -1,3 +1,5 @@
+#include "Debug.h"
+
 #include "Verifier.h"
 #include "Utilities.h"
 #include "DecryptionVerifier.h"
@@ -72,7 +74,8 @@ int Verifier(string protinfo, string directory,
         wDefault = atol(strwidth.c_str());
 
     } catch (...) {
-        return false;
+	print_debug("Verifier, could not parse", protinfo);
+	return false;
     }
 
     xml_file.close();
@@ -88,6 +91,7 @@ int Verifier(string protinfo, string directory,
     std::ifstream datafile(filename.c_str(), std::ios::in);
     datafile >> versionProof;
     datafile.close();
+    
     if(versionProof != versionProt) { return false; }
 
     //Determine type
@@ -137,20 +141,28 @@ int Verifier(string protinfo, string directory,
     Node rho;
     rho.addChild((DataLeaf)versionProof);
     rho.addChild((DataLeaf)(sid + "." + auxsid));
-	rho.addChild(IntLeaf(pfStr.nR, 4));
-	rho.addChild(IntLeaf(pfStr.nE, 4));
+    rho.addChild(IntLeaf(pfStr.nR, 4));
+    rho.addChild(IntLeaf(pfStr.nE, 4));
     rho.addChild(IntLeaf(pfStr.nV, 4));
     rho.addChild((DataLeaf)Sprg);
-	rho.addChild((DataLeaf)pGroup);
+    rho.addChild((DataLeaf)pGroup);
     rho.addChild((DataLeaf)Sh);
+
+    print_debug("Verifier: rho_hash", rho.serializeString());
     
     pfStr.rho = pfStr.hash(rho.serialize());
 
+    print_debug("Verifier: rho", pfStr.rho);
+    
     //Step 5
     if(!keyVerifier(pfStr))
     {
         return false;
     }
+
+    print_debug("Verifier: pk", pfStr.pk.serializeString());
+    print_debug("Verifier: y", pfStr.y.serializeString());
+    print_debug("Verifier: x", pfStr.x.serializeString());
 
     //Step 6 Read lists
     Node L0;
@@ -170,6 +182,8 @@ int Verifier(string protinfo, string directory,
     } else {
         pfStr.N = L0.getNodeChild(0).getNodeChild(0).getLength();
     }
+
+    print_debug("Verifier: L0", L0.serializeString());
 
     if(type == MIX) {
         /* Read threshold ciphertext */
