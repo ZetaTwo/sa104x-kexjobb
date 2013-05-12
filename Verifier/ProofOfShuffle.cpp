@@ -177,7 +177,7 @@ bool proofOfShuffle(proofStruct &pfStr,
         return false;
     }
 
-    // Get random array h
+    // Get random array h - (TODO: could be moved outside of ProofOfShuffle)
     DataLeaf generators = DataLeaf("generators");
     bytevector seed_data = pfStr.rho;
     bytevector seed_data2 = generators.serialize();
@@ -343,7 +343,7 @@ bool proofOfShuffle(proofStruct &pfStr,
     }*/
 
 
-    //TODO: Fungerar inte
+    //TODO: Fixa denna kodrad
     /*if(F.expMod(v, p) * F_prime != Enc(pfStr.pk, IntLeaf(1), -kF, p) * w_prime.expMultMod(kE, p))
     {
         return false;

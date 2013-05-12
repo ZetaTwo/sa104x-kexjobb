@@ -33,6 +33,13 @@ void print_debug(string name, bytevector data)
     #endif
 }
 
+void print_debug(string name, int index, bytevector data)
+{
+    char namestr[100];
+    sprintf(namestr, (name + "_%d").c_str(), index);
+    print_debug(namestr, data);
+}
+
 void print_debug(string comment)
 {
     #ifdef DEBUG

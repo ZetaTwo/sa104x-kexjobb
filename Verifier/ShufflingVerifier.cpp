@@ -8,6 +8,7 @@
 #include "Utilities.h"
 #include "FileNames.h"
 
+#include "Debug.h"
 
 bool verifyShuffling(proofStruct &pfStr,
                      Node &L0, 
@@ -39,10 +40,16 @@ bool verifyShuffling(proofStruct &pfStr,
                 if(!ciphtext_stream) {
                     return false;
                 }
+		try 
+		{
+		    L = Node(ciphtext_stream);
+		}
+		catch(...)
+		{
+		    return false;
+		}
 
-                L = Node(ciphtext_stream);
-
-                //TODO: Repair
+                //TODO: Repair for width > 1
                 if(!isListOfCiphertexts(pfStr, L)) {
                     return false;
                 }
@@ -82,9 +89,13 @@ bool verifyShuffling(proofStruct &pfStr,
             //Step 2
             // Verify proof of shuffle
             // Execute Algorithm 19 with specified input
+	    print_debug("BEGIN PARTY", l);
+
             if(!proofOfShuffle(pfStr, Llast, L, mu, tau_pos, sigma_pos) &&
                 L_array.getNodeChild(l) != L_array.getNodeChild(l-1))
                 return false;
+
+	    print_debug("END PARTY", l);
 
             Llast = L;
         }
@@ -96,7 +107,7 @@ bool verifyShuffling(proofStruct &pfStr,
     // If maxciph file exists
     else
     {
-        return true;
+        return false;
     }
 }
 

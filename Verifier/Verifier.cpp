@@ -74,7 +74,7 @@ int Verifier(string protinfo, string directory,
         wDefault = atol(strwidth.c_str());
 
     } catch (...) {
-	print_debug("Verifier, could not parse", protinfo);
+	print_debug("Verifier: could not parse", protinfo);
 	return false;
     }
 
@@ -137,18 +137,19 @@ int Verifier(string protinfo, string directory,
     }
 
     //Step 4
-    //rho = H(node(versionProof, sid + "." auxsid, Nr, Ne, Nv, Sprg, Gq, Sh))
+    //rho = H(node(versionProof, sid + "." auxsid, w, Ne, Nr, Nv, SGq, Sprg, Sh))
     Node rho;
     rho.addChild((DataLeaf)versionProof);
     rho.addChild((DataLeaf)(sid + "." + auxsid));
-    rho.addChild(IntLeaf(pfStr.nR, 4));
+    rho.addChild(IntLeaf(pfStr.width,  4));
     rho.addChild(IntLeaf(pfStr.nE, 4));
+    rho.addChild(IntLeaf(pfStr.nR, 4));
     rho.addChild(IntLeaf(pfStr.nV, 4));
-    rho.addChild((DataLeaf)Sprg);
     rho.addChild((DataLeaf)pGroup);
+    rho.addChild((DataLeaf)Sprg);
     rho.addChild((DataLeaf)Sh);
 
-    print_debug("Verifier: rho_hash", rho.serializeString());
+    print_debug("Verifier: rho hash input", rho.serializeString());
     
     pfStr.rho = pfStr.hash(rho.serialize());
 
@@ -174,9 +175,10 @@ int Verifier(string protinfo, string directory,
         L0 = Node(fstr);
     }
     catch(...) {
-        return 0;
+        return false;
     }
 
+    // Define N
     if(pfStr.width == 1) {
         pfStr.N = L0.getNodeChild(0).getLength();
     } else {
@@ -184,6 +186,7 @@ int Verifier(string protinfo, string directory,
     }
 
     print_debug("Verifier: L0", L0.serializeString());
+    print_debug("Verifier: N", pfStr.N);
 
     if(type == MIX) {
         /* Read threshold ciphertext */
@@ -252,5 +255,5 @@ int Verifier(string protinfo, string directory,
         }
     }
 
-    return false;
+    return true;
 }
