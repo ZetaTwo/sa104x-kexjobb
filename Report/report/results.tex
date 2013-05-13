@@ -2,19 +2,24 @@
 
 \subsection{Resulting Code}
 
-Our resulting implementation of the mix-net consists of about 5500 lines of C++ code divided into three parts, Arithmetic, Crypto and Verifier. The first two parts are the byte tree classes and the cryptographic primitives respectively. The verifier part contains the actual verification algorithms.
+Our resulting implementation of the mix-net consists of about 5500
+lines of C++ code divided into three parts, Arithmetic, Crypto and
+Verifier. The first two parts are the byte tree classes and the
+cryptographic primitives respectively. The Verifier part contains the
+actual verification algorithms.
 
-The code is available on GitHub\cite{github} but should not be considered a stable release.
+The code is available on GitHub\cite{github} but should not be
+considered a stable release.
 
 
 \subsection{Comments on the Documentation}
 
 The overall impression of the documentation was that it contained all
 information needed to implement the verifier. There were, however,
-errors affecting the execution of the verifier. Some of the problems arising from these
-errors were overcome after discussion with Wikström. See Appendix B
-for a complete list with errors found and specific comments about the
-report.
+errors affecting the execution of the verifier. Some of the problems
+arising from these errors were overcome after discussion with
+Wikström. See Appendix B for a list of errors found and specific
+comments about the report.
 
 In the absolute beginning of the document, the reader is thrown into
 details about the zero-knowledge proofs used in VMN. A more gentle
@@ -26,8 +31,8 @@ a description of Pedersen commitments.
 The background, including a description of a mix-net based on the El
 Gamal cryptosystem, is clear and concise. After the background, the
 document contains a list of manageable subtasks in order to facilitate
-implementation. This list was appreciated as it gave someone
-unacquainted with Verificatum ideas of suitable starting points.
+implementation. This list was greatly appreciated as it gave someone
+unacquainted with VMN ideas of suitable starting points.
 
 Chapters 4 through 6 contain necessary and easily accessible
 information. However, chapter 4 on byte trees and chapter 6 on
@@ -35,7 +40,7 @@ representation of arithmetic objects are closely related and could
 advantageously be presented together while bringing up the
 cryptographic primitives of chapter 5 afterwards. The part on deriving
 group elements from random strings depends on chapter 5 and
-consequently needs to be presented after. See Appendix C for a
+consequently needs to be presented thereafter. See Appendix C for a
 clarification on these comments.
 
 Chapter 6.6 on Marshalling Groups contains specific details regarding
@@ -45,25 +50,39 @@ implementation of a verifier.
 
 Lastly, the chapter on verification of Fiat-Shamir proofs relies
 heavily on the derivation of group elements from random strings. By
-moving chapter 7 to before the chapter on cryptographic primitives,
-usage of the document will probably demand less page turns.
+moving chapter 7 to right before the chapter on cryptographic
+primitives, usage of the document will probably demand less page
+turns.
 
-\subsection{Conclusion}
+\section{Conclusion}
+The use of mix-nets in electronic voting brings with it many
+advantages but also several risks. It is important that voters feel
+confident and safe about voting, because otherwise the voting system
+has lost its purpose. The creation of verifiable mix-nets speaks in
+favour for electronic voting.
 
-Regarding the programming it would have helped with having more layers
-of abstractions in the code. Specifically, some classes representing
-various mathematical objects, such as group elements, would have made
-the code easier to maintain. We believe that a more solid
-understanding of the structure of VMN before we started programming
-would have helped in creating a better structure of the verifier. The
-choices of third party libraries were good and they were all easy to
-use in our project. This also makes the amount of code which need to
-be written smaller. The lack of test data greatly increased the difficulty of implementing the verifier.
+The evaluation and improvement of the VMN verifier document is
+important in order to allow third parties to independetly verify
+correct execution of the mix-net. By implementing a verifier, several
+errors could be corrected and suggestions regarding the document's
+structure could be made.
+
+The implementation and code creation of the verifer would have been
+simplified by defining more layers of abstractions in the code
+structure. Specifically, some classes representing various
+mathematical objects, such as group elements, would have made the code
+easier to maintain. We believe that a more solid understanding of the
+structure of VMN before we started programming would have helped in
+creating a better structure of the verifier. The choices of third
+party libraries were good and they were all easy to use in our
+project. This also makes the amount of code which need to be written
+smaller. The lack of test data greatly increased the difficulty of
+implementing the verifier.
 
 The specification document for the verifier does include all the
 information required to write the verifier. However, the structure
 could be improved for greater readability. There is also some
 unnecessary information in the document. Lastly, the document could
 benefit from an improved description of the VMN so that one easier can
-get a better understanding of what approach to take when implementing
-the verifier.
+acquire a better understanding of what approach to take when
+implementing the verifier.
