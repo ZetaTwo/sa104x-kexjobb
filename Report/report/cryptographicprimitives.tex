@@ -1,50 +1,51 @@
 \subsection{Cryptographic Primitives}
 
-Many cryptographic systems, including Verificatum, make use of some
-basic functions, normally called cryptographic primitives. These
-primitives are functions or objects which possess properties
-interesting in cryptographic contexts. Verificatum uses hash
-functions, pseudo random generators and random oracles, all of which
-are described in this chapter.
+Many cryptographic systems, including VMN, make use of some basic
+functions, normally called cryptographic primitives. These primitives
+are functions or objects which possess properties interesting in
+cryptographic contexts. VMN uses hash functions, pseudo random
+generators and random oracles, all of which are described in this
+chapter.
 
 \subsubsection{Hash functions}
 In general, a hash function is an easily computable function that
 takes an input from an arbitrarily large input space and map it to an
-element in a finite sized hash space \cite[p.~321]{hac}. As a consequence of this, there
-will exist several inputs which map to the same hash. Hash functions
-are used in many different areas of computer science and there are
-many different kinds tailored to have the properties desired for its
-particular application. A cryptographic hash function is a hash
-function with two important properties. First, the hashes are
-uniformly distributed in the hash space. Simply put, this means that
-if you try to guess which hash a given input will produce you will
-never have a significantly better chance than just random
-guessing. Furthermore, for a cryptographic hash function all of the
-following are infeasible.
+element, a hash, in a finite sized hash space \cite[p.~321]{hac}. As a
+consequence of this, there will exist several inputs which map to the
+same hash. Hash functions are used in many different areas of computer
+science and there are many different kinds tailored to have the
+properties desired for its particular application. A cryptographic
+hash function is a hash function with two important properties. First,
+the hashes are uniformly distributed in the hash space. Simply put,
+this means that if you try to guess which hash a given input will
+produce you will never have a significantly better chance than just
+random guessing. Furthermore, for a cryptographic hash function all of
+the following are infeasible.
 
 \begin{itemize}
-\item Find an input which produces a given hash.
-\item Given an input and its hash, find another input with the same hash.
-\item Find two inputs which produce the same hash.
+\item Finding an input which produces a given hash
+\item Given an input and its hash, finding another input with the same hash
+\item Finding two inputs which produce the same hash
 \end{itemize}
 
-In mix-nets any cryptographic hash function could be used. A
-common choice is the SHA-2 family of hash functions, namely SHA-256,
-SHA-384 and SHA-512. Their main difference is the number of bits they
-output, i.e. the size of the hash space which is 256, 384 and 512
-respectively.
+In mix-nets any cryptographic hash function could be used. A common
+choice is the SHA-2 family of hash functions, namely SHA-256, SHA-384
+and SHA-512 \cite[p.~6]{wikstrom1}. Their main difference is the
+number of bits they output, i.e. the size of the hash space which is
+256, 384 and 512 respectively.
 
 \subsubsection{Pseudo Random Generators}
 
 A \emph{Pseudo Random Generator}, PRG, is a function which takes an
 initial seed and expands it into a longer sequence of seemingly random
-data \cite[p.~170]{hac}. The output is random in the sense that it should be
-indistinguishable from truly random output but the same seed will
-always produce the same output.
+data, pseudo random data \cite[p.~170]{hac}. The output is random in
+the sense that it should be indistinguishable, for any efficient
+algorithm, from truly random output but the same seed will always
+produce the same output.
 
-The Verificatum mix-net uses a PRG based on a cryptographic hash
-function that hashes the seed together with a counter which increases
-for every iteration.
+VMN uses a PRG based on a cryptographic hash function that hashes the
+seed together with a counter which increases for every iteration
+\cite{wikstrom1}.
 
 \subsubsection{Random Oracles}
 
@@ -56,9 +57,9 @@ subtle differences. An RO is a purely theoretical construct which
 defines no actual function, only a relationship between inputs and
 outputs.
 
-In practice though, we use a construct within the Verificatum mix-net
-which we call an RO. This construct is based on a cryptographic hash
-function and a seed. The purpose of the seed is to permute the
-relationship between the inputs and outputs of the hash function and
-thus creating an easily randomizable RO without coming up with a whole
-new hash function.
+In practice though, within VMN a construct called an RO is used. This
+construct is based on a cryptographic hash function and a seed. The
+purpose of the seed is to permute the relationship between the inputs
+and outputs of the hash function and thus creating an easily
+randomizable RO without coming up with a whole new hash function
+\cite{wikstrom1}.

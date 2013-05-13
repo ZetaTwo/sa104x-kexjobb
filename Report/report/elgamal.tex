@@ -4,7 +4,7 @@ The El Gamal cryptosystem is based on group theory \cite[p.~297]{hac},
 to which a short introduction is provided in Appendix A. In full
 generality, a public key cryptosystem, or an assymetric cryptosystem,
 provides two parties the means to communicate privately without the
-need of sharing a common secret beforehand as is the case in symmetric
+need of sharing a common secret beforehand as is the case with symmetric
 cryptography. The cryptosystem consists of a public key, a secret key
 and two functions - one encryption function which uses the public key
 and one decryption function which uses the secret key
@@ -24,8 +24,8 @@ the main idea of the cryptosystem.
 
 Security of asymmetric cryptosystem depend on the assumption that
 there exist computationally difficult problems
-\cite[p.~306]{hac}. This is the case also for the El Gamal
-cryptosystem for which the security depends on the difficulty of
+\cite[p.~306]{hac}. This is also the case for the El Gamal
+cryptosystem of which the security depends on the difficulty of
 deducing information about the discrete logarithm in a cyclic group
 \cite[p.~294]{hac}.
 
@@ -78,11 +78,11 @@ Let $b = g^a \in G_q$ where $a \in \mathbb{Z}_q$, then $a$ is said to
 be the discrete logarithm of $b$ in the group $G_q$. There is
 currently no known efficient classical algorithm that given a general
 group $G_q$, $g$ and $b$ as above, is able to calculate $a$ in a
-reasonable amount of time (polynomial time) \cite[p.~103]{hac}
+reasonable amount of time \cite[p.~103]{hac}.
 
 The Decisional Diffie-Hellman assumption concerns a problem related to
-the discrete logarithm. The assumption in a certain group $G_q$ means
-that if $a,b,c \in \mathbb{Z}_q$ are chosen randomly, every efficient
+the discrete logarithm. In any group $G_q$ the assumption means that
+if $a,b,c \in \mathbb{Z}_q$ are chosen randomly, every efficient
 algorithm, on input $g^a$, $g^b$ and $y \in \{g^{ab}, g^c\}$, is
 unable to tell if $y = g^{ab}$ or $y = g^c$ \cite{wikstrom2}.
 

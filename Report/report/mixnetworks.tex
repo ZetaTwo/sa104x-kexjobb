@@ -16,15 +16,15 @@ and is output decrypted and in a randomized order \cite{mixnets}. This
 property may be used to enable anonymous voting systems \cite{mixnets2}.
 
 Different types of mix-nets exist. There are decryption mix-nets and
-reencryption mix-nets. This report treats the latter type. A
-reencryption mix-net consists of a number of servers, henceforth, the
-mix servers, which sequentially process the messages and reencrypts
-the list of messages and outputs them in a randomized order
-\cite{mixnets}. After passing through all servers, the list of
-ciphertexts is decrypted and the result is a list of the messages in
-random order. It should after decryption be infeasible to deduce the
-position of each element in the initial list. This is called
-\emph{untraceability} \cite{mixnets2}.
+reencryption mix-nets. A reencryption mix-net consists of a number of
+servers, henceforth the mix servers, which sequentially process the
+messages by reencrypting the list of messages and outputting them in a
+randomized order \cite{mixnets}. After passing through all servers,
+the list of ciphertexts is decrypted and the result is a list of the
+messages in random order. It should after decryption be infeasible to
+deduce the position of each element in the initial list. We define
+this as \emph{untraceability} \cite{mixnets2}. This provides the
+voters with anonymity.
 
 One use of mix-nets is in the context of electronic voting systems. An
 electronic election can be performed by the use of a reencryption
@@ -32,8 +32,8 @@ mix-net as follows \cite{electronicvoting} \\
 \begin{enumerate}
 \item The mix servers prepare the mix-net by generating public and
   secret keys.
-\item Each voter encrypts his vote and appends it to a public list of
-  encrypted votes.
+\item Each voter encrypts his vote with the public key and appends it
+  to a public list of encrypted votes.
 \item In sequential order each mix server takes as input the list of
   encrypted votes, reencrypts and outputs them in a randomized order,
   replacing the previous list of encrypted votes.
@@ -48,17 +48,16 @@ list of original cryptotexts, providing no untraceability at all.
 
 \subsubsection{El Gamal Mix-Nets}
 
-A common choice for reencryption mix-nets is to use some variant of
-the El Gamal Cryptosystem \cite{electronicvoting}, since the
-homomorphic property of the El Gamal encryption allows reencryption.
-
-A mix-net based on the El Gamal cryptosystem consists of $k$ mix-net
-servers mixing the votes of $n$ voters. Suppose the underlying group
-is $G_q$ of prime order $q$ and with generator $g \in G_q$. The mixnet
-works as follows \cite{electronicvoting2}\\
+A common choice for reencryption mix-nets is to use some version of
+the El Gamal cryptosystem \cite{electronicvoting}, since its
+homomorphic property allows reencryption. A mix-net based on the El
+Gamal cryptosystem consists of $k$ mix-net servers mixing the votes of
+$n$ voters. Suppose the underlying group is $G_q$ of prime order $q$
+and with generator $g \in G_q$. The mix-net works as follows
+\cite{electronicvoting2}\\
 
 \begin{enumerate}
-\item An El Gamal public key $pk = (g,y)$ is generated
+\item An El Gamal public key $pk = (g,y)$ is generated.
 \item Each voter $j$ encrypts his vote $m_j$ to create $c_{j,0} =
   \mathrm{Enc}_{pk}(m_j) = (g^{r_j},my^{r_j})$ for some random $r_j
   \in \mathbb{Z}_q$.  A list of all encrypted votes $c_0 = \left(
@@ -77,11 +76,12 @@ works as follows \cite{electronicvoting2}\\
   \left(\mathrm{Dec}_{sk}(c_{k,1}), \hdots, \mathrm{Dec}(c_{k,n})\right)
   $$
   
-  for a permutation $\pi = \pi_k \circ \hdots \circ \pi_1$.
+  for where $\pi$ is a permutation $\pi = \pi_k \circ \hdots \circ
+  \pi_1$.
 \end{enumerate}
 
- The result of the election may now be computed while the origin of
- the individual votes is unknown. Remark that all encryptions
+ The result of the election may now be computed while the origins of
+ the individual votes are unknown. Remark that all encryptions
  $\mathrm{Enc}_{pk}$ are performed with some randomness $r \in
  \mathbb{Z}_q$.
 
@@ -119,11 +119,12 @@ When it comes to mix-nets, in order to ensure correct execution, one
 can use zero-knowledge proofs to prove that every party shuffles their
 input ciphertexts and reencrypts these ciphertexts. The shuffling part
 may be proven to be correct by a zero-knowledge proof that proves that
-two lists of ciphertexts are permutation of eachother \cite{terelius}. 
+two lists of ciphertexts are permutations of each other
+\cite{terelius}.
 
 It is also important to consider the possibility that one corrupt mix
 server may reveal information that should not be revealed, for example
-revealing the origin of every vote \cite{electronicvoting}. This is a
+revealing the origin of some vote \cite{electronicvoting}. This is a
 problem in the El Gamal mix-net described above, since if all parties
 were using the same public key $pk$, all parties would also possessed
 the same secret key.
@@ -132,12 +133,12 @@ In order to achieve untraceability, the mix-net servers need to
 generate different public keys and still remain able to jointly
 decrypt the output list of ciphertexts. The El Gamal cryptosystem
 provides protocols for distributed key generation and decryption by
-several parties \cite{wikstrom1}. The details of these protocols
-will be omitted, but the basic principle is the following.
+several parties \cite{wikstrom1}. The details of these protocols will
+be omitted, but the basic principle is the following.
 
 A beforehand specified threshold number of mix-net servers
 independently generate their own secret keys. The $l$th mix-net server
-generates $sk_l = x \in \mathbb{Z}_Q$, from which a partial public key
+generates $sk_l = x_l \in \mathbb{Z}_q$, from which a partial public key
 $pk_l = (g,y_l) = (g,g^{x_l})$ can be derived. A joint public key is
 then generated as $pk = \prod_l y_l$ and the corresponding secret key
 $sk = \prod_l x_l$. After each server has processed the ciphertext

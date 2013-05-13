@@ -2,9 +2,9 @@
 
 \subsection{Verificatum Mix Network}
 
-The Verificatum mix-net, VMN, is a reencryption mix-net based on the
-El Gamal cryptosystem \cite[p.~1]{wikstrom1}. During execution it
-generates a verifiable proof of correctness. 
+The Verificatum mix-net is a reencryption mix-net based on the El
+Gamal cryptosystem \cite[p.~1]{wikstrom1}. During execution it
+generates a verifiable proof of correctness.
 
 VMN has different types of execution, all of which require different
 verification. There is a shuffle session, a decryption session and a
@@ -17,42 +17,36 @@ evaluated this document in order to provide feedback to its author.
 \subsection{Specification}
 
 The document \cite{wikstrom1} describing a verifier for correct
-execution of the Verificatum mix-net contains detailed instructions
-for the implementation. A number of subtasks are described, some of
-which may be implemented independently. The subtasks include
-implementation of general representation of data, an arithmetic
-library needed to perform group operations, the cryptographic
-primitives and the structure of files created during an execution of
-the mixnet. Furthermore, all algorithms executed during the
-verification are described in detail in order to allow an independent
-verifier.
+execution of VMN contains detailed instructions for the
+implementation. A number of subtasks are described, some of which may
+be implemented independently. The subtasks include implementation of
+general representation of data, an arithmetic library needed to
+perform group operations, the cryptographic primitives and the
+structure of files created during an execution of the
+mixnet. Furthermore, all algorithms executed during the verification
+are described in detail in order to allow an independent verifier.
 
 \subsection{General Design Choices}
 
-The first implementation choice was which programming language to
-use. We wanted to use well established technologies and have a good
-performance on the verifier. Considering these criteria and our
+The first implementation choice was what programming language to
+use. We wanted to use well established technologies and have good
+performance of the verifier. Considering these criteria and our
 programming skills, the choice was made between C, C++ and Java. Since
 other groups are working on implementations in Java we decided to use
 C or C++ and since we wanted to use features such as operator
 overloading and some OOP, we settled on C++.
 
-The program consist of a few different parts. To represent the various
-mathematical objects in the calculations, we created a collection of
-classes of function called a \emph{byte tree}. These store group
+The program consists of a few different parts. To represent the
+various mathematical objects in the calculations, we created a
+collection of classes called a \emph{byte tree}. These store group
 elements and a few other types of data as specified in the
-specification.
+documentation.
 
 We wanted to keep the verifier as close to the specification in layout
-as possible. Apart from some cryptographic primitives and the byte
-trees, there is almost no code repetition in the verifier. This meant
-that we would gain little to nothing by designing any kind of class
-structure or abstractions.
-
-The byte trees were modelled with a few classes representing nodes and
-leaves. This enabled us to hide away complex operations behind simple
-interfaces which resulted in a more readable and maintainable code
-throughout the rest of the verifier.
+as possible. The byte trees were modelled with a few classes
+representing nodes and leaves. This enabled us to hide away complex
+operations behind simple interfaces which resulted in a more readable
+and maintainable code throughout the rest of the verifier.
 
 \subsection{Tools}
 
@@ -67,27 +61,27 @@ for the program with Doxygen.
 The verifier makes use of a few third party libraries. The actual
 arithmetic in the byte tree nodes are done with the GMP arithmetic
 library. This enables us to handle arbitrary large numbers which are
-used in cryptography. We also use RapidXML for parsing the
-protInfo.xml file at the very beginning of the verifier. For
-cryptographic hash functions we use OpenSSL and finally for unit
-testing we use Google's Google Test library.
+used in cryptography. Furthermore, RapidXML is used for parsing the
+protInfo.xml file at the very beginning of the verifier. The
+cryptographic hash functions are based on OpenSSL and unit testing of
+our code was performed by using the Google Test library.
 
 \subsubsection{Arithmetic Library}
 
-For the actual arithmetic done in the IntLeaf node class we use the
+For the actual arithmetics done in the byte tree classes we use the
 GNU Multi-Precision Library (GMP). On Windows this is replaced by the
 library Multiple Precision Integers and Rationals (MPIR), a drop in
-replacement which is easier to compile on windows systems. We chose
-GMP because it is a well known, very stable and free library for
-bignum operations.
+replacement which is easier to compile on Windows systems. GMP was
+chosen because it is a well known, stable and free library for bignum
+operations.
 
 \subsubsection{XML Parser}
 
 RapidXML is used to parse the protInfo.xml file in the beginning of
-the algorithm. Since this is a very simple operation and we only do
-this once, we wanted a lightweight library to do the XML
-parsing. RapidXML consists of a few header files and has an easy to
-use interface.
+the algorithm. Since this is a very simple operation only performed
+once, a lightweight and simple library was sought for. RapidXML
+fulfills these criteria. It consists of a few header files and has an
+easy to use interface.
 
 \subsubsection{Cryptographic Primitives}
 
@@ -99,27 +93,26 @@ various cryptographic related functions.
 
 \subsubsection{Testing}
 
-To test the byte tree classes and our cryptographic functions we used
-some unit testing. We used Google Test as our unit test framework
+To test the byte tree classes and our cryptographic functions unit
+testing was done. We used Google Test as our unit test framework
 because it was simple and easy to use. The unit tests were invaluable
-in tracking down subtle bugs in our byte tree implementation,
+in tracking down subtle bugs in the byte tree implementation,
 especially regarding memory management.
 
 \subsection{Math Library - The Byte Tree}
 
-To facilitate for the various calculation that needs to be done with
-various mathematical objects. We created a collection of \emph{byte
-  tree} classes. The classes use the GMP library internally to perform
-the actual arithmetic calculations. The classes then wrap these
-operations in a class hierarchy which enables us to create arrays and
-trees and perform calculations with these compound structures. There
-are also functions to import strings and files and convert them into
-these classes. The classes can also be serialized into arrays and
-strings which are used for testing and debugging purposes.
+To facilitate for the various calculations that needs to be done with
+various mathematical objects, we created the byte tree classes. The
+classes, that use the GMP library internally, wrap these operations
+in a class hierarchy which enables us to create arrays and trees and
+perform calculations with these compound structures. There are also
+functions to import strings and files and convert them into these
+classes. The classes can also be serialized into arrays and strings
+which are used for testing and debugging purposes.
 
 \subsection{Pseudorandom Generators and Random Oracles}
 
-The specification also provide details on the PRG:s and RO:s used in
+The specification also provides details on the PRG:s and RO:s used in
 Verificatum. These primitives are implemented as classes which are
 instantiated to perform their respective operations as described
 earlier. These classes use hash functions from the OpenSSL library
@@ -137,17 +130,17 @@ needed a few helper functions. The purpose of these functions was to
 check that some different byte tree adhered to a certain structure.
 
 Each named algorithm in the specification was implemented as its own
-function. The functions became long but since none of the code is
-repeated and the possibilities for isolated testing was minimal, we
-chose to not split up the algorithms into several functions.
+function. The functions became long but since little code was repeated
+and the possibilities for isolated testing was minimal, we chose to
+not split up the algorithms into several functions.
 
 \subsection{Testing and Debugging}
 
-For the \emph{byte tree}, PRG and RO classes, a small collection of
-unit tests were created. The tests for the PRG and RO classes were
-taken from the test vectors chapter in the specification while the
-byte tree tests were created by us. The tests were implemented with
-the Google Test test framework.
+For the byte tree, PRG and RO classes, a small collection of unit
+tests were created. The tests for the PRG and RO classes were taken
+from the test vectors chapter in the specification while we created
+the test cases for the byte tree classes. The tests were implemented
+with the Google Test framework.
 
 When all the parts of the program had been implemented we received
 test data from Wikström to verify that the program worked. The data
