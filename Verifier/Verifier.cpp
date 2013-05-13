@@ -161,6 +161,7 @@ int Verifier(string protinfo, string directory,
         return false;
     }
 
+    print_debug("Verifier: p", pfStr.Gq.getIntLeafChild(0).serializeString());
     print_debug("Verifier: pk", pfStr.pk.serializeString());
     print_debug("Verifier: y", pfStr.y.serializeString());
     print_debug("Verifier: x", pfStr.x.serializeString());
