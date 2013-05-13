@@ -1,13 +1,11 @@
-One purpose of mix networks is to provide untraceability to its
-users. A mix-net takes as input a list of encrypted
-messages. Verificatum is a reencryption mix-net. Such a mix-net
-consists of a number of servers, mix servers, which sequentially
-process the messages and reencrypts the list of messages and outputs
-them in a randomized order. After passing through all servers, the
-list of ciphertexts is decrypted and the result is a list of the
-messages in random order.
+ A mix-net takes as input a list of encrypted messages. Verificatum is
+ a reencryption mix-net. Such a mix-net consists of a number of
+ servers, mix servers, which sequentially process the messages and
+ reencrypts the list of messages and outputs them in a randomized
+ order. After passing through all servers, the list of ciphertexts is
+ decrypted and the result is the messages output in random order.
 
-In the context of electroinic voting a reencryption mix-nets may work
+In the context of electronic voting a reencryption mix-nets may work
 as follows.
 \begin{enumerate}
 \item The mix servers prepare the mix-net by generating public and
