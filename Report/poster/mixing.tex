@@ -1,5 +1,5 @@
 
-Each server in the mix-net performs the same actions during execution.
+Each server in the mix-net performs the same operations during execution.
 
 \begin{enumerate}
 \item It is given the list of ciphertexts from the previous server.
@@ -8,7 +8,9 @@ Each server in the mix-net performs the same actions during execution.
 \item It passes the reencrypted and shuffled list of ciphertexts to the next server.
 \end{enumerate}
 
-During these steps a zero-knowledge proof is produced which can prove that the server indeed did output a list of shuffled and reencrypted ciphertexts without tampering with the ciphertexts.
+During these steps a zero-knowledge proof is produced, proving that
+the server correctly output a list of shuffled and reencrypted
+ciphertexts.
 
 \begin{center}
   \makebox[\textwidth]{\includegraphics[width=0.7\textwidth]{../presentation/images/mix4.pdf}}
