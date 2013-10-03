@@ -1,7 +1,7 @@
-sa104x-kexjobb
+SA104X - Bachelor Project in Computer Science
 ==============
 
-Implementation of a verifier for the Verificatum Mix-net
+Implementation of a verifier for the Verificatum Mix-net. This was created as a part of our bchelor project at [KTH](http://www.kth.se). All material will be kept here for future reference.
 
 Requirements
 ------------
